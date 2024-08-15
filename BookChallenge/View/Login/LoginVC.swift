@@ -41,6 +41,7 @@ final class LoginVC: BaseViewController {
     override func bindData() {
         let input = LoginVM.Input(emailText: emailTextFiled.getText(), passwordText: passwordTextFiled.getText(), loginTap: loginButton.rx.tap, joinTap: joinButton.rx.tap)
         let output = vm.transform(input: input)
+        
         output.joinTap
             .bind(with: self) { owner, _ in
                 self.present(SignUpVC(), animated: true)
@@ -52,7 +53,7 @@ final class LoginVC: BaseViewController {
                 case .success(let success):
                     print(success)
                 case .failure(let failure):
-                    owner.simpleAlert(title: "로그인 실패", message: failure.rawValue)
+                    owner.simpleAlert(type: failure)
                 }
             }.disposed(by: disposeBag)
         
@@ -95,6 +96,4 @@ final class LoginVC: BaseViewController {
             make.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
         }
     }
-    override func setUpView() {}
-
 }

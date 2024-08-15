@@ -37,6 +37,8 @@
 		065953562C6E34DC0048821E /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953552C6E34DC0048821E /* LoginVM.swift */; };
 		0659535A2C6E3B540048821E /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953592C6E3B540048821E /* SignUpVC.swift */; };
 		0659535D2C6E4B750048821E /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659535C2C6E4B750048821E /* LoginError.swift */; };
+		065953602C6E56530048821E /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659535F2C6E56530048821E /* Alert.swift */; };
+		065953622C6E57B00048821E /* SignUpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953612C6E57B00048821E /* SignUpVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +66,8 @@
 		065953552C6E34DC0048821E /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		065953592C6E3B540048821E /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		0659535C2C6E4B750048821E /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
+		0659535F2C6E56530048821E /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		065953612C6E57B00048821E /* SignUpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 			children = (
 				065953012C6E2F8C0048821E /* AppDelegate.swift */,
 				065953032C6E2F8C0048821E /* SceneDelegate.swift */,
+				0659535E2C6E56490048821E /* Protocol */,
 				0659535B2C6E4B660048821E /* Error */,
 				0659531B2C6E31C50048821E /* Enum */,
 				0659531A2C6E31AA0048821E /* Extension+ */,
@@ -191,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				065953592C6E3B540048821E /* SignUpVC.swift */,
+				065953612C6E57B00048821E /* SignUpVM.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -201,6 +207,14 @@
 				0659535C2C6E4B750048821E /* LoginError.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		0659535E2C6E56490048821E /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				0659535F2C6E56530048821E /* Alert.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,11 +320,13 @@
 				0659532D2C6E31E80048821E /* LoginVC.swift in Sources */,
 				0659535A2C6E3B540048821E /* SignUpVC.swift in Sources */,
 				065953282C6E31E80048821E /* PointButton.swift in Sources */,
+				065953622C6E57B00048821E /* SignUpVM.swift in Sources */,
 				065953332C6E31FA0048821E /* String+.swift in Sources */,
 				065953352C6E31FA0048821E /* UIImage+.swift in Sources */,
 				0659532B2C6E31E80048821E /* BaseViewController.swift in Sources */,
 				065953042C6E2F8C0048821E /* SceneDelegate.swift in Sources */,
 				065953322C6E31FA0048821E /* UIColor+.swift in Sources */,
+				065953602C6E56530048821E /* Alert.swift in Sources */,
 				065953562C6E34DC0048821E /* LoginVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

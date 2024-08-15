@@ -29,10 +29,10 @@ class BaseViewController: UIViewController {
     }
 }
 extension BaseViewController {
-    func simpleAlert(title: String, message: String?) {
+    func simpleAlert(type: Alert) {
         let alert = UIAlertController(
-            title: title,
-            message: message,
+            title: type.title,
+            message: type.message,
             preferredStyle: .alert
         )
         let cancel = UIAlertAction(title: "확인", style: .default)

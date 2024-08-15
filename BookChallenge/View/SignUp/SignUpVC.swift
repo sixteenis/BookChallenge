@@ -20,8 +20,29 @@ class SignUpVC: BaseViewController {
     let repassword = LoginTextField(type: .repassword)
     let signUpButton = PointButton(title: "회원가입")
     
+    private let disposeBag = DisposeBag()
+    let vm = SignUpVM()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    override func bindData() {
+        let input = SignUpVM.Input(xMarkTap: xButton.rx.tap, JoinTap: signUpButton.rx.tap, emailText: email.getText(), nickNameText: nickName.getText(), passwordText: password.getText(), repasswordText: repassword.getText())
+        let output = vm.transform(input: input)
+        output.xMarkTap
+            .bind(with: self) { owner, _ in
+                owner.dismiss(animated: true)
+            }.disposed(by: disposeBag)
+        output.tryJoin
+            .bind(with: self) { owner, result in
+                switch result {
+                case .success(let success):
+                    print(success)
+                case .failure(let failure):
+                    owner.simpleAlert(type: failure)
+                }
+            }.disposed(by: disposeBag)
+            
     }
     override func setUpHierarchy() {
         view.addSubview(xButton)
