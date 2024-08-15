@@ -9,4 +9,5 @@ import UIKit
 
 extension UIImage {
     static let logo = UIImage(systemName: "star")
+    static let xMark = UIImage(systemName: "xmark")
 }

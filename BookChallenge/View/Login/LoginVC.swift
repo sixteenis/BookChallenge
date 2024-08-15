@@ -24,7 +24,7 @@ final class LoginVC: BaseViewController {
     }
     
     let emailTextFiled = LoginTextField(type: .email)
-    let passwordTextFiled = LoginTextField(type: .passwoard)
+    let passwordTextFiled = LoginTextField(type: .password)
     let loginButton = PointButton(title: "로그인하기")
     let joinButton = UIButton().then {
         $0.setTitle("회원가입하기", for: .normal)
@@ -93,7 +93,6 @@ final class LoginVC: BaseViewController {
         joinButton.snp.makeConstraints { make in
             make.top.equalTo(loginButton.snp.bottom).offset(15)
             make.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
-            //make.centerX.equalToSuperview()
         }
     }
     override func setUpView() {}

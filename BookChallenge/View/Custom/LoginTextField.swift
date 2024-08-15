@@ -49,7 +49,7 @@ final class LoginTextField: BaseView {
         logo.image = UIImage(systemName: type.logo)
         textField.placeholder = type.placeholder
         textField.isSecureTextEntry = type.secure
-        if type == .passwoard {
+        if type == .password || type == .repassword {
             textField.clearButtonMode = .always
         }
     }

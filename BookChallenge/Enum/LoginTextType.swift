@@ -7,16 +7,19 @@
 
 import Foundation
 
-enum LoginTextType: String {
-    case email = ""
-    case passwoard = "123"
-    case nickName = "12312312"
+enum LoginTextType {
+    case email
+    case nickName
+    case password
+    case repassword
+    
+    
     
     var logo: String {
         switch self {
         case .email:
             "envelope.fill"
-        case .passwoard:
+        case .password, .repassword:
             "lock.fill"
         case .nickName:
             "person.fill"
@@ -26,17 +29,19 @@ enum LoginTextType: String {
         switch self {
         case .email:
             "이메일"
-        case .passwoard:
+        case .password:
             "비밀번호"
         case .nickName:
             "닉네임"
+        case .repassword:
+            "비밀번호 확인"
         }
     }
     var secure: Bool {
         switch self {
         case .email:
             false
-        case .passwoard:
+        case .password, .repassword:
             true
         case .nickName:
             false
