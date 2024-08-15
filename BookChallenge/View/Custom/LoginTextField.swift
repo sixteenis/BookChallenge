@@ -6,13 +6,14 @@
 //
 
 import UIKit
-
+import RxSwift
+import RxCocoa
 import SnapKit
 
 final class LoginTextField: BaseView {
     private let logo = UIImageView()
-    private let textField = UITextField()
     private let line = UIView()
+    private let textField = UITextField()
     
     init(type: LoginTextType) {
         super.init(frame: .zero)
@@ -48,10 +49,12 @@ final class LoginTextField: BaseView {
         logo.image = UIImage(systemName: type.logo)
         textField.placeholder = type.placeholder
         textField.isSecureTextEntry = type.secure
+        if type == .passwoard {
+            textField.clearButtonMode = .always
+        }
     }
     
-    func getText() -> String {
-        guard let text = textField.text else {return ""}
-        return text
+    func getText() -> ControlProperty<String> {
+        textField.rx.text.orEmpty
     }
 }

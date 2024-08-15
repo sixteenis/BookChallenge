@@ -6,6 +6,9 @@
 //
 
 import UIKit
+
+import RxSwift
+import RxCocoa
 import SnapKit
 import Then
 
@@ -29,10 +32,31 @@ final class LoginVC: BaseViewController {
         $0.titleLabel?.font = .boldSystemFont(ofSize: 15)
     }
     
+    let disposeBag = DisposeBag()
+    let vm = LoginVM()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+    override func bindData() {
+        let input = LoginVM.Input(emailText: emailTextFiled.getText(), passwordText: passwordTextFiled.getText(), loginTap: loginButton.rx.tap, joinTap: joinButton.rx.tap)
+        let output = vm.transform(input: input)
+        output.joinTap
+            .bind(with: self) { owner, _ in
+                self.present(SignUpVC(), animated: true)
+            }.disposed(by: disposeBag)
+        
+        output.tryLogin
+            .bind(with: self) { owner, value in
+                switch value {
+                case .success(let success):
+                    print(success)
+                case .failure(let failure):
+                    owner.simpleAlert(title: "로그인 실패", message: failure.rawValue)
+                }
+            }.disposed(by: disposeBag)
+        
+    }
     override func setUpHierarchy() {
         view.addSubview(appLogo)
         view.addSubview(loginLabel)
@@ -43,7 +67,7 @@ final class LoginVC: BaseViewController {
     }
     override func setUpLayout() {
         loginLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(10)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(50)
             make.centerX.equalToSuperview()
         }
         appLogo.snp.makeConstraints { make in
@@ -72,6 +96,6 @@ final class LoginVC: BaseViewController {
             //make.centerX.equalToSuperview()
         }
     }
-    override func setUpView() {
-    }
+    override func setUpView() {}
+
 }

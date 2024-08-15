@@ -9,5 +9,5 @@ import Foundation
 
 
 extension String {
-    static let appName = "PageChllenge"
+    static let appName = "BookChllenge"
 }

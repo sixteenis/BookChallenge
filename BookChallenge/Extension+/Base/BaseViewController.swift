@@ -28,3 +28,16 @@ class BaseViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .black
     }
 }
+extension BaseViewController {
+    func simpleAlert(title: String, message: String?) {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        let cancel = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(cancel)
+        present(alert, animated: true)
+    }
+}
+

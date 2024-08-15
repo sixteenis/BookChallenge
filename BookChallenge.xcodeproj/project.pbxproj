@@ -33,6 +33,10 @@
 		0659534A2C6E32690048821E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 065953492C6E32690048821E /* RxSwift */; };
 		0659534D2C6E327D0048821E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0659534C2C6E327D0048821E /* SnapKit */; };
 		065953502C6E328C0048821E /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0659534F2C6E328C0048821E /* IQKeyboardManagerSwift */; };
+		065953542C6E34540048821E /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953532C6E34540048821E /* BaseViewModel.swift */; };
+		065953562C6E34DC0048821E /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953552C6E34DC0048821E /* LoginVM.swift */; };
+		0659535A2C6E3B540048821E /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953592C6E3B540048821E /* SignUpVC.swift */; };
+		0659535D2C6E4B750048821E /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659535C2C6E4B750048821E /* LoginError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +60,10 @@
 		065953312C6E31FA0048821E /* UIImage+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		065953362C6E31FF0048821E /* LoginTextType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextType.swift; sourceTree = "<group>"; };
 		065953382C6E32060048821E /* APIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		065953532C6E34540048821E /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		065953552C6E34DC0048821E /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
+		065953592C6E3B540048821E /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		0659535C2C6E4B750048821E /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,33 +107,16 @@
 			children = (
 				065953012C6E2F8C0048821E /* AppDelegate.swift */,
 				065953032C6E2F8C0048821E /* SceneDelegate.swift */,
+				0659535B2C6E4B660048821E /* Error */,
 				0659531B2C6E31C50048821E /* Enum */,
 				0659531A2C6E31AA0048821E /* Extension+ */,
 				065953192C6E31A10048821E /* Service */,
-				065953182C6E319B0048821E /* Model */,
-				065953172C6E31940048821E /* ViewController */,
+				065953572C6E38930048821E /* View */,
 				0659530A2C6E2F8D0048821E /* Assets.xcassets */,
 				0659530C2C6E2F8D0048821E /* LaunchScreen.storyboard */,
 				0659530F2C6E2F8D0048821E /* Info.plist */,
 			);
 			path = BookChallenge;
-			sourceTree = "<group>";
-		};
-		065953172C6E31940048821E /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				065953242C6E31E80048821E /* Base */,
-				0659531F2C6E31E80048821E /* Custom */,
-				065953262C6E31E80048821E /* Login */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		065953182C6E319B0048821E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		065953192C6E31A10048821E /* Service */ = {
@@ -139,6 +130,7 @@
 		0659531A2C6E31AA0048821E /* Extension+ */ = {
 			isa = PBXGroup;
 			children = (
+				065953242C6E31E80048821E /* Base */,
 				065953302C6E31FA0048821E /* ReuseIdentifier+.swift */,
 				0659532F2C6E31F90048821E /* String+.swift */,
 				0659532E2C6E31F90048821E /* UIColor+.swift */,
@@ -170,6 +162,7 @@
 				065953202C6E31E80048821E /* BaseCollectioViewCell.swift */,
 				065953212C6E31E80048821E /* BaseView.swift */,
 				065953222C6E31E80048821E /* BaseViewController.swift */,
+				065953532C6E34540048821E /* BaseViewModel.swift */,
 				065953232C6E31E80048821E /* TabBarController.swift */,
 			);
 			path = Base;
@@ -179,8 +172,35 @@
 			isa = PBXGroup;
 			children = (
 				065953252C6E31E80048821E /* LoginVC.swift */,
+				065953552C6E34DC0048821E /* LoginVM.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		065953572C6E38930048821E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				065953262C6E31E80048821E /* Login */,
+				065953582C6E3B410048821E /* SignUp */,
+				0659531F2C6E31E80048821E /* Custom */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		065953582C6E3B410048821E /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				065953592C6E3B540048821E /* SignUpVC.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		0659535B2C6E4B660048821E /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				0659535C2C6E4B750048821E /* LoginError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,17 +297,21 @@
 				0659532C2C6E31E80048821E /* TabBarController.swift in Sources */,
 				065953272C6E31E80048821E /* LoginTextField.swift in Sources */,
 				065953342C6E31FA0048821E /* ReuseIdentifier+.swift in Sources */,
+				0659535D2C6E4B750048821E /* LoginError.swift in Sources */,
 				065953392C6E32060048821E /* APIKey.swift in Sources */,
+				065953542C6E34540048821E /* BaseViewModel.swift in Sources */,
 				065953022C6E2F8C0048821E /* AppDelegate.swift in Sources */,
 				0659532A2C6E31E80048821E /* BaseView.swift in Sources */,
 				065953372C6E31FF0048821E /* LoginTextType.swift in Sources */,
 				0659532D2C6E31E80048821E /* LoginVC.swift in Sources */,
+				0659535A2C6E3B540048821E /* SignUpVC.swift in Sources */,
 				065953282C6E31E80048821E /* PointButton.swift in Sources */,
 				065953332C6E31FA0048821E /* String+.swift in Sources */,
 				065953352C6E31FA0048821E /* UIImage+.swift in Sources */,
 				0659532B2C6E31E80048821E /* BaseViewController.swift in Sources */,
 				065953042C6E2F8C0048821E /* SceneDelegate.swift in Sources */,
 				065953322C6E31FA0048821E /* UIColor+.swift in Sources */,
+				065953562C6E34DC0048821E /* LoginVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
