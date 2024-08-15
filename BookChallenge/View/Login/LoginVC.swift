@@ -47,13 +47,15 @@ final class LoginVC: BaseViewController {
                 self.present(SignUpVC(), animated: true)
             }.disposed(by: disposeBag)
         
-        output.tryLogin
-            .bind(with: self) { owner, value in
-                switch value {
-                case .success(let success):
-                    print(success)
-                case .failure(let failure):
-                    owner.simpleAlert(type: failure)
+        output.err
+            .bind(with: self) { owner, err in
+                owner.simpleAlert(type: err)
+            }.disposed(by: disposeBag)
+        
+        output.nextView
+            .bind(with: self) { owner, bool in
+                if bool {
+                    print("성공!")
                 }
             }.disposed(by: disposeBag)
         

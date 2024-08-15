@@ -39,6 +39,14 @@
 		0659535D2C6E4B750048821E /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659535C2C6E4B750048821E /* LoginError.swift */; };
 		065953602C6E56530048821E /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659535F2C6E56530048821E /* Alert.swift */; };
 		065953622C6E57B00048821E /* SignUpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953612C6E57B00048821E /* SignUpVM.swift */; };
+		065953652C6E64280048821E /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953642C6E64280048821E /* UserDefault.swift */; };
+		065953682C6E644A0048821E /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953672C6E644A0048821E /* UserManager.swift */; };
+		0659536A2C6E68810048821E /* LSLPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953692C6E68810048821E /* LSLPManager.swift */; };
+		0659536D2C6E69490048821E /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659536C2C6E69490048821E /* Header.swift */; };
+		0659536F2C6E69500048821E /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659536E2C6E69500048821E /* Router.swift */; };
+		065953712C6E695C0048821E /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953702C6E695C0048821E /* TargetType.swift */; };
+		065953742C6E6A260048821E /* LoginQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953732C6E6A260048821E /* LoginQuery.swift */; };
+		065953772C6E6BBA0048821E /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953762C6E6BBA0048821E /* LoginDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +76,14 @@
 		0659535C2C6E4B750048821E /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		0659535F2C6E56530048821E /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		065953612C6E57B00048821E /* SignUpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVM.swift; sourceTree = "<group>"; };
+		065953642C6E64280048821E /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		065953672C6E644A0048821E /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		065953692C6E68810048821E /* LSLPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPManager.swift; sourceTree = "<group>"; };
+		0659536C2C6E69490048821E /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		0659536E2C6E69500048821E /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		065953702C6E695C0048821E /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
+		065953732C6E6A260048821E /* LoginQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginQuery.swift; sourceTree = "<group>"; };
+		065953762C6E6BBA0048821E /* LoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +128,6 @@
 				065953012C6E2F8C0048821E /* AppDelegate.swift */,
 				065953032C6E2F8C0048821E /* SceneDelegate.swift */,
 				0659535E2C6E56490048821E /* Protocol */,
-				0659535B2C6E4B660048821E /* Error */,
 				0659531B2C6E31C50048821E /* Enum */,
 				0659531A2C6E31AA0048821E /* Extension+ */,
 				065953192C6E31A10048821E /* Service */,
@@ -127,7 +142,8 @@
 		065953192C6E31A10048821E /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				065953382C6E32060048821E /* APIKey.swift */,
+				0659535B2C6E4B660048821E /* Error */,
+				065953632C6E640C0048821E /* Manager */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -215,6 +231,54 @@
 				0659535F2C6E56530048821E /* Alert.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		065953632C6E640C0048821E /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				065953382C6E32060048821E /* APIKey.swift */,
+				0659536B2C6E693C0048821E /* LSLP */,
+				065953662C6E64360048821E /* User */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		065953662C6E64360048821E /* User */ = {
+			isa = PBXGroup;
+			children = (
+				065953642C6E64280048821E /* UserDefault.swift */,
+				065953672C6E644A0048821E /* UserManager.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		0659536B2C6E693C0048821E /* LSLP */ = {
+			isa = PBXGroup;
+			children = (
+				065953752C6E6BB10048821E /* DTO */,
+				065953722C6E6A0F0048821E /* Query */,
+				0659536C2C6E69490048821E /* Header.swift */,
+				0659536E2C6E69500048821E /* Router.swift */,
+				065953702C6E695C0048821E /* TargetType.swift */,
+				065953692C6E68810048821E /* LSLPManager.swift */,
+			);
+			path = LSLP;
+			sourceTree = "<group>";
+		};
+		065953722C6E6A0F0048821E /* Query */ = {
+			isa = PBXGroup;
+			children = (
+				065953732C6E6A260048821E /* LoginQuery.swift */,
+			);
+			path = Query;
+			sourceTree = "<group>";
+		};
+		065953752C6E6BB10048821E /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				065953762C6E6BBA0048821E /* LoginDTO.swift */,
+			);
+			path = DTO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,17 +374,25 @@
 				065953292C6E31E80048821E /* BaseCollectioViewCell.swift in Sources */,
 				0659532C2C6E31E80048821E /* TabBarController.swift in Sources */,
 				065953272C6E31E80048821E /* LoginTextField.swift in Sources */,
+				0659536A2C6E68810048821E /* LSLPManager.swift in Sources */,
 				065953342C6E31FA0048821E /* ReuseIdentifier+.swift in Sources */,
 				0659535D2C6E4B750048821E /* LoginError.swift in Sources */,
 				065953392C6E32060048821E /* APIKey.swift in Sources */,
 				065953542C6E34540048821E /* BaseViewModel.swift in Sources */,
+				065953682C6E644A0048821E /* UserManager.swift in Sources */,
 				065953022C6E2F8C0048821E /* AppDelegate.swift in Sources */,
 				0659532A2C6E31E80048821E /* BaseView.swift in Sources */,
+				065953772C6E6BBA0048821E /* LoginDTO.swift in Sources */,
 				065953372C6E31FF0048821E /* LoginTextType.swift in Sources */,
+				065953712C6E695C0048821E /* TargetType.swift in Sources */,
+				0659536F2C6E69500048821E /* Router.swift in Sources */,
 				0659532D2C6E31E80048821E /* LoginVC.swift in Sources */,
 				0659535A2C6E3B540048821E /* SignUpVC.swift in Sources */,
 				065953282C6E31E80048821E /* PointButton.swift in Sources */,
+				0659536D2C6E69490048821E /* Header.swift in Sources */,
+				065953742C6E6A260048821E /* LoginQuery.swift in Sources */,
 				065953622C6E57B00048821E /* SignUpVM.swift in Sources */,
+				065953652C6E64280048821E /* UserDefault.swift in Sources */,
 				065953332C6E31FA0048821E /* String+.swift in Sources */,
 				065953352C6E31FA0048821E /* UIImage+.swift in Sources */,
 				0659532B2C6E31E80048821E /* BaseViewController.swift in Sources */,
