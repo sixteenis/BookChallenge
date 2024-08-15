@@ -12,6 +12,27 @@
 		0659530B2C6E2F8D0048821E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0659530A2C6E2F8D0048821E /* Assets.xcassets */; };
 		0659530E2C6E2F8D0048821E /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0659530D2C6E2F8D0048821E /* Base */; };
 		065953162C6E2FC20048821E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 065953152C6E2FC20048821E /* .gitignore */; };
+		065953272C6E31E80048821E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659531D2C6E31E80048821E /* LoginTextField.swift */; };
+		065953282C6E31E80048821E /* PointButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659531E2C6E31E80048821E /* PointButton.swift */; };
+		065953292C6E31E80048821E /* BaseCollectioViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953202C6E31E80048821E /* BaseCollectioViewCell.swift */; };
+		0659532A2C6E31E80048821E /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953212C6E31E80048821E /* BaseView.swift */; };
+		0659532B2C6E31E80048821E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953222C6E31E80048821E /* BaseViewController.swift */; };
+		0659532C2C6E31E80048821E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953232C6E31E80048821E /* TabBarController.swift */; };
+		0659532D2C6E31E80048821E /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953252C6E31E80048821E /* LoginVC.swift */; };
+		065953322C6E31FA0048821E /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659532E2C6E31F90048821E /* UIColor+.swift */; };
+		065953332C6E31FA0048821E /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659532F2C6E31F90048821E /* String+.swift */; };
+		065953342C6E31FA0048821E /* ReuseIdentifier+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953302C6E31FA0048821E /* ReuseIdentifier+.swift */; };
+		065953352C6E31FA0048821E /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953312C6E31FA0048821E /* UIImage+.swift */; };
+		065953372C6E31FF0048821E /* LoginTextType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953362C6E31FF0048821E /* LoginTextType.swift */; };
+		065953392C6E32060048821E /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953382C6E32060048821E /* APIKey.swift */; };
+		0659533C2C6E32480048821E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0659533B2C6E32480048821E /* Alamofire */; };
+		0659533F2C6E324E0048821E /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 0659533E2C6E324E0048821E /* Toast */; };
+		065953422C6E32540048821E /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 065953412C6E32540048821E /* Then */; };
+		065953452C6E325A0048821E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 065953442C6E325A0048821E /* Kingfisher */; };
+		065953482C6E32690048821E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 065953472C6E32690048821E /* RxCocoa */; };
+		0659534A2C6E32690048821E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 065953492C6E32690048821E /* RxSwift */; };
+		0659534D2C6E327D0048821E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0659534C2C6E327D0048821E /* SnapKit */; };
+		065953502C6E328C0048821E /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0659534F2C6E328C0048821E /* IQKeyboardManagerSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +43,19 @@
 		0659530D2C6E2F8D0048821E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0659530F2C6E2F8D0048821E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		065953152C6E2FC20048821E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		0659531D2C6E31E80048821E /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
+		0659531E2C6E31E80048821E /* PointButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointButton.swift; sourceTree = "<group>"; };
+		065953202C6E31E80048821E /* BaseCollectioViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectioViewCell.swift; sourceTree = "<group>"; };
+		065953212C6E31E80048821E /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		065953222C6E31E80048821E /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		065953232C6E31E80048821E /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		065953252C6E31E80048821E /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		0659532E2C6E31F90048821E /* UIColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		0659532F2C6E31F90048821E /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		065953302C6E31FA0048821E /* ReuseIdentifier+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReuseIdentifier+.swift"; sourceTree = "<group>"; };
+		065953312C6E31FA0048821E /* UIImage+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		065953362C6E31FF0048821E /* LoginTextType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextType.swift; sourceTree = "<group>"; };
+		065953382C6E32060048821E /* APIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +63,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0659534A2C6E32690048821E /* RxSwift in Frameworks */,
+				065953502C6E328C0048821E /* IQKeyboardManagerSwift in Frameworks */,
+				065953452C6E325A0048821E /* Kingfisher in Frameworks */,
+				0659533F2C6E324E0048821E /* Toast in Frameworks */,
+				0659534D2C6E327D0048821E /* SnapKit in Frameworks */,
+				065953482C6E32690048821E /* RxCocoa in Frameworks */,
+				065953422C6E32540048821E /* Then in Frameworks */,
+				0659533C2C6E32480048821E /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,11 +99,88 @@
 			children = (
 				065953012C6E2F8C0048821E /* AppDelegate.swift */,
 				065953032C6E2F8C0048821E /* SceneDelegate.swift */,
+				0659531B2C6E31C50048821E /* Enum */,
+				0659531A2C6E31AA0048821E /* Extension+ */,
+				065953192C6E31A10048821E /* Service */,
+				065953182C6E319B0048821E /* Model */,
+				065953172C6E31940048821E /* ViewController */,
 				0659530A2C6E2F8D0048821E /* Assets.xcassets */,
 				0659530C2C6E2F8D0048821E /* LaunchScreen.storyboard */,
 				0659530F2C6E2F8D0048821E /* Info.plist */,
 			);
 			path = BookChallenge;
+			sourceTree = "<group>";
+		};
+		065953172C6E31940048821E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				065953242C6E31E80048821E /* Base */,
+				0659531F2C6E31E80048821E /* Custom */,
+				065953262C6E31E80048821E /* Login */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		065953182C6E319B0048821E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		065953192C6E31A10048821E /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				065953382C6E32060048821E /* APIKey.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		0659531A2C6E31AA0048821E /* Extension+ */ = {
+			isa = PBXGroup;
+			children = (
+				065953302C6E31FA0048821E /* ReuseIdentifier+.swift */,
+				0659532F2C6E31F90048821E /* String+.swift */,
+				0659532E2C6E31F90048821E /* UIColor+.swift */,
+				065953312C6E31FA0048821E /* UIImage+.swift */,
+			);
+			path = "Extension+";
+			sourceTree = "<group>";
+		};
+		0659531B2C6E31C50048821E /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				065953362C6E31FF0048821E /* LoginTextType.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		0659531F2C6E31E80048821E /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				0659531D2C6E31E80048821E /* LoginTextField.swift */,
+				0659531E2C6E31E80048821E /* PointButton.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		065953242C6E31E80048821E /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				065953202C6E31E80048821E /* BaseCollectioViewCell.swift */,
+				065953212C6E31E80048821E /* BaseView.swift */,
+				065953222C6E31E80048821E /* BaseViewController.swift */,
+				065953232C6E31E80048821E /* TabBarController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		065953262C6E31E80048821E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				065953252C6E31E80048821E /* LoginVC.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,6 +199,16 @@
 			dependencies = (
 			);
 			name = BookChallenge;
+			packageProductDependencies = (
+				0659533B2C6E32480048821E /* Alamofire */,
+				0659533E2C6E324E0048821E /* Toast */,
+				065953412C6E32540048821E /* Then */,
+				065953442C6E325A0048821E /* Kingfisher */,
+				065953472C6E32690048821E /* RxCocoa */,
+				065953492C6E32690048821E /* RxSwift */,
+				0659534C2C6E327D0048821E /* SnapKit */,
+				0659534F2C6E328C0048821E /* IQKeyboardManagerSwift */,
+			);
 			productName = BookChallenge;
 			productReference = 065952FE2C6E2F8C0048821E /* BookChallenge.app */;
 			productType = "com.apple.product-type.application";
@@ -108,6 +237,15 @@
 				Base,
 			);
 			mainGroup = 065952F52C6E2F8C0048821E;
+			packageReferences = (
+				0659533A2C6E32480048821E /* XCRemoteSwiftPackageReference "Alamofire" */,
+				0659533D2C6E324E0048821E /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				065953402C6E32540048821E /* XCRemoteSwiftPackageReference "Then" */,
+				065953432C6E325A0048821E /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				065953462C6E32690048821E /* XCRemoteSwiftPackageReference "RxSwift" */,
+				0659534B2C6E327D0048821E /* XCRemoteSwiftPackageReference "SnapKit" */,
+				0659534E2C6E328C0048821E /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+			);
 			productRefGroup = 065952FF2C6E2F8C0048821E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -135,8 +273,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				065953292C6E31E80048821E /* BaseCollectioViewCell.swift in Sources */,
+				0659532C2C6E31E80048821E /* TabBarController.swift in Sources */,
+				065953272C6E31E80048821E /* LoginTextField.swift in Sources */,
+				065953342C6E31FA0048821E /* ReuseIdentifier+.swift in Sources */,
+				065953392C6E32060048821E /* APIKey.swift in Sources */,
 				065953022C6E2F8C0048821E /* AppDelegate.swift in Sources */,
+				0659532A2C6E31E80048821E /* BaseView.swift in Sources */,
+				065953372C6E31FF0048821E /* LoginTextType.swift in Sources */,
+				0659532D2C6E31E80048821E /* LoginVC.swift in Sources */,
+				065953282C6E31E80048821E /* PointButton.swift in Sources */,
+				065953332C6E31FA0048821E /* String+.swift in Sources */,
+				065953352C6E31FA0048821E /* UIImage+.swift in Sources */,
+				0659532B2C6E31E80048821E /* BaseViewController.swift in Sources */,
 				065953042C6E2F8C0048821E /* SceneDelegate.swift in Sources */,
+				065953322C6E31FA0048821E /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +512,108 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0659533A2C6E32480048821E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+		0659533D2C6E324E0048821E /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
+		065953402C6E32540048821E /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		065953432C6E325A0048821E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+		065953462C6E32690048821E /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+		0659534B2C6E327D0048821E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		0659534E2C6E328C0048821E /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0659533B2C6E32480048821E /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0659533A2C6E32480048821E /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		0659533E2C6E324E0048821E /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0659533D2C6E324E0048821E /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+		065953412C6E32540048821E /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 065953402C6E32540048821E /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		065953442C6E325A0048821E /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 065953432C6E325A0048821E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		065953472C6E32690048821E /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 065953462C6E32690048821E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		065953492C6E32690048821E /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 065953462C6E32690048821E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		0659534C2C6E327D0048821E /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0659534B2C6E327D0048821E /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		0659534F2C6E328C0048821E /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0659534E2C6E328C0048821E /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 065952F62C6E2F8C0048821E /* Project object */;
 }
