@@ -137,19 +137,23 @@ final class MainVC: BaseViewController {
         showTopBookCollection.layer.borderWidth = 1
         showTopBookCollection.layer.borderColor = UIColor.collectionBoarder.cgColor
         showTopBookCollection.delegate = self
-
+        
         
         userChallengeHeader.text = "너가 지금 참가중인거"
         userChallengeCollection.register(UserChallengeCollectionCell.self, forCellWithReuseIdentifier: UserChallengeCollectionCell.id)
         userChallengeCollection.backgroundColor = .white
         userChallengeCollection.showsHorizontalScrollIndicator = false
-        userChallengeCollection.isPagingEnabled = true
+        userChallengeCollection.decelerationRate = .fast
+        userChallengeCollection.delegate = self
+        
         
         ChallengeRoomHeader.text = "챌린지 방"
         ChallengeRoomCollection.register(ChallengeRoomCollectionCell.self, forCellWithReuseIdentifier: ChallengeRoomCollectionCell.id)
         ChallengeRoomCollection.backgroundColor = .white
         ChallengeRoomCollection.showsHorizontalScrollIndicator = false
-        ChallengeRoomCollection.isPagingEnabled = true
+        ChallengeRoomCollection.decelerationRate = .fast
+        ChallengeRoomCollection.delegate = self
+        
         
     }
     
@@ -158,14 +162,15 @@ final class MainVC: BaseViewController {
 // MARK: - 셀 포커싱 해주기
 extension MainVC: UICollectionViewDelegate {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        guard let layout = self.showTopBookCollection.collectionViewLayout as? UICollectionViewFlowLayout else { return }
-            let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
-            var offset = targetContentOffset.pointee
-            let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
-            let roundedIndex = round(index)
-            offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left,
-                                y: scrollView.contentInset.top)
-            targetContentOffset.pointee = offset
+        guard let collectionView = scrollView as? UICollectionView else { return }
+        guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
+        var offset = targetContentOffset.pointee
+        let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
+        let roundedIndex = round(index)
+        offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left,
+                         y: scrollView.contentInset.top)
+        targetContentOffset.pointee = offset
     }
 }
 
