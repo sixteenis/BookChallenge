@@ -20,13 +20,13 @@ final class TabBarController: UITabBarController {
         let challengeRoom = ChallengeRoomVC()
 
         let mainNav = UINavigationController(rootViewController: main)
-        mainNav.tabBarItem = UITabBarItem(title: nil, image: .mainTap, tag: 0)
+        mainNav.tabBarItem = UITabBarItem(title: "홈", image: .mainTap, tag: 0)
         
         let bookstorageNav = UINavigationController(rootViewController: bookstorage)
-        bookstorageNav.tabBarItem = UITabBarItem(title: nil, image: .bookStrageTap, tag: 1)
+        bookstorageNav.tabBarItem = UITabBarItem(title: "서재", image: .bookStrageTap, tag: 1)
         
         let challengeRoomNav = UINavigationController(rootViewController: challengeRoom)
-        challengeRoomNav.tabBarItem = UITabBarItem(title: nil, image: .challengeRoomTap, tag: 1)
+        challengeRoomNav.tabBarItem = UITabBarItem(title: "챌린지 방", image: .challengeRoomTap, tag: 1)
         
         setViewControllers([mainNav,bookstorageNav, challengeRoomNav], animated: false)
     }

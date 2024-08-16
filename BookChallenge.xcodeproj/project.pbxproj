@@ -55,6 +55,7 @@
 		0659538B2C6F58BE0048821E /* BookSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659538A2C6F58BE0048821E /* BookSearchVC.swift */; };
 		0659538D2C6F59BA0048821E /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659538C2C6F59BA0048821E /* BaseButton.swift */; };
 		0659538F2C6F5C8B0048821E /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659538E2C6F5C8B0048821E /* Test.swift */; };
+		065953922C6F6BF20048821E /* ShowTopBookCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953912C6F6BF20048821E /* ShowTopBookCollectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +101,7 @@
 		0659538A2C6F58BE0048821E /* BookSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchVC.swift; sourceTree = "<group>"; };
 		0659538C2C6F59BA0048821E /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		0659538E2C6F5C8B0048821E /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		065953912C6F6BF20048821E /* ShowTopBookCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTopBookCollectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,8 +221,9 @@
 		065953572C6E38930048821E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				065953892C6F58B30048821E /* BookSearch */,
+				065953902C6F6BDD0048821E /* CollectionCell */,
 				065953232C6E31E80048821E /* TabBarController.swift */,
+				065953892C6F58B30048821E /* BookSearch */,
 				065953802C6F3B500048821E /* ChallengeRoom */,
 				0659537F2C6F3B470048821E /* BookStrage */,
 				065953782C6F36280048821E /* Main */,
@@ -337,6 +340,14 @@
 			path = BookSearch;
 			sourceTree = "<group>";
 		};
+		065953902C6F6BDD0048821E /* CollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				065953912C6F6BF20048821E /* ShowTopBookCollectionCell.swift */,
+			);
+			path = CollectionCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -437,6 +448,7 @@
 				065953342C6E31FA0048821E /* ReuseIdentifier+.swift in Sources */,
 				0659535D2C6E4B750048821E /* LoginError.swift in Sources */,
 				0659537E2C6F3B420048821E /* BookStorageVC.swift in Sources */,
+				065953922C6F6BF20048821E /* ShowTopBookCollectionCell.swift in Sources */,
 				065953392C6E32060048821E /* APIKey.swift in Sources */,
 				065953542C6E34540048821E /* BaseViewModel.swift in Sources */,
 				0659537C2C6F388D0048821E /* ChangeView.swift in Sources */,

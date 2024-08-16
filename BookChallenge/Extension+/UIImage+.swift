@@ -16,4 +16,5 @@ extension UIImage {
     static let challengeRoomTap = UIImage(systemName: "person.2.wave.2")
     
     static let search = UIImage(systemName: "magnifyingglass")
+    static let bookmark = UIImage(systemName: "bookmark.fill")
 }
