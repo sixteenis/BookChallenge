@@ -14,4 +14,6 @@ extension UIImage {
     static let mainTap = UIImage(systemName: "house")
     static let bookStrageTap = UIImage(systemName: "books.vertical")
     static let challengeRoomTap = UIImage(systemName: "person.2.wave.2")
+    
+    static let search = UIImage(systemName: "magnifyingglass")
 }

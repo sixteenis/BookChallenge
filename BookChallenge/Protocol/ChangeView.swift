@@ -8,11 +8,11 @@
 import UIKit
 
 protocol ChangeView {
-    func moveNextView(view: UIViewController)
+    func changeRootView(view: UIViewController)
 }
 
 extension ChangeView {
-    func moveNextView(view: UIViewController) {
+    func changeRootView(view: UIViewController) {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
         

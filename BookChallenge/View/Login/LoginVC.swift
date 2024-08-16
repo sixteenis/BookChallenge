@@ -55,7 +55,7 @@ final class LoginVC: BaseViewController, ChangeView {
         output.nextView
             .bind(with: self) { owner, bool in
                 if bool {
-                    owner.moveNextView(view: TabBarController())
+                    owner.changeRootView(view: TabBarController())
                 }
             }.disposed(by: disposeBag)
         

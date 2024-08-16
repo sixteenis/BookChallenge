@@ -51,6 +51,10 @@
 		0659537C2C6F388D0048821E /* ChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659537B2C6F388D0048821E /* ChangeView.swift */; };
 		0659537E2C6F3B420048821E /* BookStorageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659537D2C6F3B420048821E /* BookStorageVC.swift */; };
 		065953822C6F3B660048821E /* ChallengeRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953812C6F3B660048821E /* ChallengeRoomVC.swift */; };
+		065953862C6F4B2C0048821E /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953852C6F4B2B0048821E /* SearchBarView.swift */; };
+		0659538B2C6F58BE0048821E /* BookSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659538A2C6F58BE0048821E /* BookSearchVC.swift */; };
+		0659538D2C6F59BA0048821E /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659538C2C6F59BA0048821E /* BaseButton.swift */; };
+		0659538F2C6F5C8B0048821E /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659538E2C6F5C8B0048821E /* Test.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +96,10 @@
 		0659537B2C6F388D0048821E /* ChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeView.swift; sourceTree = "<group>"; };
 		0659537D2C6F3B420048821E /* BookStorageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookStorageVC.swift; sourceTree = "<group>"; };
 		065953812C6F3B660048821E /* ChallengeRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRoomVC.swift; sourceTree = "<group>"; };
+		065953852C6F4B2B0048821E /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		0659538A2C6F58BE0048821E /* BookSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchVC.swift; sourceTree = "<group>"; };
+		0659538C2C6F59BA0048821E /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
+		0659538E2C6F5C8B0048821E /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +189,8 @@
 			children = (
 				0659531D2C6E31E80048821E /* LoginTextField.swift */,
 				0659531E2C6E31E80048821E /* PointButton.swift */,
+				065953852C6F4B2B0048821E /* SearchBarView.swift */,
+				0659538E2C6F5C8B0048821E /* Test.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -192,6 +202,7 @@
 				065953212C6E31E80048821E /* BaseView.swift */,
 				065953222C6E31E80048821E /* BaseViewController.swift */,
 				065953532C6E34540048821E /* BaseViewModel.swift */,
+				0659538C2C6F59BA0048821E /* BaseButton.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -208,6 +219,7 @@
 		065953572C6E38930048821E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				065953892C6F58B30048821E /* BookSearch */,
 				065953232C6E31E80048821E /* TabBarController.swift */,
 				065953802C6F3B500048821E /* ChallengeRoom */,
 				0659537F2C6F3B470048821E /* BookStrage */,
@@ -317,6 +329,14 @@
 			path = ChallengeRoom;
 			sourceTree = "<group>";
 		};
+		065953892C6F58B30048821E /* BookSearch */ = {
+			isa = PBXGroup;
+			children = (
+				0659538A2C6F58BE0048821E /* BookSearchVC.swift */,
+			);
+			path = BookSearch;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -413,6 +433,7 @@
 				0659532C2C6E31E80048821E /* TabBarController.swift in Sources */,
 				065953272C6E31E80048821E /* LoginTextField.swift in Sources */,
 				0659536A2C6E68810048821E /* LSLPManager.swift in Sources */,
+				0659538B2C6F58BE0048821E /* BookSearchVC.swift in Sources */,
 				065953342C6E31FA0048821E /* ReuseIdentifier+.swift in Sources */,
 				0659535D2C6E4B750048821E /* LoginError.swift in Sources */,
 				0659537E2C6F3B420048821E /* BookStorageVC.swift in Sources */,
@@ -428,8 +449,10 @@
 				0659536F2C6E69500048821E /* Router.swift in Sources */,
 				0659532D2C6E31E80048821E /* LoginVC.swift in Sources */,
 				0659535A2C6E3B540048821E /* SignUpVC.swift in Sources */,
+				0659538D2C6F59BA0048821E /* BaseButton.swift in Sources */,
 				065953282C6E31E80048821E /* PointButton.swift in Sources */,
 				0659536D2C6E69490048821E /* Header.swift in Sources */,
+				0659538F2C6F5C8B0048821E /* Test.swift in Sources */,
 				065953742C6E6A260048821E /* LoginQuery.swift in Sources */,
 				065953622C6E57B00048821E /* SignUpVM.swift in Sources */,
 				065953652C6E64280048821E /* UserDefault.swift in Sources */,
@@ -439,6 +462,7 @@
 				065953042C6E2F8C0048821E /* SceneDelegate.swift in Sources */,
 				065953322C6E31FA0048821E /* UIColor+.swift in Sources */,
 				065953602C6E56530048821E /* Alert.swift in Sources */,
+				065953862C6F4B2C0048821E /* SearchBarView.swift in Sources */,
 				065953562C6E34DC0048821E /* LoginVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

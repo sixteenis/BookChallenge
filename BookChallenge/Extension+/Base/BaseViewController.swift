@@ -53,3 +53,12 @@ extension BaseViewController {
         loadingIndicator.removeFromSuperview()
     }
 }
+// MARK: - 뷰 전환 부분
+extension BaseViewController {
+    func pushViewController(view: UIViewController) {
+        self.navigationController?.pushViewController(view, animated: true)
+    }
+    func popViewController() {
+        self.navigationController?.popViewController(animated: true)
+    }
+}

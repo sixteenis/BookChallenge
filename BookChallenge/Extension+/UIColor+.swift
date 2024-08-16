@@ -10,4 +10,6 @@ import UIKit
 extension UIColor {
     static let mainColor = UIColor.systemBlue
     static let font = UIColor.black
+    
+    static let clightGray = UIColor.lightGray
 }
