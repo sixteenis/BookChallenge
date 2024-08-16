@@ -14,6 +14,7 @@ final class TabBarController: UITabBarController {
         
         tabBar.tintColor = .black
         tabBar.unselectedItemTintColor = .gray
+        tabBar.backgroundColor = .systemGray6
         
         let main = MainVC()
         let bookstorage = BookStorageVC()
