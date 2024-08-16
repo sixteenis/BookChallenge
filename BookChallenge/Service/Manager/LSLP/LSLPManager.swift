@@ -25,6 +25,8 @@ final class LSLPManager {
                         case .success(let data):
                             UserManager.shared.token = data.access
                             UserManager.shared.refreshToken = data.refresh
+                            UserManager.shared.email = email
+                            UserManager.shared.password = password
                             observer(.success(.success(true)))
                         case .failure(_):
                             switch response.response?.statusCode {
@@ -45,4 +47,5 @@ final class LSLPManager {
             return Disposables.create()
         }
     }
+    
 }

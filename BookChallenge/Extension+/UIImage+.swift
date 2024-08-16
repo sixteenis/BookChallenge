@@ -10,4 +10,8 @@ import UIKit
 extension UIImage {
     static let logo = UIImage(systemName: "star")
     static let xMark = UIImage(systemName: "xmark")
+    
+    static let mainTap = UIImage(systemName: "house")
+    static let bookStrageTap = UIImage(systemName: "books.vertical")
+    static let challengeRoomTap = UIImage(systemName: "person.2.wave.2")
 }

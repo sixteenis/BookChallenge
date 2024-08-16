@@ -43,6 +43,7 @@ final class LoginVM: BaseViewModel {
             .disposed(by: disposeBag)
         
         input.loginTap //로그인 버튼 누를 시 필터링 해주기
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .bind(with: self) { owner, _ in
                 if owner.checkText(email: email.value, password: password.value) { //참이면 필터링 성공 네트워킹 해주기
                     result.accept((email.value,password.value))

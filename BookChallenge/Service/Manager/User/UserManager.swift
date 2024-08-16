@@ -11,6 +11,8 @@ final class UserManager {
     private enum UserDefaultsKey: String {
         case access
         case refresh
+        case email
+        case password
     }
     static let shared = UserManager()
     private init() {}
@@ -20,4 +22,10 @@ final class UserManager {
     
     @UserDefault(key: UserDefaultsKey.refresh.rawValue, defaultValue: "", storage: .standard)
     var refreshToken: String
+    
+    @UserDefault(key: UserDefaultsKey.email.rawValue, defaultValue: "", storage: .standard)
+    var email: String
+    
+    @UserDefault(key: UserDefaultsKey.password.rawValue, defaultValue: "", storage: .standard)
+    var password: String
 }

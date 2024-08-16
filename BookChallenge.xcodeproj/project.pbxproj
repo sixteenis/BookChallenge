@@ -47,6 +47,10 @@
 		065953712C6E695C0048821E /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953702C6E695C0048821E /* TargetType.swift */; };
 		065953742C6E6A260048821E /* LoginQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953732C6E6A260048821E /* LoginQuery.swift */; };
 		065953772C6E6BBA0048821E /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953762C6E6BBA0048821E /* LoginDTO.swift */; };
+		0659537A2C6F36340048821E /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953792C6F36340048821E /* MainVC.swift */; };
+		0659537C2C6F388D0048821E /* ChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659537B2C6F388D0048821E /* ChangeView.swift */; };
+		0659537E2C6F3B420048821E /* BookStorageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659537D2C6F3B420048821E /* BookStorageVC.swift */; };
+		065953822C6F3B660048821E /* ChallengeRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953812C6F3B660048821E /* ChallengeRoomVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +88,10 @@
 		065953702C6E695C0048821E /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
 		065953732C6E6A260048821E /* LoginQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginQuery.swift; sourceTree = "<group>"; };
 		065953762C6E6BBA0048821E /* LoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
+		065953792C6F36340048821E /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		0659537B2C6F388D0048821E /* ChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeView.swift; sourceTree = "<group>"; };
+		0659537D2C6F3B420048821E /* BookStorageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookStorageVC.swift; sourceTree = "<group>"; };
+		065953812C6F3B660048821E /* ChallengeRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRoomVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,7 +192,6 @@
 				065953212C6E31E80048821E /* BaseView.swift */,
 				065953222C6E31E80048821E /* BaseViewController.swift */,
 				065953532C6E34540048821E /* BaseViewModel.swift */,
-				065953232C6E31E80048821E /* TabBarController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -201,6 +208,10 @@
 		065953572C6E38930048821E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				065953232C6E31E80048821E /* TabBarController.swift */,
+				065953802C6F3B500048821E /* ChallengeRoom */,
+				0659537F2C6F3B470048821E /* BookStrage */,
+				065953782C6F36280048821E /* Main */,
 				065953262C6E31E80048821E /* Login */,
 				065953582C6E3B410048821E /* SignUp */,
 				0659531F2C6E31E80048821E /* Custom */,
@@ -229,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				0659535F2C6E56530048821E /* Alert.swift */,
+				0659537B2C6F388D0048821E /* ChangeView.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -279,6 +291,30 @@
 				065953762C6E6BBA0048821E /* LoginDTO.swift */,
 			);
 			path = DTO;
+			sourceTree = "<group>";
+		};
+		065953782C6F36280048821E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				065953792C6F36340048821E /* MainVC.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		0659537F2C6F3B470048821E /* BookStrage */ = {
+			isa = PBXGroup;
+			children = (
+				0659537D2C6F3B420048821E /* BookStorageVC.swift */,
+			);
+			path = BookStrage;
+			sourceTree = "<group>";
+		};
+		065953802C6F3B500048821E /* ChallengeRoom */ = {
+			isa = PBXGroup;
+			children = (
+				065953812C6F3B660048821E /* ChallengeRoomVC.swift */,
+			);
+			path = ChallengeRoom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,14 +407,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				065953822C6F3B660048821E /* ChallengeRoomVC.swift in Sources */,
 				065953292C6E31E80048821E /* BaseCollectioViewCell.swift in Sources */,
+				0659537A2C6F36340048821E /* MainVC.swift in Sources */,
 				0659532C2C6E31E80048821E /* TabBarController.swift in Sources */,
 				065953272C6E31E80048821E /* LoginTextField.swift in Sources */,
 				0659536A2C6E68810048821E /* LSLPManager.swift in Sources */,
 				065953342C6E31FA0048821E /* ReuseIdentifier+.swift in Sources */,
 				0659535D2C6E4B750048821E /* LoginError.swift in Sources */,
+				0659537E2C6F3B420048821E /* BookStorageVC.swift in Sources */,
 				065953392C6E32060048821E /* APIKey.swift in Sources */,
 				065953542C6E34540048821E /* BaseViewModel.swift in Sources */,
+				0659537C2C6F388D0048821E /* ChangeView.swift in Sources */,
 				065953682C6E644A0048821E /* UserManager.swift in Sources */,
 				065953022C6E2F8C0048821E /* AppDelegate.swift in Sources */,
 				0659532A2C6E31E80048821E /* BaseView.swift in Sources */,

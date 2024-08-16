@@ -12,7 +12,7 @@ import RxCocoa
 import SnapKit
 import Then
 
-final class LoginVC: BaseViewController {
+final class LoginVC: BaseViewController, ChangeView {
     let loginLabel = UILabel().then {
         $0.font = .boldSystemFont(ofSize: 20)
         $0.textColor = .font
@@ -55,7 +55,7 @@ final class LoginVC: BaseViewController {
         output.nextView
             .bind(with: self) { owner, bool in
                 if bool {
-                    print("성공!")
+                    owner.moveNextView(view: TabBarController())
                 }
             }.disposed(by: disposeBag)
         
