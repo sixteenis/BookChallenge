@@ -18,7 +18,7 @@ final class LSLPManager {
         return Single.create { observer -> Disposable in
             do {
                 let query = LoginQuery(email: email, password: password)
-                let request = try Router.login(query: query).asURLRequest()
+                let request = try LSLPRouter.login(query: query).asURLRequest()
                 AF.request(request)
                     .responseDecodable(of: LoginDTO.self) { response in
                         switch response.result {

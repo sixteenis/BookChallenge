@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Header: String {
+enum LSLPHeader: String {
     case authorization = "Authorization"
     case sesacKey = "SesacKey"
     case refresh = "Refresh"

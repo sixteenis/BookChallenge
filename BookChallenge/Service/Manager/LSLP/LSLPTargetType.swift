@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 // url, header, paramater, boy, query
-protocol TargetType: URLRequestConvertible {
+protocol LSLPTargetType: URLRequestConvertible {
     var baseURL: String { get }
     var method: HTTPMethod { get }
     var path: String { get }
@@ -18,7 +18,7 @@ protocol TargetType: URLRequestConvertible {
     var body: Data? { get }
 }
 
-extension TargetType { //AF.request를 줄임 ㅇㅇ
+extension LSLPTargetType { //AF.request를 줄임 ㅇㅇ
     func asURLRequest() throws -> URLRequest {
         let url = try baseURL.asURL()
         var request = try URLRequest(

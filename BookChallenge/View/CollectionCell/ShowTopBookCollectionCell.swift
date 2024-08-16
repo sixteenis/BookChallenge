@@ -7,30 +7,56 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
+import RxSwift
 
 class ShowTopBookCollectionCell: BaseCollectioViewCell {
     let bookImage = UIImageView()
     let bookmark = UIImageView()
-    
+    private var disposeBag = DisposeBag()
     override func setUpHierarchy() {
         self.addSubview(bookImage)
         self.addSubview(bookmark)
+    }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
     }
     override func setUpLayout() {
         bookImage.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         bookmark.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().inset(10)
-            make.size.equalTo(30)
+            make.top.leading.equalToSuperview()
+            make.size.equalTo(35)
         }
     }
     override func setUpView() {
         bookmark.image = .bookmark
         bookImage.image = .logo
     }
-    func updateUI() {
+    func updateUI(data: Book, index: Int) {
+        setUpImage(data.cover)
+        switch index {
+        case 0:
+            bookmark.tintColor = .systemYellow
+            bookmark.isHidden = false
+        case 1:
+            bookmark.tintColor = .systemCyan
+            bookmark.isHidden = false
+        case 2:
+            bookmark.tintColor = .systemGray4
+            bookmark.isHidden = false
+        default:
+            bookmark.isHidden = true
+        }
         
+    }
+    private func setUpImage(_ imageURL: String?) {
+        if let imageURL {
+            let url = URL(string: imageURL)!
+            self.bookImage.kf.setImage(with: url)
+        }
     }
 }
 

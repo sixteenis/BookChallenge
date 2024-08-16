@@ -29,6 +29,7 @@ final class MainVC: BaseViewController {
     lazy var ChallengeRoomCollection = UICollectionView(frame: .zero, collectionViewLayout: ChallengeRoomLayout())
     
     private let disposeBag = DisposeBag()
+    let showTopBookVM = ShowTopBookVM()
     override func viewDidLoad() {
         super.viewDidLoad()
         print(UserManager.shared.token)
@@ -42,15 +43,23 @@ final class MainVC: BaseViewController {
     }
     
     override func bindData() {
+        let topBookInput = ShowTopBookVM.Input()
+        let topBookOutput = showTopBookVM.transform(input: topBookInput)
+        
+        topBookOutput.bestBookData
+            .bind(to: showTopBookCollection.rx.items(cellIdentifier: ShowTopBookCollectionCell.id, cellType: ShowTopBookCollectionCell.self)) { (row, element, cell) in
+                cell.updateUI(data: element, index: row)
+            }.disposed(by: disposeBag)
         searchButton.rx.tap
             .bind(with: self) { owner, _ in
                 owner.pushViewController(view: BookSearchVC())
             }.disposed(by: disposeBag)
+        
         // MARK: - 베스트셀러 보여주는 데이터
-        Observable.just([1,2,3,4,5,5])
-            .bind(to: showTopBookCollection.rx.items(cellIdentifier: ShowTopBookCollectionCell.id, cellType: ShowTopBookCollectionCell.self)) { (row, element, cell) in
-                
-            }.disposed(by: disposeBag)
+//        Observable.just([1,2,3,4,5,5])
+//            .bind(to: showTopBookCollection.rx.items(cellIdentifier: ShowTopBookCollectionCell.id, cellType: ShowTopBookCollectionCell.self)) { (row, element, cell) in
+//                
+//            }.disposed(by: disposeBag)
         Observable.just([1,2,3,31])
             .bind(to: userChallengeCollection.rx.items(cellIdentifier: UserChallengeCollectionCell.id, cellType: UserChallengeCollectionCell.self)) { (row, element, cell) in
                 
@@ -191,8 +200,6 @@ private extension MainVC {
         let height = UIScreen.main.bounds.height / 3
         layout.itemSize = CGSize(width: width, height: height) //셀
         layout.scrollDirection = .horizontal // 가로, 세로 스크롤 설정
-        //layout.minimumLineSpacing = 10
-        //layout.minimumInteritemSpacing = 10
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return layout
     }
@@ -203,8 +210,6 @@ private extension MainVC {
         let height = UIScreen.main.bounds.height / 3
         layout.itemSize = CGSize(width: width, height: height) //셀
         layout.scrollDirection = .horizontal // 가로, 세로 스크롤 설정
-        //layout.minimumLineSpacing = 10
-        //layout.minimumInteritemSpacing = 10
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return layout
     }
