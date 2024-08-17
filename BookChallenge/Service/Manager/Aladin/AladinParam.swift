@@ -13,4 +13,12 @@ enum AladinParam {
     static let output = "Output"
     static let version = "Version"
     static let searchTarget = "SearchTarget"
+    static let cover = "Cover"
+    
+    static let query = "Query"
+    static let start = "Start"
+    
+    static let itemId = "ItemId"
+    static let itemIdType = "ItemIdType"
+    
 }

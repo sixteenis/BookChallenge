@@ -16,10 +16,10 @@ class ShowTopBookVM: BaseViewModel {
         
     }
     struct Output {
-        let bestBookData: BehaviorRelay<[Book]>
+        let bestBookData: BehaviorRelay<[BookDTO]>
     }
     func transform(input: Input) -> Output {
-        let bestBookData = BehaviorRelay(value: [Book]())
+        let bestBookData = BehaviorRelay(value: [BookDTO]())
         self.books.subscribe(with: self) { owner, respons in
             switch respons {
             case .success(let books):

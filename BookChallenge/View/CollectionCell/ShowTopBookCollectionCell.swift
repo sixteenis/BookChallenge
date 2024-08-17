@@ -35,7 +35,7 @@ class ShowTopBookCollectionCell: BaseCollectioViewCell {
         bookmark.image = .bookmark
         bookImage.image = .logo
     }
-    func updateUI(data: Book, index: Int) {
+    func updateUI(data: BookDTO, index: Int) {
         setUpImage(data.cover)
         switch index {
         case 0:

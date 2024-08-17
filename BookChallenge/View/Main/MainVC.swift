@@ -12,24 +12,25 @@ import RxCocoa
 import SnapKit
 
 final class MainVC: BaseViewController {
-    let searchView = SearchBarView()
-    let searchButton = BaseButton()
+    private let searchView = SearchBarView()
+    private let searchButton = BaseButton()
     
-    let scrollView = UIScrollView()
-    let contentView = UIView()
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
     
-    let showTopBookHeader = UILabel()
+    private let showTopBookHeader = UILabel()
     
-    lazy var showTopBookCollection = UICollectionView(frame: .zero, collectionViewLayout: showTopBookLayout())
+    private lazy var showTopBookCollection = UICollectionView(frame: .zero, collectionViewLayout: showTopBookLayout())
     
-    let userChallengeHeader = UILabel()
-    lazy var userChallengeCollection = UICollectionView(frame: .zero, collectionViewLayout: userChallengeLayout())
+    private let userChallengeHeader = UILabel()
+    private lazy var userChallengeCollection = UICollectionView(frame: .zero, collectionViewLayout: userChallengeLayout())
     
-    let ChallengeRoomHeader = UILabel()
-    lazy var ChallengeRoomCollection = UICollectionView(frame: .zero, collectionViewLayout: ChallengeRoomLayout())
+    private let ChallengeRoomHeader = UILabel()
+    private lazy var ChallengeRoomCollection = UICollectionView(frame: .zero, collectionViewLayout: ChallengeRoomLayout())
+    let challengeRoomDetailsButton = UIButton()
     
     private let disposeBag = DisposeBag()
-    let showTopBookVM = ShowTopBookVM()
+    private let showTopBookVM = ShowTopBookVM()
     override func viewDidLoad() {
         super.viewDidLoad()
         print(UserManager.shared.token)
@@ -55,11 +56,6 @@ final class MainVC: BaseViewController {
                 owner.pushViewController(view: BookSearchVC())
             }.disposed(by: disposeBag)
         
-        // MARK: - 베스트셀러 보여주는 데이터
-//        Observable.just([1,2,3,4,5,5])
-//            .bind(to: showTopBookCollection.rx.items(cellIdentifier: ShowTopBookCollectionCell.id, cellType: ShowTopBookCollectionCell.self)) { (row, element, cell) in
-//                
-//            }.disposed(by: disposeBag)
         Observable.just([1,2,3,31])
             .bind(to: userChallengeCollection.rx.items(cellIdentifier: UserChallengeCollectionCell.id, cellType: UserChallengeCollectionCell.self)) { (row, element, cell) in
                 
@@ -68,7 +64,10 @@ final class MainVC: BaseViewController {
             .bind(to: ChallengeRoomCollection.rx.items(cellIdentifier: ChallengeRoomCollectionCell.id, cellType: ChallengeRoomCollectionCell.self)) { (row, element, cell) in
                 
             }.disposed(by: disposeBag)
-        
+        challengeRoomDetailsButton.rx.tap
+            .bind(with: self) { owner, _ in
+                self.tabBarController?.selectedIndex = 2
+            }.disposed(by: disposeBag)
     }
     override func setUpHierarchy() {
         view.addSubview(searchView)
@@ -85,6 +84,7 @@ final class MainVC: BaseViewController {
         contentView.addSubview(userChallengeCollection)
         contentView.addSubview(ChallengeRoomHeader)
         contentView.addSubview(ChallengeRoomCollection)
+        contentView.addSubview(challengeRoomDetailsButton)
     }
     override func setUpLayout() {
         searchView.snp.makeConstraints { make in
@@ -129,6 +129,10 @@ final class MainVC: BaseViewController {
             make.top.equalTo(userChallengeCollection.snp.bottom).offset(20)
             make.leading.equalTo(contentView).inset(10)
         }
+        challengeRoomDetailsButton.snp.makeConstraints { make in
+            make.top.equalTo(userChallengeCollection.snp.bottom).offset(20)
+            make.trailing.equalTo(contentView).inset(10)
+        }
         ChallengeRoomCollection.snp.makeConstraints { make in
             make.top.equalTo(ChallengeRoomHeader.snp.bottom).offset(10)
             make.horizontalEdges.equalToSuperview().inset(20)
@@ -163,6 +167,8 @@ final class MainVC: BaseViewController {
         ChallengeRoomCollection.decelerationRate = .fast
         ChallengeRoomCollection.delegate = self
         
+        challengeRoomDetailsButton.setTitle("더 보기", for: .normal)
+        challengeRoomDetailsButton.setTitleColor(.clightGray, for: .normal)
         
     }
     

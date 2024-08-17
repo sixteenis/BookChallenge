@@ -1,8 +1,8 @@
 //
-//  BookSearchVC.swift
+//  DetailBookVC.swift
 //  BookChallenge
 //
-//  Created by 박성민 on 8/16/24.
+//  Created by 박성민 on 8/17/24.
 //
 
 import UIKit
@@ -11,7 +11,7 @@ import RxCocoa
 
 import SnapKit
 
-class BookSearchVC: BaseViewController {
+class DetailBookVC: BaseViewController {
     let searchController = UISearchController(searchResultsController: nil)
     let tap = BaseButton()
     private let disposeBag = DisposeBag()
@@ -34,7 +34,8 @@ class BookSearchVC: BaseViewController {
         tap.rx.tap
             .bind(with: self) { owner, _ in
                 print("123123")
-                owner.pushViewController(view: DetailBookVC())
+                owner.navigationController?.popToRootViewController(animated: true)
+                owner.tabBarController?.selectedIndex = 2
             }.disposed(by: disposeBag)
     }
     override func setUpLayout() {
