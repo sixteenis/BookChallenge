@@ -1,19 +1,19 @@
 //
-//  Router.swift
+//  PostRouter.swift
 //  BookChallenge
 //
-//  Created by 박성민 on 8/16/24.
+//  Created by 박성민 on 8/17/24.
 //
 
 import Foundation
 import Alamofire
-enum LSLPRouter {
+enum PostRouter {
     case login(query: LoginQuery)
     case fetchProfile
     case editProfile
     case refresh
 }
-extension LSLPRouter: LSLPTargetType {
+extension PostRouter: LSLPTargetType {
         var method: Alamofire.HTTPMethod {
         switch self {
         case .login:
@@ -64,29 +64,29 @@ extension LSLPRouter: LSLPTargetType {
         switch self {
         case .login:
             let header = [
-                LSLPHeader.contentType.rawValue: LSLPHeader.json.rawValue,
-                LSLPHeader.sesacKey.rawValue: LSLP.key,
+                UserHeader.contentType.rawValue: UserHeader.json.rawValue,
+                UserHeader.sesacKey.rawValue: LSLP.key,
             ]
             return header
         case .fetchProfile:
             let header = [
-                LSLPHeader.authorization.rawValue: UserManager.shared.token,
-                LSLPHeader.contentType.rawValue: LSLPHeader.json.rawValue,
-                LSLPHeader.sesacKey.rawValue: LSLP.key,
+                UserHeader.authorization.rawValue: UserManager.shared.token,
+                UserHeader.contentType.rawValue: UserHeader.json.rawValue,
+                UserHeader.sesacKey.rawValue: LSLP.key,
             ]
             return header
         case .editProfile:
             let header = [
-                LSLPHeader.authorization.rawValue: UserManager.shared.token,
-                LSLPHeader.sesacKey.rawValue: LSLP.key,
+                UserHeader.authorization.rawValue: UserManager.shared.token,
+                UserHeader.sesacKey.rawValue: LSLP.key,
             ]
             return header
         case .refresh:
             let header = [
-                LSLPHeader.authorization.rawValue: UserManager.shared.token,
-                LSLPHeader.contentType.rawValue: LSLPHeader.json.rawValue,
-                LSLPHeader.sesacKey.rawValue: LSLP.key,
-                LSLPHeader.refresh.rawValue: UserManager.shared.refreshToken
+                UserHeader.authorization.rawValue: UserManager.shared.token,
+                UserHeader.contentType.rawValue: UserHeader.json.rawValue,
+                UserHeader.sesacKey.rawValue: LSLP.key,
+                UserHeader.refresh.rawValue: UserManager.shared.refreshToken
             ]
             return header
         }

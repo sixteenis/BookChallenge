@@ -7,11 +7,12 @@
 
 import Foundation
 
-enum LSLPHeader: String {
+enum UserHeader: String {
     case authorization = "Authorization"
     case sesacKey = "SesacKey"
-    case refresh = "Refresh"
     case contentType = "Content-Type"
     case json = "application/json"
+    
+    case refresh = "Refresh"
     case multipart = "multipart/form-data"
 }

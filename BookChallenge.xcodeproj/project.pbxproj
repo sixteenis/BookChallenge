@@ -26,6 +26,10 @@
 		0652C8472C70A23200BDC64E /* BookListCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8462C70A23200BDC64E /* BookListCollectionCell.swift */; };
 		0652C84B2C70A57700BDC64E /* BookProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C84A2C70A57700BDC64E /* BookProtocol.swift */; };
 		0652C84F2C70ADB400BDC64E /* FetchImageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C84E2C70ADB400BDC64E /* FetchImageProtocol.swift */; };
+		0652C8532C70DAA500BDC64E /* RefreshTokeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8522C70DAA500BDC64E /* RefreshTokeDTO.swift */; };
+		0652C8572C70DCDD00BDC64E /* PostManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8562C70DCDD00BDC64E /* PostManger.swift */; };
+		0652C8592C70DD5800BDC64E /* PostHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8582C70DD5800BDC64E /* PostHeader.swift */; };
+		0652C85B2C70DD9200BDC64E /* PostRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C85A2C70DD9200BDC64E /* PostRouter.swift */; };
 		065953022C6E2F8C0048821E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953012C6E2F8C0048821E /* AppDelegate.swift */; };
 		065953042C6E2F8C0048821E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953032C6E2F8C0048821E /* SceneDelegate.swift */; };
 		0659530B2C6E2F8D0048821E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0659530A2C6E2F8D0048821E /* Assets.xcassets */; };
@@ -60,9 +64,9 @@
 		065953622C6E57B00048821E /* SignUpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953612C6E57B00048821E /* SignUpVM.swift */; };
 		065953652C6E64280048821E /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953642C6E64280048821E /* UserDefault.swift */; };
 		065953682C6E644A0048821E /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953672C6E644A0048821E /* UserManager.swift */; };
-		0659536A2C6E68810048821E /* LSLPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953692C6E68810048821E /* LSLPManager.swift */; };
-		0659536D2C6E69490048821E /* LSLPHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659536C2C6E69490048821E /* LSLPHeader.swift */; };
-		0659536F2C6E69500048821E /* LSLPRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659536E2C6E69500048821E /* LSLPRouter.swift */; };
+		0659536A2C6E68810048821E /* LSLPUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953692C6E68810048821E /* LSLPUserManager.swift */; };
+		0659536D2C6E69490048821E /* UserHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659536C2C6E69490048821E /* UserHeader.swift */; };
+		0659536F2C6E69500048821E /* UserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659536E2C6E69500048821E /* UserRouter.swift */; };
 		065953712C6E695C0048821E /* LSLPTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953702C6E695C0048821E /* LSLPTargetType.swift */; };
 		065953742C6E6A260048821E /* LoginQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953732C6E6A260048821E /* LoginQuery.swift */; };
 		065953772C6E6BBA0048821E /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953762C6E6BBA0048821E /* LoginDTO.swift */; };
@@ -97,6 +101,10 @@
 		0652C8462C70A23200BDC64E /* BookListCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListCollectionCell.swift; sourceTree = "<group>"; };
 		0652C84A2C70A57700BDC64E /* BookProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookProtocol.swift; sourceTree = "<group>"; };
 		0652C84E2C70ADB400BDC64E /* FetchImageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImageProtocol.swift; sourceTree = "<group>"; };
+		0652C8522C70DAA500BDC64E /* RefreshTokeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokeDTO.swift; sourceTree = "<group>"; };
+		0652C8562C70DCDD00BDC64E /* PostManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManger.swift; sourceTree = "<group>"; };
+		0652C8582C70DD5800BDC64E /* PostHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHeader.swift; sourceTree = "<group>"; };
+		0652C85A2C70DD9200BDC64E /* PostRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRouter.swift; sourceTree = "<group>"; };
 		065952FE2C6E2F8C0048821E /* BookChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		065953012C6E2F8C0048821E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		065953032C6E2F8C0048821E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,9 +133,9 @@
 		065953612C6E57B00048821E /* SignUpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVM.swift; sourceTree = "<group>"; };
 		065953642C6E64280048821E /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		065953672C6E644A0048821E /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-		065953692C6E68810048821E /* LSLPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPManager.swift; sourceTree = "<group>"; };
-		0659536C2C6E69490048821E /* LSLPHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPHeader.swift; sourceTree = "<group>"; };
-		0659536E2C6E69500048821E /* LSLPRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPRouter.swift; sourceTree = "<group>"; };
+		065953692C6E68810048821E /* LSLPUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPUserManager.swift; sourceTree = "<group>"; };
+		0659536C2C6E69490048821E /* UserHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHeader.swift; sourceTree = "<group>"; };
+		0659536E2C6E69500048821E /* UserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
 		065953702C6E695C0048821E /* LSLPTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPTargetType.swift; sourceTree = "<group>"; };
 		065953732C6E6A260048821E /* LoginQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginQuery.swift; sourceTree = "<group>"; };
 		065953762C6E6BBA0048821E /* LoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
@@ -187,6 +195,7 @@
 		0652C8312C6FBE9400BDC64E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				065953662C6E64360048821E /* User */,
 				0652C83F2C708D5C00BDC64E /* BookModel.swift */,
 			);
 			path = Model;
@@ -198,6 +207,28 @@
 				0652C8352C6FFF3E00BDC64E /* DetailBookVC.swift */,
 			);
 			path = DetailBook;
+			sourceTree = "<group>";
+		};
+		0652C8542C70DC4700BDC64E /* LSLPUser */ = {
+			isa = PBXGroup;
+			children = (
+				065953722C6E6A0F0048821E /* Query */,
+				065953752C6E6BB10048821E /* DTO */,
+				0659536C2C6E69490048821E /* UserHeader.swift */,
+				0659536E2C6E69500048821E /* UserRouter.swift */,
+				065953692C6E68810048821E /* LSLPUserManager.swift */,
+			);
+			path = LSLPUser;
+			sourceTree = "<group>";
+		};
+		0652C8552C70DC4B00BDC64E /* LSLPPost */ = {
+			isa = PBXGroup;
+			children = (
+				0652C8582C70DD5800BDC64E /* PostHeader.swift */,
+				0652C85A2C70DD9200BDC64E /* PostRouter.swift */,
+				0652C8562C70DCDD00BDC64E /* PostManger.swift */,
+			);
+			path = LSLPPost;
 			sourceTree = "<group>";
 		};
 		065952F52C6E2F8C0048821E = {
@@ -348,7 +379,6 @@
 				065953382C6E32060048821E /* APIKey.swift */,
 				0652C8212C6FAC5D00BDC64E /* Aladin */,
 				0659536B2C6E693C0048821E /* LSLP */,
-				065953662C6E64360048821E /* User */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -365,12 +395,9 @@
 		0659536B2C6E693C0048821E /* LSLP */ = {
 			isa = PBXGroup;
 			children = (
-				0659536C2C6E69490048821E /* LSLPHeader.swift */,
 				065953702C6E695C0048821E /* LSLPTargetType.swift */,
-				0659536E2C6E69500048821E /* LSLPRouter.swift */,
-				065953752C6E6BB10048821E /* DTO */,
-				065953722C6E6A0F0048821E /* Query */,
-				065953692C6E68810048821E /* LSLPManager.swift */,
+				0652C8552C70DC4B00BDC64E /* LSLPPost */,
+				0652C8542C70DC4700BDC64E /* LSLPUser */,
 			);
 			path = LSLP;
 			sourceTree = "<group>";
@@ -387,6 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				065953762C6E6BBA0048821E /* LoginDTO.swift */,
+				0652C8522C70DAA500BDC64E /* RefreshTokeDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -527,6 +555,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0652C8532C70DAA500BDC64E /* RefreshTokeDTO.swift in Sources */,
 				0652C8302C6FB89E00BDC64E /* ShowTopBookVM.swift in Sources */,
 				0652C8442C70A1D000BDC64E /* BookSearchVM.swift in Sources */,
 				065953822C6F3B660048821E /* ChallengeRoomVC.swift in Sources */,
@@ -535,11 +564,12 @@
 				0652C8202C6F906200BDC64E /* CarouseLayout.swift in Sources */,
 				0659532C2C6E31E80048821E /* TabBarController.swift in Sources */,
 				065953272C6E31E80048821E /* LoginTextField.swift in Sources */,
-				0659536A2C6E68810048821E /* LSLPManager.swift in Sources */,
+				0659536A2C6E68810048821E /* LSLPUserManager.swift in Sources */,
 				0659538B2C6F58BE0048821E /* BookSearchVC.swift in Sources */,
 				065953342C6E31FA0048821E /* ReuseIdentifier+.swift in Sources */,
 				0652C8382C708A1E00BDC64E /* SearchBookDTO.swift in Sources */,
 				0659535D2C6E4B750048821E /* LoginError.swift in Sources */,
+				0652C8592C70DD5800BDC64E /* PostHeader.swift in Sources */,
 				0659537E2C6F3B420048821E /* BookStorageVC.swift in Sources */,
 				065953922C6F6BF20048821E /* ShowTopBookCollectionCell.swift in Sources */,
 				065953392C6E32060048821E /* APIKey.swift in Sources */,
@@ -554,15 +584,16 @@
 				065953772C6E6BBA0048821E /* LoginDTO.swift in Sources */,
 				065953372C6E31FF0048821E /* LoginTextType.swift in Sources */,
 				065953712C6E695C0048821E /* LSLPTargetType.swift in Sources */,
-				0659536F2C6E69500048821E /* LSLPRouter.swift in Sources */,
+				0659536F2C6E69500048821E /* UserRouter.swift in Sources */,
 				0652C8252C6FAEEB00BDC64E /* AladinRouter.swift in Sources */,
 				0659532D2C6E31E80048821E /* LoginVC.swift in Sources */,
 				0659535A2C6E3B540048821E /* SignUpVC.swift in Sources */,
 				0659538D2C6F59BA0048821E /* BaseButton.swift in Sources */,
 				0652C81E2C6F7EC200BDC64E /* ChallengeRoomCollectionCell.swift in Sources */,
 				065953282C6E31E80048821E /* PointButton.swift in Sources */,
+				0652C8572C70DCDD00BDC64E /* PostManger.swift in Sources */,
 				0652C84B2C70A57700BDC64E /* BookProtocol.swift in Sources */,
-				0659536D2C6E69490048821E /* LSLPHeader.swift in Sources */,
+				0659536D2C6E69490048821E /* UserHeader.swift in Sources */,
 				0652C82B2C6FB56000BDC64E /* AladinError.swift in Sources */,
 				0652C8292C6FAF0900BDC64E /* AladinManager.swift in Sources */,
 				0659538F2C6F5C8B0048821E /* Test.swift in Sources */,
@@ -575,6 +606,7 @@
 				0652C8272C6FAEF900BDC64E /* AladinTargetType.swift in Sources */,
 				065953352C6E31FA0048821E /* UIImage+.swift in Sources */,
 				0659532B2C6E31E80048821E /* BaseViewController.swift in Sources */,
+				0652C85B2C70DD9200BDC64E /* PostRouter.swift in Sources */,
 				065953042C6E2F8C0048821E /* SceneDelegate.swift in Sources */,
 				065953322C6E31FA0048821E /* UIColor+.swift in Sources */,
 				065953602C6E56530048821E /* Alert.swift in Sources */,

@@ -10,11 +10,29 @@ import RxSwift
 import RxCocoa
 
 import SnapKit
+//protocol BookProtocol {
+//    var title: String { get }
+//    var cover: String { get }
+//    var author: String { get }
+//    var publisher: String { get }
+//    var pubDate: String { get } //발행일
+//    var isbn13: String { get }
+//    var description: String { get }
+//    //var page: String? { get }
+//}
 
-class DetailBookVC: BaseViewController {
-    let searchController = UISearchController(searchResultsController: nil)
-    let tap = BaseButton()
+private class DetailBookVC: BaseViewController {
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
+    private let booktitle = UILabel()
+    private let bookImage = UIImageView()
+    private let line = UIView()
+    
+    private let descriptionheader = UILabel()
+    private let descriptionTitle = UILabel()
+    
     private let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -23,28 +41,19 @@ class DetailBookVC: BaseViewController {
         navigationController?.isNavigationBarHidden = false
     }
     override func setUpHierarchy() {
-        view.addSubview(tap)
-        tap.setTitle("버튼", for: .normal)
-        
-        tap.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-            make.size.equalTo(30)
-        }
-        
-        tap.rx.tap
-            .bind(with: self) { owner, _ in
-                print("123123")
-                owner.navigationController?.popToRootViewController(animated: true)
-                owner.tabBarController?.selectedIndex = 2
-            }.disposed(by: disposeBag)
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
     }
     override func setUpLayout() {
-        
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalTo(view)
+        }
+        contentView.snp.makeConstraints { make in
+            make.width.equalTo(scrollView.snp.width)
+            make.edges.equalTo(scrollView)
+        }
     }
     override func setUpView() {
-        searchController.searchBar.placeholder = "책 제목을 입력해주세요."
-        self.navigationItem.searchController = searchController
-        self.navigationItem.title = "책 검색"
-        self.navigationItem.hidesSearchBarWhenScrolling = true
+        self.navigationItem.title = "책 정보"
     }
 }

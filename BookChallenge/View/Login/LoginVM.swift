@@ -23,7 +23,7 @@ final class LoginVM: BaseViewModel {
     }
     struct Output {
         let err: PublishRelay<LoginError>
-        let nextView: BehaviorRelay<Bool>
+        let nextView: Observable<Void>
         let joinTap: ControlEvent<Void>
         let networkLoading: BehaviorRelay<Bool>
     }
@@ -34,7 +34,7 @@ final class LoginVM: BaseViewModel {
         let result = PublishRelay<(String,String)>()
         let error = PublishRelay<LoginError>()
         let loading = BehaviorRelay(value: false)
-        let nextView = BehaviorRelay(value: false)
+        let nextView = PublishSubject<Void>()
         input.emailText
             .bind(to: email)
             .disposed(by: disposeBag)
@@ -53,14 +53,21 @@ final class LoginVM: BaseViewModel {
             }.disposed(by: disposeBag)
         
         result //필터링에서 조건 만족 시 통신 시작
-            .flatMap { LSLPManager.shared.createLogin(email: $0, password: $1)}
             .subscribe(with: self) { owner, respon in
-                switch respon {
-                case .success(let bool):
-                    nextView.accept(bool)
-                case .failure(let err):
-                    error.accept(err)
+                LSLPUserManager.shared.createLogin(email: respon.0, password: respon.1) { respon in
+                    switch respon {
+                    case .success(_):
+                        nextView.onNext(())
+                    case .failure(let err):
+                        error.accept(err)
+                    }
                 }
+//                switch respon {
+//                case .success(let bool):
+//                    nextView.accept(bool)
+//                case .failure(let err):
+//                    error.accept(err)
+//                }
                 
             }.disposed(by: disposeBag)
 
