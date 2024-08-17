@@ -8,5 +8,5 @@
 import Foundation
 
 struct SearchBookWithIDDTO: Decodable {
-    let item: [DetailBookDTO]
+    let item: [BookDTO]
 }

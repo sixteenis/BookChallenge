@@ -21,8 +21,11 @@
 		0652C8382C708A1E00BDC64E /* SearchBookDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8372C708A1E00BDC64E /* SearchBookDTO.swift */; };
 		0652C83A2C708A5300BDC64E /* SearchBookWithIDDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8392C708A5300BDC64E /* SearchBookWithIDDTO.swift */; };
 		0652C83C2C708AF800BDC64E /* BookDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C83B2C708AF800BDC64E /* BookDTO.swift */; };
-		0652C83E2C708CF900BDC64E /* DetailBookDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C83D2C708CF900BDC64E /* DetailBookDTO.swift */; };
 		0652C8402C708D5C00BDC64E /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C83F2C708D5C00BDC64E /* BookModel.swift */; };
+		0652C8442C70A1D000BDC64E /* BookSearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8432C70A1D000BDC64E /* BookSearchVM.swift */; };
+		0652C8472C70A23200BDC64E /* BookListCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8462C70A23200BDC64E /* BookListCollectionCell.swift */; };
+		0652C84B2C70A57700BDC64E /* BookProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C84A2C70A57700BDC64E /* BookProtocol.swift */; };
+		0652C84F2C70ADB400BDC64E /* FetchImageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C84E2C70ADB400BDC64E /* FetchImageProtocol.swift */; };
 		065953022C6E2F8C0048821E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953012C6E2F8C0048821E /* AppDelegate.swift */; };
 		065953042C6E2F8C0048821E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953032C6E2F8C0048821E /* SceneDelegate.swift */; };
 		0659530B2C6E2F8D0048821E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0659530A2C6E2F8D0048821E /* Assets.xcassets */; };
@@ -89,8 +92,11 @@
 		0652C8372C708A1E00BDC64E /* SearchBookDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookDTO.swift; sourceTree = "<group>"; };
 		0652C8392C708A5300BDC64E /* SearchBookWithIDDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookWithIDDTO.swift; sourceTree = "<group>"; };
 		0652C83B2C708AF800BDC64E /* BookDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDTO.swift; sourceTree = "<group>"; };
-		0652C83D2C708CF900BDC64E /* DetailBookDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBookDTO.swift; sourceTree = "<group>"; };
 		0652C83F2C708D5C00BDC64E /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
+		0652C8432C70A1D000BDC64E /* BookSearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchVM.swift; sourceTree = "<group>"; };
+		0652C8462C70A23200BDC64E /* BookListCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListCollectionCell.swift; sourceTree = "<group>"; };
+		0652C84A2C70A57700BDC64E /* BookProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookProtocol.swift; sourceTree = "<group>"; };
+		0652C84E2C70ADB400BDC64E /* FetchImageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImageProtocol.swift; sourceTree = "<group>"; };
 		065952FE2C6E2F8C0048821E /* BookChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		065953012C6E2F8C0048821E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		065953032C6E2F8C0048821E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -171,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				0652C83B2C708AF800BDC64E /* BookDTO.swift */,
-				0652C83D2C708CF900BDC64E /* DetailBookDTO.swift */,
 				0652C82D2C6FB64700BDC64E /* BestsellerDTO.swift */,
 				0652C8372C708A1E00BDC64E /* SearchBookDTO.swift */,
 				0652C8392C708A5300BDC64E /* SearchBookWithIDDTO.swift */,
@@ -273,10 +278,10 @@
 		065953242C6E31E80048821E /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				065953202C6E31E80048821E /* BaseCollectioViewCell.swift */,
 				065953212C6E31E80048821E /* BaseView.swift */,
 				065953222C6E31E80048821E /* BaseViewController.swift */,
 				065953532C6E34540048821E /* BaseViewModel.swift */,
+				065953202C6E31E80048821E /* BaseCollectioViewCell.swift */,
 				0659538C2C6F59BA0048821E /* BaseButton.swift */,
 			);
 			path = Base;
@@ -331,6 +336,8 @@
 			children = (
 				0659535F2C6E56530048821E /* Alert.swift */,
 				0659537B2C6F388D0048821E /* ChangeView.swift */,
+				0652C84A2C70A57700BDC64E /* BookProtocol.swift */,
+				0652C84E2C70ADB400BDC64E /* FetchImageProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -413,6 +420,7 @@
 			isa = PBXGroup;
 			children = (
 				0659538A2C6F58BE0048821E /* BookSearchVC.swift */,
+				0652C8432C70A1D000BDC64E /* BookSearchVM.swift */,
 			);
 			path = BookSearch;
 			sourceTree = "<group>";
@@ -420,6 +428,7 @@
 		065953902C6F6BDD0048821E /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				0652C8462C70A23200BDC64E /* BookListCollectionCell.swift */,
 				0652C81F2C6F906200BDC64E /* CarouseLayout.swift */,
 				065953912C6F6BF20048821E /* ShowTopBookCollectionCell.swift */,
 				0652C81B2C6F7CBB00BDC64E /* UserChallengeCollectionCell.swift */,
@@ -519,6 +528,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0652C8302C6FB89E00BDC64E /* ShowTopBookVM.swift in Sources */,
+				0652C8442C70A1D000BDC64E /* BookSearchVM.swift in Sources */,
 				065953822C6F3B660048821E /* ChallengeRoomVC.swift in Sources */,
 				065953292C6E31E80048821E /* BaseCollectioViewCell.swift in Sources */,
 				0659537A2C6F36340048821E /* MainVC.swift in Sources */,
@@ -534,9 +544,9 @@
 				065953922C6F6BF20048821E /* ShowTopBookCollectionCell.swift in Sources */,
 				065953392C6E32060048821E /* APIKey.swift in Sources */,
 				065953542C6E34540048821E /* BaseViewModel.swift in Sources */,
+				0652C8472C70A23200BDC64E /* BookListCollectionCell.swift in Sources */,
 				0659537C2C6F388D0048821E /* ChangeView.swift in Sources */,
 				0652C83A2C708A5300BDC64E /* SearchBookWithIDDTO.swift in Sources */,
-				0652C83E2C708CF900BDC64E /* DetailBookDTO.swift in Sources */,
 				0652C82E2C6FB64700BDC64E /* BestsellerDTO.swift in Sources */,
 				065953682C6E644A0048821E /* UserManager.swift in Sources */,
 				065953022C6E2F8C0048821E /* AppDelegate.swift in Sources */,
@@ -551,6 +561,7 @@
 				0659538D2C6F59BA0048821E /* BaseButton.swift in Sources */,
 				0652C81E2C6F7EC200BDC64E /* ChallengeRoomCollectionCell.swift in Sources */,
 				065953282C6E31E80048821E /* PointButton.swift in Sources */,
+				0652C84B2C70A57700BDC64E /* BookProtocol.swift in Sources */,
 				0659536D2C6E69490048821E /* LSLPHeader.swift in Sources */,
 				0652C82B2C6FB56000BDC64E /* AladinError.swift in Sources */,
 				0652C8292C6FAF0900BDC64E /* AladinManager.swift in Sources */,
@@ -559,6 +570,7 @@
 				065953622C6E57B00048821E /* SignUpVM.swift in Sources */,
 				0652C81C2C6F7CBB00BDC64E /* UserChallengeCollectionCell.swift in Sources */,
 				065953652C6E64280048821E /* UserDefault.swift in Sources */,
+				0652C84F2C70ADB400BDC64E /* FetchImageProtocol.swift in Sources */,
 				065953332C6E31FA0048821E /* String+.swift in Sources */,
 				0652C8272C6FAEF900BDC64E /* AladinTargetType.swift in Sources */,
 				065953352C6E31FA0048821E /* UIImage+.swift in Sources */,

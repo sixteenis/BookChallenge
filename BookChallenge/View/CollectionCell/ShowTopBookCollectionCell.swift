@@ -11,6 +11,7 @@ import Kingfisher
 import RxSwift
 
 class ShowTopBookCollectionCell: BaseCollectioViewCell {
+    
     let bookImage = UIImageView()
     let bookmark = UIImageView()
     private var disposeBag = DisposeBag()
@@ -36,7 +37,7 @@ class ShowTopBookCollectionCell: BaseCollectioViewCell {
         bookImage.image = .logo
     }
     func updateUI(data: BookDTO, index: Int) {
-        setUpImage(data.cover)
+        fetchImage(imageView: self.bookImage, imageURL: data.cover)
         switch index {
         case 0:
             bookmark.tintColor = .systemYellow
@@ -51,12 +52,6 @@ class ShowTopBookCollectionCell: BaseCollectioViewCell {
             bookmark.isHidden = true
         }
         
-    }
-    private func setUpImage(_ imageURL: String?) {
-        if let imageURL {
-            let url = URL(string: imageURL)!
-            self.bookImage.kf.setImage(with: url)
-        }
     }
 }
 

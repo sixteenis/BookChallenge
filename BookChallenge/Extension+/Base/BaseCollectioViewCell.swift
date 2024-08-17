@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BaseCollectioViewCell: UICollectionViewCell {
+class BaseCollectioViewCell: UICollectionViewCell, FetchImageProtocol {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white

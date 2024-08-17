@@ -73,7 +73,7 @@ final class AladinManager {
         }
     }
     // MARK: - id값을 통해 디테일한 책 데이터 가져오기
-    func getBookDetail(id: String) -> Single<Result<DetailBookDTO, AladinError>> {
+    func getBookDetail(id: String) -> Single<Result<BookDTO, AladinError>> {
         return Single.create { observer -> Disposable in
             do {
                 let request = try AladinRouter.searchBookId(itemId: id).asURLRequest()

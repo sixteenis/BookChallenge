@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BookDTO: Decodable {
+struct BookDTO: Decodable, BookProtocol {
     let title: String
     let author: String
     let pubDate: String //발행일
@@ -15,5 +15,10 @@ struct BookDTO: Decodable {
     let isbn13: String
     let cover: String
     let publisher: String //출판사
+    let subInfo: SubInfo
 }
 
+struct SubInfo: Decodable {
+    let itemPage: Int?
+    let subTitle: String?
+}

@@ -20,6 +20,7 @@ class ShowTopBookVM: BaseViewModel {
     }
     func transform(input: Input) -> Output {
         let bestBookData = BehaviorRelay(value: [BookDTO]())
+        
         self.books.subscribe(with: self) { owner, respons in
             switch respons {
             case .success(let books):
