@@ -12,6 +12,9 @@ extension UIColor {
     static let font = UIColor.black
     
     static let clightGray = UIColor.lightGray
-    static let collectionBackgournd = UIColor.systemGray6
-    static let collectionBoarder = UIColor.systemGray5
+    static let collectionBackground = UIColor.systemGray6
+    static let boarder = UIColor.systemGray5
+    static let grayBackground  = UIColor.systemGray6
+    
+    
 }

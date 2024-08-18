@@ -145,12 +145,12 @@ final class MainVC: BaseViewController {
     override func setUpView() {
         showTopBookHeader.text = "베스트셀러"
         showTopBookCollection.register(ShowTopBookCollectionCell.self, forCellWithReuseIdentifier: ShowTopBookCollectionCell.id)
-        showTopBookCollection.backgroundColor = .collectionBackgournd
+        showTopBookCollection.backgroundColor = .collectionBackground
         showTopBookCollection.showsHorizontalScrollIndicator = false
         showTopBookCollection.isPagingEnabled = false
         showTopBookCollection.layer.cornerRadius = 15
         showTopBookCollection.layer.borderWidth = 1
-        showTopBookCollection.layer.borderColor = UIColor.collectionBoarder.cgColor
+        showTopBookCollection.layer.borderColor = UIColor.boarder.cgColor
         showTopBookCollection.delegate = self
         
         

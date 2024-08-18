@@ -15,14 +15,18 @@ class RoomCreateVC: BaseViewController {
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     private let bookImage = UIImageView()
+    private let justPlusBookView = JustPlustView()
+    private let bookSearchButton = UIButton()
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     override func setUpHierarchy() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        
+        contentView.addSubview(justPlusBookView)
         contentView.addSubview(bookImage)
+        contentView.addSubview(bookSearchButton)
+        
     }
     override func setUpLayout() {
         scrollView.snp.makeConstraints { make in
@@ -34,17 +38,25 @@ class RoomCreateVC: BaseViewController {
             make.edges.equalTo(scrollView)
         }
         bookImage.snp.makeConstraints { make in
-            make.width.equalTo(100)
-            make.height.equalTo(170)
-            make.top.horizontalEdges.equalTo(contentView).inset(50)
+            make.width.equalTo(140)
+            make.height.equalTo(200)
+            make.leading.equalTo(contentView).inset(20)
+            make.top.equalTo(contentView).inset(10)
+        }
+        justPlusBookView.snp.makeConstraints { make in
+            make.edges.equalTo(bookImage)
+        }
+        bookSearchButton.snp.makeConstraints { make in
+            make.edges.equalTo(bookImage)
         }
     }
     override func setUpView() {
         scrollView.backgroundColor = .white
         contentView.backgroundColor = .white
-        
-        bookImage.image = UIImage(systemName: "plus")
-        
+        bookSearchButton.backgroundColor = .clear
+        justPlusBookView.backgroundColor = .grayBackground
+    
+                
         let item = UIBarButtonItem(image: UIImage(systemName: "xmark"),style: .plain,  target: self, action: #selector(xbuttonTap))
         let saveItem = UIBarButtonItem(title: "게시하기",style: .plain,  target: self, action: #selector(saveButtonTap))
         navigationItem.leftBarButtonItem = item
