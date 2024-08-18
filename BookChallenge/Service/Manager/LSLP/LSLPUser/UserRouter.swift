@@ -77,29 +77,30 @@ extension UserRouter: LSLPTargetType {
         switch self {
         case .login:
             let header = [
-                UserHeader.contentType.rawValue: UserHeader.json.rawValue,
-                UserHeader.sesacKey.rawValue: LSLP.key,
+                BaseHeader.contentType.rawValue: BaseHeader.json.rawValue,
+                BaseHeader.sesacKey.rawValue: LSLP.key
             ]
             return header
         case .refresh:
             let header = [
-                UserHeader.authorization.rawValue: UserManager.shared.token,
-                UserHeader.contentType.rawValue: UserHeader.json.rawValue,
-                UserHeader.sesacKey.rawValue: LSLP.key,
-                UserHeader.refresh.rawValue: UserManager.shared.refreshToken
+                BaseHeader.authorization.rawValue: UserManager.shared.token,
+                BaseHeader.contentType.rawValue: BaseHeader.json.rawValue,
+                BaseHeader.sesacKey.rawValue: LSLP.key,
+                BaseHeader.refresh.rawValue: UserManager.shared.refreshToken
             ]
             return header
         case .fetchProfile:
             let header = [
-                UserHeader.authorization.rawValue: UserManager.shared.token,
-                UserHeader.contentType.rawValue: UserHeader.json.rawValue,
-                UserHeader.sesacKey.rawValue: LSLP.key,
+                BaseHeader.authorization.rawValue: UserManager.shared.token,
+                BaseHeader.contentType.rawValue: BaseHeader.json.rawValue,
+                BaseHeader.sesacKey.rawValue: LSLP.key
             ]
             return header
         case .editProfile, .fetchOtherProfile, .withdrawId:
             let header = [
-                UserHeader.authorization.rawValue: UserManager.shared.token,
-                UserHeader.sesacKey.rawValue: LSLP.key,
+                BaseHeader.authorization.rawValue: UserManager.shared.token,
+                BaseHeader.contentType.rawValue: BaseHeader.multipart.rawValue,
+                BaseHeader.sesacKey.rawValue: LSLP.key
             ]
             return header
             

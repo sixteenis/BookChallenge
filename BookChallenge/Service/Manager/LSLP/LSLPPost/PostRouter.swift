@@ -8,22 +8,23 @@
 import Foundation
 import Alamofire
 enum PostRouter {
-    case login(query: LoginQuery)
-    case fetchProfile
-    case editProfile
-    case refresh
+    case uploadPostFiles(body: UploadPostFilesBody) // 포스트 이미지 작성
+    case uploadPostContents(body: UploadPostContentsBody) // 포스트 컨텐츠 작성
+//    case fetchPosts // 포스트 리스트 가져오기
+//    case fetchPostsWithId // 특정 포스트 가져오기
+//    case fetchUserPosts // 특정 유저의 작성 포스트 가져오기
+//    case commentsChat // 댓글 달기
+//    case removeChat // 댓글 지우기
+//    case postLike // 포스트 좋아요 누르기
+//    case fetchLikePosts // 좋아요 누른 포스트 가져오기
+    
+    //포스트 수정, 포스트 삭제, 댓글 수정,
 }
 extension PostRouter: LSLPTargetType {
         var method: Alamofire.HTTPMethod {
         switch self {
-        case .login:
+        case .uploadPostFiles, .uploadPostContents:
             return .post
-        case .fetchProfile:
-            return .get
-        case .editProfile:
-            return .put
-        case .refresh:
-            return .get
         }
     }
     
@@ -37,11 +38,14 @@ extension PostRouter: LSLPTargetType {
     
     var body: Data? {
         switch self {
-        case .login(let query):
+        case .uploadPostFiles(let body):
             let encoder = JSONEncoder()
-            return try? encoder.encode(query)
-        default:
-            return nil
+            return try? encoder.encode(body)
+        case .uploadPostContents(let body):
+            let encoder = JSONEncoder()
+            return try? encoder.encode(body)
+//        default:
+//            return nil
         }
         
     }
@@ -52,41 +56,27 @@ extension PostRouter: LSLPTargetType {
     
     var path: String {
         switch self {
-        case .login:
-            return "/users/login"
-        case .fetchProfile, .editProfile:
-            return "/users/me/profile"
-        case .refresh:
-            return "/auth/refresh"
+        case .uploadPostFiles:
+            return "/posts/files"
+        case .uploadPostContents:
+            return "/posts"
+        
         }
     }
     var header: [String: String] {
         switch self {
-        case .login:
+        case .uploadPostFiles:
             let header = [
-                UserHeader.contentType.rawValue: UserHeader.json.rawValue,
-                UserHeader.sesacKey.rawValue: LSLP.key,
+                BaseHeader.contentType.rawValue: BaseHeader.contentType.rawValue,
+                BaseHeader.authorization.rawValue: UserManager.shared.token,
+                BaseHeader.sesacKey.rawValue: LSLP.key
             ]
             return header
-        case .fetchProfile:
+        case .uploadPostContents:
             let header = [
-                UserHeader.authorization.rawValue: UserManager.shared.token,
-                UserHeader.contentType.rawValue: UserHeader.json.rawValue,
-                UserHeader.sesacKey.rawValue: LSLP.key,
-            ]
-            return header
-        case .editProfile:
-            let header = [
-                UserHeader.authorization.rawValue: UserManager.shared.token,
-                UserHeader.sesacKey.rawValue: LSLP.key,
-            ]
-            return header
-        case .refresh:
-            let header = [
-                UserHeader.authorization.rawValue: UserManager.shared.token,
-                UserHeader.contentType.rawValue: UserHeader.json.rawValue,
-                UserHeader.sesacKey.rawValue: LSLP.key,
-                UserHeader.refresh.rawValue: UserManager.shared.refreshToken
+                BaseHeader.contentType.rawValue: BaseHeader.json.rawValue,
+                BaseHeader.authorization.rawValue: UserManager.shared.token,
+                BaseHeader.sesacKey.rawValue: LSLP.key
             ]
             return header
         }

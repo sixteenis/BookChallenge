@@ -1,16 +1,18 @@
 //
-//  PostHeader.swift
+//  BaseHeader.swift
 //  BookChallenge
 //
-//  Created by 박성민 on 8/17/24.
+//  Created by 박성민 on 8/18/24.
 //
 
 import Foundation
 
-enum PostHeader: String {
+enum BaseHeader: String {
     case authorization = "Authorization"
     case sesacKey = "SesacKey"
+    
     case contentType = "Content-Type"
+    
     case json = "application/json"
     
     case refresh = "Refresh"

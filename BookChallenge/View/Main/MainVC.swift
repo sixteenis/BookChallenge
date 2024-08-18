@@ -37,6 +37,8 @@ final class MainVC: BaseViewController {
         print(UserManager.shared.refreshToken)
         print(UserManager.shared.email)
         print(UserManager.shared.password)
+        //LSLPUserManager.shared.fetchProfile()
+        LSLPUserManager.shared.editProfile(nick: Int.random(in: 0...1000).formatted())
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
