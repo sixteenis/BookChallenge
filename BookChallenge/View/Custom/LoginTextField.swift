@@ -13,7 +13,7 @@ import SnapKit
 final class LoginTextField: BaseView {
     private let logo = UIImageView()
     private let line = UIView()
-    private let textField = UITextField()
+    let textField = UITextField()
     
     init(type: LoginTextType) {
         super.init(frame: .zero)

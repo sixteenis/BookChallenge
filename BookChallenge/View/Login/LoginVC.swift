@@ -37,6 +37,9 @@ final class LoginVC: BaseViewController, ChangeView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // MARK: - 이거 없애야된다!!!!!! 그리고 textFiled 프라이빗 해줘야됨 ㅇㅇ
+        emailTextFiled.textField.text = "psm3@zz.zz"
+        passwordTextFiled.textField.text = "1"
     }
     override func bindData() {
         let input = LoginVM.Input(emailText: emailTextFiled.getText(), passwordText: passwordTextFiled.getText(), loginTap: loginButton.rx.tap, joinTap: joinButton.rx.tap)

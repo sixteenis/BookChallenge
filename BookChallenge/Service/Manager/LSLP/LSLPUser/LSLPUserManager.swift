@@ -48,7 +48,7 @@ final class LSLPUserManager {
 //        }
 //    }
     // MARK: - 로그인
-    func createLogin(email: String, password: String, completionHandler: ((Result<Void,LoginError>) -> ())? = nil) {
+    func createLogin(email: String, password: String, completionHandler: ((Result<Void,LoginError>) -> ())? = nil) { 
             do {
                 let query = LoginQuery(email: email, password: password)
                 let request = try UserRouter.login(query: query).asURLRequest()
@@ -80,6 +80,30 @@ final class LSLPUserManager {
     }
     // MARK: - 토큰 갱신
     func refreshToke() {
+        do {
+            let request = try UserRouter.refresh.asURLRequest()
+            AF.request(request)
+                .responseDecodable(of: RefreshTokeDTO.self) { response in
+                    if response.response?.statusCode == 418 {
+                        self.createLogin(email: UserManager.shared.email, password: UserManager.shared.password)
+                    }
+                    switch response.result {
+                    case .success(let data):
+                        print("OK", data)
+                        UserManager.shared.token = data.accessToken
+                    case .failure(let error):
+                        print("Fail", error)
+                    }
+                }
+        } catch {
+            print("토큰 갱신 오류!")
+        }
+    }
+//case fetchProfile // 내 프로필 조회
+//case editProfile(query: EditProfileQuery) // 프로필 수정
+//case fetchOtherProfile(id: String) //다른 유저 프로필 조회
+//case withdrawId //탈퇴
+    func fetchProfile() {
         do {
             let request = try UserRouter.fetchProfile.asURLRequest()
             AF.request(request)

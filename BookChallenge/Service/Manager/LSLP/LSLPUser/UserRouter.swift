@@ -8,10 +8,12 @@
 import Foundation
 import Alamofire
 enum UserRouter {
-    case login(query: LoginQuery)
-    case refresh
-    case fetchProfile
-    case editProfile
+    case login(query: LoginQuery) //로그인
+    case refresh //토큰 갱신
+    case fetchProfile // 내 프로필 조회
+    case editProfile(query: EditProfileQuery) // 프로필 수정
+    case fetchOtherProfile(id: String) //다른 유저 프로필 조회
+    case withdrawId //탈퇴
 }
 extension UserRouter: LSLPTargetType {
         var method: Alamofire.HTTPMethod {
@@ -24,7 +26,10 @@ extension UserRouter: LSLPTargetType {
             return .get
         case .editProfile:
             return .put
-        
+        case .fetchOtherProfile:
+            return .get
+        case .withdrawId:
+            return .get
         }
     }
     
@@ -39,6 +44,9 @@ extension UserRouter: LSLPTargetType {
     var body: Data? {
         switch self {
         case .login(let query):
+            let encoder = JSONEncoder()
+            return try? encoder.encode(query)
+        case .editProfile(let query):
             let encoder = JSONEncoder()
             return try? encoder.encode(query)
         default:
@@ -59,7 +67,10 @@ extension UserRouter: LSLPTargetType {
             return "/auth/refresh"
         case .fetchProfile, .editProfile:
             return "/users/me/profile"
-        
+        case .fetchOtherProfile(let id):
+            return "/users/\(id)/profile"
+        case .withdrawId:
+            return "/users/withdraw"
         }
     }
     var header: [String: String] {
@@ -85,13 +96,13 @@ extension UserRouter: LSLPTargetType {
                 UserHeader.sesacKey.rawValue: LSLP.key,
             ]
             return header
-        case .editProfile:
+        case .editProfile, .fetchOtherProfile, .withdrawId:
             let header = [
                 UserHeader.authorization.rawValue: UserManager.shared.token,
                 UserHeader.sesacKey.rawValue: LSLP.key,
             ]
             return header
-        
+            
         }
     }
 }

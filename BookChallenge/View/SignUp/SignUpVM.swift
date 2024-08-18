@@ -29,6 +29,7 @@ class SignUpVM: BaseViewModel {
         let password = BehaviorRelay(value: "")
         let repassword = BehaviorRelay(value: "")
         let result = PublishRelay<Result<Bool,LoginError>>()
+        
         input.emailText
             .bind(to: email).disposed(by: disposeBag)
         input.nickNameText

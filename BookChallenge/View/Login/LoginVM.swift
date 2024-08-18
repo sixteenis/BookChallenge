@@ -31,10 +31,12 @@ final class LoginVM: BaseViewModel {
     func transform(input: Input) -> Output {
         let email = BehaviorRelay(value: "")
         let password = BehaviorRelay(value: "")
-        let result = PublishRelay<(String,String)>()
-        let error = PublishRelay<LoginError>()
-        let loading = BehaviorRelay(value: false)
-        let nextView = PublishSubject<Void>()
+        
+        let result = PublishRelay<(String,String)>() // 필터링 후 결과를 통해 네트워킹 시작
+        let loading = BehaviorRelay(value: false) //네트워킹 시작 유무
+        let error = PublishRelay<LoginError>() // 네트워킹 오류 시
+        let nextView = PublishSubject<Void>() //성공 시 다음 화면 전환
+        
         input.emailText
             .bind(to: email)
             .disposed(by: disposeBag)
@@ -62,13 +64,6 @@ final class LoginVM: BaseViewModel {
                         error.accept(err)
                     }
                 }
-//                switch respon {
-//                case .success(let bool):
-//                    nextView.accept(bool)
-//                case .failure(let err):
-//                    error.accept(err)
-//                }
-                
             }.disposed(by: disposeBag)
 
         return Output(err: error, nextView: nextView, joinTap: input.joinTap, networkLoading: loading)
