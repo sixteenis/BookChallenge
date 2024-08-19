@@ -23,10 +23,13 @@ class RoomCreateVC: BaseViewController, FetchImageProtocol {
     private let bookDescription = UILabel()
     
     private let bookDivisionContentLine = UIView()
+    private let datePicker = UIDatePicker()
+    private let datePickerHeader = UILabel()
     private let roomTitleView = UIView()
     private let roomTitle = UITextField()
     private let roomContentView = UIView()
     private let roomContent = UITextView()
+    
     
     private let disposeBag = DisposeBag()
     private let vm = RoomCreateVM()
@@ -76,6 +79,8 @@ class RoomCreateVC: BaseViewController, FetchImageProtocol {
         contentView.addSubview(bookDescription)
         //방 세팅 부분
         contentView.addSubview(bookDivisionContentLine)
+        contentView.addSubview(datePickerHeader)
+        contentView.addSubview(datePicker)
         contentView.addSubview(roomTitleView)
         contentView.addSubview(roomTitle)
         contentView.addSubview(roomContentView)
@@ -183,8 +188,17 @@ private extension RoomCreateVC {
             make.horizontalEdges.equalTo(contentView).inset(15)
             make.height.equalTo(1)
         }
+        datePickerHeader.snp.makeConstraints { make in
+            make.centerY.equalTo(datePicker)
+            make.leading.equalTo(contentView).inset(15)
+        }
+        datePicker.snp.makeConstraints { make in
+            make.top.equalTo(bookDivisionContentLine.snp.bottom).offset(15)
+            make.trailing.equalTo(contentView).inset(15)
+            make.height.equalTo(44)
+        }
         roomTitleView.snp.makeConstraints { make in
-            make.top.equalTo(bookDivisionContentLine.snp.bottom).offset(10)
+            make.top.equalTo(datePicker.snp.bottom).offset(10)
             make.horizontalEdges.equalTo(contentView).inset(15)
             make.height.equalTo(44)
         }
@@ -196,7 +210,7 @@ private extension RoomCreateVC {
             make.top.equalTo(roomTitleView.snp.bottom).offset(20)
             make.horizontalEdges.equalTo(contentView).inset(15)
             make.height.equalTo(150)
-            make.bottom.equalTo(contentView) //맨 밑에 이거 넣주삼
+            make.bottom.equalTo(contentView).inset(40) //맨 밑에 이거 넣주삼
         }
         roomContent.snp.makeConstraints { make in
             make.edges.equalTo(roomContentView).inset(10)
@@ -204,7 +218,8 @@ private extension RoomCreateVC {
     }
     func setUpContentView() {
         bookDivisionContentLine.backgroundColor = .darkBoarder
-        
+        setUpDatePicker()
+
         roomTitleView.layer.borderWidth = 2
         roomTitleView.layer.borderColor = UIColor.systemGray4.cgColor
         roomTitleView.layer.cornerRadius = 5
@@ -217,7 +232,15 @@ private extension RoomCreateVC {
         roomContent.textColor = .placeholder
         roomContent.font = .font13
     }
-    func setUpContentData() {
+    func setUpDatePicker() {
+        datePickerHeader.text = "챌린지 종료일"
+        datePicker.datePickerMode = .date
+        datePicker.locale = Locale(identifier: "ko-KR")
+        //datePicker.addTarget(self, action: #selector(handleDatePicker), for: .valueChanged)
         
+        var components = DateComponents()
+        components.day = 1 //현재 시간 기준으로 최소기간 지정해주기
+        let minDate = Calendar.autoupdatingCurrent.date(byAdding: components, to: Date())
+        datePicker.minimumDate = minDate
     }
 }
