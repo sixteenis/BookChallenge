@@ -11,16 +11,19 @@ import RxCocoa
 
 class BookSearchVM: BaseViewModel {
     private let disposeBag = DisposeBag()
+    var compltionBookId: ((String) -> ())?
     struct Input {
         let searchButtonTap: ControlEvent<Void>
         let searchText: ControlProperty<String>
+        let tapBook: PublishSubject<String>
     }
     struct Output {
         let bookList: Observable<[BookDTO]>
-        
+        let successReturnID: Observable<Void>
     }
     func transform(input: Input) -> Output {
         let bookList = PublishSubject<[BookDTO]>()
+        let succesReturnId = PublishSubject<Void>()
         //let getError = BehaviorRelay<AladinError>()
         input.searchButtonTap
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
@@ -37,8 +40,12 @@ class BookSearchVM: BaseViewModel {
                     print(err)
                 }
             }.disposed(by: disposeBag)
+        input.tapBook
+            .bind(with: self) { owner, id in
+                owner.compltionBookId?(id)
+                succesReturnId.onNext(())
+            }.disposed(by: disposeBag)
         
-        
-        return Output(bookList: bookList)
+        return Output(bookList: bookList, successReturnID: succesReturnId)
     }
 }

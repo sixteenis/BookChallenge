@@ -14,10 +14,11 @@ import SnapKit
 // TODO: 검색 클릭 시 텍스트 지우고 서치뷰 원상복구 해주는 로직 짜기
 class BookSearchVC: BaseViewController {
     lazy var bookCollectionView = UICollectionView(frame: .zero, collectionViewLayout: sameTableViewLayout())
-    let searchController = UISearchController(searchResultsController: nil)
+    //let searchController = UISearchController(searchResultsController: nil)
+    let bookSearchBar = UISearchBar()
     
     private let disposeBag = DisposeBag()
-    private let vm = BookSearchVM()
+    let vm = BookSearchVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,32 +34,44 @@ class BookSearchVC: BaseViewController {
     }
     override func bindData() {
         
-        let searchTap = searchController.searchBar.rx.searchButtonClicked
-        let searchText = searchController.searchBar.rx.text.orEmpty
-
-        let input = BookSearchVM.Input(searchButtonTap: searchTap, searchText: searchText)
+        let searchTap = bookSearchBar.rx.searchButtonClicked
+        let searchText = bookSearchBar.rx.text.orEmpty
+        let selectBook = PublishSubject<String>()
+        let input = BookSearchVM.Input(searchButtonTap: searchTap, searchText: searchText, tapBook: selectBook)
         let output = vm.transform(input: input)
         
         output.bookList
             .bind(to: bookCollectionView.rx.items(cellIdentifier: BookListCollectionCell.id, cellType: BookListCollectionCell.self)) { (row, element, cell) in
                 cell.setUpData(data: element)
             }.disposed(by: disposeBag)
+        bookCollectionView.rx.modelSelected(BookDTO.self)
+            .bind(with: self) { owner, item in
+                selectBook.onNext(item.isbn13)
+            }.disposed(by: disposeBag)
+        output.successReturnID
+            .bind(with: self) { owner, _ in
+                owner.popViewController()
+            }.disposed(by: disposeBag)
         
     }
     override func setUpHierarchy() {
+        view.addSubview(bookSearchBar)
         view.addSubview(bookCollectionView)
     }
     override func setUpLayout() {
+        bookSearchBar.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(10)
+        }
         bookCollectionView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(bookSearchBar.snp.bottom)
+            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
             
         }
     }
     override func setUpView() {
-        searchController.searchBar.placeholder = "책 제목을 입력해주세요."
-        self.navigationItem.searchController = searchController
+        bookSearchBar.placeholder = "책 제목을 입력해주세요."
         self.navigationItem.title = "책 검색"
-        self.navigationItem.hidesSearchBarWhenScrolling = true
         bookCollectionView.register(BookListCollectionCell.self, forCellWithReuseIdentifier: BookListCollectionCell.id)
         
     }

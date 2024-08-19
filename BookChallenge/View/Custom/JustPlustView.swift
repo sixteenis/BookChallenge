@@ -19,7 +19,7 @@ class JustPlustView: BaseView {
     override func setUpLayout() {
         plusView.snp.makeConstraints { make in
             make.centerX.equalTo(self)
-            make.centerY.equalTo(self)
+            make.centerY.equalTo(self).offset(-10)
             make.size.equalTo(40)
         }
         plusTitle.snp.makeConstraints { make in
