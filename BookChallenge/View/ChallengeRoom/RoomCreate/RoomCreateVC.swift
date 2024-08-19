@@ -18,6 +18,10 @@ class RoomCreateVC: BaseViewController, FetchImageProtocol {
     private let bookImage = UIImageView()
     private let justPlusBookView = JustPlustView()
     private let bookSearchButton = UIButton()
+    private let bookTitle = UILabel()
+    private let bookDescription = UILabel()
+    
+    private let roomTitle = UITextField()
     
     private let disposeBag = DisposeBag()
     private let vm = RoomCreateVM()
@@ -36,7 +40,7 @@ class RoomCreateVC: BaseViewController, FetchImageProtocol {
         let output = vm.transform(input: input)
         output.bookInfor
             .bind(with: self) { owner, book in
-                owner.fetchImage(imageView: owner.bookImage, imageURL: book.cover)
+                owner.setUpBookData(book: book)
             }.disposed(by: disposeBag)
         bookSearchButton.rx.tap
             .bind(with: self) { owner, _ in
@@ -53,6 +57,9 @@ class RoomCreateVC: BaseViewController, FetchImageProtocol {
         contentView.addSubview(justPlusBookView)
         contentView.addSubview(bookImage)
         contentView.addSubview(bookSearchButton)
+        contentView.addSubview(bookTitle)
+        contentView.addSubview(bookDescription)
+        contentView.addSubview(roomTitle)
         
         
     }
@@ -76,7 +83,20 @@ class RoomCreateVC: BaseViewController, FetchImageProtocol {
         }
         bookSearchButton.snp.makeConstraints { make in
             make.edges.equalTo(bookImage)
-            make.bottom.equalTo(contentView)
+        }
+        bookTitle.snp.makeConstraints { make in
+            make.top.equalTo(bookImage.snp.bottom).offset(5)
+            make.horizontalEdges.equalTo(contentView).inset(10)
+        }
+        bookDescription.snp.makeConstraints { make in
+            make.top.equalTo(bookTitle.snp.bottom).offset(5)
+            make.horizontalEdges.equalTo(contentView).inset(10)
+        }
+        roomTitle.snp.makeConstraints { make in
+            make.top.equalTo(bookDescription.snp.bottom).offset(10)
+            make.horizontalEdges.equalTo(contentView).offset(15)
+            
+            make.bottom.equalTo(contentView) //맨 밑에 이거 넣주삼
         }
     }
     override func setUpView() {
@@ -89,9 +109,23 @@ class RoomCreateVC: BaseViewController, FetchImageProtocol {
         navigationItem.leftBarButtonItem = item
         navigationItem.rightBarButtonItem = saveItem
         
+        bookImage.layer.borderWidth = 1
+        bookImage.layer.borderColor = UIColor.boarder.cgColor
+        
+        bookTitle.textColor = .font
+        bookTitle.numberOfLines = 1
+        bookTitle.textAlignment = .center
+        
+        bookDescription.textColor = .font
+        bookDescription.numberOfLines = 0
+        bookDescription.textAlignment = .left
+        
+        roomTitle.placeholder = "제목을 입력해주세요."
+        
     }
     
 }
+// MARK: - 네비게이션 부분
 private extension RoomCreateVC {
     @objc func xbuttonTap() {
         dismiss(animated: true)
@@ -99,4 +133,13 @@ private extension RoomCreateVC {
     @objc func saveButtonTap() {
         print("저장")
     }
+}
+// MARK: - 책 관련 뷰 세팅 부분
+private extension RoomCreateVC {
+    func setUpBookData(book: BookModel) {
+        fetchImage(imageView: bookImage, imageURL: book.postURL)
+        bookTitle.text = book.title
+        bookDescription.text = book.description
+    }
+    
 }
