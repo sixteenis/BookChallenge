@@ -83,9 +83,9 @@
 		065953862C6F4B2C0048821E /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953852C6F4B2B0048821E /* SearchBarView.swift */; };
 		0659538B2C6F58BE0048821E /* BookSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659538A2C6F58BE0048821E /* BookSearchVC.swift */; };
 		0659538D2C6F59BA0048821E /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659538C2C6F59BA0048821E /* BaseButton.swift */; };
-		0659538F2C6F5C8B0048821E /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659538E2C6F5C8B0048821E /* Test.swift */; };
 		065953922C6F6BF20048821E /* ShowTopBookCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953912C6F6BF20048821E /* ShowTopBookCollectionCell.swift */; };
 		06F93F592C7366D0002F5513 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F582C7366D0002F5513 /* BookModel.swift */; };
+		06F93F5B2C737689002F5513 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5A2C737689002F5513 /* Font+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -159,9 +159,9 @@
 		065953852C6F4B2B0048821E /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		0659538A2C6F58BE0048821E /* BookSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchVC.swift; sourceTree = "<group>"; };
 		0659538C2C6F59BA0048821E /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
-		0659538E2C6F5C8B0048821E /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		065953912C6F6BF20048821E /* ShowTopBookCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTopBookCollectionCell.swift; sourceTree = "<group>"; };
 		06F93F582C7366D0002F5513 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
+		06F93F5A2C737689002F5513 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +323,7 @@
 				0659532F2C6E31F90048821E /* String+.swift */,
 				0659532E2C6E31F90048821E /* UIColor+.swift */,
 				065953312C6E31FA0048821E /* UIImage+.swift */,
+				06F93F5A2C737689002F5513 /* Font+.swift */,
 			);
 			path = "Extension+";
 			sourceTree = "<group>";
@@ -341,7 +342,6 @@
 				0659531D2C6E31E80048821E /* LoginTextField.swift */,
 				0659531E2C6E31E80048821E /* PointButton.swift */,
 				065953852C6F4B2B0048821E /* SearchBarView.swift */,
-				0659538E2C6F5C8B0048821E /* Test.swift */,
 				0652C86E2C7268AF00BDC64E /* JustPlustView.swift */,
 			);
 			path = Custom;
@@ -600,6 +600,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06F93F5B2C737689002F5513 /* Font+.swift in Sources */,
 				0652C8532C70DAA500BDC64E /* RefreshTokeDTO.swift in Sources */,
 				0652C8302C6FB89E00BDC64E /* ShowTopBookVM.swift in Sources */,
 				0652C8442C70A1D000BDC64E /* BookSearchVM.swift in Sources */,
@@ -644,7 +645,6 @@
 				0652C84B2C70A57700BDC64E /* BookProtocol.swift in Sources */,
 				0652C82B2C6FB56000BDC64E /* AladinError.swift in Sources */,
 				0652C8292C6FAF0900BDC64E /* AladinManager.swift in Sources */,
-				0659538F2C6F5C8B0048821E /* Test.swift in Sources */,
 				065953742C6E6A260048821E /* LoginQuery.swift in Sources */,
 				065953622C6E57B00048821E /* SignUpVM.swift in Sources */,
 				0652C81C2C6F7CBB00BDC64E /* UserChallengeCollectionCell.swift in Sources */,
