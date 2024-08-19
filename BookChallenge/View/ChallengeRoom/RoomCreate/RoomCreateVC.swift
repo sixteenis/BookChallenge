@@ -12,7 +12,9 @@ import RxCocoa
 import SnapKit
 import Kingfisher
 
-class RoomCreateVC: BaseViewController, FetchImageProtocol {
+// TODO: content 텍스트 예외처리... 해주자!!! 고민해봐!!!
+final class RoomCreateVC: BaseViewController, FetchImageProtocol {
+    let saveItem = UIBarButtonItem(title: "게시하기")
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     private let bookImage = UIImageView()
@@ -30,11 +32,12 @@ class RoomCreateVC: BaseViewController, FetchImageProtocol {
     private let roomContentView = UIView()
     private let roomContent = UITextView()
     
-    
     private let disposeBag = DisposeBag()
     private let vm = RoomCreateVM()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        simpleBindDate()
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -44,13 +47,21 @@ class RoomCreateVC: BaseViewController, FetchImageProtocol {
     }
     override func bindData() {
         let getbookId = PublishSubject<String>()
-        let input = RoomCreateVM.Input(getbookId: getbookId)
+        let input = RoomCreateVM.Input(getbookId: getbookId, datePickerTap: datePicker.rx.date, roomTitle: roomTitle.rx.text.orEmpty, roomContent: roomContent.rx.text.orEmpty, saveButtonTap: saveItem.rx.tap)
+
         let output = vm.transform(input: input)
         output.bookInfor
             .bind(with: self) { owner, book in
                 owner.setUpBookData(book: book)
             }.disposed(by: disposeBag)
-        bookSearchButton.rx.tap
+        output.isSaveTap
+            .bind(with: self) { owner, isEnable in
+                print(isEnable)
+                owner.setUpSaveButton(isEnable)
+            }.disposed(by: disposeBag)
+        
+            
+        bookSearchButton.rx.tap //서치버튼 누르면 책 검색뷰로 이동
             .bind(with: self) { owner, _ in
                 let vc = BookSearchVC()
                 vc.vm.compltionBookId = { id in
@@ -59,7 +70,9 @@ class RoomCreateVC: BaseViewController, FetchImageProtocol {
                 owner.pushViewController(view: vc)
             }.disposed(by: disposeBag)
         
-        roomContent.rx.didBeginEditing
+    }
+    private func simpleBindDate() {
+        roomContent.rx.didBeginEditing //내용 텍스트필드 플레이스홀더로 만들기
             .bind(with: self) { owner, _ in
                 if owner.roomContent.textColor == .placeholder {
                     owner.roomContent.text = ""
@@ -103,10 +116,7 @@ class RoomCreateVC: BaseViewController, FetchImageProtocol {
     override func setUpView() {
         scrollView.backgroundColor = .white
         contentView.backgroundColor = .white
-    
-                
         let item = UIBarButtonItem(image: UIImage(systemName: "xmark"),style: .plain,  target: self, action: #selector(xbuttonTap))
-        let saveItem = UIBarButtonItem(title: "게시하기",style: .plain,  target: self, action: #selector(saveButtonTap))
         navigationItem.leftBarButtonItem = item
         navigationItem.rightBarButtonItem = saveItem
         
@@ -122,8 +132,13 @@ private extension RoomCreateVC {
     @objc func xbuttonTap() {
         dismiss(animated: true)
     }
-    @objc func saveButtonTap() {
-        print(self.roomContent.text)
+    func setUpSaveButton(_ state: Bool) {
+        saveItem.isEnabled = state
+        if state { //눌를 수 있음
+            saveItem.tintColor = .font
+        }else {//못눌르는 상태
+            saveItem.tintColor = .clightGray
+        }
     }
 }
 // MARK: - 책 관련 뷰 세팅 부분
