@@ -37,6 +37,7 @@
 		0652C86A2C72406500BDC64E /* UploadPostContentsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8692C72406500BDC64E /* UploadPostContentsBody.swift */; };
 		0652C86D2C72553B00BDC64E /* RoomCreateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C86C2C72553B00BDC64E /* RoomCreateVC.swift */; };
 		0652C86F2C7268AF00BDC64E /* JustPlustView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C86E2C7268AF00BDC64E /* JustPlustView.swift */; };
+		0652C87D2C732B0700BDC64E /* RoomCreateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C87C2C732B0700BDC64E /* RoomCreateVM.swift */; };
 		065953022C6E2F8C0048821E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953012C6E2F8C0048821E /* AppDelegate.swift */; };
 		065953042C6E2F8C0048821E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953032C6E2F8C0048821E /* SceneDelegate.swift */; };
 		0659530B2C6E2F8D0048821E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0659530A2C6E2F8D0048821E /* Assets.xcassets */; };
@@ -118,6 +119,7 @@
 		0652C8692C72406500BDC64E /* UploadPostContentsBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostContentsBody.swift; sourceTree = "<group>"; };
 		0652C86C2C72553B00BDC64E /* RoomCreateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCreateVC.swift; sourceTree = "<group>"; };
 		0652C86E2C7268AF00BDC64E /* JustPlustView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustPlustView.swift; sourceTree = "<group>"; };
+		0652C87C2C732B0700BDC64E /* RoomCreateVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCreateVM.swift; sourceTree = "<group>"; };
 		065952FE2C6E2F8C0048821E /* BookChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		065953012C6E2F8C0048821E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		065953032C6E2F8C0048821E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				0652C86C2C72553B00BDC64E /* RoomCreateVC.swift */,
+				0652C87C2C732B0700BDC64E /* RoomCreateVM.swift */,
 			);
 			path = RoomCreate;
 			sourceTree = "<group>";
@@ -654,6 +657,7 @@
 				0659532B2C6E31E80048821E /* BaseViewController.swift in Sources */,
 				0652C85B2C70DD9200BDC64E /* PostRouter.swift in Sources */,
 				065953042C6E2F8C0048821E /* SceneDelegate.swift in Sources */,
+				0652C87D2C732B0700BDC64E /* RoomCreateVM.swift in Sources */,
 				065953322C6E31FA0048821E /* UIColor+.swift in Sources */,
 				065953602C6E56530048821E /* Alert.swift in Sources */,
 				0652C8402C708D5C00BDC64E /* BookModel.swift in Sources */,

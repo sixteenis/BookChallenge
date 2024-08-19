@@ -10,8 +10,9 @@ import RxSwift
 import RxCocoa
 
 import SnapKit
+import Kingfisher
 
-class RoomCreateVC: BaseViewController {
+class RoomCreateVC: BaseViewController, FetchImageProtocol {
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     private let bookImage = UIImageView()
@@ -19,21 +20,29 @@ class RoomCreateVC: BaseViewController {
     private let bookSearchButton = UIButton()
     
     private let disposeBag = DisposeBag()
+    private let vm = RoomCreateVM()
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = "챌린지 방 생성"
+        navigationItem.title = "챌린지 방 만들기"
         
     }
     override func bindData() {
+        let getbookId = PublishSubject<String>()
+        let input = RoomCreateVM.Input(getbookId: getbookId)
+        let output = vm.transform(input: input)
+        output.bookInfor
+            .bind(with: self) { owner, book in
+                owner.fetchImage(imageView: owner.bookImage, imageURL: book.cover)
+            }.disposed(by: disposeBag)
         bookSearchButton.rx.tap
             .bind(with: self) { owner, _ in
                 let vc = BookSearchVC()
                 vc.vm.compltionBookId = { id in
-                    print(id)
+                    getbookId.onNext(id)
                 }
                 owner.pushViewController(view: vc)
             }.disposed(by: disposeBag)
@@ -59,7 +68,7 @@ class RoomCreateVC: BaseViewController {
         bookImage.snp.makeConstraints { make in
             make.width.equalTo(140)
             make.height.equalTo(200)
-            make.leading.equalTo(contentView).inset(20)
+            make.centerX.equalTo(contentView)
             make.top.equalTo(contentView).inset(10)
         }
         justPlusBookView.snp.makeConstraints { make in
