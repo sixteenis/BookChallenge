@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 enum PostRouter {
-    case uploadPostFiles(body: UploadPostFilesBody) // 포스트 이미지 작성
+    case uploadPostFiles // 포스트 이미지 작성
     case uploadPostContents(body: UploadPostContentsBody) // 포스트 컨텐츠 작성
 //    case fetchPosts // 포스트 리스트 가져오기
 //    case fetchPostsWithId // 특정 포스트 가져오기
@@ -38,14 +38,14 @@ extension PostRouter: LSLPTargetType {
     
     var body: Data? {
         switch self {
-        case .uploadPostFiles(let body):
-            let encoder = JSONEncoder()
-            return try? encoder.encode(body)
+//        case .uploadPostFiles(let body):
+//            let encoder = JSONEncoder()
+//            return try? encoder.encode(body)
         case .uploadPostContents(let body):
             let encoder = JSONEncoder()
             return try? encoder.encode(body)
-//        default:
-//            return nil
+        default:
+            return nil
         }
         
     }
@@ -67,7 +67,7 @@ extension PostRouter: LSLPTargetType {
         switch self {
         case .uploadPostFiles:
             let header = [
-                BaseHeader.contentType.rawValue: BaseHeader.contentType.rawValue,
+                BaseHeader.contentType.rawValue: BaseHeader.multipart.rawValue,
                 BaseHeader.authorization.rawValue: UserManager.shared.token,
                 BaseHeader.sesacKey.rawValue: LSLP.key
             ]

@@ -18,11 +18,11 @@ class BookSearchVM: BaseViewModel {
         let tapBook: PublishSubject<String>
     }
     struct Output {
-        let bookList: Observable<[BookDTO]>
+        let bookList: Observable<[BookProtocol]>
         let successReturnID: Observable<Void>
     }
     func transform(input: Input) -> Output {
-        let bookList = PublishSubject<[BookDTO]>()
+        let bookList = PublishSubject<[BookProtocol]>()
         let succesReturnId = PublishSubject<Void>()
         //let getError = BehaviorRelay<AladinError>()
         input.searchButtonTap

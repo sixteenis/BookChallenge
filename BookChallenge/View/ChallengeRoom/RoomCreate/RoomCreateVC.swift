@@ -46,13 +46,18 @@ final class RoomCreateVC: BaseViewController, FetchImageProtocol {
         
     }
     override func bindData() {
+        let saveButtonRx = saveItem.rx.tap
+            .withUnretained(self)
+            .map { owner, _ in owner.bookImage.image?.jpegData(compressionQuality: 0.5) }
+        
         let getbookId = PublishSubject<String>()
-        let input = RoomCreateVM.Input(getbookId: getbookId, datePickerTap: datePicker.rx.date, roomTitle: roomTitle.rx.text.orEmpty, roomContent: roomContent.rx.text.orEmpty, saveButtonTap: saveItem.rx.tap)
+        let input = RoomCreateVM.Input(getbookId: getbookId, datePickerTap: datePicker.rx.date, roomTitle: roomTitle.rx.text.orEmpty, roomContent: roomContent.rx.text.orEmpty, saveButtonTap: saveButtonRx)
 
         let output = vm.transform(input: input)
         output.bookInfor
             .bind(with: self) { owner, book in
                 owner.setUpBookData(book: book)
+                print(book.postURL)
             }.disposed(by: disposeBag)
         output.isSaveTap
             .bind(with: self) { owner, isEnable in

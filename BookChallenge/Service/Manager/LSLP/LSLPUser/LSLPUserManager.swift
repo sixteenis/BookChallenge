@@ -14,7 +14,7 @@ final class LSLPUserManager {
     static let shared = LSLPUserManager()
     private init() {}
     // MARK: - 로그인
-    func createLogin(email: String, password: String, completionHandler: ((Result<Void,LoginError>) -> ())? = nil) {
+    func createLogin(email: String, password: String, completionHandler: ((Result<Void,LSLPError>) -> ())? = nil) {
         do {
             let query = LoginQuery(email: email, password: password)
             let request = try UserRouter.login(query: query).asURLRequest()

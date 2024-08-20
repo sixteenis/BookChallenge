@@ -66,7 +66,7 @@
 		065953542C6E34540048821E /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953532C6E34540048821E /* BaseViewModel.swift */; };
 		065953562C6E34DC0048821E /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953552C6E34DC0048821E /* LoginVM.swift */; };
 		0659535A2C6E3B540048821E /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953592C6E3B540048821E /* SignUpVC.swift */; };
-		0659535D2C6E4B750048821E /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659535C2C6E4B750048821E /* LoginError.swift */; };
+		0659535D2C6E4B750048821E /* LSLPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659535C2C6E4B750048821E /* LSLPError.swift */; };
 		065953602C6E56530048821E /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659535F2C6E56530048821E /* Alert.swift */; };
 		065953622C6E57B00048821E /* SignUpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953612C6E57B00048821E /* SignUpVM.swift */; };
 		065953652C6E64280048821E /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953642C6E64280048821E /* UserDefault.swift */; };
@@ -86,6 +86,8 @@
 		065953922C6F6BF20048821E /* ShowTopBookCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953912C6F6BF20048821E /* ShowTopBookCollectionCell.swift */; };
 		06F93F592C7366D0002F5513 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F582C7366D0002F5513 /* BookModel.swift */; };
 		06F93F5B2C737689002F5513 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5A2C737689002F5513 /* Font+.swift */; };
+		06F93F5D2C7398EB002F5513 /* LSLPNetworkManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5C2C7398EB002F5513 /* LSLPNetworkManger.swift */; };
+		06F93F5F2C73A318002F5513 /* PostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5E2C73A318002F5513 /* PostDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,7 +144,7 @@
 		065953532C6E34540048821E /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		065953552C6E34DC0048821E /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		065953592C6E3B540048821E /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
-		0659535C2C6E4B750048821E /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
+		0659535C2C6E4B750048821E /* LSLPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPError.swift; sourceTree = "<group>"; };
 		0659535F2C6E56530048821E /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		065953612C6E57B00048821E /* SignUpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVM.swift; sourceTree = "<group>"; };
 		065953642C6E64280048821E /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
@@ -162,6 +164,8 @@
 		065953912C6F6BF20048821E /* ShowTopBookCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTopBookCollectionCell.swift; sourceTree = "<group>"; };
 		06F93F582C7366D0002F5513 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		06F93F5A2C737689002F5513 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
+		06F93F5C2C7398EB002F5513 /* LSLPNetworkManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPNetworkManger.swift; sourceTree = "<group>"; };
+		06F93F5E2C73A318002F5513 /* PostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				0652C8652C723AFF00BDC64E /* FilesDTO.swift */,
+				06F93F5E2C73A318002F5513 /* PostDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -397,7 +402,7 @@
 		0659535B2C6E4B660048821E /* Error */ = {
 			isa = PBXGroup;
 			children = (
-				0659535C2C6E4B750048821E /* LoginError.swift */,
+				0659535C2C6E4B750048821E /* LSLPError.swift */,
 				0652C82A2C6FB56000BDC64E /* AladinError.swift */,
 			);
 			path = Error;
@@ -436,6 +441,7 @@
 		0659536B2C6E693C0048821E /* LSLP */ = {
 			isa = PBXGroup;
 			children = (
+				06F93F5C2C7398EB002F5513 /* LSLPNetworkManger.swift */,
 				065953702C6E695C0048821E /* LSLPTargetType.swift */,
 				0652C8612C723A7500BDC64E /* BaseHeader.swift */,
 				0652C8552C70DC4B00BDC64E /* LSLPPost */,
@@ -600,6 +606,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06F93F5D2C7398EB002F5513 /* LSLPNetworkManger.swift in Sources */,
 				06F93F5B2C737689002F5513 /* Font+.swift in Sources */,
 				0652C8532C70DAA500BDC64E /* RefreshTokeDTO.swift in Sources */,
 				0652C8302C6FB89E00BDC64E /* ShowTopBookVM.swift in Sources */,
@@ -615,7 +622,7 @@
 				0659538B2C6F58BE0048821E /* BookSearchVC.swift in Sources */,
 				065953342C6E31FA0048821E /* ReuseIdentifier+.swift in Sources */,
 				0652C8382C708A1E00BDC64E /* SearchBookDTO.swift in Sources */,
-				0659535D2C6E4B750048821E /* LoginError.swift in Sources */,
+				0659535D2C6E4B750048821E /* LSLPError.swift in Sources */,
 				0652C86D2C72553B00BDC64E /* RoomCreateVC.swift in Sources */,
 				0659537E2C6F3B420048821E /* BookStorageVC.swift in Sources */,
 				065953922C6F6BF20048821E /* ShowTopBookCollectionCell.swift in Sources */,
@@ -636,6 +643,7 @@
 				0659536F2C6E69500048821E /* UserRouter.swift in Sources */,
 				0652C8252C6FAEEB00BDC64E /* AladinRouter.swift in Sources */,
 				0659532D2C6E31E80048821E /* LoginVC.swift in Sources */,
+				06F93F5F2C73A318002F5513 /* PostDTO.swift in Sources */,
 				0652C85D2C721A0F00BDC64E /* EditProfileQuery.swift in Sources */,
 				0659535A2C6E3B540048821E /* SignUpVC.swift in Sources */,
 				0659538D2C6F59BA0048821E /* BaseButton.swift in Sources */,

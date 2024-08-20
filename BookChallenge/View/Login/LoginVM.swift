@@ -22,7 +22,7 @@ final class LoginVM: BaseViewModel {
         let joinTap: ControlEvent<Void>
     }
     struct Output {
-        let err: PublishRelay<LoginError>
+        let err: PublishRelay<LSLPError>
         let nextView: Observable<Void>
         let joinTap: ControlEvent<Void>
         let networkLoading: BehaviorRelay<Bool>
@@ -34,7 +34,7 @@ final class LoginVM: BaseViewModel {
         
         let result = PublishRelay<(String,String)>() // 필터링 후 결과를 통해 네트워킹 시작
         let loading = BehaviorRelay(value: false) //네트워킹 시작 유무
-        let error = PublishRelay<LoginError>() // 네트워킹 오류 시
+        let error = PublishRelay<LSLPError>() // 네트워킹 오류 시
         let nextView = PublishSubject<Void>() //성공 시 다음 화면 전환
         
         input.emailText

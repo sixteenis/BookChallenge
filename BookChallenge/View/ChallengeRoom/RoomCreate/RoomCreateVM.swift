@@ -11,13 +11,13 @@ import RxCocoa
 
 class RoomCreateVM: BaseViewModel {
     private let disposeBag = DisposeBag()
-    
+    var bookDTO: BookDTO?
     struct Input {
         let getbookId: PublishSubject<String>
         let datePickerTap: ControlProperty<Date>
         let roomTitle: ControlProperty<String>
         let roomContent: ControlProperty<String>
-        let saveButtonTap: ControlEvent<Void>
+        let saveButtonTap: Observable<Data?>
     }
     struct Output {
         let bookInfor: Observable<BookModel>
@@ -42,6 +42,7 @@ class RoomCreateVM: BaseViewModel {
                 switch result {
                 case .success(let book):
                     bookInfor.onNext(BookModel(dto: book))
+                    owner.bookDTO = book
                     successNetWork.accept(true)
                 // TODO: 디테일 책 가져오는 과정에서 오류 발생 시 예외처리 해주기
                 case .failure(let error):
@@ -60,8 +61,9 @@ class RoomCreateVM: BaseViewModel {
             .bind(to: roomContent).disposed(by: disposeBag)
         
         input.saveButtonTap
-            .bind(with: self) { owner, _ in
-                print("123")
+            .bind(with: self) { owner, image in
+                guard let image else {return}
+                LSLPNetworkManger.shared.createChallengeRoom(book: owner.bookDTO!, title: roomTitle.value, content: roomContent.value, date: "2024820", files: image)
             }.disposed(by: disposeBag)
         
         

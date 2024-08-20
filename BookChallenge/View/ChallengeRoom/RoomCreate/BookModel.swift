@@ -13,7 +13,7 @@ struct BookModel {
     let title: String
     let descriptionHeader: String
     let description: String
-    init(dto: BookDTO) {
+    init(dto: BookProtocol) {
         self.postURL = dto.cover
         self.title = Self.setTitle(page: dto.subInfo.itemPage, title: dto.title)
         self.descriptionHeader = "책 설명"
