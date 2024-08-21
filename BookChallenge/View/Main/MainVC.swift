@@ -33,10 +33,11 @@ final class MainVC: BaseViewController {
     private let showTopBookVM = ShowTopBookVM()
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(UserManager.shared.token)
-        print(UserManager.shared.refreshToken)
-        print(UserManager.shared.email)
-        print(UserManager.shared.password)
+        print("---------값확인-----------")
+        dump(UserManager.shared.token)
+        dump(UserManager.shared.refreshToken)
+        dump(UserManager.shared.email)
+        dump(UserManager.shared.password)
         //LSLPUserManager.shared.fetchProfile()
         LSLPUserManager.shared.editProfile(nick: Int.random(in: 0...1000).formatted())
     }

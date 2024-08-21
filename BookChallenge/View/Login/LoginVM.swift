@@ -46,13 +46,30 @@ final class LoginVM: BaseViewModel {
         
         input.loginTap //로그인 버튼 누를 시 필터링 해주기
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
-            .bind(with: self) { owner, _ in
-                if owner.checkText(email: email.value, password: password.value) { //참이면 필터링 성공 네트워킹 해주기
-                    result.accept((email.value,password.value))
-                } else { //만족안함 다시 세팅하슈
-                    error.accept(.filter)
+            .flatMap {
+                LSLPNetworkManger.shared.requestRx(requestType: .login(login: LoginBody(email: "P@zz.zz", password: "1")), resultModel: LoginDTO.self)
+            }
+            .bind(with: self) { owner, data in
+                switch data{
+                case .success(let login):
+                    UserManager.shared.token = login.token
+                    UserManager.shared.refreshToken = login.refresh
+                    UserManager.shared.email = login.email
+                    print("로그인 성공")
+                case .failure(let err):
+                    print(err)
                 }
+                nextView.onNext(())
             }.disposed(by: disposeBag)
+            
+//            .bind(with: self) { owner, _ in
+//                if owner.checkText(email: email.value, password: password.value) { //참이면 필터링 성공 네트워킹 해주기
+//                    result.accept((email.value,password.value))
+//                } else { //만족안함 다시 세팅하슈
+//                    error.accept(.filter)
+//                }
+//            }.disposed(by: disposeBag)
+//        
         
         result //필터링에서 조건 만족 시 통신 시작
             .subscribe(with: self) { owner, respon in

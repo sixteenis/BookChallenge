@@ -22,11 +22,10 @@ final class LSLPUserManager {
                 .responseDecodable(of: LoginDTO.self) { response in
                     switch response.result {
                     case .success(let data):
-                        UserManager.shared.token = data.access
+                        UserManager.shared.token = data.token
                         UserManager.shared.refreshToken = data.refresh
                         UserManager.shared.email = email
                         UserManager.shared.password = password
-                        completionHandler?(.success(()))
                     case .failure(_):
                         switch response.response?.statusCode {
                         case 400:
@@ -39,10 +38,11 @@ final class LSLPUserManager {
                         
                     }
                 }
-            
+                
         } catch {
             print(error)
         }
+        
     }
     // MARK: - 토큰 갱신
     func refreshToke(completion: (() -> ())? =  nil){

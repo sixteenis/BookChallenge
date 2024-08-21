@@ -7,7 +7,10 @@
 
 import Foundation
 
+
 enum LSLPError: Error, Alert {
+    
+    
     case filter
     case samePassword
     case networkErr

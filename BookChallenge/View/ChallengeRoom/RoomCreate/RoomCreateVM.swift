@@ -67,11 +67,21 @@ class RoomCreateVM: BaseViewModel {
         input.limitPeople
             .distinctUntilChanged()
             .bind(to: limitPeople).disposed(by: disposeBag)
-        input.saveButtonTap
-            .bind(with: self) { owner, image in
-                guard let image else {return}
-                LSLPNetworkManger.shared.createChallengeRoom(book: owner.bookDTO!, title: roomTitle.value, content: roomContent.value, date: "2024820", files: image)
-            }.disposed(by: disposeBag)
+//        input.saveButtonTap
+//            .throttle(.seconds(1), scheduler: MainScheduler.instance)
+//            .flatMap {_ in
+//            }
+//            .subscribe(with: self) { owner, data in
+//                print(data)
+//            }.disposed(by: disposeBag)
+//            .bind(with: self) { owner, image in
+//                guard let image else {return}
+//                
+//                LSLPNetworkManger.shared.requestContentPost(requestType: .contentPost(content: ContentPostBody(book: owner.bookDTO!, title: roomTitle.value, content: roomContent.value, date: "20212424", files: nil)), resultModel: ImagePostDTO.self)
+                    
+                    
+                
+           // }.disposed(by: disposeBag)
         
         
         
