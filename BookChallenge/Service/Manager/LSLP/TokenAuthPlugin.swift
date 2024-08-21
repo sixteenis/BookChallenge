@@ -24,9 +24,9 @@ final class TokenAuthPlugin: PluginType {
             else {
               return request
             }
-
+        
             var request = request
-            request.addValue(token, forHTTPHeaderField: "Authorization")
+        request.addValue(token, forHTTPHeaderField: BaseHeader.authorization.rawValue)
             return request
     }
 }

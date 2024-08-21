@@ -47,12 +47,15 @@ final class LoginVM: BaseViewModel {
         input.loginTap //로그인 버튼 누를 시 필터링 해주기
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .flatMap {
-                LSLPNetworkManger.shared.requestRx(requestType: .login(login: LoginBody(email: "P@zz.zz", password: "1")), resultModel: LoginDTO.self)
+                LSLPNetworkManager.shared.requestRx(requestType: .login(login: LoginBody(email: "P@zz.zz", password: "1")), resultModel: LoginDTO.self)
             }
             .bind(with: self) { owner, data in
                 switch data{
                 case .success(let login):
                     UserManager.shared.token = login.token
+                    print("---")
+                    print(login.token)
+                    print("---")
                     UserManager.shared.refreshToken = login.refresh
                     UserManager.shared.email = login.email
                     print("로그인 성공")

@@ -93,7 +93,7 @@
 		065953922C6F6BF20048821E /* ShowTopBookCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953912C6F6BF20048821E /* ShowTopBookCollectionCell.swift */; };
 		06F93F592C7366D0002F5513 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F582C7366D0002F5513 /* BookModel.swift */; };
 		06F93F5B2C737689002F5513 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5A2C737689002F5513 /* Font+.swift */; };
-		06F93F5D2C7398EB002F5513 /* LSLPNetworkManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5C2C7398EB002F5513 /* LSLPNetworkManger.swift */; };
+		06F93F5D2C7398EB002F5513 /* LSLPNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5C2C7398EB002F5513 /* LSLPNetworkManager.swift */; };
 		06F93F5F2C73A318002F5513 /* PostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5E2C73A318002F5513 /* PostDTO.swift */; };
 /* End PBXBuildFile section */
 
@@ -176,7 +176,7 @@
 		065953912C6F6BF20048821E /* ShowTopBookCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTopBookCollectionCell.swift; sourceTree = "<group>"; };
 		06F93F582C7366D0002F5513 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		06F93F5A2C737689002F5513 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
-		06F93F5C2C7398EB002F5513 /* LSLPNetworkManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPNetworkManger.swift; sourceTree = "<group>"; };
+		06F93F5C2C7398EB002F5513 /* LSLPNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPNetworkManager.swift; sourceTree = "<group>"; };
 		06F93F5E2C73A318002F5513 /* PostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -467,7 +467,7 @@
 			children = (
 				061A34AF2C7606CF00491DB1 /* DTO */,
 				065953662C6E64360048821E /* User */,
-				06F93F5C2C7398EB002F5513 /* LSLPNetworkManger.swift */,
+				06F93F5C2C7398EB002F5513 /* LSLPNetworkManager.swift */,
 				061A34C02C76390100491DB1 /* TokenAuthPlugin.swift */,
 				0652C8612C723A7500BDC64E /* BaseHeader.swift */,
 				061A34AD2C7606C700491DB1 /* LSLPRouter.swift */,
@@ -636,7 +636,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06F93F5D2C7398EB002F5513 /* LSLPNetworkManger.swift in Sources */,
+				06F93F5D2C7398EB002F5513 /* LSLPNetworkManager.swift in Sources */,
 				06F93F5B2C737689002F5513 /* Font+.swift in Sources */,
 				0652C8532C70DAA500BDC64E /* RefreshTokeDTO.swift in Sources */,
 				0652C8302C6FB89E00BDC64E /* ShowTopBookVM.swift in Sources */,

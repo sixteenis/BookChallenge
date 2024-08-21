@@ -52,7 +52,6 @@ class RoomCreateVM: BaseViewModel {
                 // TODO: 디테일 책 가져오는 과정에서 오류 발생 시 예외처리 해주기
                 case .failure(let error):
                     successNetWork.accept(false)
-                    print(error)
                 }
             }.disposed(by: disposeBag)
         input.datePickerTap
@@ -67,8 +66,27 @@ class RoomCreateVM: BaseViewModel {
         input.limitPeople
             .distinctUntilChanged()
             .bind(to: limitPeople).disposed(by: disposeBag)
-//        input.saveButtonTap
-//            .throttle(.seconds(1), scheduler: MainScheduler.instance)
+        
+        input.saveButtonTap
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
+            .flatMap { _ in
+                LSLPNetworkManager.shared.requestRx(requestType: .contentPost(content: ContentPostBody(book: self.bookDTO!, title: "감자....", content: "고구마...", date: "20241111", files: nil)), resultModel: ContentPostDTO.self)
+                //LSLPNetworkManger.shared.requestRx(requestType: .imagePost(image: ImagePostBody(files: $0!)), resultModel: ImagePostDTO.self)
+//                LSLPNetworkManger.shared.requestRx(requestType: .imagePost(image: ImagePostBody(files: $0!)), resultModel: ImagePostDTO.self)
+            }
+            .bind(with: self) { owner, respons in
+                print("통신 결과!@--------")
+                print(respons)
+            }.disposed(by: disposeBag)
+//            .bind(with: self) { owner, respons in
+//                switch respons {
+//                case .success(let image):
+//                    let _ = LSLPNetworkManger.shared.requestRx(requestType: .contentPost(content: ContentPostBody(book: owner.bookDTO!, title: roomTitle.value, content: roomContent.value, date: "20241212", files: FilesDTO(files: image.files))), resultModel: ContentPostDTO.self)
+//                case .failure(let err):
+//                    print(err)
+//                }
+//                
+//            }.disposed(by: disposeBag)
 //            .flatMap {_ in
 //            }
 //            .subscribe(with: self) { owner, data in

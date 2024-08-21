@@ -57,9 +57,10 @@ extension LSLPRouter: CatchErrorTargetType {
         case .login(let login):
             return .requestJSONEncodable(login)
         case .refresh(let refresh):
-            return .requestJSONEncodable(refresh)
+            return .requestPlain
         case .imagePost(let image):
-            return .requestJSONEncodable(image)
+            let bookjpg = MultipartFormData(provider: .data(image.files), name: "files", fileName: "BookChallenge.jpg", mimeType: "image/jpeg")
+            return .uploadMultipart([bookjpg])
         case .contentPost(let content):
             return .requestJSONEncodable(content)
         case .imgeLoad(let imagePath):
@@ -70,15 +71,18 @@ extension LSLPRouter: CatchErrorTargetType {
         switch self {
         case .refresh(let token):
             [
-                BaseHeader.contentType.rawValue: BaseHeader.json.rawValue,
-                BaseHeader.sesacKey.rawValue: LSLP.key,
-                BaseHeader.refresh.rawValue: token
+                BaseHeader.sesacKey.rawValue: LSLP.key
+            ]
+        case .imagePost:
+            [
+                BaseHeader.contentType.rawValue: BaseHeader.multipart.rawValue,
+                BaseHeader.sesacKey.rawValue: LSLP.key
+                
             ]
         default:
             [
                 BaseHeader.contentType.rawValue: BaseHeader.json.rawValue,
                 BaseHeader.sesacKey.rawValue: LSLP.key,
-                BaseHeader.authorization.rawValue: UserManager.shared.token
             ]
         }
     }

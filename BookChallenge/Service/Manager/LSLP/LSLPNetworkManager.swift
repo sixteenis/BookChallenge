@@ -17,8 +17,8 @@ import RxMoya
     case failure(Error)
 }
 
-final class LSLPNetworkManger {
-    static let shared = LSLPNetworkManger()
+final class LSLPNetworkManager {
+    static let shared = LSLPNetworkManager()
     private let disposeBag = DisposeBag()
     let provider = MoyaProvider<LSLPRouter>(plugins: [TokenAuthPlugin(tokenClosure: {
         UserManager.shared.token
@@ -26,20 +26,23 @@ final class LSLPNetworkManger {
     private init() {}
     
     func requestRx<D: Decodable>(requestType: LSLPRouter, resultModel: D.Type) -> Single<NetworkResult<D>> {
-        return Single.create { single in
+        print(UserManager.shared.token)
+        return Single<NetworkResult<D>>.create { single in
             self.provider.rx.request(requestType)
                 .debug()
-                .catch{ err in
+                .catch({ err in
+
                     guard let moyaError = err as? MoyaError,
                           let statusCode = moyaError.response?.statusCode,
                           statusCode == 419 else {return Single.error(err)}
                     return Single.create { refreshSingle in
-                        self.provider.request(.refresh(token: UserManager.shared.token)) { result in
+                        self.provider.request(.refresh(token: UserManager.shared.refreshToken)) { result in
                             switch result {
                             case .success(let response):
                                 do {
                                     let decodeData = try JSONDecoder().decode(RefreshTokeDTO.self, from: response.data)
                                     UserManager.shared.token = decodeData.accessToken
+
                                     return refreshSingle(.failure(err))
                                 } catch {
                                     return refreshSingle(.failure(err))
@@ -52,7 +55,7 @@ final class LSLPNetworkManger {
                         return Disposables.create()
                         
                     }
-                }
+                })
                 .retry(3)
                 .debug()
                 .subscribe(with: self) { owner, response in
