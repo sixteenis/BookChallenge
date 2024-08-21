@@ -376,8 +376,8 @@
 		065953572C6E38930048821E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				065953902C6F6BDD0048821E /* CollectionCell */,
 				065953232C6E31E80048821E /* TabBarController.swift */,
+				065953902C6F6BDD0048821E /* CollectionCell */,
 				0652C8342C6FFF1C00BDC64E /* DetailBook */,
 				065953892C6F58B30048821E /* BookSearch */,
 				065953802C6F3B500048821E /* ChallengeRoom */,

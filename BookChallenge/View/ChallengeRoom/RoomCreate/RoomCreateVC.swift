@@ -25,8 +25,10 @@ final class RoomCreateVC: BaseViewController, FetchImageProtocol {
     private let bookDescription = UILabel()
     
     private let bookDivisionContentLine = UIView()
-    private let datePicker = UIDatePicker()
     private let datePickerHeader = UILabel()
+    private let datePicker = UIDatePicker()
+    private let limitPeopleHeader = UILabel()
+    private let limitPeople = UITextField()
     private let roomTitleView = UIView()
     private let roomTitle = UITextField()
     private let roomContentView = UIView()
@@ -51,7 +53,7 @@ final class RoomCreateVC: BaseViewController, FetchImageProtocol {
             .map { owner, _ in owner.bookImage.image?.jpegData(compressionQuality: 0.5) }
         
         let getbookId = PublishSubject<String>()
-        let input = RoomCreateVM.Input(getbookId: getbookId, datePickerTap: datePicker.rx.date, roomTitle: roomTitle.rx.text.orEmpty, roomContent: roomContent.rx.text.orEmpty, saveButtonTap: saveButtonRx)
+        let input = RoomCreateVM.Input(getbookId: getbookId, datePickerTap: datePicker.rx.date, limitPeople: limitPeople.rx.text.orEmpty, roomTitle: roomTitle.rx.text.orEmpty, roomContent: roomContent.rx.text.orEmpty, saveButtonTap: saveButtonRx)
 
         let output = vm.transform(input: input)
         output.bookInfor
@@ -99,6 +101,8 @@ final class RoomCreateVC: BaseViewController, FetchImageProtocol {
         contentView.addSubview(bookDivisionContentLine)
         contentView.addSubview(datePickerHeader)
         contentView.addSubview(datePicker)
+        contentView.addSubview(limitPeopleHeader)
+        contentView.addSubview(limitPeople)
         contentView.addSubview(roomTitleView)
         contentView.addSubview(roomTitle)
         contentView.addSubview(roomContentView)
@@ -217,8 +221,17 @@ private extension RoomCreateVC {
             make.trailing.equalTo(contentView).inset(15)
             make.height.equalTo(44)
         }
+        limitPeopleHeader.snp.makeConstraints { make in
+            make.centerY.equalTo(limitPeople)
+            make.leading.equalTo(contentView).inset(15)
+        }
+        limitPeople.snp.makeConstraints { make in
+            make.top.equalTo(datePicker.snp.bottom).offset(15)
+            make.trailing.equalTo(contentView).inset(15)
+            make.height.equalTo(44)
+        }
         roomTitleView.snp.makeConstraints { make in
-            make.top.equalTo(datePicker.snp.bottom).offset(10)
+            make.top.equalTo(limitPeople.snp.bottom).offset(10)
             make.horizontalEdges.equalTo(contentView).inset(15)
             make.height.equalTo(44)
         }
@@ -251,6 +264,11 @@ private extension RoomCreateVC {
         roomContent.text = "내용을 입력해 주세요."
         roomContent.textColor = .placeholder
         roomContent.font = .font13
+        
+        limitPeopleHeader.text = "참가 인원 선택 - 인원 2~20명"
+        limitPeople.placeholder = "숫자만 입력!"
+        limitPeople.keyboardType = .numberPad
+        limitPeople.contentMode = .right
     }
     func setUpDatePicker() {
         datePickerHeader.text = "챌린지 종료일"

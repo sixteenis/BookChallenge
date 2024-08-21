@@ -15,6 +15,7 @@ class RoomCreateVM: BaseViewModel {
     struct Input {
         let getbookId: PublishSubject<String>
         let datePickerTap: ControlProperty<Date>
+        let limitPeople: ControlProperty<String>
         let roomTitle: ControlProperty<String>
         let roomContent: ControlProperty<String>
         let saveButtonTap: Observable<Data?>
@@ -28,14 +29,18 @@ class RoomCreateVM: BaseViewModel {
         let bookInfor = PublishSubject<BookModel>()
         let successNetWork = BehaviorRelay(value: false)
         let datePicker = PublishRelay<Date>()
+        let limitPeople = BehaviorRelay(value: "")
         let roomTitle = BehaviorRelay(value: "")
         let roomContent = BehaviorRelay(value: "")
         let saveButtonTap = PublishRelay<Void>()
-        
-        let isSaveEnable = Observable.combineLatest(successNetWork, roomTitle, roomContent)
-            .map { success, title, content in
-                return success && !roomTitle.value.isEmpty && !roomContent.value.isEmpty
+        let isSaveEnable = Observable.combineLatest(successNetWork, limitPeople, roomTitle, roomContent)
+            .map { success, people, title, content in
+                let num = Int(people)
+                guard let num else {return false}
+                let numResult = 2 <= num && num <= 20
+                return success && !title.isEmpty && !content.isEmpty && numResult
             }//북 데이터 값이 있는지, 텍스트들이 다 들어있는지 판단하기
+        
         input.getbookId
             .flatMap { AladinManager.shared.getBookDetail(id: $0)}
             .bind(with: self) { owner, result in
@@ -59,7 +64,9 @@ class RoomCreateVM: BaseViewModel {
         input.roomContent
             .distinctUntilChanged()
             .bind(to: roomContent).disposed(by: disposeBag)
-        
+        input.limitPeople
+            .distinctUntilChanged()
+            .bind(to: limitPeople).disposed(by: disposeBag)
         input.saveButtonTap
             .bind(with: self) { owner, image in
                 guard let image else {return}

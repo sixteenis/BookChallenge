@@ -17,9 +17,11 @@ final class LSLPNetworkManger {
     private init() {}
     let manger = PostManger.shared
     func createChallengeRoom(book: BookDTO, title: String, content: String, date: String, files: Data) {
+        
         manger.uploadPostFiles(data: files) { [weak self] data in
             self?.manger.uploadPostContent(book: book, title: title, content: content, date: date, file: data)
         }
         
     }
+    
 }
