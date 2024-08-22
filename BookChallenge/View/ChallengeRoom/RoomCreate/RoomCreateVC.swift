@@ -66,7 +66,14 @@ final class RoomCreateVC: BaseViewController, FetchImageProtocol {
                 print(isEnable)
                 owner.setUpSaveButton(isEnable)
             }.disposed(by: disposeBag)
-        
+        output.finshNetwork
+            .bind(with: self) { owner, _ in
+                owner.dismiss(animated: true)
+            }.disposed(by: disposeBag)
+        output.netwrokErr
+            .bind(with: self) { owner, err in
+                owner.simpleAlert(type: err)
+            }.disposed(by: disposeBag)
             
         bookSearchButton.rx.tap //서치버튼 누르면 책 검색뷰로 이동
             .bind(with: self) { owner, _ in

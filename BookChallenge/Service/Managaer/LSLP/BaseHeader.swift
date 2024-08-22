@@ -8,13 +8,11 @@
 import Foundation
 
 enum BaseHeader: String {
-    case authorization = "Authorization"
     case sesacKey = "SesacKey"
+    case authorization = "Authorization"
+    case refresh = "Refresh"
     
     case contentType = "Content-Type"
-    
-    case json = "application/json"
-    
-    case refresh = "Refresh"
     case multipart = "multipart/form-data"
+    case json = "application/json"
 }

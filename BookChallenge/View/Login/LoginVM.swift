@@ -22,7 +22,7 @@ final class LoginVM: BaseViewModel {
         let joinTap: ControlEvent<Void>
     }
     struct Output {
-        let err: PublishRelay<LSLPError>
+        let err: PublishRelay<AlertErrProtocol>
         let nextView: Observable<Void>
         let joinTap: ControlEvent<Void>
         let networkLoading: BehaviorRelay<Bool>
@@ -34,7 +34,7 @@ final class LoginVM: BaseViewModel {
         
         let result = PublishRelay<(String,String)>() // 필터링 후 결과를 통해 네트워킹 시작
         let loading = BehaviorRelay(value: false) //네트워킹 시작 유무
-        let error = PublishRelay<LSLPError>() // 네트워킹 오류 시
+        let error = PublishRelay<AlertErrProtocol>() // 네트워킹 오류 시
         let nextView = PublishSubject<Void>() //성공 시 다음 화면 전환
         
         input.emailText
@@ -47,7 +47,8 @@ final class LoginVM: BaseViewModel {
         input.loginTap //로그인 버튼 누를 시 필터링 해주기
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .flatMap {
-                LSLPNetworkManager.shared.requestRx(requestType: .login(login: LoginBody(email: "P@zz.zz", password: "1")), resultModel: LoginDTO.self)
+                //LSLPNetworkManager.shared.request(target: .login(login: LoginBody(email: "P@zz.zz", password: "1")), dto: LoginDTO.self)
+                LSLPNetworkManager.shared.request(target: .login(login: .init(email: "P@zz.zz", password: "1")), dto: LoginDTO.self)
             }
             .bind(with: self) { owner, data in
                 switch data{
@@ -74,17 +75,17 @@ final class LoginVM: BaseViewModel {
 //            }.disposed(by: disposeBag)
 //        
         
-        result //필터링에서 조건 만족 시 통신 시작
-            .subscribe(with: self) { owner, respon in
-                LSLPUserManager.shared.createLogin(email: respon.0, password: respon.1) { respon in
-                    switch respon {
-                    case .success(_):
-                        nextView.onNext(())
-                    case .failure(let err):
-                        error.accept(err)
-                    }
-                }
-            }.disposed(by: disposeBag)
+//        result //필터링에서 조건 만족 시 통신 시작
+//            .subscribe(with: self) { owner, respon in
+//                LSLPNetworkManager.shared.createLogin(email: respon.0, password: respon.1) { respon in
+//                    switch respon {
+//                    case .success(_):
+//                        nextView.onNext(())
+//                    case .failure(let err):
+//                        error.accept(err)
+//                    }
+//                }
+//            }.disposed(by: disposeBag)
 
         return Output(err: error, nextView: nextView, joinTap: input.joinTap, networkLoading: loading)
     }

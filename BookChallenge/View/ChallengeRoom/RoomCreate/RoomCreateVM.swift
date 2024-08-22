@@ -23,6 +23,8 @@ class RoomCreateVM: BaseViewModel {
     struct Output {
         let bookInfor: Observable<BookModel>
         let isSaveTap: Observable<Bool>
+        let netwrokErr: Observable<AlertErrProtocol>
+        let finshNetwork: Observable<Void>
     }
     
     func transform(input: Input) -> Output {
@@ -33,6 +35,12 @@ class RoomCreateVM: BaseViewModel {
         let roomTitle = BehaviorRelay(value: "")
         let roomContent = BehaviorRelay(value: "")
         let saveButtonTap = PublishRelay<Void>()
+        
+        // MARK: - 통신 부분
+        let netwrokErr = PublishRelay<AlertErrProtocol>()
+        let successImage = BehaviorRelay(value: [String]())
+        let successPost = BehaviorRelay(value: "")
+        let finshNetwork = PublishRelay<Void>()
         let isSaveEnable = Observable.combineLatest(successNetWork, limitPeople, roomTitle, roomContent)
             .map { success, people, title, content in
                 let num = Int(people)
@@ -49,7 +57,7 @@ class RoomCreateVM: BaseViewModel {
                     bookInfor.onNext(BookModel(dto: book))
                     owner.bookDTO = book
                     successNetWork.accept(true)
-                // TODO: 디테일 책 가져오는 과정에서 오류 발생 시 예외처리 해주기
+                    // TODO: 디테일 책 가져오는 과정에서 오류 발생 시 예외처리 해주기
                 case .failure(let error):
                     successNetWork.accept(false)
                 }
@@ -66,44 +74,56 @@ class RoomCreateVM: BaseViewModel {
         input.limitPeople
             .distinctUntilChanged()
             .bind(to: limitPeople).disposed(by: disposeBag)
-        
         input.saveButtonTap
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
-            .flatMap { _ in
-                LSLPNetworkManager.shared.requestRx(requestType: .contentPost(content: ContentPostBody(book: self.bookDTO!, title: "감자....", content: "고구마...", date: "20241111", files: nil)), resultModel: ContentPostDTO.self)
-                //LSLPNetworkManger.shared.requestRx(requestType: .imagePost(image: ImagePostBody(files: $0!)), resultModel: ImagePostDTO.self)
-//                LSLPNetworkManger.shared.requestRx(requestType: .imagePost(image: ImagePostBody(files: $0!)), resultModel: ImagePostDTO.self)
+            .map {
+                guard let image = $0 else {return Data()}
+                return image
             }
-            .bind(with: self) { owner, respons in
-                print("통신 결과!@--------")
-                print(respons)
+            .flatMap {
+                LSLPNetworkManager.shared.request(target: .imagePost(image: .init(files: $0)), dto: ImagePostDTO.self)
+            }
+            .subscribe(with: self) { owner, respons in
+                switch respons {
+                case .success(let respons):
+                    successImage.accept(respons.files)
+                case .failure(let err):
+                    netwrokErr.accept(err)
+                }
             }.disposed(by: disposeBag)
-//            .bind(with: self) { owner, respons in
-//                switch respons {
-//                case .success(let image):
-//                    let _ = LSLPNetworkManger.shared.requestRx(requestType: .contentPost(content: ContentPostBody(book: owner.bookDTO!, title: roomTitle.value, content: roomContent.value, date: "20241212", files: FilesDTO(files: image.files))), resultModel: ContentPostDTO.self)
-//                case .failure(let err):
-//                    print(err)
-//                }
-//                
-//            }.disposed(by: disposeBag)
-//            .flatMap {_ in
-//            }
-//            .subscribe(with: self) { owner, data in
-//                print(data)
-//            }.disposed(by: disposeBag)
-//            .bind(with: self) { owner, image in
-//                guard let image else {return}
-//                
-//                LSLPNetworkManger.shared.requestContentPost(requestType: .contentPost(content: ContentPostBody(book: owner.bookDTO!, title: roomTitle.value, content: roomContent.value, date: "20212424", files: nil)), resultModel: ImagePostDTO.self)
-                    
-                    
+        
+        successImage
+            .flatMap {
                 
-           // }.disposed(by: disposeBag)
+                LSLPNetworkManager.shared.request(target: .contentPost(content: ContentPostBody(book: self.bookDTO ?? BookDTO(title: "", author: "", pubDate: "", description: "", isbn13: "", cover: "", publisher: "", priceSales: 1, subInfo: SubInfo(itemPage: nil, subTitle: nil)), title: roomTitle.value, deadLine: limitPeople.value, limitPreson: Int(limitPeople.value) ?? 0, content: roomContent.value, files: $0)), dto: ContentPostDTO.self)
+            }
+            .subscribe(with: self) { owner, response in
+                switch response {
+                case .success(let data):
+                    successPost.accept(data.post_id)
+                case .failure(let err):
+                    netwrokErr.accept(err)
+                    
+                }
+                
+            }.disposed(by: disposeBag)
+        successPost
+            .flatMap {
+                LSLPNetworkManager.shared.request(target: .like(body: .init(like_status: false), postId: $0), dto: LikeDTO.self)
+            }
+            .subscribe(with: self) { owner, response in
+                switch response {
+                case .success(_):
+                    finshNetwork.accept(())
+                case .failure(let err):
+                    netwrokErr.accept(err)
+                }
+                
+            }.disposed(by: disposeBag)
+            
         
         
-        
-        return Output(bookInfor: bookInfor, isSaveTap: isSaveEnable)
+        return Output(bookInfor: bookInfor, isSaveTap: isSaveEnable, netwrokErr: netwrokErr.asObservable(), finshNetwork: finshNetwork.asObservable())
     }
     
 }

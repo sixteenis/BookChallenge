@@ -15,7 +15,9 @@ struct BookDTO: Decodable, BookProtocol {
     let isbn13: String
     let cover: String
     let publisher: String //출판사
+    let priceSales: Int
     let subInfo: SubInfo
+    
 }
 
 struct SubInfo: Decodable {

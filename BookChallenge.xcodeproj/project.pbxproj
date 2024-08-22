@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		060301DE2C7734080058A113 /* JoinDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060301DD2C7734080058A113 /* JoinDTO.swift */; };
+		060301E02C7734CB0058A113 /* WithdrawDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060301DF2C7734CB0058A113 /* WithdrawDTO.swift */; };
 		061A34AC2C76069800491DB1 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 061A34AB2C76069800491DB1 /* Moya */; };
 		061A34AE2C7606C700491DB1 /* LSLPRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061A34AD2C7606C700491DB1 /* LSLPRouter.swift */; };
-		061A34B12C76073000491DB1 /* validationEamilModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061A34B02C76073000491DB1 /* validationEamilModel.swift */; };
-		061A34B32C76081C00491DB1 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061A34B22C76081C00491DB1 /* LoginModel.swift */; };
-		061A34B52C7612F400491DB1 /* contentPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061A34B42C7612F400491DB1 /* contentPostModel.swift */; };
-		061A34B72C76132800491DB1 /* ImagePostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061A34B62C76132800491DB1 /* ImagePostModel.swift */; };
+		061A34B12C76073000491DB1 /* validationEamilDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061A34B02C76073000491DB1 /* validationEamilDTO.swift */; };
+		061A34B32C76081C00491DB1 /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061A34B22C76081C00491DB1 /* LoginDTO.swift */; };
+		061A34B52C7612F400491DB1 /* contentPostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061A34B42C7612F400491DB1 /* contentPostDTO.swift */; };
+		061A34B72C76132800491DB1 /* ImagePostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061A34B62C76132800491DB1 /* ImagePostDTO.swift */; };
 		061A34BB2C76176B00491DB1 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 061A34BA2C76176B00491DB1 /* RxMoya */; };
-		061A34C12C76390100491DB1 /* TokenAuthPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061A34C02C76390100491DB1 /* TokenAuthPlugin.swift */; };
+		061A34C72C76616B00491DB1 /* RefreshTokenDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061A34C62C76616B00491DB1 /* RefreshTokenDTO.swift */; };
+		061A34CB2C76644C00491DB1 /* PostProductID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061A34CA2C76644C00491DB1 /* PostProductID.swift */; };
+		061A34CD2C76653D00491DB1 /* LSLPInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061A34CC2C76653D00491DB1 /* LSLPInterceptor.swift */; };
+		061A34CF2C766CF300491DB1 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061A34CE2C766CF300491DB1 /* NetworkError.swift */; };
 		0652C81C2C6F7CBB00BDC64E /* UserChallengeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C81B2C6F7CBB00BDC64E /* UserChallengeCollectionCell.swift */; };
 		0652C81E2C6F7EC200BDC64E /* ChallengeRoomCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C81D2C6F7EC200BDC64E /* ChallengeRoomCollectionCell.swift */; };
 		0652C8202C6F906200BDC64E /* CarouseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C81F2C6F906200BDC64E /* CarouseLayout.swift */; };
@@ -33,15 +38,7 @@
 		0652C8472C70A23200BDC64E /* BookListCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8462C70A23200BDC64E /* BookListCollectionCell.swift */; };
 		0652C84B2C70A57700BDC64E /* BookProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C84A2C70A57700BDC64E /* BookProtocol.swift */; };
 		0652C84F2C70ADB400BDC64E /* FetchImageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C84E2C70ADB400BDC64E /* FetchImageProtocol.swift */; };
-		0652C8532C70DAA500BDC64E /* RefreshTokeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8522C70DAA500BDC64E /* RefreshTokeDTO.swift */; };
-		0652C8572C70DCDD00BDC64E /* PostManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8562C70DCDD00BDC64E /* PostManger.swift */; };
-		0652C85B2C70DD9200BDC64E /* PostRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C85A2C70DD9200BDC64E /* PostRouter.swift */; };
-		0652C85D2C721A0F00BDC64E /* EditProfileQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C85C2C721A0F00BDC64E /* EditProfileQuery.swift */; };
-		0652C85F2C721B8C00BDC64E /* ProfileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C85E2C721B8C00BDC64E /* ProfileDTO.swift */; };
 		0652C8622C723A7500BDC64E /* BaseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8612C723A7500BDC64E /* BaseHeader.swift */; };
-		0652C8662C723AFF00BDC64E /* FilesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8652C723AFF00BDC64E /* FilesDTO.swift */; };
-		0652C8682C723FA400BDC64E /* UploadPostFilesBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8672C723FA400BDC64E /* UploadPostFilesBody.swift */; };
-		0652C86A2C72406500BDC64E /* UploadPostContentsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8692C72406500BDC64E /* UploadPostContentsBody.swift */; };
 		0652C86D2C72553B00BDC64E /* RoomCreateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C86C2C72553B00BDC64E /* RoomCreateVC.swift */; };
 		0652C86F2C7268AF00BDC64E /* JustPlustView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C86E2C7268AF00BDC64E /* JustPlustView.swift */; };
 		0652C87D2C732B0700BDC64E /* RoomCreateVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C87C2C732B0700BDC64E /* RoomCreateVM.swift */; };
@@ -74,15 +71,10 @@
 		065953542C6E34540048821E /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953532C6E34540048821E /* BaseViewModel.swift */; };
 		065953562C6E34DC0048821E /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953552C6E34DC0048821E /* LoginVM.swift */; };
 		0659535A2C6E3B540048821E /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953592C6E3B540048821E /* SignUpVC.swift */; };
-		0659535D2C6E4B750048821E /* LSLPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659535C2C6E4B750048821E /* LSLPError.swift */; };
-		065953602C6E56530048821E /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659535F2C6E56530048821E /* Alert.swift */; };
+		065953602C6E56530048821E /* AlertErrProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659535F2C6E56530048821E /* AlertErrProtocol.swift */; };
 		065953622C6E57B00048821E /* SignUpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953612C6E57B00048821E /* SignUpVM.swift */; };
 		065953652C6E64280048821E /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953642C6E64280048821E /* UserDefault.swift */; };
 		065953682C6E644A0048821E /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953672C6E644A0048821E /* UserManager.swift */; };
-		0659536A2C6E68810048821E /* LSLPUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953692C6E68810048821E /* LSLPUserManager.swift */; };
-		0659536F2C6E69500048821E /* UserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659536E2C6E69500048821E /* UserRouter.swift */; };
-		065953712C6E695C0048821E /* LSLPTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953702C6E695C0048821E /* LSLPTargetType.swift */; };
-		065953742C6E6A260048821E /* LoginQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953732C6E6A260048821E /* LoginQuery.swift */; };
 		0659537A2C6F36340048821E /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953792C6F36340048821E /* MainVC.swift */; };
 		0659537C2C6F388D0048821E /* ChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659537B2C6F388D0048821E /* ChangeView.swift */; };
 		0659537E2C6F3B420048821E /* BookStorageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659537D2C6F3B420048821E /* BookStorageVC.swift */; };
@@ -91,19 +83,31 @@
 		0659538B2C6F58BE0048821E /* BookSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659538A2C6F58BE0048821E /* BookSearchVC.swift */; };
 		0659538D2C6F59BA0048821E /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659538C2C6F59BA0048821E /* BaseButton.swift */; };
 		065953922C6F6BF20048821E /* ShowTopBookCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953912C6F6BF20048821E /* ShowTopBookCollectionCell.swift */; };
+		06CF472A2C7736D400EC0645 /* RoomState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47292C7736D400EC0645 /* RoomState.swift */; };
+		06CF472C2C773B0400EC0645 /* SearchPostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF472B2C773B0400EC0645 /* SearchPostDTO.swift */; };
+		06CF47302C77580D00EC0645 /* CommentsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF472F2C77580D00EC0645 /* CommentsDTO.swift */; };
+		06CF47322C77585F00EC0645 /* LikeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47312C77585F00EC0645 /* LikeDTO.swift */; };
+		06CF47342C77607100EC0645 /* LikePostsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47332C77607100EC0645 /* LikePostsDTO.swift */; };
+		06CF47362C7761DA00EC0645 /* FetchPostsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47352C7761DA00EC0645 /* FetchPostsDTO.swift */; };
+		06CF47382C77636F00EC0645 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47372C77636F00EC0645 /* UserDTO.swift */; };
+		06CF473A2C77649D00EC0645 /* HashtagPostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47392C77649D00EC0645 /* HashtagPostDTO.swift */; };
 		06F93F592C7366D0002F5513 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F582C7366D0002F5513 /* BookModel.swift */; };
 		06F93F5B2C737689002F5513 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5A2C737689002F5513 /* Font+.swift */; };
 		06F93F5D2C7398EB002F5513 /* LSLPNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5C2C7398EB002F5513 /* LSLPNetworkManager.swift */; };
-		06F93F5F2C73A318002F5513 /* PostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5E2C73A318002F5513 /* PostDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		060301DD2C7734080058A113 /* JoinDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinDTO.swift; sourceTree = "<group>"; };
+		060301DF2C7734CB0058A113 /* WithdrawDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawDTO.swift; sourceTree = "<group>"; };
 		061A34AD2C7606C700491DB1 /* LSLPRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPRouter.swift; sourceTree = "<group>"; };
-		061A34B02C76073000491DB1 /* validationEamilModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = validationEamilModel.swift; sourceTree = "<group>"; };
-		061A34B22C76081C00491DB1 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
-		061A34B42C7612F400491DB1 /* contentPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contentPostModel.swift; sourceTree = "<group>"; };
-		061A34B62C76132800491DB1 /* ImagePostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePostModel.swift; sourceTree = "<group>"; };
-		061A34C02C76390100491DB1 /* TokenAuthPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenAuthPlugin.swift; sourceTree = "<group>"; };
+		061A34B02C76073000491DB1 /* validationEamilDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = validationEamilDTO.swift; sourceTree = "<group>"; };
+		061A34B22C76081C00491DB1 /* LoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
+		061A34B42C7612F400491DB1 /* contentPostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contentPostDTO.swift; sourceTree = "<group>"; };
+		061A34B62C76132800491DB1 /* ImagePostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePostDTO.swift; sourceTree = "<group>"; };
+		061A34C62C76616B00491DB1 /* RefreshTokenDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenDTO.swift; sourceTree = "<group>"; };
+		061A34CA2C76644C00491DB1 /* PostProductID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostProductID.swift; sourceTree = "<group>"; };
+		061A34CC2C76653D00491DB1 /* LSLPInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPInterceptor.swift; sourceTree = "<group>"; };
+		061A34CE2C766CF300491DB1 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		0652C81B2C6F7CBB00BDC64E /* UserChallengeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChallengeCollectionCell.swift; sourceTree = "<group>"; };
 		0652C81D2C6F7EC200BDC64E /* ChallengeRoomCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRoomCollectionCell.swift; sourceTree = "<group>"; };
 		0652C81F2C6F906200BDC64E /* CarouseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouseLayout.swift; sourceTree = "<group>"; };
@@ -122,15 +126,7 @@
 		0652C8462C70A23200BDC64E /* BookListCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListCollectionCell.swift; sourceTree = "<group>"; };
 		0652C84A2C70A57700BDC64E /* BookProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookProtocol.swift; sourceTree = "<group>"; };
 		0652C84E2C70ADB400BDC64E /* FetchImageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImageProtocol.swift; sourceTree = "<group>"; };
-		0652C8522C70DAA500BDC64E /* RefreshTokeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokeDTO.swift; sourceTree = "<group>"; };
-		0652C8562C70DCDD00BDC64E /* PostManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManger.swift; sourceTree = "<group>"; };
-		0652C85A2C70DD9200BDC64E /* PostRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRouter.swift; sourceTree = "<group>"; };
-		0652C85C2C721A0F00BDC64E /* EditProfileQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileQuery.swift; sourceTree = "<group>"; };
-		0652C85E2C721B8C00BDC64E /* ProfileDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDTO.swift; sourceTree = "<group>"; };
 		0652C8612C723A7500BDC64E /* BaseHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHeader.swift; sourceTree = "<group>"; };
-		0652C8652C723AFF00BDC64E /* FilesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesDTO.swift; sourceTree = "<group>"; };
-		0652C8672C723FA400BDC64E /* UploadPostFilesBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostFilesBody.swift; sourceTree = "<group>"; };
-		0652C8692C72406500BDC64E /* UploadPostContentsBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostContentsBody.swift; sourceTree = "<group>"; };
 		0652C86C2C72553B00BDC64E /* RoomCreateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCreateVC.swift; sourceTree = "<group>"; };
 		0652C86E2C7268AF00BDC64E /* JustPlustView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustPlustView.swift; sourceTree = "<group>"; };
 		0652C87C2C732B0700BDC64E /* RoomCreateVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCreateVM.swift; sourceTree = "<group>"; };
@@ -157,15 +153,10 @@
 		065953532C6E34540048821E /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		065953552C6E34DC0048821E /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		065953592C6E3B540048821E /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
-		0659535C2C6E4B750048821E /* LSLPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPError.swift; sourceTree = "<group>"; };
-		0659535F2C6E56530048821E /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		0659535F2C6E56530048821E /* AlertErrProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertErrProtocol.swift; sourceTree = "<group>"; };
 		065953612C6E57B00048821E /* SignUpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVM.swift; sourceTree = "<group>"; };
 		065953642C6E64280048821E /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		065953672C6E644A0048821E /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-		065953692C6E68810048821E /* LSLPUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPUserManager.swift; sourceTree = "<group>"; };
-		0659536E2C6E69500048821E /* UserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
-		065953702C6E695C0048821E /* LSLPTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPTargetType.swift; sourceTree = "<group>"; };
-		065953732C6E6A260048821E /* LoginQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginQuery.swift; sourceTree = "<group>"; };
 		065953792C6F36340048821E /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		0659537B2C6F388D0048821E /* ChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeView.swift; sourceTree = "<group>"; };
 		0659537D2C6F3B420048821E /* BookStorageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookStorageVC.swift; sourceTree = "<group>"; };
@@ -174,10 +165,17 @@
 		0659538A2C6F58BE0048821E /* BookSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchVC.swift; sourceTree = "<group>"; };
 		0659538C2C6F59BA0048821E /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		065953912C6F6BF20048821E /* ShowTopBookCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTopBookCollectionCell.swift; sourceTree = "<group>"; };
+		06CF47292C7736D400EC0645 /* RoomState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomState.swift; sourceTree = "<group>"; };
+		06CF472B2C773B0400EC0645 /* SearchPostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPostDTO.swift; sourceTree = "<group>"; };
+		06CF472F2C77580D00EC0645 /* CommentsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsDTO.swift; sourceTree = "<group>"; };
+		06CF47312C77585F00EC0645 /* LikeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeDTO.swift; sourceTree = "<group>"; };
+		06CF47332C77607100EC0645 /* LikePostsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikePostsDTO.swift; sourceTree = "<group>"; };
+		06CF47352C7761DA00EC0645 /* FetchPostsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPostsDTO.swift; sourceTree = "<group>"; };
+		06CF47372C77636F00EC0645 /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
+		06CF47392C77649D00EC0645 /* HashtagPostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashtagPostDTO.swift; sourceTree = "<group>"; };
 		06F93F582C7366D0002F5513 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		06F93F5A2C737689002F5513 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		06F93F5C2C7398EB002F5513 /* LSLPNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPNetworkManager.swift; sourceTree = "<group>"; };
-		06F93F5E2C73A318002F5513 /* PostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,10 +202,20 @@
 		061A34AF2C7606CF00491DB1 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				061A34B02C76073000491DB1 /* validationEamilModel.swift */,
-				061A34B22C76081C00491DB1 /* LoginModel.swift */,
-				061A34B42C7612F400491DB1 /* contentPostModel.swift */,
-				061A34B62C76132800491DB1 /* ImagePostModel.swift */,
+				06CF47372C77636F00EC0645 /* UserDTO.swift */,
+				060301DD2C7734080058A113 /* JoinDTO.swift */,
+				061A34B02C76073000491DB1 /* validationEamilDTO.swift */,
+				061A34B22C76081C00491DB1 /* LoginDTO.swift */,
+				061A34C62C76616B00491DB1 /* RefreshTokenDTO.swift */,
+				060301DF2C7734CB0058A113 /* WithdrawDTO.swift */,
+				061A34B62C76132800491DB1 /* ImagePostDTO.swift */,
+				061A34B42C7612F400491DB1 /* contentPostDTO.swift */,
+				06CF47352C7761DA00EC0645 /* FetchPostsDTO.swift */,
+				06CF472B2C773B0400EC0645 /* SearchPostDTO.swift */,
+				06CF472F2C77580D00EC0645 /* CommentsDTO.swift */,
+				06CF47312C77585F00EC0645 /* LikeDTO.swift */,
+				06CF47332C77607100EC0645 /* LikePostsDTO.swift */,
+				06CF47392C77649D00EC0645 /* HashtagPostDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -248,46 +256,6 @@
 				0652C8352C6FFF3E00BDC64E /* DetailBookVC.swift */,
 			);
 			path = DetailBook;
-			sourceTree = "<group>";
-		};
-		0652C8542C70DC4700BDC64E /* LSLPUser */ = {
-			isa = PBXGroup;
-			children = (
-				065953722C6E6A0F0048821E /* Query */,
-				065953752C6E6BB10048821E /* DTO */,
-				0659536E2C6E69500048821E /* UserRouter.swift */,
-				065953692C6E68810048821E /* LSLPUserManager.swift */,
-			);
-			path = LSLPUser;
-			sourceTree = "<group>";
-		};
-		0652C8552C70DC4B00BDC64E /* LSLPPost */ = {
-			isa = PBXGroup;
-			children = (
-				0652C8632C723AE900BDC64E /* Query */,
-				0652C8642C723AEE00BDC64E /* DTO */,
-				0652C85A2C70DD9200BDC64E /* PostRouter.swift */,
-				0652C8562C70DCDD00BDC64E /* PostManger.swift */,
-			);
-			path = LSLPPost;
-			sourceTree = "<group>";
-		};
-		0652C8632C723AE900BDC64E /* Query */ = {
-			isa = PBXGroup;
-			children = (
-				0652C8672C723FA400BDC64E /* UploadPostFilesBody.swift */,
-				0652C8692C72406500BDC64E /* UploadPostContentsBody.swift */,
-			);
-			path = Query;
-			sourceTree = "<group>";
-		};
-		0652C8642C723AEE00BDC64E /* DTO */ = {
-			isa = PBXGroup;
-			children = (
-				0652C8652C723AFF00BDC64E /* FilesDTO.swift */,
-				06F93F5E2C73A318002F5513 /* PostDTO.swift */,
-			);
-			path = DTO;
 			sourceTree = "<group>";
 		};
 		0652C86B2C72551700BDC64E /* RoomCreate */ = {
@@ -339,7 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				0659535B2C6E4B660048821E /* Error */,
-				065953632C6E640C0048821E /* Manager */,
+				065953632C6E640C0048821E /* Managaer */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -361,6 +329,8 @@
 			isa = PBXGroup;
 			children = (
 				065953362C6E31FF0048821E /* LoginTextType.swift */,
+				061A34CA2C76644C00491DB1 /* PostProductID.swift */,
+				06CF47292C7736D400EC0645 /* RoomState.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -426,8 +396,8 @@
 		0659535B2C6E4B660048821E /* Error */ = {
 			isa = PBXGroup;
 			children = (
-				0659535C2C6E4B750048821E /* LSLPError.swift */,
 				0652C82A2C6FB56000BDC64E /* AladinError.swift */,
+				061A34CE2C766CF300491DB1 /* NetworkError.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -435,7 +405,7 @@
 		0659535E2C6E56490048821E /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				0659535F2C6E56530048821E /* Alert.swift */,
+				0659535F2C6E56530048821E /* AlertErrProtocol.swift */,
 				0659537B2C6F388D0048821E /* ChangeView.swift */,
 				0652C84A2C70A57700BDC64E /* BookProtocol.swift */,
 				0652C84E2C70ADB400BDC64E /* FetchImageProtocol.swift */,
@@ -443,14 +413,15 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
-		065953632C6E640C0048821E /* Manager */ = {
+		065953632C6E640C0048821E /* Managaer */ = {
 			isa = PBXGroup;
 			children = (
 				065953382C6E32060048821E /* APIKey.swift */,
+				065953662C6E64360048821E /* User */,
 				0652C8212C6FAC5D00BDC64E /* Aladin */,
 				0659536B2C6E693C0048821E /* LSLP */,
 			);
-			path = Manager;
+			path = Managaer;
 			sourceTree = "<group>";
 		};
 		065953662C6E64360048821E /* User */ = {
@@ -466,34 +437,12 @@
 			isa = PBXGroup;
 			children = (
 				061A34AF2C7606CF00491DB1 /* DTO */,
-				065953662C6E64360048821E /* User */,
-				06F93F5C2C7398EB002F5513 /* LSLPNetworkManager.swift */,
-				061A34C02C76390100491DB1 /* TokenAuthPlugin.swift */,
 				0652C8612C723A7500BDC64E /* BaseHeader.swift */,
 				061A34AD2C7606C700491DB1 /* LSLPRouter.swift */,
-				065953702C6E695C0048821E /* LSLPTargetType.swift */,
-				0652C8552C70DC4B00BDC64E /* LSLPPost */,
-				0652C8542C70DC4700BDC64E /* LSLPUser */,
+				061A34CC2C76653D00491DB1 /* LSLPInterceptor.swift */,
+				06F93F5C2C7398EB002F5513 /* LSLPNetworkManager.swift */,
 			);
 			path = LSLP;
-			sourceTree = "<group>";
-		};
-		065953722C6E6A0F0048821E /* Query */ = {
-			isa = PBXGroup;
-			children = (
-				065953732C6E6A260048821E /* LoginQuery.swift */,
-				0652C85C2C721A0F00BDC64E /* EditProfileQuery.swift */,
-			);
-			path = Query;
-			sourceTree = "<group>";
-		};
-		065953752C6E6BB10048821E /* DTO */ = {
-			isa = PBXGroup;
-			children = (
-				0652C8522C70DAA500BDC64E /* RefreshTokeDTO.swift */,
-				0652C85E2C721B8C00BDC64E /* ProfileDTO.swift */,
-			);
-			path = DTO;
 			sourceTree = "<group>";
 		};
 		065953782C6F36280048821E /* Main */ = {
@@ -637,78 +586,77 @@
 			buildActionMask = 2147483647;
 			files = (
 				06F93F5D2C7398EB002F5513 /* LSLPNetworkManager.swift in Sources */,
+				06CF47342C77607100EC0645 /* LikePostsDTO.swift in Sources */,
+				06CF473A2C77649D00EC0645 /* HashtagPostDTO.swift in Sources */,
 				06F93F5B2C737689002F5513 /* Font+.swift in Sources */,
-				0652C8532C70DAA500BDC64E /* RefreshTokeDTO.swift in Sources */,
+				061A34CB2C76644C00491DB1 /* PostProductID.swift in Sources */,
 				0652C8302C6FB89E00BDC64E /* ShowTopBookVM.swift in Sources */,
 				0652C8442C70A1D000BDC64E /* BookSearchVM.swift in Sources */,
 				065953822C6F3B660048821E /* ChallengeRoomVC.swift in Sources */,
 				065953292C6E31E80048821E /* BaseCollectioViewCell.swift in Sources */,
 				0659537A2C6F36340048821E /* MainVC.swift in Sources */,
 				0652C8202C6F906200BDC64E /* CarouseLayout.swift in Sources */,
-				0652C8682C723FA400BDC64E /* UploadPostFilesBody.swift in Sources */,
+				060301E02C7734CB0058A113 /* WithdrawDTO.swift in Sources */,
 				0659532C2C6E31E80048821E /* TabBarController.swift in Sources */,
-				061A34B72C76132800491DB1 /* ImagePostModel.swift in Sources */,
+				061A34CD2C76653D00491DB1 /* LSLPInterceptor.swift in Sources */,
+				06CF47302C77580D00EC0645 /* CommentsDTO.swift in Sources */,
+				061A34B72C76132800491DB1 /* ImagePostDTO.swift in Sources */,
+				06CF472C2C773B0400EC0645 /* SearchPostDTO.swift in Sources */,
 				065953272C6E31E80048821E /* LoginTextField.swift in Sources */,
-				0659536A2C6E68810048821E /* LSLPUserManager.swift in Sources */,
 				0659538B2C6F58BE0048821E /* BookSearchVC.swift in Sources */,
 				065953342C6E31FA0048821E /* ReuseIdentifier+.swift in Sources */,
 				0652C8382C708A1E00BDC64E /* SearchBookDTO.swift in Sources */,
-				0659535D2C6E4B750048821E /* LSLPError.swift in Sources */,
-				061A34C12C76390100491DB1 /* TokenAuthPlugin.swift in Sources */,
 				0652C86D2C72553B00BDC64E /* RoomCreateVC.swift in Sources */,
-				061A34B32C76081C00491DB1 /* LoginModel.swift in Sources */,
+				061A34B32C76081C00491DB1 /* LoginDTO.swift in Sources */,
 				0659537E2C6F3B420048821E /* BookStorageVC.swift in Sources */,
 				065953922C6F6BF20048821E /* ShowTopBookCollectionCell.swift in Sources */,
 				065953392C6E32060048821E /* APIKey.swift in Sources */,
-				061A34B12C76073000491DB1 /* validationEamilModel.swift in Sources */,
+				061A34B12C76073000491DB1 /* validationEamilDTO.swift in Sources */,
 				065953542C6E34540048821E /* BaseViewModel.swift in Sources */,
 				0652C8472C70A23200BDC64E /* BookListCollectionCell.swift in Sources */,
 				0659537C2C6F388D0048821E /* ChangeView.swift in Sources */,
 				0652C83A2C708A5300BDC64E /* SearchBookWithIDDTO.swift in Sources */,
+				06CF47362C7761DA00EC0645 /* FetchPostsDTO.swift in Sources */,
 				0652C82E2C6FB64700BDC64E /* BestsellerDTO.swift in Sources */,
+				06CF47382C77636F00EC0645 /* UserDTO.swift in Sources */,
 				065953682C6E644A0048821E /* UserManager.swift in Sources */,
 				065953022C6E2F8C0048821E /* AppDelegate.swift in Sources */,
 				0659532A2C6E31E80048821E /* BaseView.swift in Sources */,
 				065953372C6E31FF0048821E /* LoginTextType.swift in Sources */,
-				061A34B52C7612F400491DB1 /* contentPostModel.swift in Sources */,
-				065953712C6E695C0048821E /* LSLPTargetType.swift in Sources */,
-				0652C8662C723AFF00BDC64E /* FilesDTO.swift in Sources */,
+				061A34B52C7612F400491DB1 /* contentPostDTO.swift in Sources */,
 				0652C86F2C7268AF00BDC64E /* JustPlustView.swift in Sources */,
-				0659536F2C6E69500048821E /* UserRouter.swift in Sources */,
 				0652C8252C6FAEEB00BDC64E /* AladinRouter.swift in Sources */,
+				06CF472A2C7736D400EC0645 /* RoomState.swift in Sources */,
 				0659532D2C6E31E80048821E /* LoginVC.swift in Sources */,
-				06F93F5F2C73A318002F5513 /* PostDTO.swift in Sources */,
-				0652C85D2C721A0F00BDC64E /* EditProfileQuery.swift in Sources */,
 				0659535A2C6E3B540048821E /* SignUpVC.swift in Sources */,
 				0659538D2C6F59BA0048821E /* BaseButton.swift in Sources */,
 				0652C81E2C6F7EC200BDC64E /* ChallengeRoomCollectionCell.swift in Sources */,
 				065953282C6E31E80048821E /* PointButton.swift in Sources */,
-				0652C8572C70DCDD00BDC64E /* PostManger.swift in Sources */,
 				0652C84B2C70A57700BDC64E /* BookProtocol.swift in Sources */,
+				06CF47322C77585F00EC0645 /* LikeDTO.swift in Sources */,
 				061A34AE2C7606C700491DB1 /* LSLPRouter.swift in Sources */,
 				0652C82B2C6FB56000BDC64E /* AladinError.swift in Sources */,
 				0652C8292C6FAF0900BDC64E /* AladinManager.swift in Sources */,
-				065953742C6E6A260048821E /* LoginQuery.swift in Sources */,
 				065953622C6E57B00048821E /* SignUpVM.swift in Sources */,
 				0652C81C2C6F7CBB00BDC64E /* UserChallengeCollectionCell.swift in Sources */,
 				065953652C6E64280048821E /* UserDefault.swift in Sources */,
 				0652C8622C723A7500BDC64E /* BaseHeader.swift in Sources */,
 				0652C84F2C70ADB400BDC64E /* FetchImageProtocol.swift in Sources */,
+				061A34CF2C766CF300491DB1 /* NetworkError.swift in Sources */,
 				065953332C6E31FA0048821E /* String+.swift in Sources */,
 				0652C8272C6FAEF900BDC64E /* AladinTargetType.swift in Sources */,
 				065953352C6E31FA0048821E /* UIImage+.swift in Sources */,
 				0659532B2C6E31E80048821E /* BaseViewController.swift in Sources */,
-				0652C85B2C70DD9200BDC64E /* PostRouter.swift in Sources */,
+				060301DE2C7734080058A113 /* JoinDTO.swift in Sources */,
 				065953042C6E2F8C0048821E /* SceneDelegate.swift in Sources */,
 				0652C87D2C732B0700BDC64E /* RoomCreateVM.swift in Sources */,
 				065953322C6E31FA0048821E /* UIColor+.swift in Sources */,
-				065953602C6E56530048821E /* Alert.swift in Sources */,
-				0652C85F2C721B8C00BDC64E /* ProfileDTO.swift in Sources */,
+				065953602C6E56530048821E /* AlertErrProtocol.swift in Sources */,
 				0652C8362C6FFF3E00BDC64E /* DetailBookVC.swift in Sources */,
 				06F93F592C7366D0002F5513 /* BookModel.swift in Sources */,
-				0652C86A2C72406500BDC64E /* UploadPostContentsBody.swift in Sources */,
 				065953862C6F4B2C0048821E /* SearchBarView.swift in Sources */,
 				065953562C6E34DC0048821E /* LoginVM.swift in Sources */,
+				061A34C72C76616B00491DB1 /* RefreshTokenDTO.swift in Sources */,
 				0652C83C2C708AF800BDC64E /* BookDTO.swift in Sources */,
 				0652C8232C6FAEE300BDC64E /* AladinParam.swift in Sources */,
 			);

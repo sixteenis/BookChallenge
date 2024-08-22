@@ -31,9 +31,9 @@ class BaseViewController: UIViewController {
 }
 // MARK: - 알림
 extension BaseViewController {
-    func simpleAlert(type: Alert) {
+    func simpleAlert(type: AlertErrProtocol) {
         let alert = UIAlertController(
-            title: type.title,
+            title: nil,
             message: type.message,
             preferredStyle: .alert
         )

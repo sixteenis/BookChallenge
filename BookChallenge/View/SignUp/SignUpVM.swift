@@ -21,14 +21,14 @@ class SignUpVM: BaseViewModel {
     }
     struct Output{
         let xMarkTap: ControlEvent<Void>
-        let tryJoin: PublishRelay<Result<Bool,LSLPError>>
+        let tryJoin: PublishRelay<Result<Bool,Error>>
     }
     func transform(input: Input) -> Output {
         let email = BehaviorRelay(value: "")
         let nickName = BehaviorRelay(value: "")
         let password = BehaviorRelay(value: "")
         let repassword = BehaviorRelay(value: "")
-        let result = PublishRelay<Result<Bool,LSLPError>>()
+        let result = PublishRelay<Result<Bool,Error>>()
         
         input.emailText
             .bind(to: email).disposed(by: disposeBag)
@@ -57,15 +57,15 @@ class SignUpVM: BaseViewModel {
 }
 
 private extension SignUpVM {
-    func allCheck(email: String, nickname: String, password: String, repassword: String) -> LSLPError? {
+    func allCheck(email: String, nickname: String, password: String, repassword: String) -> NetworkError? {
         if !checkEmail(email: email) {
-            return .filter
+            return .badRequest
         }
         if !checkNickname(nick: nickname) {
-            return .filter
+            return .badRequest
         }
         if !checkPassword(password: password, repassword: repassword) {
-            return .samePassword
+            return .badRequest
         }
         return nil
     }
