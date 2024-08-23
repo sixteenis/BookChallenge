@@ -91,6 +91,7 @@
 		06CF473A2C77649D00EC0645 /* HashtagPostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47392C77649D00EC0645 /* HashtagPostDTO.swift */; };
 		06CF473E2C78B0F500EC0645 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF473D2C78B0F500EC0645 /* BookModel.swift */; };
 		06CF47402C78CABF00EC0645 /* CreateRoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF473F2C78CABF00EC0645 /* CreateRoomModel.swift */; };
+		06CF47422C78F97800EC0645 /* ProfileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47412C78F97800EC0645 /* ProfileDTO.swift */; };
 		06F93F5B2C737689002F5513 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5A2C737689002F5513 /* Font+.swift */; };
 		06F93F5D2C7398EB002F5513 /* LSLPNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5C2C7398EB002F5513 /* LSLPNetworkManager.swift */; };
 /* End PBXBuildFile section */
@@ -172,6 +173,7 @@
 		06CF47392C77649D00EC0645 /* HashtagPostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashtagPostDTO.swift; sourceTree = "<group>"; };
 		06CF473D2C78B0F500EC0645 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		06CF473F2C78CABF00EC0645 /* CreateRoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomModel.swift; sourceTree = "<group>"; };
+		06CF47412C78F97800EC0645 /* ProfileDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDTO.swift; sourceTree = "<group>"; };
 		06F93F5A2C737689002F5513 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		06F93F5C2C7398EB002F5513 /* LSLPNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPNetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -214,6 +216,7 @@
 				06CF47312C77585F00EC0645 /* LikeDTO.swift */,
 				06CF47332C77607100EC0645 /* LikePostsDTO.swift */,
 				06CF47392C77649D00EC0645 /* HashtagPostDTO.swift */,
+				06CF47412C78F97800EC0645 /* ProfileDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -625,6 +628,7 @@
 				0652C8252C6FAEEB00BDC64E /* AladinRouter.swift in Sources */,
 				06CF473E2C78B0F500EC0645 /* BookModel.swift in Sources */,
 				06CF472A2C7736D400EC0645 /* RoomState.swift in Sources */,
+				06CF47422C78F97800EC0645 /* ProfileDTO.swift in Sources */,
 				0659532D2C6E31E80048821E /* LoginVC.swift in Sources */,
 				0659535A2C6E3B540048821E /* SignUpVC.swift in Sources */,
 				0659538D2C6F59BA0048821E /* BaseButton.swift in Sources */,
@@ -806,7 +810,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -839,7 +843,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

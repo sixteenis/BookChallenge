@@ -67,6 +67,21 @@ final class LSLPNetworkManager{
         }
         
     }
+    func requestUserProfile() {
+        provider = MoyaProvider<LSLPRouter>(session: Session(interceptor: Interceptor.shared))
+        self.provider.request(.fetchMeProfile) { result in
+            switch result {
+            case .success(let response):
+                guard let data = try? response.map(ProfileDTO.self) else {
+
+                    return
+                }
+                UserManager.shared.nick = data.nick
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
     
 }
 

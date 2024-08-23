@@ -15,7 +15,8 @@ final class TabBarController: UITabBarController {
         tabBar.tintColor = .black
         tabBar.unselectedItemTintColor = .gray
         tabBar.backgroundColor = .systemGray6
-        
+        LSLPNetworkManager.shared.requestUserProfile()
+
         let main = MainVC()
         let bookstorage = BookStorageVC()
         let challengeRoom = ChallengeRoomVC()

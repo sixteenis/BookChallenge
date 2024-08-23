@@ -12,12 +12,9 @@ import RxCocoa
 import SnapKit
 
 final class MainVC: BaseViewController {
-    private let searchView = SearchBarView()
-    private let searchButton = BaseButton()
-    
     private let scrollView = UIScrollView()
     private let contentView = UIView()
-    
+
     private let showTopBookHeader = UILabel()
     
     private lazy var showTopBookCollection = UICollectionView(frame: .zero, collectionViewLayout: showTopBookLayout())
@@ -37,8 +34,6 @@ final class MainVC: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
-        print(UserManager.shared.token)
     }
     
     override func bindData() {
@@ -48,10 +43,6 @@ final class MainVC: BaseViewController {
         topBookOutput.bestBookData
             .bind(to: showTopBookCollection.rx.items(cellIdentifier: ShowTopBookCollectionCell.id, cellType: ShowTopBookCollectionCell.self)) { (row, element, cell) in
                 cell.updateUI(data: element, index: row)
-            }.disposed(by: disposeBag)
-        searchButton.rx.tap
-            .bind(with: self) { owner, _ in
-                owner.pushViewController(view: BookSearchVC())
             }.disposed(by: disposeBag)
         
         Observable.just([1,2,3,31])
@@ -68,8 +59,6 @@ final class MainVC: BaseViewController {
             }.disposed(by: disposeBag)
     }
     override func setUpHierarchy() {
-        view.addSubview(searchView)
-        view.addSubview(searchButton)
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         setUpContentViewHierarchy()
@@ -85,18 +74,9 @@ final class MainVC: BaseViewController {
         contentView.addSubview(challengeRoomDetailsButton)
     }
     override func setUpLayout() {
-        searchView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(15)
-            make.height.equalTo(36)
-        }
-        searchButton.snp.makeConstraints { make in
-            make.edges.equalTo(searchView)
-        }
         scrollView.snp.makeConstraints { make in
-            make.horizontalEdges.equalTo(view)
-            make.top.equalTo(searchView.snp.bottom)
-            make.bottom.equalTo(view)
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.horizontalEdges.bottom.equalTo(view)
         }
         contentView.snp.makeConstraints { make in
             make.width.equalTo(scrollView.snp.width)
@@ -106,7 +86,8 @@ final class MainVC: BaseViewController {
     }
     private func setUpContentViewLayout() {
         showTopBookHeader.snp.makeConstraints { make in
-            make.leading.top.equalTo(contentView).inset(10)
+            make.top.equalTo(contentView).inset(10)
+            make.leading.equalTo(contentView).inset(10)
         }
         showTopBookCollection.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(20)
@@ -139,6 +120,10 @@ final class MainVC: BaseViewController {
         }
     }
     override func setUpView() {
+        self.navigationController?.navigationBar.sizeToFit()
+        self.scrollView.delegate = self
+        updateNavigationBarTitle(animated: false)
+        
         showTopBookHeader.text = "베스트셀러"
         showTopBookCollection.register(ShowTopBookCollectionCell.self, forCellWithReuseIdentifier: ShowTopBookCollectionCell.id)
         showTopBookCollection.backgroundColor = .collectionBackground
@@ -172,6 +157,26 @@ final class MainVC: BaseViewController {
     
 }
 
+extension MainVC: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        updateNavigationBarTitle(animated: true)
+    }
+    func updateNavigationBarTitle(animated: Bool) {
+        let offset = scrollView.contentOffset.y
+        
+        let setUpLagerTitles = offset <= 20
+        let currentPrefersLargeTitles = self.navigationController?.navigationBar.prefersLargeTitles ?? false
+
+        if setUpLagerTitles != currentPrefersLargeTitles{
+// TODO: 애니메이션을 넣을까말까 고민
+            UIView.animate(withDuration: animated ? 0.1 : 0.0) {
+                self.navigationItem.title = setUpLagerTitles ? "반가워요! \(UserManager.shared.nick)님 :)" : "\(UserManager.shared.nick)님의 홈"
+                self.navigationController?.navigationBar.prefersLargeTitles = setUpLagerTitles
+                self.navigationController?.navigationBar.layoutIfNeeded()
+            }
+        }
+    }
+}
 // MARK: - 셀 포커싱 해주기
 extension MainVC: UICollectionViewDelegate {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

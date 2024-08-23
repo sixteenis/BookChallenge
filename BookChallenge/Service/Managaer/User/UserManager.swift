@@ -13,6 +13,7 @@ final class UserManager {
         case refresh
         case email
         case password
+        case nick
     }
     static let shared = UserManager()
     private init() {}
@@ -28,4 +29,7 @@ final class UserManager {
     
     @UserDefault(key: UserDefaultsKey.password.rawValue, defaultValue: "", storage: .standard)
     var password: String
+    
+    @UserDefault(key: UserDefaultsKey.nick.rawValue, defaultValue: "", storage: .standard)
+    var nick: String
 }

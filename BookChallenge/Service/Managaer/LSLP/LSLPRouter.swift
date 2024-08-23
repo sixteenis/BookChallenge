@@ -29,6 +29,7 @@ enum LSLPRouter {
     case like(body: LikeBody, postId: String) // 좋아요. 나는 참여하기로 사용
     case getLikePosts(query: LikePostsQuery) // 참여한 방들 조회하기로 사용
     case hashtagsPoosts(query: HashtagPostQuery) //해쉬태그 방조회 나는 책 검색으로 사용할 예정
+    case fetchMeProfile
 }
 
 extension LSLPRouter: CatchErrorTargetType {
@@ -63,6 +64,8 @@ extension LSLPRouter: CatchErrorTargetType {
             return "/posts/like/me"
         case .hashtagsPoosts:
             return "/posts/hashtags"
+        case .fetchMeProfile:
+            return "/users/me/profile"
             
         
         }
@@ -106,6 +109,8 @@ extension LSLPRouter: CatchErrorTargetType {
             return .requestJSONEncodable(query)
         case .hashtagsPoosts(let query):
             return .requestJSONEncodable(query)
+        case .fetchMeProfile:
+            return .requestPlain
         
         }
     }
@@ -122,7 +127,7 @@ extension LSLPRouter: CatchErrorTargetType {
                 BaseHeader.sesacKey.rawValue: LSLP.key
                 
             ]
-        case .like, .fetchPosts, .hashtagsPoosts, .getLikePosts:
+        case .like, .fetchPosts, .hashtagsPoosts, .getLikePosts, .fetchMeProfile:
             [
                 BaseHeader.sesacKey.rawValue: LSLP.key
             ]
@@ -167,6 +172,8 @@ extension LSLPRouter: CatchErrorTargetType {
             return LikePostsDTO.self
         case .hashtagsPoosts:
             return HashtagPostDTO.self
+        case .fetchMeProfile:
+            return ProfileDTO.self
         }
     }
     

@@ -8,9 +8,9 @@
 import UIKit
 import SnapKit
 class SearchBarView: BaseView {
-    let backView = UIView()
-    let searchImage = UIImageView()
-    let searchlable = UILabel()
+    private let backView = UIView()
+    private let searchImage = UIImageView()
+    private let searchlable = UILabel()
     
     override func setUpHierarchy() {
         self.addSubview(backView)
