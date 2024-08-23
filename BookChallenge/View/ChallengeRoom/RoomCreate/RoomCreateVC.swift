@@ -50,16 +50,19 @@ final class RoomCreateVC: BaseViewController, FetchImageProtocol {
     override func bindData() {
         let saveButtonRx = saveItem.rx.tap
             .withUnretained(self)
-            .map { owner, _ in owner.bookImage.image?.jpegData(compressionQuality: 0.5) }
+            .map { owner, _ in
+                let bookimage = owner.bookImage.image ?? UIImage.noBookImage!
+                return bookimage.jpegData(compressionQuality: 0.5)!
+            }
         
-        let getbookId = PublishSubject<String>()
-        let input = RoomCreateVM.Input(getbookId: getbookId, datePickerTap: datePicker.rx.date, limitPeople: limitPeople.rx.text.orEmpty, roomTitle: roomTitle.rx.text.orEmpty, roomContent: roomContent.rx.text.orEmpty, saveButtonTap: saveButtonRx)
+        let getbookModel = PublishSubject<BookModel>()
+        
+        let input = RoomCreateVM.Input(getbook: getbookModel, datePickerTap: datePicker.rx.date, limitPeople: limitPeople.rx.text.orEmpty, roomTitle: roomTitle.rx.text.orEmpty, roomContent: roomContent.rx.text.orEmpty, saveButtonTap: saveButtonRx)
 
         let output = vm.transform(input: input)
         output.bookInfor
             .bind(with: self) { owner, book in
                 owner.setUpBookData(book: book)
-                print(book.postURL)
             }.disposed(by: disposeBag)
         output.isSaveTap
             .bind(with: self) { owner, isEnable in
@@ -68,7 +71,9 @@ final class RoomCreateVC: BaseViewController, FetchImageProtocol {
             }.disposed(by: disposeBag)
         output.finshNetwork
             .bind(with: self) { owner, _ in
-                owner.dismiss(animated: true)
+                owner.simpleAlert(title: "게시글 업로드 완료했습니다.") {
+                    owner.dismiss(animated: true)
+                }
             }.disposed(by: disposeBag)
         output.netwrokErr
             .bind(with: self) { owner, err in
@@ -78,12 +83,15 @@ final class RoomCreateVC: BaseViewController, FetchImageProtocol {
         bookSearchButton.rx.tap //서치버튼 누르면 책 검색뷰로 이동
             .bind(with: self) { owner, _ in
                 let vc = BookSearchVC()
-                vc.vm.compltionBookId = { id in
-                    getbookId.onNext(id)
-                }
+                vc.vm.compltionBook = { book in
+                    getbookModel.onNext(book)
+                }//여기서 책 모델 가져오기
                 owner.pushViewController(view: vc)
             }.disposed(by: disposeBag)
         
+    }
+    override func bindNetworkData() {
+        //let startNetWorking =
     }
     private func simpleBindDate() {
         roomContent.rx.didBeginEditing //내용 텍스트필드 플레이스홀더로 만들기
@@ -138,7 +146,6 @@ final class RoomCreateVC: BaseViewController, FetchImageProtocol {
         
         setUpBookView()
         setUpContentView()
-        roomTitle.placeholder = "제목을 입력해주세요."
         
     }
     
@@ -204,9 +211,9 @@ private extension RoomCreateVC {
         bookDescription.textAlignment = .left
     }
     func setUpBookData(book: BookModel) {
-        fetchImage(imageView: bookImage, imageURL: book.postURL)
+        fetchImage(imageView: bookImage, imageURL: book.bookURL)
         bookTitle.text = book.title
-        bookDescriptionHeader.text = book.descriptionHeader
+        bookDescriptionHeader.text = "책 설명"
         bookDescription.text = book.description
     }
     
@@ -263,6 +270,7 @@ private extension RoomCreateVC {
         roomTitleView.layer.borderWidth = 2
         roomTitleView.layer.borderColor = UIColor.systemGray4.cgColor
         roomTitleView.layer.cornerRadius = 5
+        roomTitle.placeholder = "제목을 입력해주세요."
         roomTitle.font = .font13
         
         roomContentView.layer.borderWidth = 2

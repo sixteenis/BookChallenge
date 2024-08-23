@@ -19,4 +19,6 @@ extension UIImage {
     static let bookmark = UIImage(systemName: "bookmark.fill")
     static let plusBook = UIImage(systemName: "plus")
     static let createRoomLogo = UIImage(systemName: "pencil")
+    
+    static let noBookImage = UIImage(named: "noBook")
 }

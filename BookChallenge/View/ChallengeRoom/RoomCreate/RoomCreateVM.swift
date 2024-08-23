@@ -11,35 +11,36 @@ import RxCocoa
 
 class RoomCreateVM: BaseViewModel {
     private let disposeBag = DisposeBag()
-    var bookDTO: BookDTO?
+    var bookModel = BookModel.init()
     struct Input {
-        let getbookId: PublishSubject<String>
+        let getbook: PublishSubject<BookModel>
         let datePickerTap: ControlProperty<Date>
         let limitPeople: ControlProperty<String>
         let roomTitle: ControlProperty<String>
         let roomContent: ControlProperty<String>
-        let saveButtonTap: Observable<Data?>
+        let saveButtonTap: Observable<Data>
     }
     struct Output {
         let bookInfor: Observable<BookModel>
         let isSaveTap: Observable<Bool>
-        let netwrokErr: Observable<AlertErrProtocol>
+        let netwrokErr: Observable<LoggableError>
         let finshNetwork: Observable<Void>
     }
     
     func transform(input: Input) -> Output {
-        let bookInfor = PublishSubject<BookModel>()
+        let bookData = PublishSubject<BookModel>()
         let successNetWork = BehaviorRelay(value: false)
-        let datePicker = PublishRelay<Date>()
+        let datePicker = BehaviorRelay(value: Date())
         let limitPeople = BehaviorRelay(value: "")
         let roomTitle = BehaviorRelay(value: "")
         let roomContent = BehaviorRelay(value: "")
+        
         let saveButtonTap = PublishRelay<Void>()
         
         // MARK: - 통신 부분
-        let netwrokErr = PublishRelay<AlertErrProtocol>()
-        let successImage = BehaviorRelay(value: [String]())
-        let successPost = BehaviorRelay(value: "")
+        let netwrokErr = PublishRelay<LoggableError>()
+        let successImage = PublishRelay<[String]>()
+        let successPost = PublishRelay<String>()
         let finshNetwork = PublishRelay<Void>()
         let isSaveEnable = Observable.combineLatest(successNetWork, limitPeople, roomTitle, roomContent)
             .map { success, people, title, content in
@@ -49,19 +50,22 @@ class RoomCreateVM: BaseViewModel {
                 return success && !title.isEmpty && !content.isEmpty && numResult
             }//북 데이터 값이 있는지, 텍스트들이 다 들어있는지 판단하기
         
-        input.getbookId
-            .flatMap { AladinManager.shared.getBookDetail(id: $0)}
+        input.getbook
+            .flatMap { AladinManager.shared.getBookDetail(id: $0.id)}
             .bind(with: self) { owner, result in
                 switch result {
                 case .success(let book):
-                    bookInfor.onNext(BookModel(dto: book))
-                    owner.bookDTO = book
+                    //bookData.bind(book.transformBookModel())
+                    let bookModel = book.transformBookModel()
+                    bookData.onNext(bookModel)
+                    owner.bookModel = bookModel
                     successNetWork.accept(true)
-                    // TODO: 디테일 책 가져오는 과정에서 오류 발생 시 예외처리 해주기
                 case .failure(let error):
                     successNetWork.accept(false)
+                    netwrokErr.accept(error)
                 }
             }.disposed(by: disposeBag)
+        
         input.datePickerTap
             .distinctUntilChanged()
             .bind(to: datePicker).disposed(by: disposeBag)
@@ -74,12 +78,9 @@ class RoomCreateVM: BaseViewModel {
         input.limitPeople
             .distinctUntilChanged()
             .bind(to: limitPeople).disposed(by: disposeBag)
+        
         input.saveButtonTap
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
-            .map {
-                guard let image = $0 else {return Data()}
-                return image
-            }
             .flatMap {
                 LSLPNetworkManager.shared.request(target: .imagePost(image: .init(files: $0)), dto: ImagePostDTO.self)
             }
@@ -94,8 +95,7 @@ class RoomCreateVM: BaseViewModel {
         
         successImage
             .flatMap {
-                
-                LSLPNetworkManager.shared.request(target: .contentPost(content: ContentPostBody(book: self.bookDTO ?? BookDTO(title: "", author: "", pubDate: "", description: "", isbn13: "", cover: "", publisher: "", priceSales: 1, subInfo: SubInfo(itemPage: nil, subTitle: nil)), title: roomTitle.value, deadLine: limitPeople.value, limitPreson: Int(limitPeople.value) ?? 0, content: roomContent.value, files: $0)), dto: ContentPostDTO.self)
+                LSLPNetworkManager.shared.request(target: .contentPost(content: .init(book: self.bookModel, title: roomTitle.value, deadLine: datePicker.value.formatted(), limitPreson: Int(limitPeople.value)!, content: roomContent.value, files: $0)), dto: ContentPostDTO.self)
             }
             .subscribe(with: self) { owner, response in
                 switch response {
@@ -107,9 +107,11 @@ class RoomCreateVM: BaseViewModel {
                 }
                 
             }.disposed(by: disposeBag)
+        
+       
         successPost
             .flatMap {
-                LSLPNetworkManager.shared.request(target: .like(body: .init(like_status: false), postId: $0), dto: LikeDTO.self)
+                LSLPNetworkManager.shared.request(target: .like(body: .init(like_status: true), postId: $0), dto: LikeDTO.self)
             }
             .subscribe(with: self) { owner, response in
                 switch response {
@@ -120,10 +122,10 @@ class RoomCreateVM: BaseViewModel {
                 }
                 
             }.disposed(by: disposeBag)
-            
         
         
-        return Output(bookInfor: bookInfor, isSaveTap: isSaveEnable, netwrokErr: netwrokErr.asObservable(), finshNetwork: finshNetwork.asObservable())
+        
+        return Output(bookInfor: bookData, isSaveTap: isSaveEnable, netwrokErr: netwrokErr.asObservable(), finshNetwork: finshNetwork.asObservable())
     }
     
 }

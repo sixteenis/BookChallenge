@@ -18,12 +18,14 @@ class BaseViewController: UIViewController {
         setUpLayout()
         bindData()
         setUpNavLeft()
+        bindNetworkData()
     }
     
     func setUpHierarchy() {}
     func setUpLayout() {}
     func setUpView() {}
     func bindData() {}
+    func bindNetworkData() {}
     func setUpNavLeft() {
         self.navigationController?.navigationBar.topItem?.title = ""
         navigationController?.navigationBar.tintColor = .black
@@ -31,13 +33,25 @@ class BaseViewController: UIViewController {
 }
 // MARK: - 알림
 extension BaseViewController {
-    func simpleAlert(type: AlertErrProtocol) {
+    func simpleAlert(type: LoggableError) {
         let alert = UIAlertController(
             title: nil,
             message: type.message,
             preferredStyle: .alert
         )
         let cancel = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(cancel)
+        present(alert, animated: true)
+    }
+    func simpleAlert(title: String, completion: (() -> ())? = nil) {
+        let alert = UIAlertController(
+            title: nil,
+            message: title,
+            preferredStyle: .alert
+        )
+        let cancel = UIAlertAction(title: "확인", style: .default) { _ in
+            completion?()
+        }
         alert.addAction(cancel)
         present(alert, animated: true)
     }

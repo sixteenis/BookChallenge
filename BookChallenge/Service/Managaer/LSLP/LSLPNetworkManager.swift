@@ -14,7 +14,7 @@ import Moya
 @frozen
 enum NetworkResult<T: Decodable> {
     case success(T)
-    case failure(AlertErrProtocol)
+    case failure(LoggableError)
 }
 
 

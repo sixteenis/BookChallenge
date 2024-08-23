@@ -10,7 +10,7 @@ protocol LoggableError: Error {
     var rawValue: Int { get }
     var message: String { get }
 }
-enum NetworkError: Int, AlertErrProtocol {
+enum NetworkError: Int, LoggableError {
     case invalidData = 0
     case badRequest = 400
     case unAuthorized = 401
@@ -26,7 +26,7 @@ enum NetworkError: Int, AlertErrProtocol {
         case .badRequest: return "잘못된 요청입니다"
         case .serverError: return "서버에 문제가 발생했습니다. 잠시 후 다시 시도해주세요"
         case .conflict: return "충돌이 발생했습니다"
-        default: return ""
+        default: return "알 수 없는 에러 발생"
         }
     }
 }

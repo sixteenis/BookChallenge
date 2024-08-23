@@ -11,18 +11,18 @@ import RxCocoa
 
 class BookSearchVM: BaseViewModel {
     private let disposeBag = DisposeBag()
-    var compltionBookId: ((String) -> ())?
+    var compltionBook: ((BookModel) -> ())?
     struct Input {
         let searchButtonTap: ControlEvent<Void>
         let searchText: ControlProperty<String>
-        let tapBook: PublishSubject<String>
+        let tapBook: PublishSubject<BookModel>
     }
     struct Output {
-        let bookList: Observable<[BookProtocol]>
+        let bookList: Observable<[BookModel]>
         let successReturnID: Observable<Void>
     }
     func transform(input: Input) -> Output {
-        let bookList = PublishSubject<[BookProtocol]>()
+        let bookList = PublishSubject<[BookModel]>()
         let succesReturnId = PublishSubject<Void>()
         //let getError = BehaviorRelay<AladinError>()
         input.searchButtonTap
@@ -35,14 +35,15 @@ class BookSearchVM: BaseViewModel {
             .bind(with: self) { owner, respon in
                 switch respon {
                 case .success(let data):
-                    bookList.onNext(data.item)
+                    let books = data.item.map { $0.transformBookModel()}
+                    bookList.onNext(books)
                 case .failure(let err):
                     print(err)
                 }
             }.disposed(by: disposeBag)
         input.tapBook
-            .bind(with: self) { owner, id in
-                owner.compltionBookId?(id)
+            .bind(with: self) { owner, book in
+                owner.compltionBook?(book)
                 succesReturnId.onNext(())
             }.disposed(by: disposeBag)
         

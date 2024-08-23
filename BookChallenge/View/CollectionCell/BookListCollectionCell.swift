@@ -72,8 +72,8 @@ class BookListCollectionCell: BaseCollectioViewCell {
         
         
     }
-    func setUpData(data: BookProtocol) {
-        fetchImage(imageView: bookImage, imageURL: data.cover)
+    func setUpData(data: BookModel) {
+        fetchImage(imageView: bookImage, imageURL: data.bookURL)
         title.text = data.title
         setUpPublisher(publisher: data.publisher)
         setUpSubTitle(author: data.author)

@@ -36,7 +36,6 @@
 		0652C83C2C708AF800BDC64E /* BookDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C83B2C708AF800BDC64E /* BookDTO.swift */; };
 		0652C8442C70A1D000BDC64E /* BookSearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8432C70A1D000BDC64E /* BookSearchVM.swift */; };
 		0652C8472C70A23200BDC64E /* BookListCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8462C70A23200BDC64E /* BookListCollectionCell.swift */; };
-		0652C84B2C70A57700BDC64E /* BookProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C84A2C70A57700BDC64E /* BookProtocol.swift */; };
 		0652C84F2C70ADB400BDC64E /* FetchImageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C84E2C70ADB400BDC64E /* FetchImageProtocol.swift */; };
 		0652C8622C723A7500BDC64E /* BaseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8612C723A7500BDC64E /* BaseHeader.swift */; };
 		0652C86D2C72553B00BDC64E /* RoomCreateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C86C2C72553B00BDC64E /* RoomCreateVC.swift */; };
@@ -71,7 +70,6 @@
 		065953542C6E34540048821E /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953532C6E34540048821E /* BaseViewModel.swift */; };
 		065953562C6E34DC0048821E /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953552C6E34DC0048821E /* LoginVM.swift */; };
 		0659535A2C6E3B540048821E /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953592C6E3B540048821E /* SignUpVC.swift */; };
-		065953602C6E56530048821E /* AlertErrProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0659535F2C6E56530048821E /* AlertErrProtocol.swift */; };
 		065953622C6E57B00048821E /* SignUpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953612C6E57B00048821E /* SignUpVM.swift */; };
 		065953652C6E64280048821E /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953642C6E64280048821E /* UserDefault.swift */; };
 		065953682C6E644A0048821E /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953672C6E644A0048821E /* UserManager.swift */; };
@@ -91,7 +89,8 @@
 		06CF47362C7761DA00EC0645 /* FetchPostsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47352C7761DA00EC0645 /* FetchPostsDTO.swift */; };
 		06CF47382C77636F00EC0645 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47372C77636F00EC0645 /* UserDTO.swift */; };
 		06CF473A2C77649D00EC0645 /* HashtagPostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47392C77649D00EC0645 /* HashtagPostDTO.swift */; };
-		06F93F592C7366D0002F5513 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F582C7366D0002F5513 /* BookModel.swift */; };
+		06CF473E2C78B0F500EC0645 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF473D2C78B0F500EC0645 /* BookModel.swift */; };
+		06CF47402C78CABF00EC0645 /* CreateRoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF473F2C78CABF00EC0645 /* CreateRoomModel.swift */; };
 		06F93F5B2C737689002F5513 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5A2C737689002F5513 /* Font+.swift */; };
 		06F93F5D2C7398EB002F5513 /* LSLPNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5C2C7398EB002F5513 /* LSLPNetworkManager.swift */; };
 /* End PBXBuildFile section */
@@ -124,7 +123,6 @@
 		0652C83B2C708AF800BDC64E /* BookDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDTO.swift; sourceTree = "<group>"; };
 		0652C8432C70A1D000BDC64E /* BookSearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchVM.swift; sourceTree = "<group>"; };
 		0652C8462C70A23200BDC64E /* BookListCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListCollectionCell.swift; sourceTree = "<group>"; };
-		0652C84A2C70A57700BDC64E /* BookProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookProtocol.swift; sourceTree = "<group>"; };
 		0652C84E2C70ADB400BDC64E /* FetchImageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImageProtocol.swift; sourceTree = "<group>"; };
 		0652C8612C723A7500BDC64E /* BaseHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHeader.swift; sourceTree = "<group>"; };
 		0652C86C2C72553B00BDC64E /* RoomCreateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCreateVC.swift; sourceTree = "<group>"; };
@@ -153,7 +151,6 @@
 		065953532C6E34540048821E /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		065953552C6E34DC0048821E /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		065953592C6E3B540048821E /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
-		0659535F2C6E56530048821E /* AlertErrProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertErrProtocol.swift; sourceTree = "<group>"; };
 		065953612C6E57B00048821E /* SignUpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVM.swift; sourceTree = "<group>"; };
 		065953642C6E64280048821E /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		065953672C6E644A0048821E /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -173,7 +170,8 @@
 		06CF47352C7761DA00EC0645 /* FetchPostsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPostsDTO.swift; sourceTree = "<group>"; };
 		06CF47372C77636F00EC0645 /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
 		06CF47392C77649D00EC0645 /* HashtagPostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashtagPostDTO.swift; sourceTree = "<group>"; };
-		06F93F582C7366D0002F5513 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
+		06CF473D2C78B0F500EC0645 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
+		06CF473F2C78CABF00EC0645 /* CreateRoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomModel.swift; sourceTree = "<group>"; };
 		06F93F5A2C737689002F5513 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		06F93F5C2C7398EB002F5513 /* LSLPNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPNetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -246,6 +244,7 @@
 		0652C8312C6FBE9400BDC64E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				06CF473D2C78B0F500EC0645 /* BookModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -263,7 +262,7 @@
 			children = (
 				0652C86C2C72553B00BDC64E /* RoomCreateVC.swift */,
 				0652C87C2C732B0700BDC64E /* RoomCreateVM.swift */,
-				06F93F582C7366D0002F5513 /* BookModel.swift */,
+				06CF473F2C78CABF00EC0645 /* CreateRoomModel.swift */,
 			);
 			path = RoomCreate;
 			sourceTree = "<group>";
@@ -405,9 +404,7 @@
 		0659535E2C6E56490048821E /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				0659535F2C6E56530048821E /* AlertErrProtocol.swift */,
 				0659537B2C6F388D0048821E /* ChangeView.swift */,
-				0652C84A2C70A57700BDC64E /* BookProtocol.swift */,
 				0652C84E2C70ADB400BDC64E /* FetchImageProtocol.swift */,
 			);
 			path = Protocol;
@@ -626,13 +623,13 @@
 				061A34B52C7612F400491DB1 /* contentPostDTO.swift in Sources */,
 				0652C86F2C7268AF00BDC64E /* JustPlustView.swift in Sources */,
 				0652C8252C6FAEEB00BDC64E /* AladinRouter.swift in Sources */,
+				06CF473E2C78B0F500EC0645 /* BookModel.swift in Sources */,
 				06CF472A2C7736D400EC0645 /* RoomState.swift in Sources */,
 				0659532D2C6E31E80048821E /* LoginVC.swift in Sources */,
 				0659535A2C6E3B540048821E /* SignUpVC.swift in Sources */,
 				0659538D2C6F59BA0048821E /* BaseButton.swift in Sources */,
 				0652C81E2C6F7EC200BDC64E /* ChallengeRoomCollectionCell.swift in Sources */,
 				065953282C6E31E80048821E /* PointButton.swift in Sources */,
-				0652C84B2C70A57700BDC64E /* BookProtocol.swift in Sources */,
 				06CF47322C77585F00EC0645 /* LikeDTO.swift in Sources */,
 				061A34AE2C7606C700491DB1 /* LSLPRouter.swift in Sources */,
 				0652C82B2C6FB56000BDC64E /* AladinError.swift in Sources */,
@@ -642,6 +639,7 @@
 				065953652C6E64280048821E /* UserDefault.swift in Sources */,
 				0652C8622C723A7500BDC64E /* BaseHeader.swift in Sources */,
 				0652C84F2C70ADB400BDC64E /* FetchImageProtocol.swift in Sources */,
+				06CF47402C78CABF00EC0645 /* CreateRoomModel.swift in Sources */,
 				061A34CF2C766CF300491DB1 /* NetworkError.swift in Sources */,
 				065953332C6E31FA0048821E /* String+.swift in Sources */,
 				0652C8272C6FAEF900BDC64E /* AladinTargetType.swift in Sources */,
@@ -651,9 +649,7 @@
 				065953042C6E2F8C0048821E /* SceneDelegate.swift in Sources */,
 				0652C87D2C732B0700BDC64E /* RoomCreateVM.swift in Sources */,
 				065953322C6E31FA0048821E /* UIColor+.swift in Sources */,
-				065953602C6E56530048821E /* AlertErrProtocol.swift in Sources */,
 				0652C8362C6FFF3E00BDC64E /* DetailBookVC.swift in Sources */,
-				06F93F592C7366D0002F5513 /* BookModel.swift in Sources */,
 				065953862C6F4B2C0048821E /* SearchBarView.swift in Sources */,
 				065953562C6E34DC0048821E /* LoginVM.swift in Sources */,
 				061A34C72C76616B00491DB1 /* RefreshTokenDTO.swift in Sources */,

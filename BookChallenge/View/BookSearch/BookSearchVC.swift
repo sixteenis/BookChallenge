@@ -35,10 +35,9 @@ class BookSearchVC: BaseViewController {
         //self.tabBarController?.tabBar.isHidden = false
     }
     override func bindData() {
-        
         let searchTap = bookSearchBar.rx.searchButtonClicked
         let searchText = bookSearchBar.rx.text.orEmpty
-        let selectBook = PublishSubject<String>()
+        let selectBook = PublishSubject<BookModel>()
         let input = BookSearchVM.Input(searchButtonTap: searchTap, searchText: searchText, tapBook: selectBook)
         let output = vm.transform(input: input)
         
@@ -47,9 +46,9 @@ class BookSearchVC: BaseViewController {
                 cell.setUpData(data: element)
             }.disposed(by: disposeBag)
         
-        bookCollectionView.rx.modelSelected(BookDTO.self) //책 선택 시 vm에게 값 전달
-            .bind(with: self) { owner, item in
-                selectBook.onNext(item.isbn13)
+        bookCollectionView.rx.modelSelected(BookModel.self) //책 선택 시 vm에게 값 전달
+            .bind(with: self) { owner, book in
+                selectBook.onNext(book)
             }.disposed(by: disposeBag)
         
         output.successReturnID //값 전달 후 뷰 이전뷰로 가기~
