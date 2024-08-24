@@ -100,6 +100,7 @@
 		06CF47542C796B4600EC0645 /* CapsuleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47532C796B4600EC0645 /* CapsuleLabel.swift */; };
 		06CF47582C79869D00EC0645 /* TestCollectioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47572C79869D00EC0645 /* TestCollectioCell.swift */; };
 		06CF475A2C7A1C1800EC0645 /* BookStorageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47592C7A1C1800EC0645 /* BookStorageVM.swift */; };
+		06CF475C2C7A23E600EC0645 /* UnderlineSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF475B2C7A23E600EC0645 /* UnderlineSegmentedControl.swift */; };
 		06F93F5B2C737689002F5513 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5A2C737689002F5513 /* Font+.swift */; };
 		06F93F5D2C7398EB002F5513 /* LSLPNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5C2C7398EB002F5513 /* LSLPNetworkManager.swift */; };
 /* End PBXBuildFile section */
@@ -188,6 +189,7 @@
 		06CF47532C796B4600EC0645 /* CapsuleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleLabel.swift; sourceTree = "<group>"; };
 		06CF47572C79869D00EC0645 /* TestCollectioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCollectioCell.swift; sourceTree = "<group>"; };
 		06CF47592C7A1C1800EC0645 /* BookStorageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookStorageVM.swift; sourceTree = "<group>"; };
+		06CF475B2C7A23E600EC0645 /* UnderlineSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineSegmentedControl.swift; sourceTree = "<group>"; };
 		06F93F5A2C737689002F5513 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		06F93F5C2C7398EB002F5513 /* LSLPNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPNetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -477,6 +479,7 @@
 			children = (
 				0659537D2C6F3B420048821E /* BookStorageVC.swift */,
 				06CF47592C7A1C1800EC0645 /* BookStorageVM.swift */,
+				06CF475B2C7A23E600EC0645 /* UnderlineSegmentedControl.swift */,
 			);
 			path = BookStrage;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				06CF472C2C773B0400EC0645 /* SearchPostDTO.swift in Sources */,
 				065953272C6E31E80048821E /* LoginTextField.swift in Sources */,
 				0659538B2C6F58BE0048821E /* BookSearchVC.swift in Sources */,
+				06CF475C2C7A23E600EC0645 /* UnderlineSegmentedControl.swift in Sources */,
 				065953342C6E31FA0048821E /* ReuseIdentifier+.swift in Sources */,
 				0652C8382C708A1E00BDC64E /* SearchBookDTO.swift in Sources */,
 				0652C86D2C72553B00BDC64E /* RoomCreateVC.swift in Sources */,
