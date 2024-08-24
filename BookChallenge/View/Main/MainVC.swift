@@ -28,7 +28,7 @@ final class MainVC: BaseViewController {
     private let ChallengeRoomHeader = UILabel()
     private lazy var ChallengeRoomCollection = UICollectionView(frame: .zero, collectionViewLayout: ChallengeRoomLayout())
     let challengeRoomDetailsButton = UIButton()
-    
+
     private let disposeBag = DisposeBag()
     private let showTopBookVM = ShowTopBookVM()
     override func viewDidLoad() {

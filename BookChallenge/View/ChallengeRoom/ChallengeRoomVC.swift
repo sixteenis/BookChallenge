@@ -17,7 +17,8 @@ final class ChallengeRoomVC: BaseViewController {
     private let line = UIView()
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: Self.sameTableViewLayout())
     
-    private let createRoomButton = UIButton(type: .custom)
+    private let createRoomView = CapsuleLabel()
+    private let createRoomButton = UIButton()
     
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
@@ -28,11 +29,12 @@ final class ChallengeRoomVC: BaseViewController {
 
     }
     override func setUpHierarchy() {
+        view.addSubview(collectionView)
         view.addSubview(searchView)
         view.addSubview(searchButton)
         view.addSubview(line)
+        view.addSubview(createRoomView)
         view.addSubview(createRoomButton)
-        view.addSubview(collectionView)
     }
     override func bindData() {
         searchButton.rx.tap
@@ -48,10 +50,11 @@ final class ChallengeRoomVC: BaseViewController {
             }.disposed(by: disposeBag)
     }
     override func setUpLayout() {
+        createRoomView.snp.makeConstraints { make in
+            make.bottom.trailing.equalTo(view.safeAreaLayoutGuide).inset(15)
+        }
         createRoomButton.snp.makeConstraints { make in
-            make.bottom.trailing.equalTo(view.safeAreaLayoutGuide).inset(30)
-            make.height.equalTo(50)
-            make.width.equalTo(90)
+            make.edges.equalTo(createRoomView)
         }
         searchView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
@@ -61,6 +64,7 @@ final class ChallengeRoomVC: BaseViewController {
         searchButton.snp.makeConstraints { make in
             make.edges.equalTo(searchView)
         }
+        
         line.snp.makeConstraints { make in
             make.top.equalTo(searchButton.snp.bottom).offset(5)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
@@ -72,14 +76,10 @@ final class ChallengeRoomVC: BaseViewController {
     }
     override func setUpView() {
         self.navigationItem.title = "챌린지 방"
+        createRoomView.setUpData(backColor: .lightGray, title: "방 만들기", image: UIImage.createRoomLogo, font: .font16)
         
-        createRoomButton.setTitle("방만들기", for: .normal)
-        createRoomButton.setImage(.createRoomLogo, for: .normal)
-        createRoomButton.setTitleColor(.white, for: .normal)
-        createRoomButton.backgroundColor = .darkGray
-        createRoomButton.layer.cornerRadius = 25
         
-        line.backgroundColor = .black
+        line.backgroundColor = .lightGray
         
         collectionView.register(ChallengeCollectionCell.self, forCellWithReuseIdentifier: ChallengeCollectionCell.id)
     }

@@ -29,7 +29,7 @@ final class CapsuleLabel: BaseView {
     override func setUpLayout() {
         customTitle.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalTo(customImage.snp.trailing).offset(5)
+            make.leading.equalTo(customImage.snp.trailing).offset(10)
             
         }
         customImage.snp.makeConstraints { make in
@@ -43,14 +43,11 @@ final class CapsuleLabel: BaseView {
         }
     }
     
-    override func setUpView() {
-        
-        
-    }
-    func setUpData(backColor: UIColor, title: String, image: UIImage?) {
+    func setUpData(backColor: UIColor, title: String, image: UIImage?, font: UIFont = .boldFont14) {
         self.backgroundColor = backColor
-        self.customTitle.text = title
+        //self.customTitle.text = title
         self.customImage.image = image
+        self.customTitle.font = font
         
     }
 }

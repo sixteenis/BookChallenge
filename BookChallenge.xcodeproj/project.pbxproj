@@ -96,7 +96,7 @@
 		06CF474C2C792CFC00EC0645 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 06CF474B2C792CFC00EC0645 /* RxDataSources */; };
 		06CF474E2C7960D600EC0645 /* ChallengeRoomVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF474D2C7960D600EC0645 /* ChallengeRoomVM.swift */; };
 		06CF47502C7963BA00EC0645 /* ChallengeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF474F2C7963BA00EC0645 /* ChallengeCollectionCell.swift */; };
-		06CF47522C79692600EC0645 /* ChallengeRoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47512C79692600EC0645 /* ChallengeRoomModel.swift */; };
+		06CF47522C79692600EC0645 /* ChallengePostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47512C79692600EC0645 /* ChallengePostModel.swift */; };
 		06CF47542C796B4600EC0645 /* CapsuleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47532C796B4600EC0645 /* CapsuleLabel.swift */; };
 		06F93F5B2C737689002F5513 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5A2C737689002F5513 /* Font+.swift */; };
 		06F93F5D2C7398EB002F5513 /* LSLPNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5C2C7398EB002F5513 /* LSLPNetworkManager.swift */; };
@@ -182,7 +182,7 @@
 		06CF47412C78F97800EC0645 /* ProfileDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDTO.swift; sourceTree = "<group>"; };
 		06CF474D2C7960D600EC0645 /* ChallengeRoomVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRoomVM.swift; sourceTree = "<group>"; };
 		06CF474F2C7963BA00EC0645 /* ChallengeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCollectionCell.swift; sourceTree = "<group>"; };
-		06CF47512C79692600EC0645 /* ChallengeRoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRoomModel.swift; sourceTree = "<group>"; };
+		06CF47512C79692600EC0645 /* ChallengePostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengePostModel.swift; sourceTree = "<group>"; };
 		06CF47532C796B4600EC0645 /* CapsuleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleLabel.swift; sourceTree = "<group>"; };
 		06F93F5A2C737689002F5513 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		06F93F5C2C7398EB002F5513 /* LSLPNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPNetworkManager.swift; sourceTree = "<group>"; };
@@ -260,7 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				06CF473D2C78B0F500EC0645 /* BookModel.swift */,
-				06CF47512C79692600EC0645 /* ChallengeRoomModel.swift */,
+				06CF47512C79692600EC0645 /* ChallengePostModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -647,7 +647,7 @@
 				061A34B52C7612F400491DB1 /* contentPostDTO.swift in Sources */,
 				0652C86F2C7268AF00BDC64E /* JustPlustView.swift in Sources */,
 				0652C8252C6FAEEB00BDC64E /* AladinRouter.swift in Sources */,
-				06CF47522C79692600EC0645 /* ChallengeRoomModel.swift in Sources */,
+				06CF47522C79692600EC0645 /* ChallengePostModel.swift in Sources */,
 				06CF473E2C78B0F500EC0645 /* BookModel.swift in Sources */,
 				06CF472A2C7736D400EC0645 /* RoomState.swift in Sources */,
 				06CF47422C78F97800EC0645 /* ProfileDTO.swift in Sources */,
