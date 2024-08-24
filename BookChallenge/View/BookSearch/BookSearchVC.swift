@@ -15,7 +15,7 @@ import SnapKit
 // TODO: 흠 네비안에 서치바를 넣을지 밖으로 뺄지 고민해보기
 // TODO: 밖으로 빼면 선 없애주기
 class BookSearchVC: BaseViewController {
-    lazy var bookCollectionView = UICollectionView(frame: .zero, collectionViewLayout: sameTableViewLayout())
+    lazy var bookCollectionView = UICollectionView(frame: .zero, collectionViewLayout: Self.sameTableViewLayout())
     //let searchController = UISearchController(searchResultsController: nil)
     let bookSearchBar = UISearchBar()
     
@@ -74,19 +74,9 @@ class BookSearchVC: BaseViewController {
     }
     override func setUpView() {
         bookSearchBar.placeholder = "책 제목을 입력해주세요."
+        bookSearchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         self.navigationItem.title = "책 검색"
         bookCollectionView.register(BookListCollectionCell.self, forCellWithReuseIdentifier: BookListCollectionCell.id)
         
-    }
-}
-extension BookSearchVC {
-    func sameTableViewLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewFlowLayout()
-        let width = UIScreen.main.bounds.width
-        let height = UIScreen.main.bounds.height / 6
-        layout.itemSize = CGSize(width: width, height: height)
-        layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        return layout
     }
 }

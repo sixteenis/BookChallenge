@@ -17,7 +17,7 @@ class BaseViewController: UIViewController {
         setUpView()
         setUpLayout()
         bindData()
-        setUpNavLeft()
+        setUpNav()
         bindNetworkData()
     }
     
@@ -26,8 +26,9 @@ class BaseViewController: UIViewController {
     func setUpView() {}
     func bindData() {}
     func bindNetworkData() {}
-    func setUpNavLeft() {
+    func setUpNav() {
         navigationController?.navigationBar.tintColor = .black
+        
     }
 }
 // MARK: - 알림
@@ -73,5 +74,17 @@ extension BaseViewController {
     }
     func popViewController() {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension BaseViewController {
+    static func sameTableViewLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+        let width = UIScreen.main.bounds.width
+        let height = UIScreen.main.bounds.height / 6
+        layout.itemSize = CGSize(width: width, height: height)
+        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        return layout
     }
 }

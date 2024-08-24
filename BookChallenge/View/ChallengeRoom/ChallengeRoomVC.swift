@@ -14,27 +14,25 @@ import SnapKit
 final class ChallengeRoomVC: BaseViewController {
     private let searchView = SearchBarView()
     private let searchButton = BaseButton()
+    private let line = UIView()
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: Self.sameTableViewLayout())
     
-    private let scrollView = UIScrollView()
-    private let contentView = UIView()
+    private let createRoomButton = UIButton(type: .custom)
     
-    let createRoomButton = UIButton(type: .custom)
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //self.navigationController?.isNavigationBarHidden = true
 
-        self.navigationItem.title = "챌린지 방"
     }
     override func setUpHierarchy() {
         view.addSubview(searchView)
         view.addSubview(searchButton)
-        view.addSubview(scrollView)
-        scrollView.addSubview(contentView)
+        view.addSubview(line)
         view.addSubview(createRoomButton)
+        view.addSubview(collectionView)
     }
     override func bindData() {
         searchButton.rx.tap
@@ -63,21 +61,26 @@ final class ChallengeRoomVC: BaseViewController {
         searchButton.snp.makeConstraints { make in
             make.edges.equalTo(searchView)
         }
-        scrollView.snp.makeConstraints { make in
-            make.horizontalEdges.equalTo(view)
-            make.top.equalTo(searchView.snp.bottom)
-            make.bottom.equalTo(view)
+        line.snp.makeConstraints { make in
+            make.top.equalTo(searchButton.snp.bottom).offset(5)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(1)
         }
-        contentView.snp.makeConstraints { make in
-            make.width.equalTo(scrollView.snp.width)
-            make.edges.equalTo(scrollView)
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
     override func setUpView() {
+        self.navigationItem.title = "챌린지 방"
+        
         createRoomButton.setTitle("방만들기", for: .normal)
         createRoomButton.setImage(.createRoomLogo, for: .normal)
         createRoomButton.setTitleColor(.white, for: .normal)
         createRoomButton.backgroundColor = .darkGray
         createRoomButton.layer.cornerRadius = 25
+        
+        line.backgroundColor = .black
+        
+        collectionView.register(ChallengeCollectionCell.self, forCellWithReuseIdentifier: ChallengeCollectionCell.id)
     }
 }

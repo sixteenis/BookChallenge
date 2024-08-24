@@ -44,7 +44,7 @@ final class RoomCreateVC: BaseViewController, FetchImageProtocol {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = "챌린지 방 만들기"
+        navigationItem.title = "방 만들기"
         
     }
     override func bindData() {

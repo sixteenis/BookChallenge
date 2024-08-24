@@ -12,11 +12,18 @@ import RxCocoa
 import SnapKit
 
 class BookStorageVC: BaseViewController {
+    let test = CapsuleLabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(test)
+        test.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
+        
     }
 }

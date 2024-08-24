@@ -8,12 +8,15 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 import SnapKit
 
 final class MainVC: BaseViewController {
     private let scrollView = UIScrollView()
     private let contentView = UIView()
+    //private var dataSourc: RxCollectionViewSectionedReloadDataSource<
+    private lazy var mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: mainLayout())
 
     private let showTopBookHeader = UILabel()
     
@@ -193,6 +196,13 @@ extension MainVC: UICollectionViewDelegate {
 }
 
 private extension MainVC {
+    func mainLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+        let width = UIScreen.main.bounds.width
+        let height = UIScreen.main.bounds.height
+        layout.scrollDirection = .vertical
+        return layout
+    }
     func showTopBookLayout() -> UICollectionViewLayout {
         let layout = CarouselLayout()
         let width = UIScreen.main.bounds.width// - 50 // 20 + 30

@@ -72,11 +72,9 @@ final class LSLPNetworkManager{
         self.provider.request(.fetchMeProfile) { result in
             switch result {
             case .success(let response):
-                guard let data = try? response.map(ProfileDTO.self) else {
-
-                    return
-                }
+                guard let data = try? response.map(ProfileDTO.self) else { return }
                 UserManager.shared.nick = data.nick
+                UserManager.shared.userId = data.user_id
             case .failure(let err):
                 print(err)
             }
