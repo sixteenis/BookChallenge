@@ -53,6 +53,8 @@ final class ChallengeRoomVC: BaseViewController {
             .bind(to: collectionView.rx.items(cellIdentifier: ChallengeCollectionCell.id, cellType: ChallengeCollectionCell.self)) { (row, element, cell) in
                 cell.setUpData(data: element)
             }.disposed(by: disposeBag)
+        
+        
     }
     override func setUpLayout() {
         createRoomView.snp.makeConstraints { make in
@@ -89,6 +91,8 @@ final class ChallengeRoomVC: BaseViewController {
         
         collectionView.backgroundColor = .viewBackground
         collectionView.register(ChallengeCollectionCell.self, forCellWithReuseIdentifier: ChallengeCollectionCell.id)
+//        collectionView.refreshControl = UIRefreshControl()
+//        let a = collectionView.refreshControl?.rx.isRefreshing
     }
 }
 

@@ -62,10 +62,37 @@ final class LSLPNetworkManager{
                 UserManager.shared.token = data.accessToken
                 completion(.success(()))
             case .failure(let err):
-                completion(.failure(err))
+                if err.response?.statusCode == 418 || err.response?.statusCode == 401{
+                    self.requestLogin { response in
+                        switch response {
+                        case .success(let result):
+                            completion(.success(result))
+                        case .failure(let err):
+                            completion(.failure(err))
+                        }
+                    }
+                }else {
+                    completion(.failure(err))
+                }
             }
         }
         
+    }
+    func requestLogin(completion: @escaping (Result<Void,Error>) -> () ) {
+        provider = MoyaProvider<LSLPRouter>(session: Session(interceptor: Interceptor.shared))
+        self.provider.request(LSLPRouter.login(login: .init(email: UserManager.shared.email, password: UserManager.shared.password))) { result in
+            switch result {
+            case .success(let response):
+                guard let data = try? response.map(LoginDTO.self) else {
+                    completion(.failure(NetworkError.invalidData))
+                    return
+                }
+                UserManager.shared.token = data.token
+                UserManager.shared.refreshToken = data.refresh
+            case .failure(let err):
+                print(err)
+            }
+        }
     }
     func requestUserProfile() {
         provider = MoyaProvider<LSLPRouter>(session: Session(interceptor: Interceptor.shared))

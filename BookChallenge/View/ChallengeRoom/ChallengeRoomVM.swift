@@ -10,7 +10,9 @@ import RxSwift
 import RxCocoa
 
 //class ChallengeRoomVM: BaseViewModel {
-//    
+//    let roomModle = BehaviorRelay(value: LSLPNetworkManager.shared.request(target: .fetchPosts(query: .init(next: "")), dto: FetchPostsDTO.self))
+//        
+//        
 //    
 //    struct Input {
 //        
@@ -19,6 +21,6 @@ import RxCocoa
 //        
 //    }
 //    func transform(input: Input) -> Output {
-//        <#code#>
+//        
 //    }
 //}

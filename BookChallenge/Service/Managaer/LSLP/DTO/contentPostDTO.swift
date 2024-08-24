@@ -11,7 +11,7 @@ struct ContentPostBody: Encodable {
     let title: String //제목
     let content: String // 책 id
     let content1: String //종료일
-    let content2: Int //인원
+    let content2: String //인원
     let content3: String // 내용
     let content4: Int //책 페이지
     let content5: String = RoomState.open// 현재 상황
@@ -19,7 +19,7 @@ struct ContentPostBody: Encodable {
     let product_id: String = PostProductID.makeRoom
     let files: [String]
     
-    init(book: BookModel, title: String, deadLine: String, limitPreson: Int, content: String, files: [String]) {
+    init(book: BookModel, title: String, deadLine: String, limitPreson: String, content: String, files: [String]) {
         self.title = title
         self.content = "#" + book.id
         self.content1 = deadLine
