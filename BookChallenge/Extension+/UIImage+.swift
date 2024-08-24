@@ -21,4 +21,7 @@ extension UIImage {
     static let createRoomLogo = UIImage(systemName: "pencil")
     
     static let noBookImage = UIImage(named: "noBook")
+    static let limitPerson = UIImage(systemName: "person")
+    static let deadLine = UIImage(systemName: "bell.and.waves.left.and.right")
+    
 }

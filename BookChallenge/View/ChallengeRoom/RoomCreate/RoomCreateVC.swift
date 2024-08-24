@@ -138,8 +138,8 @@ final class RoomCreateVC: BaseViewController, FetchImageProtocol {
         
     }
     override func setUpView() {
-        scrollView.backgroundColor = .white
-        contentView.backgroundColor = .white
+        scrollView.backgroundColor = .viewBackground
+        contentView.backgroundColor = .viewBackground
         let item = UIBarButtonItem(image: UIImage(systemName: "xmark"),style: .plain,  target: self, action: #selector(xbuttonTap))
         navigationItem.leftBarButtonItem = item
         navigationItem.rightBarButtonItem = saveItem

@@ -11,6 +11,7 @@ extension UIColor {
     static let mainColor = UIColor.systemBlue
     static let font = UIColor.black
     static let placeholder = UIColor.lightGray
+    static let viewBackground = UIColor.white
     
     static let clightGray = UIColor.lightGray
     static let collectionBackground = UIColor.systemGray6

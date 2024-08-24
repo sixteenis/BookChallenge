@@ -140,7 +140,7 @@ final class MainVC: BaseViewController {
         
         userChallengeHeader.text = "너가 지금 참가중인거"
         userChallengeCollection.register(UserChallengeCollectionCell.self, forCellWithReuseIdentifier: UserChallengeCollectionCell.id)
-        userChallengeCollection.backgroundColor = .white
+        userChallengeCollection.backgroundColor = .viewBackground
         userChallengeCollection.showsHorizontalScrollIndicator = false
         userChallengeCollection.decelerationRate = .fast
         userChallengeCollection.delegate = self
@@ -148,7 +148,7 @@ final class MainVC: BaseViewController {
         
         ChallengeRoomHeader.text = "챌린지 방"
         ChallengeRoomCollection.register(ChallengeRoomCollectionCell.self, forCellWithReuseIdentifier: ChallengeRoomCollectionCell.id)
-        ChallengeRoomCollection.backgroundColor = .white
+        ChallengeRoomCollection.backgroundColor = .viewBackground
         ChallengeRoomCollection.showsHorizontalScrollIndicator = false
         ChallengeRoomCollection.decelerationRate = .fast
         ChallengeRoomCollection.delegate = self

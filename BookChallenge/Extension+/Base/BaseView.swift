@@ -13,7 +13,7 @@ class BaseView: UIView {
         setUpHierarchy()
         setUpLayout()
         setUpView()
-        self.backgroundColor = .white
+        self.backgroundColor = .viewBackground
     }
     func setUpHierarchy() { }
     func setUpLayout() { }

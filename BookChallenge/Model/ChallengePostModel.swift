@@ -16,5 +16,5 @@ struct ChallengePostModel {
     let page: String
     let state: String
     let price: String
-    
+    let nick: String
 }

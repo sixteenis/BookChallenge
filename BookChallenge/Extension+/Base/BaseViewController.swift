@@ -11,7 +11,7 @@ class BaseViewController: UIViewController {
     private let loadingIndicator = UIActivityIndicatorView(style: .large)
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .viewBackground
         view.addSubview(loadingIndicator)
         setUpHierarchy()
         setUpView()
@@ -77,14 +77,4 @@ extension BaseViewController {
     }
 }
 
-extension BaseViewController {
-    static func sameTableViewLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewFlowLayout()
-        let width = UIScreen.main.bounds.width
-        let height = UIScreen.main.bounds.height / 6
-        layout.itemSize = CGSize(width: width, height: height)
-        layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        return layout
-    }
-}
+
