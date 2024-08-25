@@ -30,7 +30,7 @@ final class MainVC: BaseViewController {
     let challengeRoomDetailsButton = UIButton()
 
     private let disposeBag = DisposeBag()
-    private let showTopBookVM = ShowTopBookVM()
+    private let vm = MainVM()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,10 +40,11 @@ final class MainVC: BaseViewController {
     }
     
     override func bindData() {
-        let topBookInput = ShowTopBookVM.Input()
-        let topBookOutput = showTopBookVM.transform(input: topBookInput)
+        let viewdidLoadRx = Observable.just(())
+        let input = MainVM.Input(viewdidLoadRx: viewdidLoadRx)
+        let output = vm.transform(input: input)
         
-        topBookOutput.bestBookData
+        output.bestBookData
             .bind(to: showTopBookCollection.rx.items(cellIdentifier: ShowTopBookCollectionCell.id, cellType: ShowTopBookCollectionCell.self)) { (row, element, cell) in
                 cell.updateUI(data: element, index: row)
             }.disposed(by: disposeBag)
@@ -52,8 +53,9 @@ final class MainVC: BaseViewController {
             .bind(to: userChallengeCollection.rx.items(cellIdentifier: UserChallengeCollectionCell.id, cellType: UserChallengeCollectionCell.self)) { (row, element, cell) in
                 
             }.disposed(by: disposeBag)
-        Observable.just([1,2,3,31])
-            .bind(to: ChallengeRoomCollection.rx.items(cellIdentifier: ChallengeRoomCollectionCell.id, cellType: ChallengeRoomCollectionCell.self)) { (row, element, cell) in
+        output.challengeRoomList
+            .bind(to: ChallengeRoomCollection.rx.items(cellIdentifier: ChallengeCollectionCell.id, cellType: ChallengeCollectionCell.self)) { (row, element, cell) in
+                cell.setUpData(data: element)
                 
             }.disposed(by: disposeBag)
         challengeRoomDetailsButton.rx.tap
@@ -117,8 +119,8 @@ final class MainVC: BaseViewController {
         }
         ChallengeRoomCollection.snp.makeConstraints { make in
             make.top.equalTo(ChallengeRoomHeader.snp.bottom).offset(10)
-            make.horizontalEdges.equalToSuperview().inset(20)
-            make.height.equalTo(view.frame.height / 3)
+            make.horizontalEdges.equalTo(contentView).inset(10)
+            make.height.equalTo(view.frame.height / 5)
             make.bottom.equalTo(contentView).inset(30)
         }
     }
@@ -147,11 +149,13 @@ final class MainVC: BaseViewController {
         
         
         ChallengeRoomHeader.text = "챌린지 방"
-        ChallengeRoomCollection.register(ChallengeRoomCollectionCell.self, forCellWithReuseIdentifier: ChallengeRoomCollectionCell.id)
+        ChallengeRoomCollection.register(ChallengeCollectionCell.self, forCellWithReuseIdentifier: ChallengeCollectionCell.id)
         ChallengeRoomCollection.backgroundColor = .viewBackground
         ChallengeRoomCollection.showsHorizontalScrollIndicator = false
         ChallengeRoomCollection.decelerationRate = .fast
         ChallengeRoomCollection.delegate = self
+        ChallengeRoomCollection.layer.borderColor = UIColor.boarder.cgColor
+        ChallengeRoomCollection.layer.borderWidth = 1
         
         challengeRoomDetailsButton.setTitle("더 보기", for: .normal)
         challengeRoomDetailsButton.setTitleColor(.clightGray, for: .normal)
@@ -225,8 +229,8 @@ private extension MainVC {
     
     func ChallengeRoomLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        let width = UIScreen.main.bounds.width// - 50 // 20 + 30
-        let height = UIScreen.main.bounds.height / 3
+        let width = UIScreen.main.bounds.width - 20// - 50 // 20 + 30
+        let height = UIScreen.main.bounds.height / 5
         layout.itemSize = CGSize(width: width, height: height) //셀
         layout.scrollDirection = .horizontal // 가로, 세로 스크롤 설정
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)

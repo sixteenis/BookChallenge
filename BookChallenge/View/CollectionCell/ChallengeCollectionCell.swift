@@ -7,7 +7,7 @@
 
 import UIKit
 import SnapKit
-
+import RxSwift
 
 final class ChallengeCollectionCell: BaseCollectioViewCell {
     private let bookImage = UIImageView()
@@ -17,6 +17,11 @@ final class ChallengeCollectionCell: BaseCollectioViewCell {
     private let content = UILabel()
     private let nick = UILabel()
     
+    private var disposeBag = DisposeBag()
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
     override func setUpHierarchy() {
         contentView.addSubview(bookImage)
         contentView.addSubview(limitPerson)
@@ -30,7 +35,7 @@ final class ChallengeCollectionCell: BaseCollectioViewCell {
     override func setUpLayout() {
         bookImage.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().inset(20)
+            make.trailing.equalTo(contentView).inset(20)
             make.height.equalTo(100)
             make.width.equalTo(70)
         }
@@ -61,7 +66,9 @@ final class ChallengeCollectionCell: BaseCollectioViewCell {
     }
     override func setUpView() {
         bookImage.contentMode = .scaleToFill
-        bookImage.backgroundColor = .red
+        bookImage.layer.borderWidth = 1
+        bookImage.layer.borderColor = UIColor.boarder.cgColor
+        
         title.textColor = .font
         title.textAlignment = .left
         title.numberOfLines = 1
@@ -76,6 +83,7 @@ final class ChallengeCollectionCell: BaseCollectioViewCell {
         nick.textAlignment = .left
         nick.numberOfLines = 1
         nick.font = .font13
+        
     }
     func setUpData(data: ChallengePostModel) {
         fetchLSLPImage(imageView: bookImage, imageURL: data.bookUrl)

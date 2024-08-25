@@ -47,7 +47,7 @@ final class LoginVM: BaseViewModel {
         input.loginTap //로그인 버튼 누를 시 필터링 해주기
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .flatMap {
-                LSLPNetworkManager.shared.request(target: .login(login: .init(email: "P@zz.zz", password: "1")), dto: LoginDTO.self)
+                LSLPNetworkManager.shared.request(target: .login(login: .init(email: email.value, password: password.value)), dto: LoginDTO.self)
             }
             .bind(with: self) { owner, data in
                 switch data{

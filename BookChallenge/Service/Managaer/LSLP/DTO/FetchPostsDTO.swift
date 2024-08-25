@@ -8,7 +8,7 @@
 import Foundation
 
 struct FetchPostsQuery: Encodable {
-    //let next: String
+    let next: String
     let limit: String = "10"
     let product_id = PostProductID.makeRoom
 }
@@ -27,7 +27,7 @@ struct RoomPostDTO: Decodable {
     let content: String//
     let page: String
     let roomState: String
-    let price: Int
+    let price: Int?
     let files: [String]
     let likes: [String]
     let creator: UserDTO
@@ -55,7 +55,7 @@ struct RoomPostDTO: Decodable {
             deadLine: self.transformDeadLine(strDate: self.deadLine),
             limitPerson: self.transformLimitPerson(),
             page: self.page,
-            price: self.price.formatted(),
+            price: self.price?.formatted() ?? "0",
             nick: self.creator.nick)
         return model
     }
@@ -64,7 +64,9 @@ struct RoomPostDTO: Decodable {
         let dateFormatter = ISO8601DateFormatter()
         let date = dateFormatter.date(from: strDate)
         guard let date else {return ""}
-        
+        let calender = Calendar.current
+        let nowYear = calender.component(.year, from: now)
+        let dateYear = calender.component(.year, from: date)
         let difference = Calendar.current.dateComponents([.day], from: now, to: date).day ?? 35
         
         if difference <= 30 {
@@ -72,8 +74,13 @@ struct RoomPostDTO: Decodable {
         } else {
             let formatter = DateFormatter()
             formatter.locale = Locale(identifier: "ko_KR")
-            formatter.dateFormat = "yy.M.d"
+            if nowYear == dateYear {
+                formatter.dateFormat = "~ M.d"
+            }else{
+                formatter.dateFormat = "~ yy.M.d"
+            }
             let formattedDate = formatter.string(from: date)
+            
             return formattedDate
         }
 

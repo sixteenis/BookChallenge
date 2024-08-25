@@ -30,10 +30,10 @@ extension FetchImageProtocol {
             return req
         }
 
-        guard let url = URL(string: LSLP.baseURL + "v1/\(imageURL)") else {return }
+        guard let url = URL(string: LSLP.baseURL + "v1/\(imageURL)") else {return}
         imageView.kf.setImage(
         with: url,
-        placeholder: nil,
+        placeholder: UIImage.noBookImage,
         options: [.transition(.fade(1.2)), .requestModifier(modifier)]
         )
     }

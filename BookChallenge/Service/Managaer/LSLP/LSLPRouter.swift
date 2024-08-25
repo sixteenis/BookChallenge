@@ -100,7 +100,7 @@ extension LSLPRouter: CatchErrorTargetType {
         case .fetchPosts(let query):
                 return .requestParameters(parameters:
                                         [
-                                            "next" : "",
+                                            "next" : query.next,
                                             "limit": query.limit,
                                             "product_id": query.product_id
                                         ],
@@ -114,7 +114,14 @@ extension LSLPRouter: CatchErrorTargetType {
         case .getLikePosts(let query):
             return .requestJSONEncodable(query)
         case .hashtagsPoosts(let query):
-            return .requestJSONEncodable(query)
+            return .requestParameters(parameters:
+                                    [
+                                        "next" : query.next,
+                                        "limit": query.limit,
+                                        "product_id": query.product_id,
+                                        "hashTag": query.hashTag
+                                    ],
+                                  encoding: URLEncoding.queryString)
         case .fetchMeProfile:
             return .requestPlain
             

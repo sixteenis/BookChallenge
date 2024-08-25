@@ -39,7 +39,8 @@ final class ChallengeRoomVC: BaseViewController {
     }
     override func bindData() {
         let viewDidLoadRx = Observable.just(())
-        let input = ChallengeRoomVM.Input(viewDidLoadRx: viewDidLoadRx)
+        let getBookSearchId = PublishSubject<String>()
+        let input = ChallengeRoomVM.Input(viewDidLoadRx: viewDidLoadRx, searchBookId: getBookSearchId)
         let output = vm.transform(input: input)
         output.challengeRoomLists
             .bind(to: collectionView.rx.items(cellIdentifier: ChallengeCollectionCell.id, cellType: ChallengeCollectionCell.self)) { (row, element, cell) in
@@ -49,7 +50,11 @@ final class ChallengeRoomVC: BaseViewController {
         
         searchButton.rx.tap //검색 버튼 클릭 시
             .bind(with: self) { owner, _ in
-                owner.pushViewController(view: BookSearchVC())
+                let vc = BookSearchVC()
+                vc.vm.compltionBook = { book in
+                    getBookSearchId.onNext(book.id)
+                }
+                owner.pushViewController(view: vc)
             }.disposed(by: disposeBag)
         createRoomButton.rx.tap // 방만들기 클릭 시
             .bind(with: self) { owner, _ in
@@ -105,7 +110,7 @@ extension ChallengeRoomVC {
     func sameTableViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.width
-        let height = UIScreen.main.bounds.height / 6
+        let height = UIScreen.main.bounds.height / 5
         layout.itemSize = CGSize(width: width, height: height)
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
