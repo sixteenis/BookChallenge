@@ -40,7 +40,7 @@ final class ChallengeRoomVC: BaseViewController {
     override func bindData() {
         let viewDidLoadRx = Observable.just(())
         let getBookSearchId = PublishSubject<String>()
-            
+        let a = collectionView.rx.prefetchItems
         
         let input = ChallengeRoomVM.Input(viewDidLoadRx: viewDidLoadRx, searchBookId: getBookSearchId, pagination: collectionView.rx.prefetchItems)
         let output = vm.transform(input: input)

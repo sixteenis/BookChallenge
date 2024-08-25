@@ -10,7 +10,7 @@ import Foundation
 
 struct HashtagPostQuery: Encodable {
     let next: String
-    let limit: String = "10"
+    let limit: String = "5"
     let product_id: String = PostProductID.makeRoom
     let hashTag: String
 }

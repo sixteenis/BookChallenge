@@ -23,14 +23,15 @@ class ChallengeRoomVM: BaseViewModel {
         let challengeRoomLists: Observable<[ChallengePostModel]>
     }
     func transform(input: Input) -> Output {
-        let nextCursor = BehaviorSubject(value: "")
+        let nextCursor = BehaviorRelay(value: "")
+        let bookId = BehaviorRelay(value: "")
         let listType = BehaviorRelay(value: RoomSearchType.all) //먼저 뷰가 시작하면 전체 리스트보여줌
-        let roomLists = BehaviorRelay(value: [ChallengePostModel]()) //뷰에 보여줄 리스트들
-        let requestRequired = BehaviorSubject<Bool>(value: false) //페이지 네이션 시작하기
         
-//        let requestRequired = BehaviorSubject(value: false)
+        let roomLists = BehaviorRelay(value: [ChallengePostModel]()) //뷰에 보여줄 리스트들
+        
+        let requestRequired = BehaviorSubject<Bool>(value: false) //페이지 네이션 시작하기
         let requestAll = BehaviorSubject(value: ())
-        let requestBookId = PublishRelay<String>()
+        let requestBookId = PublishRelay<Void>()
         input.viewDidLoadRx //처음 뷰 뜰 때 전체 챌린지 방 보여주기
             .flatMap {
                 self.network.request(target: .fetchPosts(query: .init(next: "")), dto: FetchPostsDTO.self)
@@ -41,7 +42,8 @@ class ChallengeRoomVM: BaseViewModel {
                 case .success(let rooms):
                     print(rooms.next_cursor)
                     print("------")
-                    nextCursor.onNext(rooms.next_cursor)
+                    listType.accept(.all)
+                    nextCursor.accept(rooms.next_cursor)
                     let result = rooms.data.filter {$0.roomState != RoomState.close}.map{$0.transformChallengePostModel()}
                     roomLists.accept(result)
                 case .failure(let err):
@@ -51,25 +53,27 @@ class ChallengeRoomVM: BaseViewModel {
         
         input.searchBookId //책 검새 후 책id를 통해 챌린지 방 보여주기
             .flatMap {
-                listType.accept(.searchId(hashTag: ""))
-                nextCursor.onNext("")
-                return self.network.request(target: .hashtagsPoosts(query: .init(next: try! nextCursor.value(), hashTag: $0)), dto: HashtagPostDTO.self)
+                listType.accept(.searchId)
+                nextCursor.accept("")
+                bookId.accept($0)
+                return self.network.request(target: .hashtagsPoosts(query: .init(next: nextCursor.value, hashTag: $0)), dto: HashtagPostDTO.self)
             }
             .bind(with: self) { owner, response in
-                
                 switch response {
                 case .success(let rooms):
-                    nextCursor.onNext(rooms.next_cursor)
+                    nextCursor.accept(rooms.next_cursor)
                     let result = rooms.data.filter {$0.roomState != RoomState.close}.map{$0.transformChallengePostModel()}
                     roomLists.accept(result)
                 case .failure(let err):
                     print(err)
                 }
             }.disposed(by: disposeBag)
+        
         input.pagination
             .map {
                 for index in $0 {
-                    if index.item == roomLists.value.count - 2 {
+                    if index.item == roomLists.value.count - 1 {
+                        print("12312312312")
                         return true
                     }
                 }
@@ -84,11 +88,12 @@ class ChallengeRoomVM: BaseViewModel {
         requestRequired
             .filter {$0}
             .bind(with: self) { owner, _ in
+                print("이까지는 옴?")
                 switch listType.value {
                 case .all:
                     requestAll.onNext(())
                 case .searchId:
-                    requestBookId.accept("ss")
+                    requestBookId.accept(())
                 }
             }.disposed(by: disposeBag)
         
@@ -99,10 +104,9 @@ class ChallengeRoomVM: BaseViewModel {
                 self.network.request(target: .fetchPosts(query: .init(next: next)), dto: FetchPostsDTO.self)
             }.debug("페이지 네이션")
             .bind(with: self) { owner, response in
-                print("이까지는 옴???")
                 switch response{
                 case .success(let data):
-                    nextCursor.onNext(data.next_cursor)
+                    nextCursor.accept(data.next_cursor)
                     var befor = roomLists.value
                     let result = data.data.map {$0.transformChallengePostModel()}
                     befor.append(contentsOf: result)
@@ -112,6 +116,30 @@ class ChallengeRoomVM: BaseViewModel {
                 }
             }.disposed(by: disposeBag)
         
+        requestBookId
+            .withLatestFrom(nextCursor)
+            .filter { $0 != "0"}
+            .flatMapLatest { next in
+                print(next)
+                return self.network.request(target: .hashtagsPoosts(query: .init(next: next, hashTag: bookId.value)), dto: HashtagPostDTO.self)
+            }
+            .bind(with: self) { owner, response in
+                print(bookId.value)
+                print(nextCursor.value)
+                print("여기까지 옴???")
+                switch response {
+                case .success(let data):
+                    nextCursor.accept(data.next_cursor)
+                    var befor = roomLists.value
+                    let result = data.data.map {$0.transformChallengePostModel()}
+                    befor.append(contentsOf: result)
+                    print(bookId.value)
+                    print(befor.count)
+                    roomLists.accept(befor)
+                case .failure(let err):
+                    print(err)
+                }
+            }.disposed(by: disposeBag)
         
         
         return Output(challengeRoomLists: roomLists.asObservable())

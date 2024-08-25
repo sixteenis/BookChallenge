@@ -9,5 +9,5 @@ import Foundation
 @frozen
 enum RoomSearchType: Equatable {
     case all
-    case searchId(hashTag: String)
+    case searchId
 }
