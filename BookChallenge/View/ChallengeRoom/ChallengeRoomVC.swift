@@ -40,8 +40,11 @@ final class ChallengeRoomVC: BaseViewController {
     override func bindData() {
         let viewDidLoadRx = Observable.just(())
         let getBookSearchId = PublishSubject<String>()
-        let input = ChallengeRoomVM.Input(viewDidLoadRx: viewDidLoadRx, searchBookId: getBookSearchId)
+            
+        
+        let input = ChallengeRoomVM.Input(viewDidLoadRx: viewDidLoadRx, searchBookId: getBookSearchId, pagination: collectionView.rx.prefetchItems)
         let output = vm.transform(input: input)
+        
         output.challengeRoomLists
             .bind(to: collectionView.rx.items(cellIdentifier: ChallengeCollectionCell.id, cellType: ChallengeCollectionCell.self)) { (row, element, cell) in
                 cell.setUpData(data: element)

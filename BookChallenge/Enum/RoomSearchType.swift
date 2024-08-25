@@ -7,7 +7,7 @@
 
 import Foundation
 @frozen
-enum RoomSearchType {
+enum RoomSearchType: Equatable {
     case all
     case searchId(hashTag: String)
 }

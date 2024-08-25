@@ -488,6 +488,7 @@
 		065953802C6F3B500048821E /* ChallengeRoom */ = {
 			isa = PBXGroup;
 			children = (
+				06CF47612C7B972200EC0645 /* ChallengeDetail */,
 				0652C86B2C72551700BDC64E /* RoomCreate */,
 				065953812C6F3B660048821E /* ChallengeRoomVC.swift */,
 				06CF474D2C7960D600EC0645 /* ChallengeRoomVM.swift */,
@@ -515,6 +516,13 @@
 				06CF47572C79869D00EC0645 /* TestCollectioCell.swift */,
 			);
 			path = CollectionCell;
+			sourceTree = "<group>";
+		};
+		06CF47612C7B972200EC0645 /* ChallengeDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ChallengeDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

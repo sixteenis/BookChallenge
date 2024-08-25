@@ -51,7 +51,6 @@ final class LSLPNetworkManager{
     func requestToken( completion: @escaping (Result<Void,Error>) -> ()) {
         provider = MoyaProvider<LSLPRouter>(session: Session(interceptor: Interceptor.shared))
         self.provider.request(LSLPRouter.refresh) { result in
-            dump(result)
             print("---------------리프래시 토큰--------------")
             switch result {
             case .success(let response):

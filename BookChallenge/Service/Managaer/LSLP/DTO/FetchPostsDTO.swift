@@ -9,7 +9,7 @@ import Foundation
 
 struct FetchPostsQuery: Encodable {
     let next: String
-    let limit: String = "10"
+    let limit: String = "5"
     let product_id = PostProductID.makeRoom
 }
 
