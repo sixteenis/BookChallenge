@@ -21,12 +21,13 @@ final class ChallengeRoomVC: BaseViewController {
     private let createRoomButton = UIButton()
     
     private let disposeBag = DisposeBag()
+    private let vm = ChallengeRoomVM()
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
     }
     override func setUpHierarchy() {
         view.addSubview(collectionView)
@@ -37,21 +38,25 @@ final class ChallengeRoomVC: BaseViewController {
         view.addSubview(createRoomButton)
     }
     override func bindData() {
-        searchButton.rx.tap
+        let viewDidLoadRx = Observable.just(())
+        let input = ChallengeRoomVM.Input(viewDidLoadRx: viewDidLoadRx)
+        let output = vm.transform(input: input)
+        output.challengeRoomLists
+            .bind(to: collectionView.rx.items(cellIdentifier: ChallengeCollectionCell.id, cellType: ChallengeCollectionCell.self)) { (row, element, cell) in
+                cell.setUpData(data: element)
+            }.disposed(by: disposeBag)
+        
+        
+        searchButton.rx.tap //검색 버튼 클릭 시
             .bind(with: self) { owner, _ in
                 owner.pushViewController(view: BookSearchVC())
             }.disposed(by: disposeBag)
-        createRoomButton.rx.tap
+        createRoomButton.rx.tap // 방만들기 클릭 시
             .bind(with: self) { owner, _ in
                 let vc = RoomCreateVC()
                 let nav = UINavigationController(rootViewController: vc)
                 nav.modalPresentationStyle = .fullScreen
                 owner.present(nav, animated: true)
-            }.disposed(by: disposeBag)
-        
-        Observable.just([ChallengePostModel(bookUrl: "uploads/posts/BookChallenge_1724426570770.jpg", title: "고구마고구마 같이 읽어asdasdasdasd요고구마 같이 읽어asdasdasdasd요고구마 같이 읽어asdasdasdasd요고구마 같이 읽어asdasdasdasd요", content: "고구마 같이 읽어asdasdasdasd요고구마 같이 읽어asdasdasdasd요고구마 같이 읽어asdasdasdasd요고구마 같이 읽어asdasdasdasd요", deadLine: "~9.24", limitPerson: "4/5", page: "355", state: "open", price: "3110", nick: "성민이")])
-            .bind(to: collectionView.rx.items(cellIdentifier: ChallengeCollectionCell.id, cellType: ChallengeCollectionCell.self)) { (row, element, cell) in
-                cell.setUpData(data: element)
             }.disposed(by: disposeBag)
         
         
@@ -91,8 +96,8 @@ final class ChallengeRoomVC: BaseViewController {
         
         collectionView.backgroundColor = .viewBackground
         collectionView.register(ChallengeCollectionCell.self, forCellWithReuseIdentifier: ChallengeCollectionCell.id)
-//        collectionView.refreshControl = UIRefreshControl()
-//        let a = collectionView.refreshControl?.rx.isRefreshing
+        //        collectionView.refreshControl = UIRefreshControl()
+        //        let a = collectionView.refreshControl?.rx.isRefreshing
     }
 }
 

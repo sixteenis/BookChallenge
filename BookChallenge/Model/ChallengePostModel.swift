@@ -14,7 +14,7 @@ struct ChallengePostModel {
     let deadLine: String
     let limitPerson: String
     let page: String
-    let state: String
+    //let state: String 방의 삭제 유무는 필요없을듯
     let price: String
     let nick: String
 }

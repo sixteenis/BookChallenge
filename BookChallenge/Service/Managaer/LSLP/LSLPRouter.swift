@@ -54,8 +54,8 @@ extension LSLPRouter: CatchErrorTargetType {
             return "/posts"
         case .fetchPosts:
             return "/posts"
-        case .searchPost:
-            return "/posts/"
+        case .searchPost(let id): //이거 안쓰는데 쓸거면 수정해야됨!
+            return "/posts/\(id)"
         case .commentsPost( _, let id):
             return "/posts/\(id)/comments"
         case .like(_, let id):
@@ -67,7 +67,7 @@ extension LSLPRouter: CatchErrorTargetType {
         case .fetchMeProfile:
             return "/users/me/profile"
             
-        
+            
         }
     }
     var method: Moya.Method {
@@ -98,7 +98,13 @@ extension LSLPRouter: CatchErrorTargetType {
         case .contentPost(let content):
             return .requestJSONEncodable(content)
         case .fetchPosts(let query):
-            return .requestJSONEncodable(query)
+                return .requestParameters(parameters:
+                                        [
+                                            "next" : "",
+                                            "limit": query.limit,
+                                            "product_id": query.product_id
+                                        ],
+                                      encoding: URLEncoding.queryString)
         case .searchPost(let query):
             return .requestJSONEncodable(query)
         case .commentsPost(let body, _):
@@ -111,7 +117,7 @@ extension LSLPRouter: CatchErrorTargetType {
             return .requestJSONEncodable(query)
         case .fetchMeProfile:
             return .requestPlain
-        
+            
         }
     }
     var headers: [String : String]? {

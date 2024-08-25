@@ -8,28 +8,32 @@
 import Foundation
 
 struct FetchPostsQuery: Encodable {
-    let next: String
+    //let next: String
     let limit: String = "10"
     let product_id = PostProductID.makeRoom
 }
 
 struct FetchPostsDTO: Decodable {
     let data: [RoomPostDTO]
+    let next_cursor: String
     
 }
 struct RoomPostDTO: Decodable {
-    let title: String
-    let id: String
-    let deadLine: String
-    let limitPerson: Int
-    let content: String
+    let post_id: String //
+    let title: String //
+    let id: String //
+    let deadLine: String //
+    let limitPerson: String//
+    let content: String//
     let page: String
     let roomState: String
     let price: Int
     let files: [String]
     let likes: [String]
-    let comments: [UserDTO]
+    let creator: UserDTO
+    //let comments: [UserDTO]
     enum CodingKeys: String, CodingKey {
+        case post_id
         case title
         case id = "content"
         case deadLine = "content1"
@@ -40,7 +44,44 @@ struct RoomPostDTO: Decodable {
         case files
         case price
         case likes
-        case comments
+        case creator
+        //case comments
+    }
+    func transformChallengePostModel() -> ChallengePostModel {
+        let model = ChallengePostModel(
+            bookUrl: self.files.first ?? "",
+            title: self.title,
+            content: self.content,
+            deadLine: self.transformDeadLine(strDate: self.deadLine),
+            limitPerson: self.transformLimitPerson(),
+            page: self.page,
+            price: self.price.formatted(),
+            nick: self.creator.nick)
+        return model
+    }
+    private func transformDeadLine(strDate: String) -> String {
+        let now = Date()
+        let dateFormatter = ISO8601DateFormatter()
+        let date = dateFormatter.date(from: strDate)
+        guard let date else {return ""}
+        
+        let difference = Calendar.current.dateComponents([.day], from: now, to: date).day ?? 35
+        
+        if difference <= 30 {
+            return  "D+\(difference)"
+        } else {
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "ko_KR")
+            formatter.dateFormat = "yy.M.d"
+            let formattedDate = formatter.string(from: date)
+            return formattedDate
+        }
+
+    }
+    private func transformLimitPerson() -> String {
+        let limit = self.limitPerson //제한한 사항
+        let state = self.likes.count//현재 상황
+        return "\(state)/\(limit)"
     }
 }
 

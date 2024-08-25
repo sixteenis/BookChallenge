@@ -30,7 +30,7 @@ final class LSLPNetworkManager{
                 switch result {
                 case .success(let response):
                     guard let data = try? response.map(T.self) else {
-                        single(.success(.failure(NetworkError.invalidData)))
+                        single(.success(.failure(NetworkError.badRequest)))
                         return
                     }
                     single(.success(.success(data)))
