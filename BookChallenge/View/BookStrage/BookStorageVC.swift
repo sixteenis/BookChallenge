@@ -86,6 +86,7 @@ class BookStorageVC: BaseViewController {
             make.top.equalTo(segmentedControl.snp.bottom)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+        
     }
     override func setUpView() {
         navigationItem.title = "서재"

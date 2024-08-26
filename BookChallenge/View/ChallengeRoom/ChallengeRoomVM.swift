@@ -30,8 +30,8 @@ class ChallengeRoomVM: BaseViewModel {
         let roomLists = BehaviorRelay(value: [ChallengePostModel]()) //뷰에 보여줄 리스트들
         
         let requestRequired = BehaviorSubject<Bool>(value: false) //페이지 네이션 시작하기
-        let requestAll = BehaviorSubject(value: ())
-        let requestBookId = PublishRelay<Void>()
+        let requestAll = BehaviorSubject(value: ()) //전체 챌린지 방 뷰에 보여 줄때
+        let requestBookId = PublishRelay<Void>() // 검색한 챌린지 방 뷰 보야줄 때
         input.viewDidLoadRx //처음 뷰 뜰 때 전체 챌린지 방 보여주기
             .flatMap {
                 self.network.request(target: .fetchPosts(query: .init(next: "")), dto: FetchPostsDTO.self)
@@ -39,7 +39,7 @@ class ChallengeRoomVM: BaseViewModel {
             .bind(with: self) { owner, response in
                 print(response)
                 switch response {
-                case .success(let rooms):
+                case .success(let rooms): 
                     print(rooms.next_cursor)
                     print("------")
                     listType.accept(.all)
