@@ -19,9 +19,12 @@ struct BookDTO: Decodable {
     let subInfo: SubInfo
     
     func transformBookModel() -> BookModel {
-        let title = subInfo.subTitle ?? title
+        let removeSubtitle = self.title.split(separator: "-").map(String.init)
+        let removeSubtitle2 = removeSubtitle[0].split(separator: "(").map(String.init)
+        let removeSubtitle3 = removeSubtitle2[0].split(separator: ":").map(String.init)
+        
         let model = BookModel(
-            title: title,
+            title: removeSubtitle3[0],
             bookURL: self.cover,
             author: self.author,
             publisher: self.publisher,

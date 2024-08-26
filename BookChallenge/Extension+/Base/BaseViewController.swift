@@ -75,11 +75,13 @@ extension BaseViewController {
     func showLoadingIndicator() {
         self.setUpIndicator()
         self.activityIndicator.startAnimating()
+        self.activityIndicator.isUserInteractionEnabled = false
     }
     func hideLoadingIndicator() {
         
         self.activityIndicator.stopAnimating()
         self.loadingView.removeFromSuperview()
+        self.activityIndicator.isUserInteractionEnabled = true
         
     }
     func setUpIndicator() {
