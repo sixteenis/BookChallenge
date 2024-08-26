@@ -7,19 +7,33 @@
 
 import UIKit
 import Toast
+import NVActivityIndicatorView
 
 class BaseViewController: UIViewController {
-    private let loadingIndicator = UIActivityIndicatorView(style: .large)
+    
+    private lazy var loadingView: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        view.backgroundColor = .systemBackground
+        return view
+    }()
+    private lazy var activityIndicator: NVActivityIndicatorView = {
+        
+        let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
+                                                        type: .ballBeat,
+                                                        color: .clightGray,
+                                                        padding: .zero)
+        return activityIndicator
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .viewBackground
-        view.addSubview(loadingIndicator)
         setUpHierarchy()
         setUpView()
         setUpLayout()
         bindData()
         setUpNav()
         bindNetworkData()
+        setUpIndicator()
     }
     
     func setUpHierarchy() {}
@@ -29,7 +43,13 @@ class BaseViewController: UIViewController {
     func bindNetworkData() {}
     func setUpNav() {
         navigationController?.navigationBar.tintColor = .black
-        
+    }
+    func setUpIndicator() {
+        view.addSubview(loadingView)
+        loadingView.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalTo(view.safeAreaLayoutGuide)
+        }
     }
 }
 // MARK: - 알림
@@ -65,12 +85,11 @@ extension BaseViewController {
 // MARK: - 로딩
 extension BaseViewController {
     func showLoadingIndicator() {
-        loadingIndicator.startAnimating()
-        loadingIndicator.center = view.center
+        self.activityIndicator.startAnimating()
     }
     func hideLoadingIndicator() {
-        loadingIndicator.stopAnimating()
-        loadingIndicator.removeFromSuperview()
+        self.activityIndicator.stopAnimating()
+        self.loadingView.removeFromSuperview()
     }
 }
 // MARK: - 뷰 전환 부분

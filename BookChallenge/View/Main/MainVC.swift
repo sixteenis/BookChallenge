@@ -11,6 +11,7 @@ import RxCocoa
 import RxDataSources
 
 import SnapKit
+import NVActivityIndicatorView
 
 final class MainVC: BaseViewController {
     private let scrollView = UIScrollView()
@@ -57,6 +58,10 @@ final class MainVC: BaseViewController {
             .bind(to: ChallengeRoomCollection.rx.items(cellIdentifier: ChallengeCollectionCell.id, cellType: ChallengeCollectionCell.self)) { (row, element, cell) in
                 cell.setUpData(data: element)
                 
+            }.disposed(by: disposeBag)
+        output.isLoading //리로딩 부분
+            .bind(with: self) { owner, value in
+                value ? owner.showLoadingIndicator() : owner.hideLoadingIndicator()
             }.disposed(by: disposeBag)
         challengeRoomDetailsButton.rx.tap
             .bind(with: self) { owner, _ in

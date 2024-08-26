@@ -20,6 +20,8 @@
 		061A34CB2C76644C00491DB1 /* PostProductID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061A34CA2C76644C00491DB1 /* PostProductID.swift */; };
 		061A34CD2C76653D00491DB1 /* LSLPInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061A34CC2C76653D00491DB1 /* LSLPInterceptor.swift */; };
 		061A34CF2C766CF300491DB1 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061A34CE2C766CF300491DB1 /* NetworkError.swift */; };
+		065180342C7C60C200255228 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 065180332C7C60C200255228 /* NVActivityIndicatorView */; };
+		065180362C7C60C200255228 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 065180352C7C60C200255228 /* NVActivityIndicatorViewExtended */; };
 		0652C81C2C6F7CBB00BDC64E /* UserChallengeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C81B2C6F7CBB00BDC64E /* UserChallengeCollectionCell.swift */; };
 		0652C8202C6F906200BDC64E /* CarouseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C81F2C6F906200BDC64E /* CarouseLayout.swift */; };
 		0652C8232C6FAEE300BDC64E /* AladinParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8222C6FAEE300BDC64E /* AladinParam.swift */; };
@@ -210,9 +212,11 @@
 				061A34AC2C76069800491DB1 /* Moya in Frameworks */,
 				065953452C6E325A0048821E /* Kingfisher in Frameworks */,
 				0659533F2C6E324E0048821E /* Toast in Frameworks */,
+				065180362C7C60C200255228 /* NVActivityIndicatorViewExtended in Frameworks */,
 				0659534D2C6E327D0048821E /* SnapKit in Frameworks */,
 				065953482C6E32690048821E /* RxCocoa in Frameworks */,
 				06CF474C2C792CFC00EC0645 /* RxDataSources in Frameworks */,
+				065180342C7C60C200255228 /* NVActivityIndicatorView in Frameworks */,
 				065953422C6E32540048821E /* Then in Frameworks */,
 				0659533C2C6E32480048821E /* Alamofire in Frameworks */,
 			);
@@ -560,6 +564,8 @@
 				061A34BA2C76176B00491DB1 /* RxMoya */,
 				06CF47492C792CFC00EC0645 /* Differentiator */,
 				06CF474B2C792CFC00EC0645 /* RxDataSources */,
+				065180332C7C60C200255228 /* NVActivityIndicatorView */,
+				065180352C7C60C200255228 /* NVActivityIndicatorViewExtended */,
 			);
 			productName = BookChallenge;
 			productReference = 065952FE2C6E2F8C0048821E /* BookChallenge.app */;
@@ -599,6 +605,7 @@
 				0659534E2C6E328C0048821E /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				061A34AA2C76069800491DB1 /* XCRemoteSwiftPackageReference "Moya" */,
 				06CF47482C792CFC00EC0645 /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				065180322C7C60C200255228 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 			);
 			productRefGroup = 065952FF2C6E2F8C0048821E /* Products */;
 			projectDirPath = "";
@@ -944,6 +951,14 @@
 				minimumVersion = 15.0.3;
 			};
 		};
+		065180322C7C60C200255228 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.0;
+			};
+		};
 		0659533A2C6E32480048821E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1020,6 +1035,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 061A34AA2C76069800491DB1 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = RxMoya;
+		};
+		065180332C7C60C200255228 /* NVActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 065180322C7C60C200255228 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorView;
+		};
+		065180352C7C60C200255228 /* NVActivityIndicatorViewExtended */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 065180322C7C60C200255228 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorViewExtended;
 		};
 		0659533B2C6E32480048821E /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

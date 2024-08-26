@@ -19,10 +19,15 @@ class MainVM: BaseViewModel {
     struct Output {
         let bestBookData: BehaviorRelay<[BookDTO]>
         let challengeRoomList: Observable<[ChallengePostModel]>
+        let isLoading: BehaviorRelay<Bool>
     }
     func transform(input: Input) -> Output {
         let bestBookData = BehaviorRelay(value: [BookDTO]())
         let challengeRoomLists = PublishSubject<[ChallengePostModel]>()
+        let isLoading = BehaviorRelay(value: true)
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
         self.books.subscribe(with: self) { owner, respons in
             switch respons {
             case .success(let books):
@@ -30,7 +35,10 @@ class MainVM: BaseViewModel {
             case .failure(let err):
                 print(err)
             }
+            dispatchGroup.leave()
         }.disposed(by: disposeBag)
+        
+        dispatchGroup.enter()
         input.viewdidLoadRx
             .flatMap {
                 self.network.request(target: .fetchPosts(query: .init(next: "")), dto: FetchPostsDTO.self)
@@ -43,10 +51,13 @@ class MainVM: BaseViewModel {
                 case .failure(let err):
                     print(err)
                 }
+                dispatchGroup.leave()
             }.disposed(by: disposeBag)
+        dispatchGroup.notify(queue: .main) {
+            isLoading.accept(false)
+        }
         
-        
-        return Output(bestBookData: bestBookData, challengeRoomList: challengeRoomLists)
+        return Output(bestBookData: bestBookData, challengeRoomList: challengeRoomLists, isLoading: isLoading)
 
     }
 }
