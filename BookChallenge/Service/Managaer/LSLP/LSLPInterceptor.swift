@@ -18,8 +18,6 @@ final class Interceptor: RequestInterceptor {
         
         let path = urlRequest.url?.path(percentEncoded: true)
         
-        dump(urlRequest)
-        
         guard urlRequest.url?.absoluteString.hasPrefix(LSLP.baseURL) == true,
               ["/join", "/login", "/validation"].contains(path) == false
         else {

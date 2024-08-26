@@ -103,7 +103,6 @@
 		06CF47582C79869D00EC0645 /* TestCollectioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47572C79869D00EC0645 /* TestCollectioCell.swift */; };
 		06CF475A2C7A1C1800EC0645 /* BookStorageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47592C7A1C1800EC0645 /* BookStorageVM.swift */; };
 		06CF475C2C7A23E600EC0645 /* UnderlineSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF475B2C7A23E600EC0645 /* UnderlineSegmentedControl.swift */; };
-		06CF475E2C7B56F600EC0645 /* RoomSearchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF475D2C7B56F600EC0645 /* RoomSearchType.swift */; };
 		06F93F5B2C737689002F5513 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5A2C737689002F5513 /* Font+.swift */; };
 		06F93F5D2C7398EB002F5513 /* LSLPNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5C2C7398EB002F5513 /* LSLPNetworkManager.swift */; };
 /* End PBXBuildFile section */
@@ -195,7 +194,6 @@
 		06CF47572C79869D00EC0645 /* TestCollectioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCollectioCell.swift; sourceTree = "<group>"; };
 		06CF47592C7A1C1800EC0645 /* BookStorageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookStorageVM.swift; sourceTree = "<group>"; };
 		06CF475B2C7A23E600EC0645 /* UnderlineSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineSegmentedControl.swift; sourceTree = "<group>"; };
-		06CF475D2C7B56F600EC0645 /* RoomSearchType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomSearchType.swift; sourceTree = "<group>"; };
 		06F93F5A2C737689002F5513 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		06F93F5C2C7398EB002F5513 /* LSLPNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPNetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -358,7 +356,6 @@
 				065953362C6E31FF0048821E /* LoginTextType.swift */,
 				061A34CA2C76644C00491DB1 /* PostProductID.swift */,
 				06CF47292C7736D400EC0645 /* RoomState.swift */,
-				06CF475D2C7B56F600EC0645 /* RoomSearchType.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -656,7 +653,6 @@
 				061A34B32C76081C00491DB1 /* LoginDTO.swift in Sources */,
 				0659537E2C6F3B420048821E /* BookStorageVC.swift in Sources */,
 				065953922C6F6BF20048821E /* ShowTopBookCollectionCell.swift in Sources */,
-				06CF475E2C7B56F600EC0645 /* RoomSearchType.swift in Sources */,
 				065953392C6E32060048821E /* APIKey.swift in Sources */,
 				061A34B12C76073000491DB1 /* validationEamilDTO.swift in Sources */,
 				065953542C6E34540048821E /* BaseViewModel.swift in Sources */,

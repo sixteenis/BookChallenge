@@ -11,137 +11,143 @@ import RxCocoa
 
 
 class ChallengeRoomVM: BaseViewModel {
+    @frozen
+    enum RequestType {
+        case all
+        case bookId
+    }
+    enum RoomRequestType {
+        case first
+        case refreshLoading
+    }
     private let disposeBag = DisposeBag()
     private let network = LSLPNetworkManager.shared
     
     struct Input {
-        let viewDidLoadRx: Observable<Void>
         let searchBookId: PublishSubject<String>
         let pagination: ControlEvent<[IndexPath]>
+        let refreshing: ControlEvent<Void>
     }
     struct Output {
         let challengeRoomLists: Observable<[ChallengePostModel]>
+        let refreshLoading: Observable<Bool>
     }
     func transform(input: Input) -> Output {
-        let nextCursor = BehaviorRelay(value: "")
-        let bookId = BehaviorRelay(value: "")
-        let listType = BehaviorRelay(value: RoomSearchType.all) //먼저 뷰가 시작하면 전체 리스트보여줌
-        
+        let nextCursor = BehaviorRelay(value: "") // 페이지네이션 값 저장
+        let bookId = BehaviorRelay(value: "") //책 id 값 받아오기
         let roomLists = BehaviorRelay(value: [ChallengePostModel]()) //뷰에 보여줄 리스트들
         
+        let requestAll = BehaviorRelay(value: RoomRequestType.first) //전체 책 통신
+        let requestBookId = PublishRelay<Void>() //id값을 통한 통신
         let requestRequired = BehaviorSubject<Bool>(value: false) //페이지 네이션 시작하기
-        let requestAll = BehaviorSubject(value: ()) //전체 챌린지 방 뷰에 보여 줄때
-        let requestBookId = PublishRelay<Void>() // 검색한 챌린지 방 뷰 보야줄 때
-        input.viewDidLoadRx //처음 뷰 뜰 때 전체 챌린지 방 보여주기
-            .flatMap {
-                self.network.request(target: .fetchPosts(query: .init(next: "")), dto: FetchPostsDTO.self)
-            }
-            .bind(with: self) { owner, response in
-                print(response)
-                switch response {
-                case .success(let rooms): 
-                    print(rooms.next_cursor)
-                    print("------")
-                    listType.accept(.all)
-                    nextCursor.accept(rooms.next_cursor)
-                    let result = rooms.data.filter {$0.roomState != RoomState.close}.map{$0.transformChallengePostModel()}
-                    roomLists.accept(result)
-                case .failure(let err):
-                    print(err)
-                }
-            }.disposed(by: disposeBag)
+        let requestType = BehaviorSubject(value: RequestType.all)
         
-        input.searchBookId //책 검새 후 책id를 통해 챌린지 방 보여주기
-            .flatMap {
-                listType.accept(.searchId)
-                nextCursor.accept("")
-                bookId.accept($0)
-                return self.network.request(target: .hashtagsPoosts(query: .init(next: nextCursor.value, hashTag: $0)), dto: HashtagPostDTO.self)
-            }
+        let refreshLoading = BehaviorSubject(value: false)
+        let limiteRefresh = BehaviorRelay(value: false)
+        
+        Observable<Int>.timer(.seconds(1), period: .seconds(30), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { _ in
+                limiteRefresh.accept(true)
+            }).disposed(by: disposeBag)
+        
+        requestAll //전체 챌린지 방 가져오기
+            .flatMap { _ in self.network.request(target: .fetchPosts(query: .init(next: nextCursor.value)), dto: FetchPostsDTO.self) }
             .bind(with: self) { owner, response in
                 switch response {
                 case .success(let rooms):
-                    nextCursor.accept(rooms.next_cursor)
                     let result = rooms.data.filter {$0.roomState != RoomState.close}.map{$0.transformChallengePostModel()}
-                    roomLists.accept(result)
+                    if nextCursor.value == "" {
+                        roomLists.accept(result)
+                    }else{
+                        var befor = roomLists.value
+                        befor.append(contentsOf: result)
+                        roomLists.accept(befor)
+                    }
+                    nextCursor.accept(rooms.next_cursor)
+                    if requestAll.value == .refreshLoading {
+                        refreshLoading.onNext(true)
+                    }
+                    
+                case .failure(let err):
+                    if requestAll.value == .refreshLoading {
+                        //토스트로 띄어주기
+                        refreshLoading.onNext(false)
+                    }else{
+                        print(err)
+                    }
+                }
+            }.disposed(by: disposeBag)
+        
+        requestBookId //책 id를 통해 방 가져오기
+            .flatMap { _ in self.network.request(target: .hashtagsPoosts(query: .init(next: nextCursor.value, hashTag: bookId.value)), dto: HashtagPostDTO.self) }
+            .bind(with: self) { owner, response in
+                limiteRefresh.accept(true) //책을 검색했으면 리로딩하는거 타임 초기화해주기
+                switch response {
+                case .success(let rooms):
+                    let result = rooms.data.filter {$0.roomState != RoomState.close}.map{$0.transformChallengePostModel()}
+                    if nextCursor.value == "" {
+                        roomLists.accept(result)
+                    }else{
+                        var befor = roomLists.value
+                        befor.append(contentsOf: result)
+                        roomLists.accept(befor)
+                    }
+                    nextCursor.accept(rooms.next_cursor)
+                    
                 case .failure(let err):
                     print(err)
                 }
             }.disposed(by: disposeBag)
         
-        input.pagination
+        
+        
+        input.searchBookId //책 검새 후 책id를 통해 챌린지 방 보여주기
+            .bind(with: self) { owner, id in
+                bookId.accept(id)
+                nextCursor.accept("")
+                requestBookId.accept(())
+            }.disposed(by: disposeBag)
+        
+        
+        
+        input.pagination //페이지네이션 판별하기
             .map {
                 for index in $0 {
-                    if index.item == roomLists.value.count - 1 {
-                        print("12312312312")
-                        return true
-                    }
+                    if index.item == roomLists.value.count - 1 && nextCursor.value != "0" { return true }
                 }
                 return false
             }
             .filter { $0 }
             .bind(with: self) { owner, value in
-                print(value)
                 requestRequired.onNext(value)
             }.disposed(by: disposeBag)
         
         requestRequired
             .filter {$0}
-            .bind(with: self) { owner, _ in
-                print("이까지는 옴?")
-                switch listType.value {
+            .withLatestFrom(requestType)
+            .bind(with: self) { owner, type in
+                switch type {
                 case .all:
-                    requestAll.onNext(())
-                case .searchId:
+                    requestAll.accept(.first)
+                    
+                case .bookId:
                     requestBookId.accept(())
                 }
             }.disposed(by: disposeBag)
         
-        requestAll
-            .withLatestFrom(nextCursor)
-            .filter{ $0 != "0"}
-            .flatMapLatest { next in
-                self.network.request(target: .fetchPosts(query: .init(next: next)), dto: FetchPostsDTO.self)
-            }.debug("페이지 네이션")
-            .bind(with: self) { owner, response in
-                switch response{
-                case .success(let data):
-                    nextCursor.accept(data.next_cursor)
-                    var befor = roomLists.value
-                    let result = data.data.map {$0.transformChallengePostModel()}
-                    befor.append(contentsOf: result)
-                    roomLists.accept(befor)
-                case .failure(let err):
-                    print(err)
+        input.refreshing
+            .bind(with: self) { owner, _ in
+                if limiteRefresh.value {
+                    nextCursor.accept("")
+                    requestAll.accept(.refreshLoading)
+                    limiteRefresh.accept(false)
+                } else {
+                    refreshLoading.onNext(false)
                 }
+                
+                
             }.disposed(by: disposeBag)
         
-        requestBookId
-            .withLatestFrom(nextCursor)
-            .filter { $0 != "0"}
-            .flatMapLatest { next in
-                print(next)
-                return self.network.request(target: .hashtagsPoosts(query: .init(next: next, hashTag: bookId.value)), dto: HashtagPostDTO.self)
-            }
-            .bind(with: self) { owner, response in
-                print(bookId.value)
-                print(nextCursor.value)
-                print("여기까지 옴???")
-                switch response {
-                case .success(let data):
-                    nextCursor.accept(data.next_cursor)
-                    var befor = roomLists.value
-                    let result = data.data.map {$0.transformChallengePostModel()}
-                    befor.append(contentsOf: result)
-                    print(bookId.value)
-                    print(befor.count)
-                    roomLists.accept(befor)
-                case .failure(let err):
-                    print(err)
-                }
-            }.disposed(by: disposeBag)
-        
-        
-        return Output(challengeRoomLists: roomLists.asObservable())
+        return Output(challengeRoomLists: roomLists.asObservable(), refreshLoading: refreshLoading)
     }
 }

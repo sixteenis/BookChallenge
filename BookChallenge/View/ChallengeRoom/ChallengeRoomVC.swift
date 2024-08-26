@@ -20,6 +20,7 @@ final class ChallengeRoomVC: BaseViewController {
     private let createRoomView = CapsuleLabel()
     private let createRoomButton = UIButton()
     
+    private let refreshControl = UIRefreshControl() //당겨서 새로고침
     private let disposeBag = DisposeBag()
     private let vm = ChallengeRoomVM()
     override func viewDidLoad() {
@@ -38,18 +39,25 @@ final class ChallengeRoomVC: BaseViewController {
         view.addSubview(createRoomButton)
     }
     override func bindData() {
-        let viewDidLoadRx = Observable.just(())
         let getBookSearchId = PublishSubject<String>()
-        let a = collectionView.rx.prefetchItems
+        let refreshRx = refreshControl.rx.controlEvent(.valueChanged)
         
-        let input = ChallengeRoomVM.Input(viewDidLoadRx: viewDidLoadRx, searchBookId: getBookSearchId, pagination: collectionView.rx.prefetchItems)
+        let input = ChallengeRoomVM.Input(searchBookId: getBookSearchId, pagination: collectionView.rx.prefetchItems, refreshing: refreshRx)
         let output = vm.transform(input: input)
         
         output.challengeRoomLists
             .bind(to: collectionView.rx.items(cellIdentifier: ChallengeCollectionCell.id, cellType: ChallengeCollectionCell.self)) { (row, element, cell) in
                 cell.setUpData(data: element)
             }.disposed(by: disposeBag)
-        
+        output.refreshLoading
+            .bind(with: self) { owner, result in
+                owner.refreshControl.endRefreshing()
+                if result {
+                    owner.simpleToast(text: "새로고침 완료!")
+                } else {
+                    owner.simpleToast(text: "잠시 후 시도해 주세요!")
+                }
+            }.disposed(by: disposeBag)
         
         searchButton.rx.tap //검색 버튼 클릭 시
             .bind(with: self) { owner, _ in
@@ -104,8 +112,8 @@ final class ChallengeRoomVC: BaseViewController {
         
         collectionView.backgroundColor = .viewBackground
         collectionView.register(ChallengeCollectionCell.self, forCellWithReuseIdentifier: ChallengeCollectionCell.id)
-        //        collectionView.refreshControl = UIRefreshControl()
-        //        let a = collectionView.refreshControl?.rx.isRefreshing
+        collectionView.refreshControl = refreshControl
+        
     }
 }
 

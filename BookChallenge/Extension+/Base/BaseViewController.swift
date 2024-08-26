@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 class BaseViewController: UIViewController {
     private let loadingIndicator = UIActivityIndicatorView(style: .large)
@@ -54,6 +55,11 @@ extension BaseViewController {
         }
         alert.addAction(cancel)
         present(alert, animated: true)
+    }
+}
+extension BaseViewController {
+    func simpleToast(text: String) {
+        self.view.makeToast(text)
     }
 }
 // MARK: - 로딩

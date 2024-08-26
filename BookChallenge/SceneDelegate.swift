@@ -17,8 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         
         //let vc = LoginVC()
-        //let vc = TabBarController()
-        let vc = ChallengeingVC()
+        let vc = TabBarController()
+        //let vc = ChallengeingVC()
         
         
         window?.rootViewController = vc
