@@ -82,6 +82,12 @@ final class ChallengeRoomVC: BaseViewController {
                 owner.present(nav, animated: true)
             }.disposed(by: disposeBag)
         
+        self.collectionView.rx.modelSelected(ChallengePostModel.self)
+            .bind(with: self) { owner, data in
+                let vc = ChallengeDetailVC()
+                vc.vm.inputData.accept(data.postId)
+                owner.pushViewController(view: vc)
+            }.disposed(by: disposeBag)
         
     }
     override func setUpLayout() {

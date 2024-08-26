@@ -23,7 +23,7 @@ enum LSLPRouter {
     case contentPost(content: ContentPostBody) //포스트 텍스트 업로드
     
     case fetchPosts(query: FetchPostsQuery) // 포스트 최신순으로 가져오기
-    case searchPost(query: SearchPostQuery) // 포스트 검색 난 안쓸거같음
+    case searchPost(id: String) // 포스트 검색
     
     case commentsPost(body: CommentsBody, postId: String) //댓글 달기
     case like(body: LikeBody, postId: String) // 좋아요. 나는 참여하기로 사용
@@ -105,8 +105,8 @@ extension LSLPRouter: CatchErrorTargetType {
                                             "product_id": query.product_id
                                         ],
                                       encoding: URLEncoding.queryString)
-        case .searchPost(let query):
-            return .requestJSONEncodable(query)
+        case .searchPost:
+            return .requestPlain
         case .commentsPost(let body, _):
             return .requestJSONEncodable(body)
         case .like(let body, _):
@@ -140,7 +140,7 @@ extension LSLPRouter: CatchErrorTargetType {
                 BaseHeader.sesacKey.rawValue: LSLP.key
                 
             ]
-        case .like, .fetchPosts, .hashtagsPoosts, .getLikePosts, .fetchMeProfile:
+        case .like, .fetchPosts, .hashtagsPoosts, .getLikePosts, .fetchMeProfile, .searchPost:
             [
                 BaseHeader.sesacKey.rawValue: LSLP.key
             ]
@@ -176,7 +176,7 @@ extension LSLPRouter: CatchErrorTargetType {
         case .fetchPosts:
             return FetchPostsDTO.self
         case .searchPost:
-            return SearchPostDTO.self
+            return RoomPostDTO.self
         case .commentsPost:
             return CommentsDTO.self
         case .like:

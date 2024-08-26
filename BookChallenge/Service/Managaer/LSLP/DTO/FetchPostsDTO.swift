@@ -49,14 +49,16 @@ struct RoomPostDTO: Decodable {
     }
     func transformChallengePostModel() -> ChallengePostModel {
         let model = ChallengePostModel(
+            postId: self.post_id,
+            bookId: id.filter{$0 != "#"},
             bookUrl: self.files.first ?? "",
             title: self.title,
             content: self.content,
             deadLine: self.transformDeadLine(strDate: self.deadLine),
             limitPerson: self.transformLimitPerson(),
-            page: self.page,
-            price: self.price?.formatted() ?? "0",
-            nick: self.creator.nick)
+            state: self.roomState,
+            nick: self.creator.nick
+        )
         return model
     }
     private func transformDeadLine(strDate: String) -> String {

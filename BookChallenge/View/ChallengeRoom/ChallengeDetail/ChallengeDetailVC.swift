@@ -11,7 +11,7 @@ import RxCocoa
 
 import SnapKit
 
-final class ChallengeDetailVC: BaseViewController {
+final class ChallengeDetailVC: BaseViewController, FetchImageProtocol {
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     
@@ -29,6 +29,12 @@ final class ChallengeDetailVC: BaseViewController {
     private let roomTitle = UILabel()
     private let roomContent = UILabel()
     
+    private let buyAndJoinButton = PointButton(title: "책 구매 및 참여하기")
+    private let joinButton = PointButton(title: "참여하기")
+    
+    private let disposeBag = DisposeBag()
+    var vm = ChallengeDetailVM()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -37,8 +43,41 @@ final class ChallengeDetailVC: BaseViewController {
         createProfile.layer.cornerRadius = 15
     }
     
+    override func bindData() {
+        let input = ChallengeDetailVM.Input()
+        let output = vm.transform(input: input)
+        
+        output.postData
+            .bind(with: self) { owner, post in
+                print(post)
+            }.disposed(by: disposeBag)
+        
+        output.bookData
+            .bind(with: self) { owner, book in
+                owner.setUpBook(model: book)
+            }.disposed(by: disposeBag)
+        output.retrunBeforeErr //이미 하는 중이거나 사라진 방일 때 뒤로 보냄
+            .bind(with: self) { owner, message in
+                owner.simpleAlert(title: message) {
+                    owner.popViewController()
+                }
+            }.disposed(by: disposeBag)
+        
+        seeMoreDescriptionButton.rx.tap
+            .bind(with: self) { owner, _ in
+                if owner.bookDescription.numberOfLines == 3 {
+                    owner.bookDescription.numberOfLines = 0
+                }else {
+                    owner.bookDescription.numberOfLines = 3
+                }
+                
+            }.disposed(by: disposeBag)
+    }
+    
     override func setUpHierarchy() {
         view.addSubview(scrollView)
+        view.addSubview(buyAndJoinButton)
+        view.addSubview(joinButton)
         scrollView.addSubview(contentView)
         
         contentView.addSubview(bookImage)
@@ -64,6 +103,16 @@ final class ChallengeDetailVC: BaseViewController {
             make.width.equalTo(scrollView.snp.width)
             make.edges.equalTo(scrollView)
         }
+        buyAndJoinButton.snp.makeConstraints { make in
+            make.leading.bottom.equalTo(view.safeAreaLayoutGuide).inset(30)
+            make.width.equalTo(UIScreen.main.bounds.width / 2.5)
+            make.height.equalTo(44)
+        }
+        joinButton.snp.makeConstraints { make in
+            make.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(30)
+            make.width.equalTo(UIScreen.main.bounds.width / 2.5)
+            make.height.equalTo(44)
+        }
         setUpBookLayout()
         setUpContentLayout()
     }
@@ -80,7 +129,6 @@ final class ChallengeDetailVC: BaseViewController {
         bookDescription.textColor = .font
         bookDescription.font = .font14
         
-        bookImage.image = UIImage.noBookImage
         
         createProfile.image = UIImage.noBookImage
         createProfile.layer.masksToBounds = true
@@ -92,8 +140,6 @@ final class ChallengeDetailVC: BaseViewController {
         roomTitle.font = UIFont.systemFont(ofSize: 16, weight: .heavy)
         roomContent.font = .font14
         
-        bookTitle.text = "감자~~~~~~"
-        bookDescription.text = "오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시\n쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오\n늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~오늘 저녁 8시쯤 같이 뛰실뿐~"
         seeMoreDescriptionButton.setTitle("펼치기 🔽", for: .normal)
         seeMoreDescriptionButton.setTitleColor(.font, for: .normal)
         
@@ -105,20 +151,24 @@ final class ChallengeDetailVC: BaseViewController {
         roomContent.text = "asdlkjalkdjalksdjaksdjlasjdlkasd"
         rLine.backgroundColor = .clightGray
         lLine.backgroundColor = .clightGray
-        seeMoreDescriptionButton.rx.tap
-            .bind(with: self) { owner, _ in
-                if owner.bookDescription.numberOfLines == 3 {
-                    owner.bookDescription.numberOfLines = 0
-                }else {
-                    owner.bookDescription.numberOfLines = 3
-                }
-                
-            }
     }
     
     
 }
-
+private extension ChallengeDetailVC {
+    func setUpBook(model: BookModel) {
+        fetchImage(imageView: bookImage, imageURL: model.bookURL)
+        bookTitle.text = model.title
+        bookDescription.text = """
+        책 설명\n\(model.description)\n\n 작가: \(model.author) \n\n 출판사: \(model.publisher) \n\n 출판일: \(model.pubDate) \n\n 가격: \(model.price) \n\n 페이지 수: \(model.page)
+    """
+    }
+    func setUpPost(model: ChallengePostModel) {
+        
+    }
+    
+}
+// MARK: - 레이아웃 부분
 private extension ChallengeDetailVC {
     func setUpBookLayout() {
         bookImage.snp.makeConstraints { make in
@@ -177,7 +227,7 @@ private extension ChallengeDetailVC {
         roomContent.snp.makeConstraints { make in
             make.top.equalTo(roomTitle.snp.bottom).offset(15)
             make.horizontalEdges.equalTo(contentView).inset(15)
-            make.bottom.equalTo(contentView).inset(40) //맨 밑에 이거 넣주삼
+            make.bottom.equalTo(contentView).inset(90) //맨 밑에 이거 넣주삼
         }
     }
 }

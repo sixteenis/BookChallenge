@@ -7,16 +7,11 @@
 
 import Foundation
 
-struct SearchPostQuery: Encodable {
-    let next: String
-    let limit: String = "10"
-    let product_id = PostProductID.makeRoom
-}
 
-struct SearchPostDTO: Decodable {
-    let data: [RoomPostDTO]
-    
-}
+//struct SearchPostDTO: Decodable {
+//    let data: RoomPostDTO
+//    
+//}
 //struct RoomPostDTO: Decodable {
 //    let title: String
 //    let id: String
