@@ -31,6 +31,8 @@ class ChallengeRoomVM: BaseViewModel {
     struct Output {
         let challengeRoomLists: Observable<[ChallengePostModel]>
         let refreshLoading: Observable<Bool>
+        let scrollTop: Observable<Void>
+        let isLoading: Observable<Bool>
     }
     func transform(input: Input) -> Output {
         let nextCursor = BehaviorRelay(value: "") // 페이지네이션 값 저장
@@ -44,6 +46,9 @@ class ChallengeRoomVM: BaseViewModel {
         
         let refreshLoading = BehaviorSubject(value: false)
         let limiteRefresh = BehaviorRelay(value: false)
+        let scrollTop = PublishSubject<Void>()
+        
+        let isLoading = PublishSubject<Bool>() //로딩화면 띄워줄지 말지
         
         Observable<Int>.timer(.seconds(1), period: .seconds(30), scheduler: MainScheduler.instance)
             .subscribe(onNext: { _ in
@@ -51,7 +56,10 @@ class ChallengeRoomVM: BaseViewModel {
             }).disposed(by: disposeBag)
         
         requestAll //전체 챌린지 방 가져오기
-            .flatMap { _ in self.network.request(target: .fetchPosts(query: .init(next: nextCursor.value)), dto: FetchPostsDTO.self) }
+            .flatMap { _ in
+                isLoading.onNext(true)
+                return self.network.request(target: .fetchPosts(query: .init(next: nextCursor.value)), dto: FetchPostsDTO.self)
+            }
             .bind(with: self) { owner, response in
                 switch response {
                 case .success(let rooms):
@@ -75,18 +83,27 @@ class ChallengeRoomVM: BaseViewModel {
                     }else{
                         print(err)
                     }
+                    
                 }
+                isLoading.onNext(false)
             }.disposed(by: disposeBag)
         
         requestBookId //책 id를 통해 방 가져오기
-            .flatMap { _ in self.network.request(target: .hashtagsPoosts(query: .init(next: nextCursor.value, hashTag: bookId.value)), dto: HashtagPostDTO.self) }
+            .flatMap { _ in
+                isLoading.onNext(true)
+                return self.network.request(target: .hashtagsPoosts(query: .init(next: nextCursor.value, hashTag: bookId.value)), dto: HashtagPostDTO.self) }
             .bind(with: self) { owner, response in
                 limiteRefresh.accept(true) //책을 검색했으면 리로딩하는거 타임 초기화해주기
                 switch response {
+                    
                 case .success(let rooms):
                     let result = rooms.data.filter {$0.roomState != RoomState.close}.map{$0.transformChallengePostModel()}
                     if nextCursor.value == "" {
                         roomLists.accept(result)
+                        if !result.isEmpty {
+                            scrollTop.onNext(())
+                        }
+                        
                     }else{
                         var befor = roomLists.value
                         befor.append(contentsOf: result)
@@ -96,7 +113,11 @@ class ChallengeRoomVM: BaseViewModel {
                     
                 case .failure(let err):
                     print(err)
+                    
+                    
                 }
+                isLoading.onNext(false)
+                
             }.disposed(by: disposeBag)
         
         
@@ -148,6 +169,6 @@ class ChallengeRoomVM: BaseViewModel {
                 
             }.disposed(by: disposeBag)
         
-        return Output(challengeRoomLists: roomLists.asObservable(), refreshLoading: refreshLoading)
+        return Output(challengeRoomLists: roomLists.asObservable(), refreshLoading: refreshLoading, scrollTop: scrollTop, isLoading: isLoading)
     }
 }

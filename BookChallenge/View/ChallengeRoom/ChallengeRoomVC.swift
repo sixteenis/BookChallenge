@@ -58,7 +58,14 @@ final class ChallengeRoomVC: BaseViewController {
                     owner.simpleToast(text: "잠시 후 시도해 주세요!")
                 }
             }.disposed(by: disposeBag)
-        
+        output.scrollTop
+            .bind(with: self) { owner, _ in
+                owner.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+            }.disposed(by: disposeBag)
+        output.isLoading
+            .bind(with: self) { owner, value in
+                value ? owner.showLoadingIndicator() : owner.hideLoadingIndicator()
+            }.disposed(by: disposeBag)
         searchButton.rx.tap //검색 버튼 클릭 시
             .bind(with: self) { owner, _ in
                 let vc = BookSearchVC()

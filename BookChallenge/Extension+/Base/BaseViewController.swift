@@ -11,11 +11,7 @@ import NVActivityIndicatorView
 
 class BaseViewController: UIViewController {
     
-    private lazy var loadingView: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0,  width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-        view.backgroundColor = .systemBackground
-        return view
-    }()
+    private lazy var loadingView = UIView()
     private lazy var activityIndicator: NVActivityIndicatorView = {
         
         let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
@@ -33,7 +29,6 @@ class BaseViewController: UIViewController {
         bindData()
         setUpNav()
         bindNetworkData()
-        setUpIndicator()
     }
     
     func setUpHierarchy() {}
@@ -43,13 +38,6 @@ class BaseViewController: UIViewController {
     func bindNetworkData() {}
     func setUpNav() {
         navigationController?.navigationBar.tintColor = .black
-    }
-    func setUpIndicator() {
-        view.addSubview(loadingView)
-        loadingView.addSubview(activityIndicator)
-        activityIndicator.snp.makeConstraints { make in
-            make.center.equalTo(view.safeAreaLayoutGuide)
-        }
     }
 }
 // MARK: - 알림
@@ -85,11 +73,28 @@ extension BaseViewController {
 // MARK: - 로딩
 extension BaseViewController {
     func showLoadingIndicator() {
+        self.setUpIndicator()
         self.activityIndicator.startAnimating()
     }
     func hideLoadingIndicator() {
+        
         self.activityIndicator.stopAnimating()
         self.loadingView.removeFromSuperview()
+        
+    }
+    func setUpIndicator() {
+        view.addSubview(loadingView)
+        loadingView.backgroundColor = .darkGray
+        loadingView.layer.masksToBounds = true
+        loadingView.layer.cornerRadius = 15
+        loadingView.snp.makeConstraints { make in
+            make.center.equalTo(view.safeAreaLayoutGuide)
+            make.size.equalTo(70)
+        }
+        loadingView.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalTo(view.safeAreaLayoutGuide)
+        }
     }
 }
 // MARK: - 뷰 전환 부분
