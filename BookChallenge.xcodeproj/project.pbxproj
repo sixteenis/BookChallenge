@@ -498,11 +498,11 @@
 			children = (
 				0659537D2C6F3B420048821E /* BookStorageVC.swift */,
 				06CF47592C7A1C1800EC0645 /* BookStorageVM.swift */,
-				06CF475B2C7A23E600EC0645 /* UnderlineSegmentedControl.swift */,
 				0661246B2C7C09FE002A1B87 /* ChallengeingVC.swift */,
+				065180522C7DF65B00255228 /* ChallengeingCollectionCell.swift */,
+				06CF475B2C7A23E600EC0645 /* UnderlineSegmentedControl.swift */,
 				0661246D2C7C146D002A1B87 /* BottomSheetVC.swift */,
 				0661246F2C7C1529002A1B87 /* SimVC.swift */,
-				065180522C7DF65B00255228 /* ChallengeingCollectionCell.swift */,
 			);
 			path = BookStrage;
 			sourceTree = "<group>";
