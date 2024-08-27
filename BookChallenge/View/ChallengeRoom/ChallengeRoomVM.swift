@@ -42,14 +42,14 @@ class ChallengeRoomVM: BaseViewModel {
         let requestAll = BehaviorRelay(value: RoomRequestType.first) //전체 책 통신
         let requestBookId = PublishRelay<Void>() //id값을 통한 통신
         let requestRequired = BehaviorSubject<Bool>(value: false) //페이지 네이션 시작하기
-        let requestType = BehaviorSubject(value: RequestType.all)
+        let requestType = BehaviorRelay(value: RequestType.all)
         
         let refreshLoading = BehaviorSubject(value: false)
         let limiteRefresh = BehaviorRelay(value: false)
         let scrollTop = PublishSubject<Void>()
         
         let isLoading = PublishSubject<Bool>() //로딩화면 띄워줄지 말지
-        
+        let refreshOnlyOneRoom = PublishSubject<(Int,String)>()
         Observable<Int>.timer(.seconds(1), period: .seconds(30), scheduler: MainScheduler.instance)
             .subscribe(onNext: { _ in
                 limiteRefresh.accept(true)
@@ -62,8 +62,8 @@ class ChallengeRoomVM: BaseViewModel {
             }
             .bind(with: self) { owner, response in
                 switch response {
-                case .success(let rooms):
-                    let result = rooms.data.filter {$0.roomState != RoomState.close}.map{$0.transformChallengePostModel()}
+                case .success(let room):
+                    let result = owner.filterModel(dto: room.data)
                     if nextCursor.value == "" {
                         roomLists.accept(result)
                     }else{
@@ -71,7 +71,7 @@ class ChallengeRoomVM: BaseViewModel {
                         befor.append(contentsOf: result)
                         roomLists.accept(befor)
                     }
-                    nextCursor.accept(rooms.next_cursor)
+                    nextCursor.accept(room.next_cursor)
                     if requestAll.value == .refreshLoading {
                         refreshLoading.onNext(true)
                     }
@@ -96,8 +96,8 @@ class ChallengeRoomVM: BaseViewModel {
                 limiteRefresh.accept(true) //책을 검색했으면 리로딩하는거 타임 초기화해주기
                 switch response {
                     
-                case .success(let rooms):
-                    let result = rooms.data.filter {$0.roomState != RoomState.close}.map{$0.transformChallengePostModel()}
+                case .success(let room):
+                    let result = owner.filterModel(dto: room.data)
                     if nextCursor.value == "" {
                         roomLists.accept(result)
                         if !result.isEmpty {
@@ -109,7 +109,7 @@ class ChallengeRoomVM: BaseViewModel {
                         befor.append(contentsOf: result)
                         roomLists.accept(befor)
                     }
-                    nextCursor.accept(rooms.next_cursor)
+                    nextCursor.accept(room.next_cursor)
                     
                 case .failure(let err):
                     print(err)
@@ -119,7 +119,18 @@ class ChallengeRoomVM: BaseViewModel {
                 isLoading.onNext(false)
                 
             }.disposed(by: disposeBag)
-        
+        // MARK: - 중복되는거 같음 로직 다시 짜삼 나중에
+        roomLists
+            .bind(with: self) { owner, room in
+                if 0 < room.count && room.count < 4 && nextCursor.value != "0"{
+                    switch requestType.value {
+                    case .all:
+                        requestAll.accept(.refreshLoading)
+                    case .bookId:
+                        requestBookId.accept(())
+                    }
+                }
+            }.disposed(by: disposeBag)
         
         
         input.searchBookId //책 검새 후 책id를 통해 챌린지 방 보여주기
@@ -168,7 +179,43 @@ class ChallengeRoomVM: BaseViewModel {
                 
                 
             }.disposed(by: disposeBag)
+        NotificationCenter.default.rx.notification(.likePost)
+            .asDriver(onErrorRecover: {_ in .never()})
+            .drive(with: self) { owner, postId in
+                guard let postId = postId.object as? String else { return }
+                let result = owner.checkPostId(modles: roomLists.value, id: postId)
+                let list = roomLists.value
+                if self.checkPostId(modles: roomLists.value, id: postId) {
+                    if let index = list.firstIndex(where: {$0.postId == postId}) {
+                        refreshOnlyOneRoom.onNext((index, postId))
+                    }
+                }
+            }.disposed(by: disposeBag)
+        refreshOnlyOneRoom
+            .flatMap { LSLPNetworkManager.shared.request(target: .searchPost(id: $0.1), dto: RoomPostDTO.self)}
+            .bind(with: self) { owner, response in
+                switch response {
+                case .success(let data):
+                    print("")
+                case .failure(let err):
+                    print(err)
+                }
+            }.disposed(by: disposeBag)
         
         return Output(challengeRoomLists: roomLists.asObservable(), refreshLoading: refreshLoading, scrollTop: scrollTop, isLoading: isLoading)
     }
+    private func checkPostId(modles: [ChallengePostModel], id: String) -> Bool {
+        let filter = modles.filter { $0.postId == id }
+        guard let data = filter.first else { return false }
+        
+        return true
+    }
+    private func filterModel(dto: [RoomPostDTO]) ->  [ChallengePostModel] {
+        let result = dto.filter { model in
+            return model.roomState != RoomState.close && !model.likes.contains(UserManager.shared.userId)
+         }
+        return result.map { $0.transformChallengePostModel() }
+        
+    }
 }
+

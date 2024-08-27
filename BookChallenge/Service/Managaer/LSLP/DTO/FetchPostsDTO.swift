@@ -48,11 +48,13 @@ struct RoomPostDTO: Decodable {
         //case comments
     }
     func transformChallengePostModel() -> ChallengePostModel {
-        let model = ChallengePostModel(
+        let title = self.title.split(separator: "]").map(String.init)
+        let model =  ChallengePostModel(
             postId: self.post_id,
-            bookId: id.filter{$0 != "#"},
+            bookId: id.filter{ $0 != "#"},
             bookUrl: self.files.first ?? "",
-            title: self.title,
+            title: title[1],
+            bookTitle: title[0],
             content: self.content,
             deadLine: self.transformDeadLine(strDate: self.deadLine),
             limitPerson: self.transformLimitPerson(),

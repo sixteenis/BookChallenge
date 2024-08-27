@@ -29,7 +29,7 @@ final class ChallengeDetailVC: BaseViewController, FetchImageProtocol {
     private let roomTitle = UILabel()
     private let roomContent = UILabel()
     
-    private let buyAndJoinButton = PointButton(title: "책 구매 및 참여하기")
+    private let buyAndJoinButton = PointButton(title: "책 구매")
     private let joinButton = PointButton(title: "참여하기")
     
     private let disposeBag = DisposeBag()
@@ -44,12 +44,13 @@ final class ChallengeDetailVC: BaseViewController, FetchImageProtocol {
     }
     
     override func bindData() {
-        let input = ChallengeDetailVM.Input()
+        let join = BehaviorRelay(value: ())
+        let input = ChallengeDetailVM.Input(joinButtonTap: join.asObservable())
         let output = vm.transform(input: input)
         
         output.postData
             .bind(with: self) { owner, post in
-                print(post)
+                owner.setUpPost(model: post)
             }.disposed(by: disposeBag)
         
         output.bookData
@@ -62,15 +63,29 @@ final class ChallengeDetailVC: BaseViewController, FetchImageProtocol {
                     owner.popViewController()
                 }
             }.disposed(by: disposeBag)
+        output.joinSuccess
+            .bind(with: self) { owner, _ in
+                owner.simpleToast(text: "참여하기 완료!")  
+            }.disposed(by: disposeBag)
         
         seeMoreDescriptionButton.rx.tap
             .bind(with: self) { owner, _ in
                 if owner.bookDescription.numberOfLines == 3 {
                     owner.bookDescription.numberOfLines = 0
+                    owner.seeMoreDescriptionButton.setTitle("닫기 🔼", for: .normal)
+                    owner.seeMoreDescriptionButton.setTitleColor(.font, for: .normal)
                 }else {
                     owner.bookDescription.numberOfLines = 3
+                    owner.seeMoreDescriptionButton.setTitle("펼치기 🔽", for: .normal)
+                    owner.seeMoreDescriptionButton.setTitleColor(.font, for: .normal)
                 }
                 
+            }.disposed(by: disposeBag)
+        joinButton.rx.tap
+            .bind(with: self) { owner, _ in
+                owner.choiceAlert(title: "참여 하시겠습니까?") {
+                    join.accept(())
+                }
             }.disposed(by: disposeBag)
     }
     
@@ -143,12 +158,6 @@ final class ChallengeDetailVC: BaseViewController, FetchImageProtocol {
         seeMoreDescriptionButton.setTitle("펼치기 🔽", for: .normal)
         seeMoreDescriptionButton.setTitleColor(.font, for: .normal)
         
-        
-        
-        createNick.text = "고구마"
-        limitPerson.setUpData(backColor: .clightGray, title: "5/10", image: nil)
-        roomTitle.text = "같이 해영"
-        roomContent.text = "asdlkjalkdjalksdjaksdjlasjdlkasd"
         rLine.backgroundColor = .clightGray
         lLine.backgroundColor = .clightGray
     }
@@ -164,7 +173,12 @@ private extension ChallengeDetailVC {
     """
     }
     func setUpPost(model: ChallengePostModel) {
-        
+        createNick.text = model.nick
+        limitPerson.setUpData(backColor: .clightGray, title: model.limitPerson, image: .limitPerson)
+        deadline.setUpData(backColor: .clightGray, title: model.deadLine, image: .deadLine)
+        roomTitle.text = model.title
+        roomContent.text = model.content
+        roomContent.numberOfLines = 0
     }
     
 }

@@ -64,6 +64,20 @@ extension BaseViewController {
         alert.addAction(cancel)
         present(alert, animated: true)
     }
+    func choiceAlert(title: String, completion: (() -> ())? = nil) {
+        let alert = UIAlertController(
+            title: nil,
+            message: title,
+            preferredStyle: .alert
+        )
+        let ok = UIAlertAction(title: "확인", style: .default) { _ in
+            completion?()
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        present(alert, animated: true)
+    }
 }
 extension BaseViewController {
     func simpleToast(text: String) {
@@ -82,6 +96,10 @@ extension BaseViewController {
         self.activityIndicator.stopAnimating()
         self.loadingView.removeFromSuperview()
         self.activityIndicator.isUserInteractionEnabled = true
+        
+        
+        
+        
         
     }
     func setUpIndicator() {

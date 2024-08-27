@@ -12,9 +12,11 @@ struct ChallengePostModel {
     let bookId: String
     let bookUrl: String
     let title: String
+    let bookTitle: String
     let content: String
     let deadLine: String
     let limitPerson: String
     let state: String
     let nick: String
 }
+

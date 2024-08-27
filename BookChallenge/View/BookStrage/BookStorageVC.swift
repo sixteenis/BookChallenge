@@ -16,19 +16,19 @@ class BookStorageVC: BaseViewController {
         let segmentedControl = UnderlineSegmentedControl(items: ["챌린지 중", "혼자 챌린지 중", "종료된 챌린지"])
         return segmentedControl
     }()
-    private let vc1: UIViewController = {
-        let vc = UIViewController()
+    private let vc1: BaseViewController = {
+        let vc = ChallengeingVC()
         vc.view.backgroundColor = .white
         return vc
     }()
     private let vc2: UIViewController = {
         let vc = UIViewController()
-        vc.view.backgroundColor = .white
+        vc.view.backgroundColor = .red
         return vc
     }()
     private let vc3: UIViewController = {
         let vc = UIViewController()
-        vc.view.backgroundColor = .white
+        vc.view.backgroundColor = .blue
         return vc
     }()
     
