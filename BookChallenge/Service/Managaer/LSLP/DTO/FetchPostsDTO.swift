@@ -63,18 +63,26 @@ struct RoomPostDTO: Decodable {
         )
         return model
     }
+    // MARK: - 현재 시간 기준 마감된 방인지 파악하는 함수
+    func checkDate() -> Bool {
+        let deadDate = Date.asTranformDate(str: self.deadLine)
+        let isdead = Date.comparisonDate(to: Date(), form: deadDate)
+        print(isdead)
+        return isdead >= 0
+    }
     private func transformDeadLine(strDate: String) -> String {
         let now = Date()
-        let dateFormatter = ISO8601DateFormatter()
-        let date = dateFormatter.date(from: strDate)
-        guard let date else {return ""}
+        let compareDate = Date.asTranformDate(str: strDate)
+        
         let calender = Calendar.current
         let nowYear = calender.component(.year, from: now)
-        let dateYear = calender.component(.year, from: date)
-        let difference = Calendar.current.dateComponents([.day], from: now, to: date).day ?? 35
-        
-        if difference <= 30 {
-            return  "D+\(difference)"
+        let dateYear = calender.component(.year, from: compareDate)
+        let compare = Date.comparisonDate(to: now, form: compareDate)
+        if compare <= 30 {
+            if compare == 0 {
+                return "오늘 종료"
+            }
+            return  "D+\(compare) 남음"
         } else {
             let formatter = DateFormatter()
             formatter.locale = Locale(identifier: "ko_KR")
@@ -83,12 +91,13 @@ struct RoomPostDTO: Decodable {
             }else{
                 formatter.dateFormat = "~ yy.M.d"
             }
-            let formattedDate = formatter.string(from: date)
+            let formattedDate = formatter.string(from: compareDate)
             
             return formattedDate
         }
 
     }
+
     private func transformLimitPerson() -> String {
         let limit = self.limitPerson //제한한 사항
         let state = self.likes.count//현재 상황

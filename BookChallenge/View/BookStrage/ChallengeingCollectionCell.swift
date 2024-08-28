@@ -20,12 +20,14 @@ final class ChallengeingCollectionCell: BaseCollectioViewCell {
     
     let datebar = UIView()
     let dateChargeBar = UIView()
-    let datePercent = UILabel()
-    let percentdate = UILabel()
+    let startDate = UILabel()
+    let endDate = UILabel()
     
     let recodeButton = PointButton(title: "기록하기")
     let person = UILabel()
     let date = UILabel()
+    
+    private let disposeBag = DisposeBag()
     
     override func setUpHierarchy() {
         contentView.addSubview(bookImage)
@@ -36,8 +38,8 @@ final class ChallengeingCollectionCell: BaseCollectioViewCell {
         contentView.addSubview(percentPage)
         contentView.addSubview(datebar)
         contentView.addSubview(dateChargeBar)
-        contentView.addSubview(datePercent)
-        contentView.addSubview(percentdate)
+        contentView.addSubview(startDate)
+        contentView.addSubview(endDate)
         contentView.addSubview(person)
         contentView.addSubview(date)
         contentView.addSubview(recodeButton)
@@ -83,11 +85,11 @@ final class ChallengeingCollectionCell: BaseCollectioViewCell {
             make.height.equalTo(datebar)
             make.width.equalTo(40) // 변경해야됨
         }
-        datePercent.snp.makeConstraints { make in
+        startDate.snp.makeConstraints { make in
             make.top.equalTo(datebar.snp.bottom).offset(3)
             make.leading.equalTo(contentView).inset(15)
         }
-        percentdate.snp.makeConstraints { make in
+        endDate.snp.makeConstraints { make in
             make.top.equalTo(datebar.snp.bottom).offset(3)
             make.trailing.equalTo(contentView).inset(15)
         }
@@ -96,11 +98,6 @@ final class ChallengeingCollectionCell: BaseCollectioViewCell {
             make.horizontalEdges.equalTo(contentView).inset(25)
             make.height.equalTo(33)
         }
-//        let datebar = UIView()
-//        let dateChargeBar = UIView()
-//        let datePercent = UILabel()
-//        let percentdate = UILabel()
-        
     }
     override func setUpView() {
         contentView.backgroundColor = .systemGray6
@@ -110,14 +107,14 @@ final class ChallengeingCollectionCell: BaseCollectioViewCell {
         bookTitle.text = "고구마 감자국"
         percentPage.text = "50/164p"
         pagePercent.text = "36%"
-        datePercent.text = "24.06.01"
-        percentdate.text = "24.11.11"
+        startDate.text = "24.06.01"
+        endDate.text = "24.11.11"
         
         //고정값들
         bookImage.layer.borderColor = UIColor.boarder.cgColor
         bookImage.layer.borderWidth = 1
         
-        bookTitle.font = .boldFont15
+        bookTitle.font = .boldFont13
         bookTitle.textColor = .font
         bookTitle.textAlignment = .center
         bookTitle.numberOfLines = 1
@@ -142,17 +139,14 @@ final class ChallengeingCollectionCell: BaseCollectioViewCell {
         datebar.layer.cornerRadius = 5
         dateChargeBar.layer.cornerRadius = 5
         
-        datePercent.font = .font10
-        datePercent.textColor = .font
-        datePercent.textAlignment = .left
-        datePercent.numberOfLines = 1
+        startDate.font = .font10
+        startDate.textColor = .font
+        startDate.textAlignment = .left
+        startDate.numberOfLines = 1
         
-        percentdate.font = .font10
-        percentdate.textColor = .font
-        percentdate.textAlignment = .right
-        percentdate.numberOfLines = 1
-        
-
-        
+        endDate.font = .font10
+        endDate.textColor = .font
+        endDate.textAlignment = .right
+        endDate.numberOfLines = 1
     }
 }

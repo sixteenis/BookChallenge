@@ -191,6 +191,7 @@ class ChallengeRoomVM: BaseViewModel {
                     }
                 }
             }.disposed(by: disposeBag)
+        //안쓸거같음. 방을 리로딩 안해도될듯
         refreshOnlyOneRoom
             .flatMap { LSLPNetworkManager.shared.request(target: .searchPost(id: $0.1), dto: RoomPostDTO.self)}
             .bind(with: self) { owner, response in
@@ -212,7 +213,7 @@ class ChallengeRoomVM: BaseViewModel {
     }
     private func filterModel(dto: [RoomPostDTO]) ->  [ChallengePostModel] {
         let result = dto.filter { model in
-            return model.roomState != RoomState.close && !model.likes.contains(UserManager.shared.userId)
+            return model.roomState != RoomState.close && model.checkDate()
          }
         return result.map { $0.transformChallengePostModel() }
         

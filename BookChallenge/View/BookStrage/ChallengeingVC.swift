@@ -20,29 +20,34 @@ final class ChallengeingVC: BaseViewController {
         super.viewDidLoad()
     }
     override func setUpHierarchy() {
-    //    view.addSubview(button)
+        //    view.addSubview(button)
         view.addSubview(collectionView)
         
-//        button.snp.makeConstraints { make in
-//            make.edges.equalTo(view.safeAreaLayoutGuide)
-//        }
+        //        button.snp.makeConstraints { make in
+        //            make.edges.equalTo(view.safeAreaLayoutGuide)
+        //        }
         collectionView.register(ChallengeingCollectionCell.self, forCellWithReuseIdentifier: ChallengeingCollectionCell.id)
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
         Observable.just([1,2,3,31])
             .bind(to: collectionView.rx.items(cellIdentifier: ChallengeingCollectionCell.id, cellType: ChallengeingCollectionCell.self)) { (row, element, cell) in
+                cell.recodeButton.rx.tap
+                    .bind(with: self) { owner, _ in
+                        owner.simVC.setUpView(text: "고구마입니다.")
+                        owner.present(owner.bottomSheet, animated: false)
+                    }.disposed(by: self.disposeBag)
                 
             }.disposed(by: disposeBag)
         
-//        button.setTitle("버튼", for: .normal)
-//        button.setTitleColor(.black, for: .normal)
-//        button.rx.tap
-//            .bind(with: self) { owner, _ in
-//                owner.simVC.setUpView(text: "고구마입니다.")
-//                owner.present(owner.bottomSheet, animated: false)
-//                
-//            }.disposed(by: disposeBag)
+        //        button.setTitle("버튼", for: .normal)
+        //        button.setTitleColor(.black, for: .normal)
+        //        button.rx.tap
+        //            .bind(with: self) { owner, _ in
+        //                owner.simVC.setUpView(text: "고구마입니다.")
+        //                owner.present(owner.bottomSheet, animated: false)
+        //                
+        //            }.disposed(by: disposeBag)
     }
 }
 

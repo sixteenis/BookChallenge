@@ -27,6 +27,7 @@
 		0651803E2C7CAABB00255228 /* ChallengeDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651803D2C7CAABB00255228 /* ChallengeDetailVM.swift */; };
 		065180512C7DC1BB00255228 /* NSNotification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065180502C7DC1BB00255228 /* NSNotification+.swift */; };
 		065180532C7DF65B00255228 /* ChallengeingCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065180522C7DF65B00255228 /* ChallengeingCollectionCell.swift */; };
+		065180622C7F19DF00255228 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065180612C7F19DF00255228 /* Date+.swift */; };
 		0652C81C2C6F7CBB00BDC64E /* UserChallengeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C81B2C6F7CBB00BDC64E /* UserChallengeCollectionCell.swift */; };
 		0652C8202C6F906200BDC64E /* CarouseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C81F2C6F906200BDC64E /* CarouseLayout.swift */; };
 		0652C8232C6FAEE300BDC64E /* AladinParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8222C6FAEE300BDC64E /* AladinParam.swift */; };
@@ -131,6 +132,7 @@
 		0651803D2C7CAABB00255228 /* ChallengeDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailVM.swift; sourceTree = "<group>"; };
 		065180502C7DC1BB00255228 /* NSNotification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+.swift"; sourceTree = "<group>"; };
 		065180522C7DF65B00255228 /* ChallengeingCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeingCollectionCell.swift; sourceTree = "<group>"; };
+		065180612C7F19DF00255228 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		0652C81B2C6F7CBB00BDC64E /* UserChallengeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChallengeCollectionCell.swift; sourceTree = "<group>"; };
 		0652C81F2C6F906200BDC64E /* CarouseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouseLayout.swift; sourceTree = "<group>"; };
 		0652C8222C6FAEE300BDC64E /* AladinParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AladinParam.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 				065953312C6E31FA0048821E /* UIImage+.swift */,
 				06F93F5A2C737689002F5513 /* Font+.swift */,
 				065180502C7DC1BB00255228 /* NSNotification+.swift */,
+				065180612C7F19DF00255228 /* Date+.swift */,
 			);
 			path = "Extension+";
 			sourceTree = "<group>";
@@ -725,6 +728,7 @@
 				0652C8272C6FAEF900BDC64E /* AladinTargetType.swift in Sources */,
 				065953352C6E31FA0048821E /* UIImage+.swift in Sources */,
 				0659532B2C6E31E80048821E /* BaseViewController.swift in Sources */,
+				065180622C7F19DF00255228 /* Date+.swift in Sources */,
 				060301DE2C7734080058A113 /* JoinDTO.swift in Sources */,
 				065953042C6E2F8C0048821E /* SceneDelegate.swift in Sources */,
 				0652C87D2C732B0700BDC64E /* RoomCreateVM.swift in Sources */,
