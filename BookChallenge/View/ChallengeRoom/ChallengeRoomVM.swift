@@ -120,20 +120,20 @@ class ChallengeRoomVM: BaseViewModel {
                 
             }.disposed(by: disposeBag)
         // MARK: - 중복되는거 같음 로직 다시 짜삼 나중에
-        roomLists
-            .bind(with: self) { owner, room in
-                if 0 < room.count && room.count < 4 && nextCursor.value != "0"{
-                    switch requestType.value {
-                    case .all:
-                        requestAll.accept(.refreshLoading)
-                    case .bookId:
-                        requestBookId.accept(())
-                    }
-                }
-            }.disposed(by: disposeBag)
+//        roomLists
+//            .bind(with: self) { owner, room in
+//                if 0 < room.count && room.count < 4 && nextCursor.value != "0"{
+//                    switch requestType.value {
+//                    case .all:
+//                        requestAll.accept(.refreshLoading)
+//                    case .bookId:
+//                        requestBookId.accept(())
+//                    }
+//                }
+//            }.disposed(by: disposeBag)
         
         
-        input.searchBookId //책 검새 후 책id를 통해 챌린지 방 보여주기
+        input.searchBookId //책 검색 후 책id를 통해 챌린지 방 보여주기
             .bind(with: self) { owner, id in
                 bookId.accept(id)
                 nextCursor.accept("")
