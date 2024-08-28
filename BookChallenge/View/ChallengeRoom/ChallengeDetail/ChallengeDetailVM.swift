@@ -20,6 +20,7 @@ final class ChallengeDetailVM: BaseViewModel {
         let postData: Observable<ChallengePostModel>
         let retrunBeforeErr: Observable<String>
         let joinSuccess: Observable<Void>
+        let joinButton: Observable<JoinButtonType>
     }
     func transform(input: Input) -> Output {
         let bookData = PublishRelay<BookModel>()
@@ -28,12 +29,10 @@ final class ChallengeDetailVM: BaseViewModel {
         let postId = BehaviorRelay(value: "")
         let retrunBeforeErr = PublishRelay<String>()
         let joinSuccess = PublishRelay<Void>()
+        let joinButtonSet = BehaviorRelay(value: JoinButtonType.canJoin)
         inputData
             .compactMap { $0 }
             .flatMap {
-                print("----")
-                print($0)
-                print("----")
                 return LSLPNetworkManager.shared.request(target: .searchPost(id: $0), dto: RoomPostDTO.self)
             }
             .bind(with: self) { owner, respons in
@@ -41,12 +40,14 @@ final class ChallengeDetailVM: BaseViewModel {
                 case .success(let dto):
                     if dto.roomState == RoomState.close {
                         retrunBeforeErr.accept("삭제된 챌린지 방입니다.")
-                    } else if dto.likes.contains(UserManager.shared.userId) {
-                        retrunBeforeErr.accept("이미 참여 중인 챌린지입니다.")
-                    } else if dto.likes.count >= Int(dto.limitPerson)! {
-                        retrunBeforeErr.accept("참여 인원이 초과되었습니다.")
-                    }
-                    else {
+                    } else {
+                        if dto.likes.contains(UserManager.shared.userId) {
+                            joinButtonSet.accept(.alreadyJoin)
+                        } else if dto.likes.count >= Int(dto.limitPerson)!{
+                            joinButtonSet.accept(.cannotJoin)
+                        } else {
+                            joinButtonSet.accept(.canJoin)
+                        }
                         let model = dto.transformChallengePostModel()
                         postData.accept(model)
                         bookId.accept(model.bookId)
@@ -76,8 +77,9 @@ final class ChallengeDetailVM: BaseViewModel {
             }
             .bind(with: self) { owner, response in
                 switch response {
-                case .success(_):
+                case .success(let data):
                     joinSuccess.accept(())
+                    joinButtonSet.accept(.alreadyJoin)
                     NotificationCenter.default.post(name: .likePost, object: postId.value)
                 case .failure(let err):
                     print(err)
@@ -86,6 +88,6 @@ final class ChallengeDetailVM: BaseViewModel {
             }.disposed(by: disposeBag)
         
         
-        return Output(bookData: bookData.asObservable(), postData: postData.asObservable(), retrunBeforeErr: retrunBeforeErr.asObservable(), joinSuccess: joinSuccess.asObservable())
+        return Output(bookData: bookData.asObservable(), postData: postData.asObservable(), retrunBeforeErr: retrunBeforeErr.asObservable(), joinSuccess: joinSuccess.asObservable(), joinButton: joinButtonSet.asObservable())
     }
 }

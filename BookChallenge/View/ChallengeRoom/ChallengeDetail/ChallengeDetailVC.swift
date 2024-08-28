@@ -67,6 +67,10 @@ final class ChallengeDetailVC: BaseViewController, FetchImageProtocol {
             .bind(with: self) { owner, _ in
                 owner.simpleToast(text: "참여하기 완료!")  
             }.disposed(by: disposeBag)
+        output.joinButton
+            .bind(with: self) { owner, type in
+                owner.setUpJoinButton(type: type)
+            }.disposed(by: disposeBag)
         
         seeMoreDescriptionButton.rx.tap
             .bind(with: self) { owner, _ in
@@ -179,6 +183,14 @@ private extension ChallengeDetailVC {
         roomTitle.text = model.title
         roomContent.text = model.content
         roomContent.numberOfLines = 0
+    }
+    func setUpJoinButton(type: JoinButtonType) {
+        joinButton.setUpTitle(type: type)
+        if type == .canJoin {
+            joinButton.isEnabled = true
+        } else {
+            joinButton.isEnabled = false
+        }
     }
     
 }
