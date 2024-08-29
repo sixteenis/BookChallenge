@@ -61,7 +61,7 @@ extension LSLPRouter: CatchErrorTargetType {
         case .like(_, let id):
             return "/posts/\(id)/like"
         case .getLikePosts:
-            return "/posts/like/me"
+            return "/posts/likes/me"
         case .hashtagsPoosts:
             return "/posts/hashtags"
         case .fetchMeProfile:
@@ -111,8 +111,13 @@ extension LSLPRouter: CatchErrorTargetType {
             return .requestJSONEncodable(body)
         case .like(let body, _):
             return .requestJSONEncodable(body)
-        case .getLikePosts:
-            return .requestPlain
+        case .getLikePosts(let query):
+            return .requestParameters(parameters:
+                                    [
+                                        "next" : query.next,
+                                        "limit": query.limit,
+                                    ],
+                                  encoding: URLEncoding.queryString)
         case .hashtagsPoosts(let query):
             return .requestParameters(parameters:
                                     [

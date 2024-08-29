@@ -31,7 +31,8 @@ struct RoomPostDTO: Decodable {
     let files: [String]
     let likes: [String]
     let creator: UserDTO
-    //let comments: [UserDTO]
+    let comments: [CommentsDTO]
+    let createdAt: String
     enum CodingKeys: String, CodingKey {
         case post_id
         case title
@@ -45,23 +46,27 @@ struct RoomPostDTO: Decodable {
         case price
         case likes
         case creator
-        //case comments
+        case comments
+        case createdAt
     }
-//    func transformBookRoomModel() -> BookRoomModel {
-//        let title = self.title.split(separator: "]").map(String.init)
-//        let model = BookRoomModel(
-//            bookurl: self.files[0],
-//            bookTitle: title[0],
-//            booktotalPage: self.page,
-//            bookNowPage: <#T##Int#>,
-//            bookPagePercent: <#T##Double#>,
-//            startDate: <#T##String#>,
-//            endDate: <#T##String#>,
-//            totalDate: <#T##Int#>,
-//            nowDate: <#T##Int#>
-//        )
-//        return model
-//    }
+    func transformBookRoomModel() -> BookRoomModel {
+        let title = self.title.split(separator: "]").map(String.init)
+        let nowPage = self.comments.filter {$0.creator.user_id == UserManager.shared.userId}.first?.content.split(separator: UserManager.shared.userId).map(String.init)[0]
+        let fiterPageInt = nowPage ?? "0"
+        let totalDate = Date.comparisonDate(to: Date.asTranformDate(str: self.createdAt), form: Date.asTranformDate(str: self.deadLine))
+        let nowDate = Date.comparisonDate(to: Date.asTranformDate(str: self.createdAt), form: Date())
+        let model = BookRoomModel(
+            bookurl: self.files[0],
+            bookTitle: title[0],
+            booktotalPage: Int(self.page) ?? 0,
+            bookNowPage: Int(fiterPageInt) ?? 0,
+            startDate: Date.asTransformCustomStr(str: self.createdAt),
+            endDate: Date.asTransformCustomStr(str: self.deadLine),
+            totalDate: totalDate,
+            nowDate: nowDate
+        )
+        return model
+    }
     func transformChallengePostModel() -> ChallengePostModel {
         let title = self.title.split(separator: "]").map(String.init)
         let model =  ChallengePostModel(
@@ -82,7 +87,6 @@ struct RoomPostDTO: Decodable {
     func checkDate() -> Bool {
         let deadDate = Date.asTranformDate(str: self.deadLine)
         let isdead = Date.comparisonDate(to: Date(), form: deadDate)
-        print(isdead)
         return isdead >= 0
     }
     private func transformDeadLine(strDate: String) -> String {

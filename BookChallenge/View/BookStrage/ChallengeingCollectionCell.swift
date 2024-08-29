@@ -89,9 +89,11 @@ final class ChallengeingCollectionCell: BaseCollectioViewCell {
     }
     
     func setUpDate(model: BookRoomModel) {
+        let pagePer = model.bookNowPage/model.booktotalPage
+        let pageStr = String(format: "%.1f", pagePer)
         fetchLSLPImage(imageView: bookImage, imageURL: model.bookurl)
         self.bookTitle.text = model.bookTitle
-        self.pagePercentView.setUpDate(total: model.booktotalPage, now: model.bookNowPage, left: "\(model.bookPagePercent)%", right: "\(model.bookNowPage)/\(model.booktotalPage)p")
+        self.pagePercentView.setUpDate(total: model.booktotalPage, now: model.bookNowPage, left: "\(pageStr)%", right: "\(model.bookNowPage)/\(model.booktotalPage)p")
         self.datePercentView.setUpDate(total: model.totalDate, now: model.nowDate, left: model.startDate, right: model.endDate)
         
         

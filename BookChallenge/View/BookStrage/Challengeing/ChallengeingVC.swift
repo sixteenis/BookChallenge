@@ -16,23 +16,17 @@ final class ChallengeingVC: BaseViewController {
     lazy var bottomSheet = BottomSheetVC(contentViewController: simVC, defaultHeight: 400,cornerRadius: 15, isPannedable: true)
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: sameTableViewLayout())
     private let disposeBag = DisposeBag()
+    private let vm = ChallengeingVM()
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    override func setUpHierarchy() {
-        //    view.addSubview(button)
-        view.addSubview(collectionView)
-        
-        //        button.snp.makeConstraints { make in
-        //            make.edges.equalTo(view.safeAreaLayoutGuide)
-        //        }
-        collectionView.register(ChallengeingCollectionCell.self, forCellWithReuseIdentifier: ChallengeingCollectionCell.id)
-        collectionView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
-        }
-        Observable.just([1,2,3,31])
+    override func bindData() {
+        let viewdidLoadRx = Observable.just(())
+        let input = ChallengeingVM.Input(viewdidLoadRx: viewdidLoadRx)
+        let output = vm.transform(input: input)
+        output.challnegeingData
             .bind(to: collectionView.rx.items(cellIdentifier: ChallengeingCollectionCell.id, cellType: ChallengeingCollectionCell.self)) { (row, element, cell) in
-                cell.setUpDate(model: BookRoomModel(bookurl: "asd", bookTitle: "고구마", booktotalPage: 200, bookNowPage: 50, bookPagePercent: 50/200, startDate: "24.04.04", endDate: "24.09.09", totalDate: 60, nowDate: 20))
+                cell.setUpDate(model: element)
                 cell.recodeButton.rx.tap
                     .bind(with: self) { owner, _ in
                         owner.simVC.setUpView(text: "고구마입니다.")
@@ -40,15 +34,23 @@ final class ChallengeingVC: BaseViewController {
                     }.disposed(by: self.disposeBag)
                 
             }.disposed(by: disposeBag)
+    }
+    override func setUpHierarchy() {
+        view.addSubview(collectionView)
         
-        //        button.setTitle("버튼", for: .normal)
-        //        button.setTitleColor(.black, for: .normal)
-        //        button.rx.tap
-        //            .bind(with: self) { owner, _ in
-        //                owner.simVC.setUpView(text: "고구마입니다.")
-        //                owner.present(owner.bottomSheet, animated: false)
-        //                
-        //            }.disposed(by: disposeBag)
+        collectionView.register(ChallengeingCollectionCell.self, forCellWithReuseIdentifier: ChallengeingCollectionCell.id)
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        
+
+    }
+    override func setUpLayout() {
+        
+    }
+    override func setUpView() {
+        
     }
 }
 

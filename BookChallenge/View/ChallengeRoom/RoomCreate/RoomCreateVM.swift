@@ -95,7 +95,7 @@ class RoomCreateVM: BaseViewModel {
         
         successImage
             .flatMap {
-                LSLPNetworkManager.shared.request(target: .contentPost(content: .init(book: self.bookModel, title: "\(self.bookModel.title)]" + roomTitle.value, deadLine: datePicker.value.formatted(.iso8601), limitPreson: limitPeople.value, content: roomContent.value, files: $0)), dto: ContentPostDTO.self)
+                LSLPNetworkManager.shared.request(target: .contentPost(content: .init(book: self.bookModel, title: "\(self.bookModel.title)]" + roomTitle.value, deadLine: Date.asTransformString(date: datePicker.value), limitPreson: limitPeople.value, content: roomContent.value, files: $0)), dto: ContentPostDTO.self)
             }
             .subscribe(with: self) { owner, response in
                 switch response {

@@ -12,7 +12,6 @@ struct BookRoomModel {
     let bookTitle: String
     let booktotalPage: Int
     let bookNowPage: Int
-    let bookPagePercent: Double
     let startDate: String
     let endDate: String
     let totalDate: Int

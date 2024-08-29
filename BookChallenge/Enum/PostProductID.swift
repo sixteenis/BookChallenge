@@ -8,6 +8,6 @@
 import Foundation
 
 enum PostProductID {
-    static let makeRoom = "BookChallenge_createRoomV2"
+    static let makeRoom = "BookChallenge_createRoom_V3"
     static let makeAlone = "BookChallenge_createAlone"
 }
