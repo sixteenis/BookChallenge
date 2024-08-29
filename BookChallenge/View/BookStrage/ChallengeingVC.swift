@@ -32,6 +32,7 @@ final class ChallengeingVC: BaseViewController {
         }
         Observable.just([1,2,3,31])
             .bind(to: collectionView.rx.items(cellIdentifier: ChallengeingCollectionCell.id, cellType: ChallengeingCollectionCell.self)) { (row, element, cell) in
+                cell.setUpDate()
                 cell.recodeButton.rx.tap
                     .bind(with: self) { owner, _ in
                         owner.simVC.setUpView(text: "고구마입니다.")

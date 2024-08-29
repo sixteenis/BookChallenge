@@ -13,33 +13,34 @@ final class ChallengeingCollectionCell: BaseCollectioViewCell {
     let bookImage = UIImageView()
     let bookTitle = UILabel()
     
-    let pagebar = UIView()
-    let pageChargeBar = UIView()
-    let pagePercent = UILabel()
-    let percentPage = UILabel()
+    let pagePercentView = PercentView()
     
-    let datebar = UIView()
-    let dateChargeBar = UIView()
-    let startDate = UILabel()
-    let endDate = UILabel()
+    let datePercentView = PercentView()
     
     let recodeButton = PointButton(title: "기록하기")
     let person = UILabel()
     let date = UILabel()
     
     private let disposeBag = DisposeBag()
-    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        setUpDate()
+    }
+    override func layoutIfNeeded() {
+        super.layoutIfNeeded()
+        setUpDate()
+    }
+    override func setNeedsLayout() {
+        super.setNeedsLayout()
+        
+    }
     override func setUpHierarchy() {
         contentView.addSubview(bookImage)
         contentView.addSubview(bookTitle)
-        contentView.addSubview(pagebar)
-        contentView.addSubview(pageChargeBar)
-        contentView.addSubview(pagePercent)
-        contentView.addSubview(percentPage)
-        contentView.addSubview(datebar)
-        contentView.addSubview(dateChargeBar)
-        contentView.addSubview(startDate)
-        contentView.addSubview(endDate)
+
+        contentView.addSubview(pagePercentView)
+        contentView.addSubview(datePercentView)
+        
         contentView.addSubview(person)
         contentView.addSubview(date)
         contentView.addSubview(recodeButton)
@@ -55,49 +56,22 @@ final class ChallengeingCollectionCell: BaseCollectioViewCell {
             make.top.equalTo(bookImage.snp.bottom).offset(5)
             make.horizontalEdges.equalTo(contentView).inset(5)
         }
-        pagebar.snp.makeConstraints { make in
-            make.top.equalTo(bookTitle.snp.bottom).offset(10)
+        pagePercentView.snp.makeConstraints { make in
+            make.top.equalTo(bookTitle.snp.bottom).offset(15)
             make.horizontalEdges.equalTo(contentView).inset(15)
-            make.height.equalTo(10)
+            make.height.equalTo(20)
         }
-        pageChargeBar.snp.makeConstraints { make in
-            make.centerY.equalTo(pagebar)
-            make.leading.equalTo(pagebar)
-            make.width.equalTo(40) //변경해야됨
-            make.height.equalTo(pagebar)
-        }
-        pagePercent.snp.makeConstraints { make in
-            make.top.equalTo(pagebar.snp.bottom).offset(3)
-            make.leading.equalTo(contentView).inset(15)
-        }
-        percentPage.snp.makeConstraints { make in
-            make.top.equalTo(pagebar.snp.bottom).offset(3)
-            make.trailing.equalTo(contentView).inset(15)
-        }
-        datebar.snp.makeConstraints { make in
-            make.top.equalTo(pagebar.snp.bottom).offset(30)
+        datePercentView.snp.makeConstraints { make in
+            make.top.equalTo(pagePercentView.snp.bottom).offset(15)
             make.horizontalEdges.equalTo(contentView).inset(15)
-            make.height.equalTo(10)
-        }
-        dateChargeBar.snp.makeConstraints { make in
-            make.centerY.equalTo(datebar)
-            make.leading.equalTo(datebar)
-            make.height.equalTo(datebar)
-            make.width.equalTo(40) // 변경해야됨
-        }
-        startDate.snp.makeConstraints { make in
-            make.top.equalTo(datebar.snp.bottom).offset(3)
-            make.leading.equalTo(contentView).inset(15)
-        }
-        endDate.snp.makeConstraints { make in
-            make.top.equalTo(datebar.snp.bottom).offset(3)
-            make.trailing.equalTo(contentView).inset(15)
+            make.height.equalTo(20)
         }
         recodeButton.snp.makeConstraints { make in
-            make.top.equalTo(datebar.snp.bottom).offset(30)
+            make.top.equalTo(datePercentView.snp.bottom).offset(30)
             make.horizontalEdges.equalTo(contentView).inset(25)
             make.height.equalTo(33)
         }
+        
     }
     override func setUpView() {
         contentView.backgroundColor = .systemGray6
@@ -105,48 +79,28 @@ final class ChallengeingCollectionCell: BaseCollectioViewCell {
         contentView.layer.borderWidth = 1
         bookImage.image = UIImage.noBookImage
         bookTitle.text = "고구마 감자국"
-        percentPage.text = "50/164p"
-        pagePercent.text = "36%"
-        startDate.text = "24.06.01"
-        endDate.text = "24.11.11"
+        pagePercentView.backgroundColor = .systemGray6
+        datePercentView.backgroundColor = .systemGray6
         
         //고정값들
         bookImage.layer.borderColor = UIColor.boarder.cgColor
         bookImage.layer.borderWidth = 1
-        
+//        let pagePercentView = PercentView()
+//        
+//        let datePercentView = PercentView()
         bookTitle.font = .boldFont13
         bookTitle.textColor = .font
         bookTitle.textAlignment = .center
         bookTitle.numberOfLines = 1
         
-        pagebar.backgroundColor = .lightGray
-        pageChargeBar.backgroundColor = .mainColor
-        pagebar.layer.cornerRadius = 5
-        pageChargeBar.layer.cornerRadius = 5
         
-        pagePercent.font = .font10
-        pagePercent.textColor = .font
-        pagePercent.textAlignment = .left
-        pagePercent.numberOfLines = 1
+    }
+    
+    func setUpDate() {
+        //DispatchQueue.main.async {
+            self.pagePercentView.setUpDate(total: 15.5, now: 5.5, left: "감자", right: "고구마")
+            self.datePercentView.setUpDate(total: 20.5, now: 20.0, left: "20.2.2", right: "24.2.2")
+        //}
         
-        percentPage.font = .font10
-        percentPage.textColor = .font
-        percentPage.textAlignment = .right
-        percentPage.numberOfLines = 1
-        
-        datebar.backgroundColor = .lightGray
-        dateChargeBar.backgroundColor = .mainColor
-        datebar.layer.cornerRadius = 5
-        dateChargeBar.layer.cornerRadius = 5
-        
-        startDate.font = .font10
-        startDate.textColor = .font
-        startDate.textAlignment = .left
-        startDate.numberOfLines = 1
-        
-        endDate.font = .font10
-        endDate.textColor = .font
-        endDate.textAlignment = .right
-        endDate.numberOfLines = 1
     }
 }

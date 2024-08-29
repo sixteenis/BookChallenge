@@ -29,6 +29,7 @@
 		065180532C7DF65B00255228 /* ChallengeingCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065180522C7DF65B00255228 /* ChallengeingCollectionCell.swift */; };
 		065180622C7F19DF00255228 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065180612C7F19DF00255228 /* Date+.swift */; };
 		065180642C7F2DA200255228 /* JoinButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065180632C7F2DA200255228 /* JoinButtonType.swift */; };
+		0651806F2C8059BD00255228 /* PercentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651806E2C8059BD00255228 /* PercentView.swift */; };
 		0652C81C2C6F7CBB00BDC64E /* UserChallengeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C81B2C6F7CBB00BDC64E /* UserChallengeCollectionCell.swift */; };
 		0652C8202C6F906200BDC64E /* CarouseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C81F2C6F906200BDC64E /* CarouseLayout.swift */; };
 		0652C8232C6FAEE300BDC64E /* AladinParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8222C6FAEE300BDC64E /* AladinParam.swift */; };
@@ -135,6 +136,7 @@
 		065180522C7DF65B00255228 /* ChallengeingCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeingCollectionCell.swift; sourceTree = "<group>"; };
 		065180612C7F19DF00255228 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		065180632C7F2DA200255228 /* JoinButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinButtonType.swift; sourceTree = "<group>"; };
+		0651806E2C8059BD00255228 /* PercentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentView.swift; sourceTree = "<group>"; };
 		0652C81B2C6F7CBB00BDC64E /* UserChallengeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChallengeCollectionCell.swift; sourceTree = "<group>"; };
 		0652C81F2C6F906200BDC64E /* CarouseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouseLayout.swift; sourceTree = "<group>"; };
 		0652C8222C6FAEE300BDC64E /* AladinParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AladinParam.swift; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				065953852C6F4B2B0048821E /* SearchBarView.swift */,
 				0652C86E2C7268AF00BDC64E /* JustPlustView.swift */,
 				06CF47532C796B4600EC0645 /* CapsuleLabel.swift */,
+				0651806E2C8059BD00255228 /* PercentView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -666,6 +669,7 @@
 				065953822C6F3B660048821E /* ChallengeRoomVC.swift in Sources */,
 				065953292C6E31E80048821E /* BaseCollectioViewCell.swift in Sources */,
 				0651803C2C7CAA8C00255228 /* ChallengeDetailInputModel.swift in Sources */,
+				0651806F2C8059BD00255228 /* PercentView.swift in Sources */,
 				0659537A2C6F36340048821E /* MainVC.swift in Sources */,
 				0652C8202C6F906200BDC64E /* CarouseLayout.swift in Sources */,
 				060301E02C7734CB0058A113 /* WithdrawDTO.swift in Sources */,
