@@ -16,7 +16,6 @@ final class PercentView: BaseView {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-    
     override func setUpHierarchy() {
         self.addSubview(bar)
         self.addSubview(chargeBar)
@@ -59,17 +58,19 @@ final class PercentView: BaseView {
         rightText.textAlignment = .right
         rightText.numberOfLines = 1
     }
-    func setUpDate(total: CGFloat, now: CGFloat, left: String, right: String) {
-        print(total, now)
-        let ratio = now / total
-        print("-----------")
-        print(bar.frame.width)
-        let newWidth = bar.frame.width * ratio
-        chargeBar.snp.updateConstraints { make in
-            make.width.equalTo(newWidth)
+    func setUpDate(total: Int, now: Int, left: String, right: String) {
+        DispatchQueue.main.async {
+            let totalCG = CGFloat(integerLiteral: total)
+            let nowCG = CGFloat(integerLiteral: now)
+            let ratio = nowCG / totalCG
+            let newWidth = self.bar.frame.width * ratio
+            
+            self.chargeBar.snp.updateConstraints { make in
+                make.width.equalTo(newWidth)
+            }
         }
         leftText.text = left
         rightText.text = right
-        layoutSubviews()
+        self.layoutIfNeeded()
     }
 }

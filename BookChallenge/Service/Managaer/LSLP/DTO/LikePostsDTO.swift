@@ -8,8 +8,8 @@
 import Foundation
 
 struct LikePostsQuery: Encodable {
-    let next: String
-    let limit: String
+    let next: String = ""
+    let limit: String = "100"
 }
 
 struct LikePostsDTO: Decodable {

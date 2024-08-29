@@ -30,6 +30,7 @@
 		065180622C7F19DF00255228 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065180612C7F19DF00255228 /* Date+.swift */; };
 		065180642C7F2DA200255228 /* JoinButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065180632C7F2DA200255228 /* JoinButtonType.swift */; };
 		0651806F2C8059BD00255228 /* PercentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651806E2C8059BD00255228 /* PercentView.swift */; };
+		065180712C80852B00255228 /* BookRoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065180702C80852B00255228 /* BookRoomModel.swift */; };
 		0652C81C2C6F7CBB00BDC64E /* UserChallengeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C81B2C6F7CBB00BDC64E /* UserChallengeCollectionCell.swift */; };
 		0652C8202C6F906200BDC64E /* CarouseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C81F2C6F906200BDC64E /* CarouseLayout.swift */; };
 		0652C8232C6FAEE300BDC64E /* AladinParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8222C6FAEE300BDC64E /* AladinParam.swift */; };
@@ -137,6 +138,7 @@
 		065180612C7F19DF00255228 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		065180632C7F2DA200255228 /* JoinButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinButtonType.swift; sourceTree = "<group>"; };
 		0651806E2C8059BD00255228 /* PercentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentView.swift; sourceTree = "<group>"; };
+		065180702C80852B00255228 /* BookRoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRoomModel.swift; sourceTree = "<group>"; };
 		0652C81B2C6F7CBB00BDC64E /* UserChallengeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChallengeCollectionCell.swift; sourceTree = "<group>"; };
 		0652C81F2C6F906200BDC64E /* CarouseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouseLayout.swift; sourceTree = "<group>"; };
 		0652C8222C6FAEE300BDC64E /* AladinParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AladinParam.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 			children = (
 				06CF473D2C78B0F500EC0645 /* BookModel.swift */,
 				06CF47512C79692600EC0645 /* ChallengePostModel.swift */,
+				065180702C80852B00255228 /* BookRoomModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -666,6 +669,7 @@
 				0651803E2C7CAABB00255228 /* ChallengeDetailVM.swift in Sources */,
 				0652C8302C6FB89E00BDC64E /* MainVM.swift in Sources */,
 				0652C8442C70A1D000BDC64E /* BookSearchVM.swift in Sources */,
+				065180712C80852B00255228 /* BookRoomModel.swift in Sources */,
 				065953822C6F3B660048821E /* ChallengeRoomVC.swift in Sources */,
 				065953292C6E31E80048821E /* BaseCollectioViewCell.swift in Sources */,
 				0651803C2C7CAA8C00255228 /* ChallengeDetailInputModel.swift in Sources */,
@@ -900,6 +904,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -933,6 +938,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

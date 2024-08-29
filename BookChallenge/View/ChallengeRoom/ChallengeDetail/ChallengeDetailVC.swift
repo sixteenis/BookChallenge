@@ -38,6 +38,11 @@ final class ChallengeDetailVC: BaseViewController, FetchImageProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         createProfile.layer.cornerRadius = 15

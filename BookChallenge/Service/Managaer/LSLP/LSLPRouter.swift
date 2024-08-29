@@ -111,8 +111,8 @@ extension LSLPRouter: CatchErrorTargetType {
             return .requestJSONEncodable(body)
         case .like(let body, _):
             return .requestJSONEncodable(body)
-        case .getLikePosts(let query):
-            return .requestJSONEncodable(query)
+        case .getLikePosts:
+            return .requestPlain
         case .hashtagsPoosts(let query):
             return .requestParameters(parameters:
                                     [

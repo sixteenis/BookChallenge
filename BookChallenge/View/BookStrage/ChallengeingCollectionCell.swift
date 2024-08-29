@@ -22,14 +22,7 @@ final class ChallengeingCollectionCell: BaseCollectioViewCell {
     let date = UILabel()
     
     private let disposeBag = DisposeBag()
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        setUpDate()
-    }
-    override func layoutIfNeeded() {
-        super.layoutIfNeeded()
-        setUpDate()
-    }
+    
     override func setNeedsLayout() {
         super.setNeedsLayout()
         
@@ -37,7 +30,7 @@ final class ChallengeingCollectionCell: BaseCollectioViewCell {
     override func setUpHierarchy() {
         contentView.addSubview(bookImage)
         contentView.addSubview(bookTitle)
-
+        
         contentView.addSubview(pagePercentView)
         contentView.addSubview(datePercentView)
         
@@ -49,7 +42,7 @@ final class ChallengeingCollectionCell: BaseCollectioViewCell {
     override func setUpLayout() {
         bookImage.snp.makeConstraints { make in
             make.top.equalTo(contentView).inset(5)
-            make.horizontalEdges.equalTo(contentView).inset(10)
+            make.horizontalEdges.equalTo(contentView).inset(25)
             make.height.equalTo(UIScreen.main.bounds.height / 5)
         }
         bookTitle.snp.makeConstraints { make in
@@ -79,15 +72,14 @@ final class ChallengeingCollectionCell: BaseCollectioViewCell {
         contentView.layer.borderWidth = 1
         bookImage.image = UIImage.noBookImage
         bookTitle.text = "고구마 감자국"
+        
         pagePercentView.backgroundColor = .systemGray6
         datePercentView.backgroundColor = .systemGray6
         
         //고정값들
         bookImage.layer.borderColor = UIColor.boarder.cgColor
         bookImage.layer.borderWidth = 1
-//        let pagePercentView = PercentView()
-//        
-//        let datePercentView = PercentView()
+        
         bookTitle.font = .boldFont13
         bookTitle.textColor = .font
         bookTitle.textAlignment = .center
@@ -96,11 +88,12 @@ final class ChallengeingCollectionCell: BaseCollectioViewCell {
         
     }
     
-    func setUpDate() {
-        //DispatchQueue.main.async {
-            self.pagePercentView.setUpDate(total: 15.5, now: 5.5, left: "감자", right: "고구마")
-            self.datePercentView.setUpDate(total: 20.5, now: 20.0, left: "20.2.2", right: "24.2.2")
-        //}
+    func setUpDate(model: BookRoomModel) {
+        fetchLSLPImage(imageView: bookImage, imageURL: model.bookurl)
+        self.bookTitle.text = model.bookTitle
+        self.pagePercentView.setUpDate(total: model.booktotalPage, now: model.bookNowPage, left: "\(model.bookPagePercent)%", right: "\(model.bookNowPage)/\(model.booktotalPage)p")
+        self.datePercentView.setUpDate(total: model.totalDate, now: model.nowDate, left: model.startDate, right: model.endDate)
+        
         
     }
 }

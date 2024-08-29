@@ -47,6 +47,21 @@ struct RoomPostDTO: Decodable {
         case creator
         //case comments
     }
+//    func transformBookRoomModel() -> BookRoomModel {
+//        let title = self.title.split(separator: "]").map(String.init)
+//        let model = BookRoomModel(
+//            bookurl: self.files[0],
+//            bookTitle: title[0],
+//            booktotalPage: self.page,
+//            bookNowPage: <#T##Int#>,
+//            bookPagePercent: <#T##Double#>,
+//            startDate: <#T##String#>,
+//            endDate: <#T##String#>,
+//            totalDate: <#T##Int#>,
+//            nowDate: <#T##Int#>
+//        )
+//        return model
+//    }
     func transformChallengePostModel() -> ChallengePostModel {
         let title = self.title.split(separator: "]").map(String.init)
         let model =  ChallengePostModel(
