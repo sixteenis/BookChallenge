@@ -53,8 +53,8 @@ struct RoomPostDTO: Decodable {
         let title = self.title.split(separator: "]").map(String.init)
         let nowPage = self.comments.filter {$0.creator.user_id == UserManager.shared.userId}.first?.content.split(separator: UserManager.shared.userId).map(String.init)[0]
         let fiterPageInt = nowPage ?? "0"
-        let totalDate = Date.comparisonDate(to: Date.asTranformDate(str: self.createdAt), form: Date.asTranformDate(str: self.deadLine))
-        let nowDate = Date.comparisonDate(to: Date.asTranformDate(str: self.createdAt), form: Date())
+        let totalDate = Date.comparisonDate(to: Date.asTranformDate(str: self.createdAt), form: Date.asTranformDate(str: self.deadLine)) + 1
+        let nowDate = Date.comparisonDate(to: Date.asTranformDate(str: self.createdAt), form: Date()) + 1
         let model = BookRoomModel(
             bookurl: self.files[0],
             bookTitle: title[0],
