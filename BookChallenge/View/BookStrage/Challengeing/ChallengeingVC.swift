@@ -29,7 +29,7 @@ final class ChallengeingVC: BaseViewController {
                 cell.setUpDate(model: element)
                 cell.recodeButton.rx.tap
                     .bind(with: self) { owner, _ in
-                        owner.simVC.setUpView(text: "고구마입니다.")
+                        owner.simVC.setUpView(bookTitle: "냠냠이", page: "50", totalPage: "200")
                         owner.present(owner.bottomSheet, animated: false)
                     }.disposed(by: self.disposeBag)
                 
