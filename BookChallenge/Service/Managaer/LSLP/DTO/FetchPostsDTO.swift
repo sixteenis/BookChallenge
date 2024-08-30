@@ -56,6 +56,7 @@ struct RoomPostDTO: Decodable {
         let totalDate = Date.comparisonDate(to: Date.asTranformDate(str: self.createdAt), form: Date.asTranformDate(str: self.deadLine)) + 1
         let nowDate = Date.comparisonDate(to: Date.asTranformDate(str: self.createdAt), form: Date()) + 1
         let model = BookRoomModel(
+            postId: self.post_id,
             bookurl: self.files[0],
             bookTitle: title[0],
             booktotalPage: Int(self.page) ?? 0,

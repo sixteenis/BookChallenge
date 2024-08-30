@@ -23,8 +23,10 @@ class SimVC: BaseViewController {
     let contentLabel = UILabel()
     let contentTextFiled = UITextView()
     let button = PointButton(title: "기록하기")
-    
+    var completion: (() -> ())?
     private var disposeBag = DisposeBag()
+    private var postId = ""
+    private var maxPageNum = 0
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -35,6 +37,7 @@ class SimVC: BaseViewController {
         contentTextFiled.text = nil
         bind()
     }
+    
     
     override func setUpHierarchy() {
         view.addSubview(bookName)
@@ -132,23 +135,24 @@ class SimVC: BaseViewController {
         contentLabel.font = .font13
         button.backgroundColor = .mainColor
         
-     
-        
     }
-    func bind() {
+    private func bind() {
+        let network = PublishRelay<CommentsPostInputModel>()
         button.rx.tap
             .bind(with: self) { owner, _ in
                 guard let setPage = Int(owner.pageTextFiled.text!) else {
                     owner.simpleAlert(title: "입력 정보를 확인해주세요.")
                     return
                 }
-//                guard let max = Int(owner.maxPage.text!) else {return }
-//                if setPage >  max {
-//                    owner.simpleAlert(title: "페이지를 넘었습니다.")
-//                    return
-//                }
-                owner.dismiss(animated: true)
+                
+                if setPage >  owner.maxPageNum {
+                    owner.simpleAlert(title: "페이지를 넘었습니다.")
+                    return
+                }
+                let comments = owner.pageTextFiled.text! + UserManager.shared.userId + self.contentTextFiled.text!
+                network.accept(CommentsPostInputModel(postId: self.postId, comments: comments))
             }.disposed(by: disposeBag)
+        
         pageTextFiled.rx.text.orEmpty
             .bind(with: self) { owner, text in
                 owner.pageTextLabel.isHidden = !text.isEmpty
@@ -157,12 +161,27 @@ class SimVC: BaseViewController {
             .bind(with: self) { owner, text in
                 owner.contentLabel.isHidden = !text.isEmpty
             }.disposed(by: disposeBag)
+        network
+            .flatMap {
+                LSLPNetworkManager.shared.request(target: .commentsPost(body: .init(content: $0.comments), postId: $0.postId), dto: CommentsDTO.self)
+            }
+            .bind(with: self) { owner, response in
+                switch response {
+                case .success(_):
+                    owner.completion?()
+                    owner.dismiss(animated: true)
+                case .failure(let err):
+                    owner.simpleAlert(title: "다시 시도해 주세요.")
+                }
+            }.disposed(by: disposeBag)
         
     }
-    func setUpView(bookTitle: String, page: String, totalPage: String) {
+    func setUpView(bookTitle: String, page: Int, totalPage: Int, postId: String) {
         bookName.text = bookTitle
-        
+        print(page)
         pageTextLabel.text = "\(page)"
         maxPage.text = "/ \(totalPage)"
+        self.postId = postId
+        self.maxPageNum = totalPage
     }
 }

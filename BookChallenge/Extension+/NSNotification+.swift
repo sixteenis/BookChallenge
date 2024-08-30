@@ -9,4 +9,5 @@ import Foundation
 
 extension NSNotification.Name {
     static let likePost = NSNotification.Name("like")
+    static let makePost = NSNotification.Name("make")
 }

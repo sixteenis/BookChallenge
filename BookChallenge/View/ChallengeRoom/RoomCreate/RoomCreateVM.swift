@@ -116,6 +116,7 @@ class RoomCreateVM: BaseViewModel {
             .subscribe(with: self) { owner, response in
                 switch response {
                 case .success(_):
+                    NotificationCenter.default.post(name: .makePost, object: ())
                     finshNetwork.accept(())
                 case .failure(let err):
                     netwrokErr.accept(err)

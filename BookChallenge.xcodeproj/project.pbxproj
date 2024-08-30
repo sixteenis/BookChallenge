@@ -32,6 +32,7 @@
 		0651806F2C8059BD00255228 /* PercentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651806E2C8059BD00255228 /* PercentView.swift */; };
 		065180712C80852B00255228 /* BookRoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065180702C80852B00255228 /* BookRoomModel.swift */; };
 		065180742C809D6200255228 /* ChallengeingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065180732C809D6200255228 /* ChallengeingVM.swift */; };
+		065180762C82207C00255228 /* CommentsPostInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065180752C82207C00255228 /* CommentsPostInputModel.swift */; };
 		0652C81C2C6F7CBB00BDC64E /* UserChallengeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C81B2C6F7CBB00BDC64E /* UserChallengeCollectionCell.swift */; };
 		0652C8202C6F906200BDC64E /* CarouseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C81F2C6F906200BDC64E /* CarouseLayout.swift */; };
 		0652C8232C6FAEE300BDC64E /* AladinParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0652C8222C6FAEE300BDC64E /* AladinParam.swift */; };
@@ -141,6 +142,7 @@
 		0651806E2C8059BD00255228 /* PercentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentView.swift; sourceTree = "<group>"; };
 		065180702C80852B00255228 /* BookRoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRoomModel.swift; sourceTree = "<group>"; };
 		065180732C809D6200255228 /* ChallengeingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeingVM.swift; sourceTree = "<group>"; };
+		065180752C82207C00255228 /* CommentsPostInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsPostInputModel.swift; sourceTree = "<group>"; };
 		0652C81B2C6F7CBB00BDC64E /* UserChallengeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChallengeCollectionCell.swift; sourceTree = "<group>"; };
 		0652C81F2C6F906200BDC64E /* CarouseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouseLayout.swift; sourceTree = "<group>"; };
 		0652C8222C6FAEE300BDC64E /* AladinParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AladinParam.swift; sourceTree = "<group>"; };
@@ -525,6 +527,7 @@
 				06CF475B2C7A23E600EC0645 /* UnderlineSegmentedControl.swift */,
 				0661246D2C7C146D002A1B87 /* BottomSheetVC.swift */,
 				0661246F2C7C1529002A1B87 /* SimVC.swift */,
+				065180752C82207C00255228 /* CommentsPostInputModel.swift */,
 			);
 			path = BookStrage;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 			files = (
 				06F93F5D2C7398EB002F5513 /* LSLPNetworkManager.swift in Sources */,
 				06CF47342C77607100EC0645 /* LikePostsDTO.swift in Sources */,
+				065180762C82207C00255228 /* CommentsPostInputModel.swift in Sources */,
 				06CF473A2C77649D00EC0645 /* HashtagPostDTO.swift in Sources */,
 				06F93F5B2C737689002F5513 /* Font+.swift in Sources */,
 				061A34CB2C76644C00491DB1 /* PostProductID.swift in Sources */,

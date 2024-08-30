@@ -12,8 +12,8 @@ import SnapKit
 
 final class ChallengeingVC: BaseViewController {
     //let button = UIButton()
-    lazy var simVC = SimVC()
-    lazy var bottomSheet = BottomSheetVC(contentViewController: simVC, defaultHeight: 400,cornerRadius: 15, isPannedable: true)
+//    lazy var simVC = SimVC()
+//    lazy var bottomSheet = BottomSheetVC(contentViewController: simVC, defaultHeight: 400,cornerRadius: 15, isPannedable: true)
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: sameTableViewLayout())
     private let disposeBag = DisposeBag()
     private let vm = ChallengeingVM()
@@ -21,17 +21,25 @@ final class ChallengeingVC: BaseViewController {
         super.viewDidLoad()
     }
     override func bindData() {
-        let viewdidLoadRx = Observable.just(())
-        let input = ChallengeingVM.Input(viewdidLoadRx: viewdidLoadRx)
+        let startNetworking = PublishSubject<Void>()
+        
+        let input = ChallengeingVM.Input(bottomSheetNetwork: startNetworking)
         let output = vm.transform(input: input)
         output.challnegeingData
             .bind(to: collectionView.rx.items(cellIdentifier: ChallengeingCollectionCell.id, cellType: ChallengeingCollectionCell.self)) { (row, element, cell) in
                 cell.setUpDate(model: element)
                 cell.recodeButton.rx.tap
                     .bind(with: self) { owner, _ in
-                        owner.simVC.setUpView(bookTitle: "냠냠이", page: "50", totalPage: "200")
-                        owner.present(owner.bottomSheet, animated: false)
-                    }.disposed(by: self.disposeBag)
+                        let vc = SimVC()
+                        print(element.bookTitle)
+                        vc.setUpView(bookTitle: element.bookTitle, page: element.bookNowPage, totalPage: element.booktotalPage, postId: element.postId)
+                        let bottomSheet = BottomSheetVC(contentViewController: vc, defaultHeight: 400,cornerRadius: 15, isPannedable: true)
+                        vc.completion = {
+                            startNetworking.onNext(())
+                        }
+                        owner.present(bottomSheet, animated: false)
+                        
+                    }.disposed(by: cell.disposeBag)
                 
             }.disposed(by: disposeBag)
     }

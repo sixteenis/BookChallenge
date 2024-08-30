@@ -21,11 +21,11 @@ final class ChallengeingCollectionCell: BaseCollectioViewCell {
     let person = UILabel()
     let date = UILabel()
     
-    private let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     
-    override func setNeedsLayout() {
-        super.setNeedsLayout()
-        
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
     }
     override func setUpHierarchy() {
         contentView.addSubview(bookImage)
@@ -89,8 +89,8 @@ final class ChallengeingCollectionCell: BaseCollectioViewCell {
     }
     
     func setUpDate(model: BookRoomModel) {
-        let pagePer = model.bookNowPage/model.booktotalPage
-        let pageStr = String(format: "%.1f", pagePer)
+        let pagePer = Double(model.bookNowPage)/Double(model.booktotalPage)
+        let pageStr = String(format: "%.1f", pagePer*100)
         fetchLSLPImage(imageView: bookImage, imageURL: model.bookurl)
         self.bookTitle.text = model.bookTitle
         self.pagePercentView.setUpDate(total: model.booktotalPage, now: model.bookNowPage, left: "\(pageStr)%", right: "\(model.bookNowPage)/\(model.booktotalPage)p")

@@ -8,6 +8,7 @@
 import Foundation
 
 struct BookRoomModel {
+    let postId: String
     let bookurl: String
     let bookTitle: String
     let booktotalPage: Int
