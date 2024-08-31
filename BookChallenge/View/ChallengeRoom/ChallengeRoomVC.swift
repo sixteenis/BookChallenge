@@ -17,7 +17,7 @@ final class ChallengeRoomVC: BaseViewController, NavLogoProtocol {
     private let line = UIView()
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.sameTableViewLayout())
     
-    private let createRoomView = CapsuleLabel()
+    private let createRoomView = CreateView()
     private let createRoomButton = UIButton()
     
     private let refreshControl = UIRefreshControl() //당겨서 새로고침
@@ -34,6 +34,10 @@ final class ChallengeRoomVC: BaseViewController, NavLogoProtocol {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+    }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        createRoomView.layer.cornerRadius = createRoomView.frame.width / 2
     }
     override func setUpHierarchy() {
         view.addSubview(collectionView)
@@ -54,6 +58,7 @@ final class ChallengeRoomVC: BaseViewController, NavLogoProtocol {
             .bind(to: collectionView.rx.items(cellIdentifier: ChallengeCollectionCell.id, cellType: ChallengeCollectionCell.self)) { (row, element, cell) in
                 cell.setUpData(data: element)
             }.disposed(by: disposeBag)
+        
         output.refreshLoading
             .bind(with: self) { owner, result in
                 owner.refreshControl.endRefreshing()
@@ -98,12 +103,13 @@ final class ChallengeRoomVC: BaseViewController, NavLogoProtocol {
     override func setUpLayout() {
         createRoomView.snp.makeConstraints { make in
             make.bottom.trailing.equalTo(view.safeAreaLayoutGuide).inset(15)
+            make.size.equalTo(60)
         }
         createRoomButton.snp.makeConstraints { make in
             make.edges.equalTo(createRoomView)
         }
         searchView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(10)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(15)
             make.height.equalTo(36)
         }
@@ -123,10 +129,12 @@ final class ChallengeRoomVC: BaseViewController, NavLogoProtocol {
     }
     override func setUpView() {
         self.navigationItem.title = "챌린지 방"
-        createRoomView.setUpData(backColor: .lightGray, title: "방 만들기", image: UIImage.createRoomLogo, font: .font16)
+        createRoomView.backgroundColor = .mainColor
+        createRoomView.layer.masksToBounds = true
         
         
-        line.backgroundColor = .lightGray
+        
+        line.backgroundColor = .line
         
         collectionView.backgroundColor = .viewBackground
         collectionView.register(ChallengeCollectionCell.self, forCellWithReuseIdentifier: ChallengeCollectionCell.id)
@@ -139,7 +147,7 @@ extension ChallengeRoomVC {
     func sameTableViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.width
-        let height = UIScreen.main.bounds.height / 5
+        let height = UIScreen.main.bounds.height / 6
         layout.itemSize = CGSize(width: width, height: height)
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)

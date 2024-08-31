@@ -18,4 +18,5 @@ extension UIColor {
     static let boarder = UIColor.systemGray5
     static let grayBackground  = UIColor.systemGray6
     static let darkBoarder = UIColor.darkGray
+    static let line = UIColor.systemGray5
 }

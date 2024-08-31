@@ -18,7 +18,7 @@ extension UIImage {
     static let search = UIImage(systemName: "magnifyingglass")
     static let bookmark = UIImage(systemName: "bookmark.fill")
     static let plusBook = UIImage(systemName: "plus")
-    static let createRoomLogo = UIImage(systemName: "pencil")
+    static let createRoomLogo = UIImage(named: "pen")
     
     static let noBookImage = UIImage(named: "noBook")
     static let limitPerson = UIImage(systemName: "person")

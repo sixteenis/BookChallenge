@@ -16,6 +16,7 @@ final class ChallengeCollectionCell: BaseCollectioViewCell {
     private let title = UILabel()
     private let content = UILabel()
     private let nick = UILabel()
+    private let line = UIView()
     
     private var disposeBag = DisposeBag()
     override func prepareForReuse() {
@@ -29,6 +30,7 @@ final class ChallengeCollectionCell: BaseCollectioViewCell {
         contentView.addSubview(title)
         contentView.addSubview(content)
         contentView.addSubview(nick)
+        contentView.addSubview(line)
         //남은 일자, 남은 자리
         
     }
@@ -62,6 +64,11 @@ final class ChallengeCollectionCell: BaseCollectioViewCell {
             make.trailing.equalTo(bookImage.snp.leading).offset(20)
             make.leading.equalToSuperview().inset(20)
         }
+        line.snp.makeConstraints { make in
+            make.bottom.equalTo(contentView)
+            make.height.equalTo(1)
+            make.horizontalEdges.equalTo(contentView).inset(15)
+        }
         
     }
     override func setUpView() {
@@ -83,6 +90,7 @@ final class ChallengeCollectionCell: BaseCollectioViewCell {
         nick.textAlignment = .left
         nick.numberOfLines = 1
         nick.font = .font13
+        line.backgroundColor = .line
         
     }
     func setUpData(data: ChallengePostModel, background: UIColor = .white) {

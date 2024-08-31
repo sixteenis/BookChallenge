@@ -20,6 +20,7 @@
 		061A34CB2C76644C00491DB1 /* PostProductID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061A34CA2C76644C00491DB1 /* PostProductID.swift */; };
 		061A34CD2C76653D00491DB1 /* LSLPInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061A34CC2C76653D00491DB1 /* LSLPInterceptor.swift */; };
 		061A34CF2C766CF300491DB1 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061A34CE2C766CF300491DB1 /* NetworkError.swift */; };
+		0633AA9B2C836240006D62CF /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0633AA9A2C836240006D62CF /* CreateView.swift */; };
 		065180342C7C60C200255228 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 065180332C7C60C200255228 /* NVActivityIndicatorView */; };
 		065180362C7C60C200255228 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 065180352C7C60C200255228 /* NVActivityIndicatorViewExtended */; };
 		0651803A2C7C8FC800255228 /* ChallengeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065180392C7C8FC800255228 /* ChallengeDetailVC.swift */; };
@@ -136,6 +137,7 @@
 		061A34CA2C76644C00491DB1 /* PostProductID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostProductID.swift; sourceTree = "<group>"; };
 		061A34CC2C76653D00491DB1 /* LSLPInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPInterceptor.swift; sourceTree = "<group>"; };
 		061A34CE2C766CF300491DB1 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		0633AA9A2C836240006D62CF /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		065180392C7C8FC800255228 /* ChallengeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailVC.swift; sourceTree = "<group>"; };
 		0651803B2C7CAA8C00255228 /* ChallengeDetailInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailInputModel.swift; sourceTree = "<group>"; };
 		0651803D2C7CAABB00255228 /* ChallengeDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailVM.swift; sourceTree = "<group>"; };
@@ -418,6 +420,7 @@
 				06CF47532C796B4600EC0645 /* CapsuleLabel.swift */,
 				0651806E2C8059BD00255228 /* PercentView.swift */,
 				0651807D2C83178800255228 /* LogoView.swift */,
+				0633AA9A2C836240006D62CF /* CreateView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -742,6 +745,7 @@
 				0652C86F2C7268AF00BDC64E /* JustPlustView.swift in Sources */,
 				0652C8252C6FAEEB00BDC64E /* AladinRouter.swift in Sources */,
 				06CF47522C79692600EC0645 /* ChallengePostModel.swift in Sources */,
+				0633AA9B2C836240006D62CF /* CreateView.swift in Sources */,
 				06CF473E2C78B0F500EC0645 /* BookModel.swift in Sources */,
 				0651807E2C83178800255228 /* LogoView.swift in Sources */,
 				066124702C7C1529002A1B87 /* SimVC.swift in Sources */,
