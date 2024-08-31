@@ -94,7 +94,12 @@ final class ChallengeingCollectionCell: BaseCollectioViewCell {
         fetchLSLPImage(imageView: bookImage, imageURL: model.bookurl)
         self.bookTitle.text = model.bookTitle
         self.pagePercentView.setUpDate(total: model.booktotalPage, now: model.bookNowPage, left: "\(pageStr)%", right: "\(model.bookNowPage)/\(model.booktotalPage)p")
-        self.datePercentView.setUpDate(total: model.totalDate, now: model.nowDate, left: model.startDate, right: model.endDate)
+        var now = model.nowDate
+        // TODO: 이미 기간이 지난 챌린지에 대해 종료하기 버튼과 같은 식으로 다른 곳으로 이동시켜줘야됨... 나중에~
+        if now > model.totalDate {
+            now = model.totalDate
+        }
+        self.datePercentView.setUpDate(total: model.totalDate, now: now, left: model.startDate, right: model.endDate)
         
         
     }

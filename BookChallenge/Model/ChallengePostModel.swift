@@ -8,6 +8,7 @@
 import Foundation
 
 struct ChallengePostModel {
+    let profile: String?
     let postId: String
     let bookId: String
     let bookUrl: String

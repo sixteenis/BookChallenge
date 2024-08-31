@@ -154,7 +154,6 @@ final class ChallengeDetailVC: BaseViewController, FetchImageProtocol {
         bookDescription.font = .font14
         
         
-        createProfile.image = UIImage.noBookImage
         createProfile.layer.masksToBounds = true
         createProfile.layer.borderWidth = 1
         createProfile.layer.borderColor = UIColor.boarder.cgColor
@@ -182,9 +181,10 @@ private extension ChallengeDetailVC {
     """
     }
     func setUpPost(model: ChallengePostModel) {
+        fetchPrfileImage(imageView: createProfile, imageURL: model.profile)
         createNick.text = model.nick
-        limitPerson.setUpData(backColor: .clightGray, title: model.limitPerson, image: .limitPerson)
-        deadline.setUpData(backColor: .clightGray, title: model.deadLine, image: .deadLine)
+        limitPerson.setUpData(title: model.limitPerson, image: .limitPerson)
+        deadline.setUpData(title: model.deadLine, image: .deadLine)
         roomTitle.text = model.title
         roomContent.text = model.content
         roomContent.numberOfLines = 0
@@ -235,20 +235,20 @@ private extension ChallengeDetailVC {
     }
     func setUpContentLayout() {
         createProfile.snp.makeConstraints { make in
-            make.top.equalTo(bookDescription.snp.bottom).offset(55)
+            make.top.equalTo(bookDescription.snp.bottom).offset(50)
             make.leading.equalTo(contentView).inset(15)
             make.size.equalTo(60)
         }
         createNick.snp.makeConstraints { make in
-            make.top.equalTo(limitPerson.snp.bottom).offset(5)
+            make.bottom.equalTo(createProfile.snp.bottom).offset(-5)
             make.leading.equalTo(createProfile.snp.trailing).offset(10)
         }
         limitPerson.snp.makeConstraints { make in
-            make.centerY.equalTo(createProfile).offset(-20)
+            make.centerY.equalTo(createProfile).offset(-15)
             make.leading.equalTo(createProfile.snp.trailing).offset(10)
         }
         deadline.snp.makeConstraints { make in
-            make.centerY.equalTo(createProfile).offset(-20)
+            make.centerY.equalTo(createProfile).offset(-15)
             make.leading.equalTo(limitPerson.snp.trailing).offset(10)
         }
         roomTitle.snp.makeConstraints { make in

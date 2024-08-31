@@ -71,6 +71,7 @@ struct RoomPostDTO: Decodable {
     func transformChallengePostModel() -> ChallengePostModel {
         let title = self.title.split(separator: "]").map(String.init)
         let model =  ChallengePostModel(
+            profile: self.creator.profileImage,
             postId: self.post_id,
             bookId: id.filter{ $0 != "#"},
             bookUrl: self.files.first ?? "",
