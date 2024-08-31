@@ -28,8 +28,9 @@ class ShowTopBookCollectionCell: BaseCollectioViewCell {
             make.edges.equalToSuperview()
         }
         bookmark.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview()
-            make.size.equalTo(35)
+            make.top.equalTo(bookImage).offset(-4)
+            make.leading.equalTo(bookImage).offset(-9)
+            make.size.equalTo(50)
         }
     }
     override func setUpView() {
@@ -40,13 +41,13 @@ class ShowTopBookCollectionCell: BaseCollectioViewCell {
         fetchImage(imageView: self.bookImage, imageURL: data.cover)
         switch index {
         case 0:
-            bookmark.tintColor = .systemYellow
+            bookmark.tintColor = UIColor(red: 255/255, green: 215/255, blue: 0/255, alpha: 1.0)
             bookmark.isHidden = false
         case 1:
-            bookmark.tintColor = .systemCyan
+            bookmark.tintColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1.0)
             bookmark.isHidden = false
         case 2:
-            bookmark.tintColor = .systemGray4
+            bookmark.tintColor = UIColor(red: 205/255, green: 127/255, blue: 50/255, alpha: 1.0)
             bookmark.isHidden = false
         default:
             bookmark.isHidden = true
