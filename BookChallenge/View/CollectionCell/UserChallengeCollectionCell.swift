@@ -69,7 +69,7 @@ final class UserChallengeCollectionCell: BaseCollectioViewCell {
         checkAttachment.image = UIImage(systemName: "checkmark")
         
         
-        checkAttachment.bounds = CGRect(x: -5, y: 0, width: 13, height: 13)
+        checkAttachment.bounds = CGRect(x: -5, y: 0, width: 11, height: 11)
         
         let imageString = NSAttributedString(attachment: checkAttachment)
         let completeText = NSMutableAttributedString()

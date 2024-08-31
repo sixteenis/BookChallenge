@@ -37,7 +37,14 @@ class BaseViewController: UIViewController {
     func bindData() {}
     func bindNetworkData() {}
     func setUpNav() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        appearance.shadowColor = nil
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.tintColor = .black
+        
         let image = SelcetProfileImageView()
         image.snp.makeConstraints { make in
             make.size.equalTo(35)
@@ -111,50 +118,50 @@ extension BaseViewController {
         
         
     }
-//    func setUpIndicator() {
-//        view.addSubview(loadingView)
-//        loadingView.backgroundColor = .darkGray
-//        loadingView.layer.masksToBounds = true
-//        loadingView.layer.cornerRadius = 15
-//        loadingView.snp.makeConstraints { make in
-//            make.center.equalTo(view.safeAreaLayoutGuide)
-//            make.size.equalTo(70)
-//        }
-//        loadingView.addSubview(activityIndicator)
-//        activityIndicator.snp.makeConstraints { make in
-//            make.center.equalTo(view.safeAreaLayoutGuide)
-//        }
-//    }
+    //    func setUpIndicator() {
+    //        view.addSubview(loadingView)
+    //        loadingView.backgroundColor = .darkGray
+    //        loadingView.layer.masksToBounds = true
+    //        loadingView.layer.cornerRadius = 15
+    //        loadingView.snp.makeConstraints { make in
+    //            make.center.equalTo(view.safeAreaLayoutGuide)
+    //            make.size.equalTo(70)
+    //        }
+    //        loadingView.addSubview(activityIndicator)
+    //        activityIndicator.snp.makeConstraints { make in
+    //            make.center.equalTo(view.safeAreaLayoutGuide)
+    //        }
+    //    }
     func setUpIndicator() {
-            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                  let window = windowScene.windows.first(where: { $0.isKeyWindow }) else {
-                return
-            }
-            
-            // 이미 로딩 뷰가 추가되어 있으면 다시 추가하지 않도록 확인
-            if loadingView.superview == nil {
-                window.addSubview(loadingView)
-            }
-            
-            loadingView.backgroundColor = .darkGray.withAlphaComponent(0.8) // 배경색에 약간의 투명도를 추가
-            loadingView.layer.masksToBounds = true
-            loadingView.layer.cornerRadius = 15
-            
-            loadingView.snp.makeConstraints { make in
-                make.edges.equalTo(window)
-//                make.center.equalTo(window)
-//                make.size.equalTo(70)
-            }
-            
-            loadingView.addSubview(activityIndicator)
-            
-            activityIndicator.snp.makeConstraints { make in
-                make.center.equalToSuperview() // loadingView의 중앙에 위치하도록 수정
-            }
-            
-            // 로딩뷰를 최상단으로 가져오기
-            window.bringSubviewToFront(loadingView)
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let window = windowScene.windows.first(where: { $0.isKeyWindow }) else {
+            return
         }
+        
+        // 이미 로딩 뷰가 추가되어 있으면 다시 추가하지 않도록 확인
+        if loadingView.superview == nil {
+            window.addSubview(loadingView)
+        }
+        
+        loadingView.backgroundColor = .darkGray.withAlphaComponent(0.8) // 배경색에 약간의 투명도를 추가
+        loadingView.layer.masksToBounds = true
+        loadingView.layer.cornerRadius = 15
+        
+        loadingView.snp.makeConstraints { make in
+            make.edges.equalTo(window)
+            //                make.center.equalTo(window)
+            //                make.size.equalTo(70)
+        }
+        
+        loadingView.addSubview(activityIndicator)
+        
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview() // loadingView의 중앙에 위치하도록 수정
+        }
+        
+        // 로딩뷰를 최상단으로 가져오기
+        window.bringSubviewToFront(loadingView)
+    }
 }
 // MARK: - 뷰 전환 부분
 extension BaseViewController {
