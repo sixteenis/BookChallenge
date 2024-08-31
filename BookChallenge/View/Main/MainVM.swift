@@ -18,11 +18,13 @@ class MainVM: BaseViewModel {
     }
     struct Output {
         let bestBookData: BehaviorRelay<[BookDTO]>
+        let challengeingList: Observable<[BookRoomModel]>
         let challengeRoomList: Observable<[ChallengePostModel]>
         let isLoading: BehaviorRelay<Bool>
     }
     func transform(input: Input) -> Output {
         let bestBookData = BehaviorRelay(value: [BookDTO]())
+        let challengeingList = PublishSubject<[BookRoomModel]>()
         let challengeRoomLists = PublishSubject<[ChallengePostModel]>()
         let isLoading = BehaviorRelay(value: true)
         let dispatchGroup = DispatchGroup()
@@ -37,7 +39,19 @@ class MainVM: BaseViewModel {
             }
             dispatchGroup.leave()
         }.disposed(by: disposeBag)
-        
+        dispatchGroup.enter()
+        input.viewdidLoadRx
+            .flatMap { self.network.request(target: .getLikePosts(query: .init()), dto: LikePostsDTO.self)}
+            .bind(with: self) { owner, response in
+                switch response {
+                case .success(let data):
+                    let result = data.data.map {$0.transformBookRoomModel()}
+                    challengeingList.onNext(result)
+                case .failure(let err):
+                    print(err)
+                }
+                dispatchGroup.leave()
+            }.disposed(by: disposeBag)
         dispatchGroup.enter()
         input.viewdidLoadRx
             .flatMap {
@@ -53,11 +67,13 @@ class MainVM: BaseViewModel {
                 }
                 dispatchGroup.leave()
             }.disposed(by: disposeBag)
+        
+        
         dispatchGroup.notify(queue: .main) {
             isLoading.accept(false)
         }
         
-        return Output(bestBookData: bestBookData, challengeRoomList: challengeRoomLists, isLoading: isLoading)
+        return Output(bestBookData: bestBookData, challengeingList: challengeingList, challengeRoomList: challengeRoomLists, isLoading: isLoading)
 
     }
 }

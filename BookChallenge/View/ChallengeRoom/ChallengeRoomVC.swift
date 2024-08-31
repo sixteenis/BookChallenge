@@ -11,7 +11,7 @@ import RxCocoa
 
 import SnapKit
 
-final class ChallengeRoomVC: BaseViewController {
+final class ChallengeRoomVC: BaseViewController, NavLogoProtocol {
     private let searchView = SearchBarView()
     private let searchButton = BaseButton()
     private let line = UIView()
@@ -25,6 +25,7 @@ final class ChallengeRoomVC: BaseViewController {
     private let vm = ChallengeRoomVM()
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNav()
     }
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(animated)

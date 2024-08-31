@@ -11,7 +11,7 @@ import RxCocoa
 
 import SnapKit
 
-class BookStorageVC: BaseViewController {
+class BookStorageVC: BaseViewController, NavLogoProtocol {
     private let segmentedControl: UISegmentedControl = {
         let segmentedControl = UnderlineSegmentedControl(items: ["챌린지 중", "혼자 챌린지 중", "종료된 챌린지"])
         return segmentedControl
@@ -57,6 +57,7 @@ class BookStorageVC: BaseViewController {
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNav()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

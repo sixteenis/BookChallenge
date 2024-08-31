@@ -30,13 +30,13 @@ class SimVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        disposeBag = DisposeBag()
-        pageTextFiled.text = nil
-        contentTextFiled.text = nil
-        bind()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        disposeBag = DisposeBag()
+//        pageTextFiled.text = nil
+//        contentTextFiled.text = nil
+//        bind()
+//    }
     
     
     override func setUpHierarchy() {
@@ -134,6 +134,8 @@ class SimVC: BaseViewController {
         contentLabel.textColor = .placeholder
         contentLabel.font = .font13
         button.backgroundColor = .mainColor
+        
+        bind()
         
     }
     private func bind() {

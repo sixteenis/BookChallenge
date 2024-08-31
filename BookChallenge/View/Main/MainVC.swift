@@ -13,7 +13,7 @@ import RxDataSources
 import SnapKit
 import NVActivityIndicatorView
 
-final class MainVC: BaseViewController {
+final class MainVC: BaseViewController, NavLogoProtocol {
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     //private var dataSourc: RxCollectionViewSectionedReloadDataSource<
@@ -34,6 +34,7 @@ final class MainVC: BaseViewController {
     private let vm = MainVM()
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNav()
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -50,19 +51,21 @@ final class MainVC: BaseViewController {
                 cell.updateUI(data: element, index: row)
             }.disposed(by: disposeBag)
         
-        Observable.just([1,2,3,31])
+        output.challengeingList
             .bind(to: userChallengeCollection.rx.items(cellIdentifier: UserChallengeCollectionCell.id, cellType: UserChallengeCollectionCell.self)) { (row, element, cell) in
-                
+                cell.setUpData(model: element)
             }.disposed(by: disposeBag)
+        
         output.challengeRoomList
             .bind(to: ChallengeRoomCollection.rx.items(cellIdentifier: ChallengeCollectionCell.id, cellType: ChallengeCollectionCell.self)) { (row, element, cell) in
                 cell.setUpData(data: element)
-                
             }.disposed(by: disposeBag)
+        
         output.isLoading //리로딩 부분
             .bind(with: self) { owner, value in
                 value ? owner.showLoadingIndicator() : owner.hideLoadingIndicator()
             }.disposed(by: disposeBag)
+        
         challengeRoomDetailsButton.rx.tap
             .bind(with: self) { owner, _ in
                 self.tabBarController?.selectedIndex = 2
@@ -130,9 +133,7 @@ final class MainVC: BaseViewController {
         }
     }
     override func setUpView() {
-        self.navigationController?.navigationBar.sizeToFit()
-        self.scrollView.delegate = self
-        updateNavigationBarTitle(animated: false)
+        navigationItem.title = "홈"
         
         showTopBookHeader.text = "베스트셀러"
         showTopBookCollection.register(ShowTopBookCollectionCell.self, forCellWithReuseIdentifier: ShowTopBookCollectionCell.id)
@@ -147,11 +148,13 @@ final class MainVC: BaseViewController {
         
         userChallengeHeader.text = "너가 지금 참가중인거"
         userChallengeCollection.register(UserChallengeCollectionCell.self, forCellWithReuseIdentifier: UserChallengeCollectionCell.id)
-        userChallengeCollection.backgroundColor = .viewBackground
+        userChallengeCollection.backgroundColor = .collectionBackground
         userChallengeCollection.showsHorizontalScrollIndicator = false
         userChallengeCollection.decelerationRate = .fast
         userChallengeCollection.delegate = self
-        
+        userChallengeCollection.layer.cornerRadius = 15
+        userChallengeCollection.layer.borderWidth = 1
+        userChallengeCollection.layer.borderColor = UIColor.boarder.cgColor
         
         ChallengeRoomHeader.text = "챌린지 방"
         ChallengeRoomCollection.register(ChallengeCollectionCell.self, forCellWithReuseIdentifier: ChallengeCollectionCell.id)
@@ -169,26 +172,26 @@ final class MainVC: BaseViewController {
     
 }
 
-extension MainVC: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        updateNavigationBarTitle(animated: true)
-    }
-    func updateNavigationBarTitle(animated: Bool) {
-        let offset = scrollView.contentOffset.y
-        
-        let setUpLagerTitles = offset <= 20
-        let currentPrefersLargeTitles = self.navigationController?.navigationBar.prefersLargeTitles ?? false
-
-        if setUpLagerTitles != currentPrefersLargeTitles{
-// TODO: 애니메이션을 넣을까말까 고민
-            UIView.animate(withDuration: animated ? 0.1 : 0.0) {
-                self.navigationItem.title = setUpLagerTitles ? "반가워요! \(UserManager.shared.nick)님 :)" : "\(UserManager.shared.nick)님의 홈"
-                self.navigationController?.navigationBar.prefersLargeTitles = setUpLagerTitles
-                self.navigationController?.navigationBar.layoutIfNeeded()
-            }
-        }
-    }
-}
+//extension MainVC: UIScrollViewDelegate {
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        updateNavigationBarTitle(animated: true)
+//    }
+//    func updateNavigationBarTitle(animated: Bool) {
+//        let offset = scrollView.contentOffset.y
+//        
+//        let setUpLagerTitles = offset <= 20
+//        let currentPrefersLargeTitles = self.navigationController?.navigationBar.prefersLargeTitles ?? false
+//
+//        if setUpLagerTitles != currentPrefersLargeTitles{
+//// TODO: 애니메이션을 넣을까말까 고민
+//            UIView.animate(withDuration: animated ? 0.1 : 0.0) {
+//                self.navigationItem.title = setUpLagerTitles ? "반가워요! \(UserManager.shared.nick)님 :)" : "\(UserManager.shared.nick)님의 홈"
+//                self.navigationController?.navigationBar.prefersLargeTitles = setUpLagerTitles
+//                self.navigationController?.navigationBar.layoutIfNeeded()
+//            }
+//        }
+//    }
+//}
 // MARK: - 셀 포커싱 해주기
 extension MainVC: UICollectionViewDelegate {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -224,11 +227,11 @@ private extension MainVC {
     
     func userChallengeLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        let width = UIScreen.main.bounds.width// - 50 // 20 + 30
-        let height = UIScreen.main.bounds.height / 3
+        let width = UIScreen.main.bounds.width / 2.5// - 50 // 20 + 30
+        let height = UIScreen.main.bounds.height / 3.5
         layout.itemSize = CGSize(width: width, height: height) //셀
         layout.scrollDirection = .horizontal // 가로, 세로 스크롤 설정
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         return layout
     }
     

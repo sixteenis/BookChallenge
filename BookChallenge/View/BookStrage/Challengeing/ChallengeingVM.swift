@@ -21,18 +21,6 @@ final class ChallengeingVM: BaseViewModel {
     func transform(input: Input) -> Output {
         let roomData = BehaviorRelay(value: [BookRoomModel]())
         let networkingStart = BehaviorRelay(value: true)
-//        input.viewdidLoadRx
-//            .flatMap { LSLPNetworkManager.shared.request(target: .getLikePosts(query: .init()), dto: LikePostsDTO.self)}
-//            .bind(with: self) { owner, response in
-//                
-//                switch response {
-//                case .success(let data):
-//                    let result = data.data.map { $0.transformBookRoomModel()}
-//                    roomData.accept(result)
-//                case .failure(let err):
-//                    print(err)
-//                }
-//            }.disposed(by: disposeBag)
         networkingStart
             .filter {$0}
             .flatMap { _ in
