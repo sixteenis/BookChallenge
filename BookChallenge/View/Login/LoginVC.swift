@@ -10,27 +10,33 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SnapKit
-import Then
+
 
 final class LoginVC: BaseViewController, ChangeView {
-    let loginLabel = UILabel().then {
-        $0.font = .boldSystemFont(ofSize: 20)
-        $0.textColor = .font
-        $0.text = String.appName + " 로그인"
-        $0.textAlignment = .center
-    }
-    let appLogo = UIImageView().then {
-        $0.image = UIImage.logo
-    }
+    let loginLabel: UILabel = {
+        let view = UILabel()
+        view.font = .boldSystemFont(ofSize: 20)
+        view.textColor = .font
+        view.text = String.appName + " 로그인"
+        view.textAlignment = .center
+        return view
+    }()
+    let appLogo: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage.logo
+        return view
+    }()
     
     let emailTextFiled = LoginTextField(type: .email)
     let passwordTextFiled = LoginTextField(type: .password)
     let loginButton = PointButton(title: "로그인하기")
-    let joinButton = UIButton().then {
-        $0.setTitle("회원가입하기", for: .normal)
-        $0.setTitleColor(.font, for: .normal)
-        $0.titleLabel?.font = .boldSystemFont(ofSize: 15)
-    }
+    let joinButton: UIButton =  {
+        let view = UIButton()
+        view.setTitle("회원가입하기", for: .normal)
+        view.setTitleColor(.font, for: .normal)
+        view.titleLabel?.font = .boldSystemFont(ofSize: 15)
+        return view
+    }()
     
     let disposeBag = DisposeBag()
     let vm = LoginVM()

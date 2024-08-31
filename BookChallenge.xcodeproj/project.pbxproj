@@ -21,6 +21,7 @@
 		061A34CD2C76653D00491DB1 /* LSLPInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061A34CC2C76653D00491DB1 /* LSLPInterceptor.swift */; };
 		061A34CF2C766CF300491DB1 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061A34CE2C766CF300491DB1 /* NetworkError.swift */; };
 		0633AA9B2C836240006D62CF /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0633AA9A2C836240006D62CF /* CreateView.swift */; };
+		0633AA9D2C836E71006D62CF /* BuyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0633AA9C2C836E71006D62CF /* BuyButtonView.swift */; };
 		065180342C7C60C200255228 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 065180332C7C60C200255228 /* NVActivityIndicatorView */; };
 		065180362C7C60C200255228 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 065180352C7C60C200255228 /* NVActivityIndicatorViewExtended */; };
 		0651803A2C7C8FC800255228 /* ChallengeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065180392C7C8FC800255228 /* ChallengeDetailVC.swift */; };
@@ -78,7 +79,6 @@
 		065953392C6E32060048821E /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065953382C6E32060048821E /* APIKey.swift */; };
 		0659533C2C6E32480048821E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0659533B2C6E32480048821E /* Alamofire */; };
 		0659533F2C6E324E0048821E /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 0659533E2C6E324E0048821E /* Toast */; };
-		065953422C6E32540048821E /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 065953412C6E32540048821E /* Then */; };
 		065953452C6E325A0048821E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 065953442C6E325A0048821E /* Kingfisher */; };
 		065953482C6E32690048821E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 065953472C6E32690048821E /* RxCocoa */; };
 		0659534A2C6E32690048821E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 065953492C6E32690048821E /* RxSwift */; };
@@ -138,6 +138,7 @@
 		061A34CC2C76653D00491DB1 /* LSLPInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSLPInterceptor.swift; sourceTree = "<group>"; };
 		061A34CE2C766CF300491DB1 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		0633AA9A2C836240006D62CF /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
+		0633AA9C2C836E71006D62CF /* BuyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyButtonView.swift; sourceTree = "<group>"; };
 		065180392C7C8FC800255228 /* ChallengeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailVC.swift; sourceTree = "<group>"; };
 		0651803B2C7CAA8C00255228 /* ChallengeDetailInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailInputModel.swift; sourceTree = "<group>"; };
 		0651803D2C7CAABB00255228 /* ChallengeDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailVM.swift; sourceTree = "<group>"; };
@@ -249,7 +250,6 @@
 				065953482C6E32690048821E /* RxCocoa in Frameworks */,
 				06CF474C2C792CFC00EC0645 /* RxDataSources in Frameworks */,
 				065180342C7C60C200255228 /* NVActivityIndicatorView in Frameworks */,
-				065953422C6E32540048821E /* Then in Frameworks */,
 				0659533C2C6E32480048821E /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,6 +421,7 @@
 				0651806E2C8059BD00255228 /* PercentView.swift */,
 				0651807D2C83178800255228 /* LogoView.swift */,
 				0633AA9A2C836240006D62CF /* CreateView.swift */,
+				0633AA9C2C836E71006D62CF /* BuyButtonView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -610,7 +611,6 @@
 			packageProductDependencies = (
 				0659533B2C6E32480048821E /* Alamofire */,
 				0659533E2C6E324E0048821E /* Toast */,
-				065953412C6E32540048821E /* Then */,
 				065953442C6E325A0048821E /* Kingfisher */,
 				065953472C6E32690048821E /* RxCocoa */,
 				065953492C6E32690048821E /* RxSwift */,
@@ -654,7 +654,6 @@
 			packageReferences = (
 				0659533A2C6E32480048821E /* XCRemoteSwiftPackageReference "Alamofire" */,
 				0659533D2C6E324E0048821E /* XCRemoteSwiftPackageReference "Toast-Swift" */,
-				065953402C6E32540048821E /* XCRemoteSwiftPackageReference "Then" */,
 				065953432C6E325A0048821E /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				065953462C6E32690048821E /* XCRemoteSwiftPackageReference "RxSwift" */,
 				0659534B2C6E327D0048821E /* XCRemoteSwiftPackageReference "SnapKit" */,
@@ -707,6 +706,7 @@
 				0651803C2C7CAA8C00255228 /* ChallengeDetailInputModel.swift in Sources */,
 				0651806F2C8059BD00255228 /* PercentView.swift in Sources */,
 				0659537A2C6F36340048821E /* MainVC.swift in Sources */,
+				0633AA9D2C836E71006D62CF /* BuyButtonView.swift in Sources */,
 				0652C8202C6F906200BDC64E /* CarouseLayout.swift in Sources */,
 				060301E02C7734CB0058A113 /* WithdrawDTO.swift in Sources */,
 				0659532C2C6E31E80048821E /* TabBarController.swift in Sources */,
@@ -1049,14 +1049,6 @@
 				minimumVersion = 5.1.1;
 			};
 		};
-		065953402C6E32540048821E /* XCRemoteSwiftPackageReference "Then" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/devxoul/Then.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
-			};
-		};
 		065953432C6E325A0048821E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -1129,11 +1121,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0659533D2C6E324E0048821E /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
-		};
-		065953412C6E32540048821E /* Then */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 065953402C6E32540048821E /* XCRemoteSwiftPackageReference "Then" */;
-			productName = Then;
 		};
 		065953442C6E325A0048821E /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

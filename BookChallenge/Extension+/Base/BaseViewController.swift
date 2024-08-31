@@ -45,13 +45,7 @@ class BaseViewController: UIViewController {
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.tintColor = .black
         
-        let image = SelcetProfileImageView()
-        image.snp.makeConstraints { make in
-            make.size.equalTo(35)
-        }
-        let profile = UIBarButtonItem(customView: image)
-        let alert = UIBarButtonItem(image: UIImage(systemName: "bell"), style: .plain, target: nil, action: nil)
-        navigationItem.rightBarButtonItems = [alert, profile]
+        
         
         
     }

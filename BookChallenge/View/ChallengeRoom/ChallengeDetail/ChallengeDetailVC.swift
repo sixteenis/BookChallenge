@@ -29,7 +29,8 @@ final class ChallengeDetailVC: BaseViewController, FetchImageProtocol {
     private let roomTitle = UILabel()
     private let roomContent = UILabel()
     
-    private let buyAndJoinButton = PointButton(title: "책 구매")
+    private let buttonView = UIView()
+    private let buyAndJoinButton = BuyButtonView()
     private let joinButton = PointButton(title: "참여하기")
     
     private let disposeBag = DisposeBag()
@@ -37,10 +38,12 @@ final class ChallengeDetailVC: BaseViewController, FetchImageProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "방 정보 보기"
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -81,7 +84,7 @@ final class ChallengeDetailVC: BaseViewController, FetchImageProtocol {
             .bind(with: self) { owner, _ in
                 if owner.bookDescription.numberOfLines == 3 {
                     owner.bookDescription.numberOfLines = 0
-                    owner.seeMoreDescriptionButton.setTitle("닫기 🔼", for: .normal)
+                    owner.seeMoreDescriptionButton.setTitle("접기 🔼", for: .normal)
                     owner.seeMoreDescriptionButton.setTitleColor(.font, for: .normal)
                 }else {
                     owner.bookDescription.numberOfLines = 3
@@ -96,12 +99,18 @@ final class ChallengeDetailVC: BaseViewController, FetchImageProtocol {
                     join.accept(())
                 }
             }.disposed(by: disposeBag)
+        buyAndJoinButton.button.rx.tap
+            .bind(with: self) { owner, _ in
+                print("사기 버튼 클릭됨")
+            }.disposed(by: disposeBag)
     }
     
     override func setUpHierarchy() {
         view.addSubview(scrollView)
-        view.addSubview(buyAndJoinButton)
-        view.addSubview(joinButton)
+        view.addSubview(buttonView)
+        buttonView.addSubview(buyAndJoinButton)
+        buttonView.addSubview(joinButton)
+        
         scrollView.addSubview(contentView)
         
         contentView.addSubview(bookImage)
@@ -127,20 +136,27 @@ final class ChallengeDetailVC: BaseViewController, FetchImageProtocol {
             make.width.equalTo(scrollView.snp.width)
             make.edges.equalTo(scrollView)
         }
+        buttonView.snp.makeConstraints { make in
+            make.horizontalEdges.bottom.equalTo(view)
+            make.height.equalTo(90)
+        }
         buyAndJoinButton.snp.makeConstraints { make in
-            make.leading.bottom.equalTo(view.safeAreaLayoutGuide).inset(30)
-            make.width.equalTo(UIScreen.main.bounds.width / 2.5)
-            make.height.equalTo(44)
+            make.top.equalTo(buttonView.snp.top).inset(5)
+            make.leading.equalTo(buttonView).inset(25)
+            make.size.equalTo(40)
         }
         joinButton.snp.makeConstraints { make in
-            make.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(30)
-            make.width.equalTo(UIScreen.main.bounds.width / 2.5)
+            make.top.equalTo(buttonView.snp.top).inset(10)
+            make.leading.equalTo(buyAndJoinButton.snp.trailing).offset(10)
+            make.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
             make.height.equalTo(44)
         }
         setUpBookLayout()
         setUpContentLayout()
     }
     override func setUpView() {
+        buttonView.backgroundColor = .systemGray6
+        buyAndJoinButton.backgroundColor = .systemGray6
         bookImage.layer.borderColor = UIColor.boarder.cgColor
         bookImage.layer.borderWidth = 1
         
@@ -165,6 +181,7 @@ final class ChallengeDetailVC: BaseViewController, FetchImageProtocol {
         
         seeMoreDescriptionButton.setTitle("펼치기 🔽", for: .normal)
         seeMoreDescriptionButton.setTitleColor(.font, for: .normal)
+        seeMoreDescriptionButton.titleLabel?.font = .boldFont13
         
         rLine.backgroundColor = .clightGray
         lLine.backgroundColor = .clightGray
@@ -220,12 +237,12 @@ private extension ChallengeDetailVC {
             make.leading.equalTo(contentView).inset(15)
             make.trailing.equalTo(seeMoreDescriptionButton.snp.leading).offset(-10)
             make.centerY.equalTo(seeMoreDescriptionButton)
-            make.height.equalTo(2)
+            make.height.equalTo(1)
         }
         rLine.snp.makeConstraints { make in
             make.trailing.equalTo(contentView).inset(15)
             make.leading.equalTo(seeMoreDescriptionButton.snp.trailing).offset(10)
-            make.height.equalTo(2)
+            make.height.equalTo(1)
             make.centerY.equalTo(seeMoreDescriptionButton)
         }
         seeMoreDescriptionButton.snp.makeConstraints { make in

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SnapKit
 protocol NavLogoProtocol where Self: UIViewController {
     func setNav()
 }
@@ -23,5 +23,13 @@ extension NavLogoProtocol {
         let logo = UIBarButtonItem(customView: logoImageView)
         
         navigationItem.leftBarButtonItem = logo
+        
+        let image = SelcetProfileImageView()
+        image.snp.makeConstraints { make in
+            make.size.equalTo(35)
+        }
+        let profile = UIBarButtonItem(customView: image)
+        let alert = UIBarButtonItem(image: UIImage(systemName: "bell"), style: .plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItems = [alert, profile]
     }
 }

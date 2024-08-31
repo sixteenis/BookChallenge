@@ -12,7 +12,6 @@ import RxCocoa
 import SnapKit
 import Kingfisher
 
-// TODO: content 텍스트 예외처리... 해주자!!! 고민해봐!!!
 final class RoomCreateVC: BaseViewController, FetchImageProtocol {
     let saveItem = UIBarButtonItem(title: "게시하기")
     private let scrollView = UIScrollView()
@@ -32,8 +31,9 @@ final class RoomCreateVC: BaseViewController, FetchImageProtocol {
     private let roomTitleView = UIView()
     private let roomTitle = UITextField()
     private let roomContentView = UIView()
+    private let roomContentPlaceholder = UILabel()
     private let roomContent = UITextView()
-    
+
     private let disposeBag = DisposeBag()
     private let vm = RoomCreateVM()
     
@@ -90,16 +90,12 @@ final class RoomCreateVC: BaseViewController, FetchImageProtocol {
             }.disposed(by: disposeBag)
         
     }
-    override func bindNetworkData() {
-        //let startNetWorking =
-    }
+
     private func simpleBindDate() {
-        roomContent.rx.didBeginEditing //내용 텍스트필드 플레이스홀더로 만들기
-            .bind(with: self) { owner, _ in
-                if owner.roomContent.textColor == .placeholder {
-                    owner.roomContent.text = ""
-                    owner.roomContent.textColor = .font
-                }
+        roomContent.rx.text.orEmpty
+            .bind(with: self) { owner, text in
+                print(text)
+                owner.roomContentPlaceholder.isHidden = !text.isEmpty
             }.disposed(by: disposeBag)
     }
     override func setUpHierarchy() {
@@ -122,6 +118,7 @@ final class RoomCreateVC: BaseViewController, FetchImageProtocol {
         contentView.addSubview(roomTitle)
         contentView.addSubview(roomContentView)
         contentView.addSubview(roomContent)
+        contentView.addSubview(roomContentPlaceholder)
         
     }
     override func setUpLayout() {
@@ -242,7 +239,8 @@ private extension RoomCreateVC {
         limitPeople.snp.makeConstraints { make in
             make.top.equalTo(datePicker.snp.bottom).offset(15)
             make.trailing.equalTo(contentView).inset(15)
-            make.height.equalTo(44)
+            make.width.equalTo(105)
+            make.height.equalTo(36)
         }
         roomTitleView.snp.makeConstraints { make in
             make.top.equalTo(limitPeople.snp.bottom).offset(10)
@@ -259,12 +257,16 @@ private extension RoomCreateVC {
             make.height.equalTo(150)
             make.bottom.equalTo(contentView).inset(40) //맨 밑에 이거 넣주삼
         }
+        roomContentPlaceholder.snp.makeConstraints { make in
+            make.top.equalTo(roomContent).offset(8)
+            make.leading.equalTo(roomContent).offset(5)
+        }
         roomContent.snp.makeConstraints { make in
-            make.edges.equalTo(roomContentView).inset(10)
+            make.edges.equalTo(roomContentView).inset(5)
         }
     }
     func setUpContentView() {
-        bookDivisionContentLine.backgroundColor = .darkBoarder
+        bookDivisionContentLine.backgroundColor = .line
         setUpDatePicker()
 
         roomTitleView.layer.borderWidth = 2
@@ -276,14 +278,22 @@ private extension RoomCreateVC {
         roomContentView.layer.borderWidth = 2
         roomContentView.layer.borderColor = UIColor.systemGray4.cgColor
         roomContentView.layer.cornerRadius = 5
-        roomContent.text = "내용을 입력해 주세요."
-        roomContent.textColor = .placeholder
-        roomContent.font = .font13
         
-        limitPeopleHeader.text = "참가 인원 선택 - 인원 2~20명"
-        limitPeople.placeholder = "숫자만 입력!"
+        roomContentPlaceholder.text = "내용을 입력해 주세요."
+        roomContentPlaceholder.textColor = .placeholder
+        roomContentPlaceholder.font = .font13
+        
+        roomContent.textColor = .font
+        roomContent.font = .font13
+
+        limitPeopleHeader.text = "참가 인원 선택"
+        limitPeople.placeholder = "2 ~ 20명"
         limitPeople.keyboardType = .numberPad
         limitPeople.contentMode = .right
+        limitPeople.backgroundColor = .grayBackground
+        limitPeople.layer.cornerRadius = 10
+        limitPeople.font = .boldFont13
+        limitPeople.textAlignment = .center
     }
     func setUpDatePicker() {
         datePickerHeader.text = "챌린지 종료일"
