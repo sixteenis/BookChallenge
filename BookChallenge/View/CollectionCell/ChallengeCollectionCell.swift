@@ -41,11 +41,11 @@ final class ChallengeCollectionCell: BaseCollectioViewCell {
         }
         limitPerson.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(10)
-            make.leading.equalToSuperview().inset(20)
+            make.leading.equalToSuperview().inset(15)
         }
         deadline.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(10)
-            make.leading.equalTo(limitPerson.snp.trailing).offset(20)
+            make.leading.equalTo(limitPerson.snp.trailing).offset(10)
         }
         title.snp.makeConstraints { make in
             make.top.equalTo(limitPerson.snp.bottom).offset(10)
@@ -85,10 +85,11 @@ final class ChallengeCollectionCell: BaseCollectioViewCell {
         nick.font = .font13
         
     }
-    func setUpData(data: ChallengePostModel) {
+    func setUpData(data: ChallengePostModel, background: UIColor = .white) {
+        self.backgroundColor = background
         fetchLSLPImage(imageView: bookImage, imageURL: data.bookUrl)
-        self.limitPerson.setUpData(backColor: .grayBackground, title: data.limitPerson, image: .limitPerson)
-        self.deadline.setUpData(backColor: .grayBackground, title: data.deadLine, image: .deadLine)
+        self.limitPerson.setUpData(title: data.limitPerson, image: .limitPerson)
+        self.deadline.setUpData(title: data.deadLine, image: .deadLine)
         self.title.text = data.title
         self.content.text = data.content
         self.nick.text = data.nick

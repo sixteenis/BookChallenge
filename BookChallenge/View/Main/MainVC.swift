@@ -25,10 +25,11 @@ final class MainVC: BaseViewController, NavLogoProtocol {
     
     private let userChallengeHeader = UILabel()
     private lazy var userChallengeCollection = UICollectionView(frame: .zero, collectionViewLayout: userChallengeLayout())
+    private let userChallnegeDetailsButton = UIButton()
     
-    private let ChallengeRoomHeader = UILabel()
-    private lazy var ChallengeRoomCollection = UICollectionView(frame: .zero, collectionViewLayout: ChallengeRoomLayout())
-    let challengeRoomDetailsButton = UIButton()
+    private let challengeRoomHeader = UILabel()
+    private lazy var challengeRoomCollection = UICollectionView(frame: .zero, collectionViewLayout: ChallengeRoomLayout())
+    private let challengeRoomDetailsButton = UIButton()
 
     private let disposeBag = DisposeBag()
     private let vm = MainVM()
@@ -57,15 +58,18 @@ final class MainVC: BaseViewController, NavLogoProtocol {
             }.disposed(by: disposeBag)
         
         output.challengeRoomList
-            .bind(to: ChallengeRoomCollection.rx.items(cellIdentifier: ChallengeCollectionCell.id, cellType: ChallengeCollectionCell.self)) { (row, element, cell) in
-                cell.setUpData(data: element)
+            .bind(to: challengeRoomCollection.rx.items(cellIdentifier: ChallengeCollectionCell.id, cellType: ChallengeCollectionCell.self)) { (row, element, cell) in
+                cell.setUpData(data: element, background: .collectionBackground)
             }.disposed(by: disposeBag)
         
         output.isLoading //리로딩 부분
             .bind(with: self) { owner, value in
                 value ? owner.showLoadingIndicator() : owner.hideLoadingIndicator()
             }.disposed(by: disposeBag)
-        
+        userChallnegeDetailsButton.rx.tap
+            .bind(with: self) { owner, _ in
+                self.tabBarController?.selectedIndex = 1
+            }.disposed(by: disposeBag)
         challengeRoomDetailsButton.rx.tap
             .bind(with: self) { owner, _ in
                 self.tabBarController?.selectedIndex = 2
@@ -82,8 +86,9 @@ final class MainVC: BaseViewController, NavLogoProtocol {
         contentView.addSubview(showTopBookCollection)
         contentView.addSubview(userChallengeHeader)
         contentView.addSubview(userChallengeCollection)
-        contentView.addSubview(ChallengeRoomHeader)
-        contentView.addSubview(ChallengeRoomCollection)
+        contentView.addSubview(userChallnegeDetailsButton)
+        contentView.addSubview(challengeRoomHeader)
+        contentView.addSubview(challengeRoomCollection)
         contentView.addSubview(challengeRoomDetailsButton)
     }
     override func setUpLayout() {
@@ -99,35 +104,39 @@ final class MainVC: BaseViewController, NavLogoProtocol {
     }
     private func setUpContentViewLayout() {
         showTopBookHeader.snp.makeConstraints { make in
-            make.top.equalTo(contentView).inset(10)
-            make.leading.equalTo(contentView).inset(10)
+            make.top.equalTo(contentView).inset(20)
+            make.leading.equalTo(contentView).inset(25)
         }
         showTopBookCollection.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(20)
-            make.top.equalTo(showTopBookHeader.snp.bottom).offset(10)
+            make.top.equalTo(showTopBookHeader.snp.bottom).offset(15)
             make.height.equalTo(view.frame.height / 3)
             
         }
         userChallengeHeader.snp.makeConstraints { make in
-            make.top.equalTo(showTopBookCollection.snp.bottom).offset(20)
-            make.leading.equalTo(contentView).inset(10)
+            make.top.equalTo(showTopBookCollection.snp.bottom).offset(50)
+            make.leading.equalTo(contentView).inset(25)
         }
         userChallengeCollection.snp.makeConstraints { make in
-            make.top.equalTo(userChallengeHeader.snp.bottom).offset(10)
+            make.top.equalTo(userChallengeHeader.snp.bottom).offset(15)
             make.horizontalEdges.equalToSuperview().inset(20)
             make.height.equalTo(view.frame.height / 3)
         }
-        ChallengeRoomHeader.snp.makeConstraints { make in
-            make.top.equalTo(userChallengeCollection.snp.bottom).offset(20)
-            make.leading.equalTo(contentView).inset(10)
+        userChallnegeDetailsButton.snp.makeConstraints { make in
+            make.trailing.equalTo(contentView).inset(25)
+            make.bottom.equalTo(userChallengeCollection.snp.top).offset(-5)
+        }
+        challengeRoomHeader.snp.makeConstraints { make in
+            make.top.equalTo(userChallengeCollection.snp.bottom).offset(50)
+            make.leading.equalTo(contentView).inset(25)
         }
         challengeRoomDetailsButton.snp.makeConstraints { make in
-            make.top.equalTo(userChallengeCollection.snp.bottom).offset(20)
-            make.trailing.equalTo(contentView).inset(10)
+            make.bottom.equalTo(challengeRoomCollection.snp.top).offset(-5)
+            make.trailing.equalTo(contentView).inset(25)
         }
-        ChallengeRoomCollection.snp.makeConstraints { make in
-            make.top.equalTo(ChallengeRoomHeader.snp.bottom).offset(10)
-            make.horizontalEdges.equalTo(contentView).inset(10)
+        challengeRoomCollection.snp.makeConstraints { make in
+            make.top.equalTo(challengeRoomHeader.snp.bottom).offset(10)
+            make.horizontalEdges.equalTo(contentView).inset(20)
             make.height.equalTo(view.frame.height / 5)
             make.bottom.equalTo(contentView).inset(30)
         }
@@ -135,7 +144,8 @@ final class MainVC: BaseViewController, NavLogoProtocol {
     override func setUpView() {
         navigationItem.title = "홈"
         
-        showTopBookHeader.text = "베스트셀러"
+        showTopBookHeader.text = "이달의 베스트셀러"
+        showTopBookHeader.font = .heavy20
         showTopBookCollection.register(ShowTopBookCollectionCell.self, forCellWithReuseIdentifier: ShowTopBookCollectionCell.id)
         showTopBookCollection.backgroundColor = .collectionBackground
         showTopBookCollection.showsHorizontalScrollIndicator = false
@@ -146,7 +156,8 @@ final class MainVC: BaseViewController, NavLogoProtocol {
         showTopBookCollection.delegate = self
         
         
-        userChallengeHeader.text = "너가 지금 참가중인거"
+        userChallengeHeader.text = "참여 중인 챌린지"
+        userChallengeHeader.font = .heavy20
         userChallengeCollection.register(UserChallengeCollectionCell.self, forCellWithReuseIdentifier: UserChallengeCollectionCell.id)
         userChallengeCollection.backgroundColor = .collectionBackground
         userChallengeCollection.showsHorizontalScrollIndicator = false
@@ -156,16 +167,23 @@ final class MainVC: BaseViewController, NavLogoProtocol {
         userChallengeCollection.layer.borderWidth = 1
         userChallengeCollection.layer.borderColor = UIColor.boarder.cgColor
         
-        ChallengeRoomHeader.text = "챌린지 방"
-        ChallengeRoomCollection.register(ChallengeCollectionCell.self, forCellWithReuseIdentifier: ChallengeCollectionCell.id)
-        ChallengeRoomCollection.backgroundColor = .viewBackground
-        ChallengeRoomCollection.showsHorizontalScrollIndicator = false
-        ChallengeRoomCollection.decelerationRate = .fast
-        ChallengeRoomCollection.delegate = self
-        ChallengeRoomCollection.layer.borderColor = UIColor.boarder.cgColor
-        ChallengeRoomCollection.layer.borderWidth = 1
+        userChallnegeDetailsButton.setTitle("더보기 >", for: .normal)
+        userChallnegeDetailsButton.titleLabel?.font = .font14
+        userChallnegeDetailsButton.setTitleColor(.clightGray, for: .normal)
         
-        challengeRoomDetailsButton.setTitle("더 보기", for: .normal)
+        challengeRoomHeader.text = "새로 올라온 챌린지 방"
+        challengeRoomHeader.font = .heavy20
+        challengeRoomCollection.register(ChallengeCollectionCell.self, forCellWithReuseIdentifier: ChallengeCollectionCell.id)
+        challengeRoomCollection.backgroundColor = .collectionBackground
+        challengeRoomCollection.showsHorizontalScrollIndicator = false
+        challengeRoomCollection.decelerationRate = .fast
+        challengeRoomCollection.delegate = self
+        challengeRoomCollection.layer.cornerRadius = 15
+        challengeRoomCollection.layer.borderWidth = 1
+        challengeRoomCollection.layer.borderColor = UIColor.boarder.cgColor
+        
+        challengeRoomDetailsButton.setTitle("더보기 >", for: .normal)
+        challengeRoomDetailsButton.titleLabel?.font = .font14
         challengeRoomDetailsButton.setTitleColor(.clightGray, for: .normal)
         
     }
@@ -210,8 +228,8 @@ extension MainVC: UICollectionViewDelegate {
 private extension MainVC {
     func mainLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        let width = UIScreen.main.bounds.width
-        let height = UIScreen.main.bounds.height
+//        let width = UIScreen.main.bounds.width
+//        let height = UIScreen.main.bounds.height
         layout.scrollDirection = .vertical
         return layout
     }
@@ -227,17 +245,17 @@ private extension MainVC {
     
     func userChallengeLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        let width = UIScreen.main.bounds.width / 2.5// - 50 // 20 + 30
+        let width = UIScreen.main.bounds.width / 2.4 // - 50 // 20 + 30
         let height = UIScreen.main.bounds.height / 3.5
         layout.itemSize = CGSize(width: width, height: height) //셀
         layout.scrollDirection = .horizontal // 가로, 세로 스크롤 설정
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         return layout
     }
     
     func ChallengeRoomLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        let width = UIScreen.main.bounds.width - 20// - 50 // 20 + 30
+        let width = UIScreen.main.bounds.width - 30// - 50 // 20 + 30
         let height = UIScreen.main.bounds.height / 5
         layout.itemSize = CGSize(width: width, height: height) //셀
         layout.scrollDirection = .horizontal // 가로, 세로 스크롤 설정

@@ -15,8 +15,7 @@ final class LogoView: BaseView {
         self.addSubview(logo)
         logo.image = .BookChallengeLogo
         logo.contentMode = .scaleToFill
-        logo.backgroundColor = .clear
-        self.backgroundColor = .clear
+        
         logo.snp.makeConstraints { make in
             make.size.equalTo(self)
         }

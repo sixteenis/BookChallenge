@@ -51,7 +51,7 @@ class BaseViewController: UIViewController {
         }
         let profile = UIBarButtonItem(customView: image)
         let alert = UIBarButtonItem(image: UIImage(systemName: "bell"), style: .plain, target: nil, action: nil)
-        navigationItem.rightBarButtonItems = [profile, alert]
+        navigationItem.rightBarButtonItems = [alert, profile]
         
         
     }

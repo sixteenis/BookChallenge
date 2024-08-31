@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIImage {
-    static let BookChallengeLogo = UIImage(named: "logo")
+    static let BookChallengeLogo = UIImage(named: "logo2")
     static let xMark = UIImage(systemName: "xmark")
     
     static let mainTap = UIImage(systemName: "house")
@@ -22,6 +22,6 @@ extension UIImage {
     
     static let noBookImage = UIImage(named: "noBook")
     static let limitPerson = UIImage(systemName: "person")
-    static let deadLine = UIImage(systemName: "bell.and.waves.left.and.right")
+    static let deadLine = UIImage(named: "alert")
     
 }

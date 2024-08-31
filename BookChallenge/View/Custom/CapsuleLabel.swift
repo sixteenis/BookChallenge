@@ -29,33 +29,35 @@ final class CapsuleLabel: BaseView {
     override func setUpLayout() {
         customTitle.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalTo(customImage.snp.trailing).offset(10)
+            make.leading.equalTo(customImage.snp.trailing).offset(5)
             
         }
         customImage.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().inset(10)
+            make.leading.equalToSuperview().inset(5)
             make.size.equalTo(20)
         }
         self.snp.makeConstraints { make in
-            make.trailing.equalTo(customTitle).offset(15)
+            make.trailing.equalTo(customTitle).offset(10)
             make.height.equalTo(26)
         }
     }
     override func setUpView() {
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.black.cgColor
-        self.backgroundColor = .viewBackground
+//        self.layer.borderWidth = 1
+//        self.layer.borderColor = UIColor.black.cgColor
+        //self.backgroundColor = .red
         //self.customTitle.text = title
         self.customTitle.font = .boldFont14
     }
     
-    func setUpData(backColor: UIColor, title: String, image: UIImage?, font: UIFont = .boldFont14) {
-
-        self.customTitle.font = font
+    func setUpData(backColor: UIColor = .systemGray5, title: String, image: UIImage?, font: UIFont = .font12) {
+        self.backgroundColor = backColor
         self.customTitle.text = title
-        self.customImage.image = image
         self.customTitle.font = font
+        //image?.withTintColor(.mainColor)
+        let ri = image?.withTintColor(.mainColor, renderingMode: .alwaysOriginal)
+        self.customImage.image = ri
+        
         
     }
 }

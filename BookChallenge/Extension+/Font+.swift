@@ -25,4 +25,7 @@ extension UIFont {
     static let boldFont17 = UIFont.boldSystemFont(ofSize: 17)
     static let boldFont18 = UIFont.boldSystemFont(ofSize: 18)
     
+    
+    static let heavy20 = UIFont.systemFont(ofSize: 20, weight: .heavy)
+    
 }

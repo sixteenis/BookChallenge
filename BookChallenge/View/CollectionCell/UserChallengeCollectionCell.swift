@@ -41,7 +41,7 @@ final class UserChallengeCollectionCell: BaseCollectioViewCell {
     override func setUpView() {
         contentView.backgroundColor = .collectionBackground
         bookImage.layer.borderColor = UIColor.boarder.cgColor
-        bookImage.layer.borderWidth = 2
+        bookImage.layer.borderWidth = 1
         
         bookTitle.textColor = .font
         bookTitle.numberOfLines = 2
