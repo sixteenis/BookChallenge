@@ -8,12 +8,13 @@
 import Foundation
 import RxSwift
 import RxCocoa
-
+import iamport_ios
 final class ChallengeDetailVM: BaseViewModel {
     var inputData = BehaviorRelay<String?>(value: nil)
     private let disposeBag = DisposeBag()
     struct Input {
         let joinButtonTap: Observable<Void>
+        let buyButtonTap: ControlEvent<Void>
     }
     struct Output {
         let bookData: Observable<BookModel>
@@ -21,15 +22,18 @@ final class ChallengeDetailVM: BaseViewModel {
         let retrunBeforeErr: Observable<String>
         let joinSuccess: Observable<Void>
         let joinButton: Observable<JoinButtonType>
+        let buyBook: Observable<BuyBookModel>
     }
     func transform(input: Input) -> Output {
-        let bookData = PublishRelay<BookModel>()
+        let bookData = BehaviorRelay(value: BookModel())
         let postData = PublishRelay<ChallengePostModel>()
         let bookId = PublishRelay<String>()
         let postId = BehaviorRelay(value: "")
         let retrunBeforeErr = PublishRelay<String>()
         let joinSuccess = PublishRelay<Void>()
         let joinButtonSet = BehaviorRelay(value: JoinButtonType.canJoin)
+        
+        let buyBook = PublishSubject<BuyBookModel>()
         inputData
             .compactMap { $0 }
             .flatMap {
@@ -86,8 +90,11 @@ final class ChallengeDetailVM: BaseViewModel {
                     
                 }
             }.disposed(by: disposeBag)
+        input.buyButtonTap
+            .bind(with: self) { owner, _ in
+                buyBook.onNext(BuyBookModel(bookTitle: bookData.value.title, price: String(bookData.value.price), postId: postId.value))
+            }.disposed(by: disposeBag)
         
-        
-        return Output(bookData: bookData.asObservable(), postData: postData.asObservable(), retrunBeforeErr: retrunBeforeErr.asObservable(), joinSuccess: joinSuccess.asObservable(), joinButton: joinButtonSet.asObservable())
+        return Output(bookData: bookData.asObservable(), postData: postData.asObservable(), retrunBeforeErr: retrunBeforeErr.asObservable(), joinSuccess: joinSuccess.asObservable(), joinButton: joinButtonSet.asObservable(), buyBook: buyBook)
     }
 }

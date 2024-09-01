@@ -30,6 +30,7 @@ enum LSLPRouter {
     case getLikePosts(query: LikePostsQuery) // 참여한 방들 조회하기로 사용
     case hashtagsPoosts(query: HashtagPostQuery) //해쉬태그 방조회 나는 책 검색으로 사용할 예정
     case fetchMeProfile
+    case validationBuy(body: validationBuyBody)
 }
 
 extension LSLPRouter: CatchErrorTargetType {
@@ -66,6 +67,8 @@ extension LSLPRouter: CatchErrorTargetType {
             return "/posts/hashtags"
         case .fetchMeProfile:
             return "/users/me/profile"
+        case .validationBuy:
+            return "/payments/validation"
             
             
         }
@@ -74,7 +77,7 @@ extension LSLPRouter: CatchErrorTargetType {
         switch self {
         case .join, .validationEamil, .login,.imagePost, .contentPost:
             return .post
-        case .commentsPost, .like:
+        case .commentsPost, .like, .validationBuy:
             return .post
         default:
             return .get
@@ -129,6 +132,9 @@ extension LSLPRouter: CatchErrorTargetType {
                                   encoding: URLEncoding.queryString)
         case .fetchMeProfile:
             return .requestPlain
+        case .validationBuy(let body):
+            return .requestJSONEncodable(body)
+            
             
         }
     }
@@ -145,7 +151,7 @@ extension LSLPRouter: CatchErrorTargetType {
                 BaseHeader.sesacKey.rawValue: LSLP.key
                 
             ]
-        case .like, .fetchPosts, .hashtagsPoosts, .getLikePosts, .fetchMeProfile, .searchPost:
+        case .like, .fetchPosts, .hashtagsPoosts, .getLikePosts, .fetchMeProfile, .searchPost, .validationBuy:
             [
                 BaseHeader.sesacKey.rawValue: LSLP.key
             ]
@@ -192,6 +198,8 @@ extension LSLPRouter: CatchErrorTargetType {
             return HashtagPostDTO.self
         case .fetchMeProfile:
             return ProfileDTO.self
+        case .validationBuy:
+            return ValidationBuyDTO.self
         }
     }
     

@@ -106,6 +106,20 @@ final class LSLPNetworkManager{
             }
         }
     }
+    func requestBuy(impId: String, postId: String,completion: @escaping (Result<ValidationBuyDTO,Error>) -> () ) {
+        provider = MoyaProvider<LSLPRouter>(session: Session(interceptor: Interceptor.shared))
+        
+        self.provider.request(.validationBuy(body: .init(imp_uid: impId, post_id: postId))) { result in
+
+            switch result {
+            case .success(let response):
+                guard let data = try? response.map(ValidationBuyDTO.self) else { return }
+                completion(.success(data))
+            case .failure(let err):
+                completion(.failure(err))
+            }
+        }
+    }
     
 }
 

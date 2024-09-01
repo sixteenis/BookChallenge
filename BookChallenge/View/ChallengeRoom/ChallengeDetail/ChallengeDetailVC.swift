@@ -32,6 +32,7 @@ final class ChallengeDetailVC: BaseViewController, FetchImageProtocol {
     private let buttonView = UIView()
     private let buyAndJoinButton = BuyButtonView()
     private let joinButton = PointButton(title: "참여하기")
+ 
     
     private let disposeBag = DisposeBag()
     var vm = ChallengeDetailVM()
@@ -53,7 +54,7 @@ final class ChallengeDetailVC: BaseViewController, FetchImageProtocol {
     
     override func bindData() {
         let join = BehaviorRelay(value: ())
-        let input = ChallengeDetailVM.Input(joinButtonTap: join.asObservable())
+        let input = ChallengeDetailVM.Input(joinButtonTap: join.asObservable(), buyButtonTap: buyAndJoinButton.button.rx.tap)
         let output = vm.transform(input: input)
         
         output.postData
@@ -80,6 +81,14 @@ final class ChallengeDetailVC: BaseViewController, FetchImageProtocol {
                 owner.setUpJoinButton(type: type)
             }.disposed(by: disposeBag)
         
+        // MARK: - 구매 화면으로 이동하는 로직
+        output.buyBook
+            .bind(with: self) { owner, buyData in
+                let vc = IamportVC()
+                vc.buyModel = buyData
+                owner.pushViewController(view: vc)
+            }.disposed(by: disposeBag)
+        
         seeMoreDescriptionButton.rx.tap
             .bind(with: self) { owner, _ in
                 if owner.bookDescription.numberOfLines == 3 {
@@ -99,10 +108,7 @@ final class ChallengeDetailVC: BaseViewController, FetchImageProtocol {
                     join.accept(())
                 }
             }.disposed(by: disposeBag)
-        buyAndJoinButton.button.rx.tap
-            .bind(with: self) { owner, _ in
-                print("사기 버튼 클릭됨")
-            }.disposed(by: disposeBag)
+            
     }
     
     override func setUpHierarchy() {
