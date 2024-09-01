@@ -245,7 +245,7 @@ private extension MainVC {
     
     func userChallengeLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        let width = UIScreen.main.bounds.width / 2.4 // - 50 // 20 + 30
+        let width = UIScreen.main.bounds.width / 3 // - 50 // 20 + 30
         let height = UIScreen.main.bounds.height / 3.5
         layout.itemSize = CGSize(width: width, height: height) //셀
         layout.scrollDirection = .horizontal // 가로, 세로 스크롤 설정

@@ -27,21 +27,19 @@ final class IamportVC: BaseViewController {
         }
     override func viewDidLoad() {
         self.navigationController?.navigationBar.topItem?.title = ""
-        navigationItem.title = "<\(buyModel.bookTitle)> 결제"
+        navigationItem.title = "<\(buyModel.bookTitle)>"
         super.viewDidLoad()
         view.addSubview(wkWebView)
         wkWebView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
+        
         Iamport.shared.paymentWebView(
             webViewMode: wkWebView,
             userCode: LSLP.userCode,
             payment: payment) { [weak self] iamportResponse in
                 guard let iamportResponse, let self else {return }
                 if iamportResponse.success == true {
-                    print(iamportResponse.imp_uid!)
-                    print(buyModel.postId)
-                    print("--------------------")
                     LSLPNetworkManager.shared.requestBuy(impId: iamportResponse.imp_uid!, postId: buyModel.postId) { response in
                         switch response {
                         case .success(let success):

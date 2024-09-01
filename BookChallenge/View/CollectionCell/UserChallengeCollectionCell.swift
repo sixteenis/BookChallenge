@@ -26,16 +26,16 @@ final class UserChallengeCollectionCell: BaseCollectioViewCell {
     override func setUpLayout() {
         bookImage.snp.makeConstraints { make in
             make.top.equalTo(contentView)
-            make.horizontalEdges.equalTo(contentView).inset(15)
+            make.horizontalEdges.equalTo(contentView)
             make.height.equalTo(150)
         }
         bookTitle.snp.makeConstraints { make in
             make.top.equalTo(bookImage.snp.bottom).offset(15)
-            make.horizontalEdges.equalTo(contentView).inset(15)
+            make.horizontalEdges.equalTo(contentView)
         }
         bookLable.snp.makeConstraints { make in
             make.bottom.equalTo(contentView).inset(5)
-            make.horizontalEdges.equalTo(contentView).inset(15)
+            make.horizontalEdges.equalTo(contentView)
         }
     }
     override func setUpView() {
