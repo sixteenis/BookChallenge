@@ -60,7 +60,7 @@ class MainVM: BaseViewModel {
             .bind(with: self) { owner, response in
                 switch response {
                 case .success(let data):
-                    let result = data.data.filter {$0.creator.user_id != UserManager.shared.userId}.filter{$0.roomState != RoomState.close} .map { $0.transformChallengePostModel()}
+                    let result = data.data.filter{$0.roomState != RoomState.close && $0.checkDate()} .map { $0.transformChallengePostModel()}
                     challengeRoomLists.onNext(result)
                 case .failure(let err):
                     print(err)

@@ -14,6 +14,7 @@ final class ChallengeingVM: BaseViewModel {
     private let disposeBag = DisposeBag()
     struct Input {
         let bottomSheetNetwork: PublishSubject<Void>
+        let viewWillAppear: PublishRelay<Void>
     }
     struct Output {
         let challnegeingData: Observable<[BookRoomModel]>
@@ -21,8 +22,9 @@ final class ChallengeingVM: BaseViewModel {
     func transform(input: Input) -> Output {
         let roomData = BehaviorRelay(value: [BookRoomModel]())
         let networkingStart = BehaviorRelay(value: true)
-        networkingStart
-            .filter {$0}
+        input.viewWillAppear
+            .withLatestFrom(networkingStart)
+            .filter { $0 }
             .flatMap { _ in
                 LSLPNetworkManager.shared.request(target: .getLikePosts(query: .init()), dto: LikePostsDTO.self)
             }
@@ -37,6 +39,9 @@ final class ChallengeingVM: BaseViewModel {
                     print(err)
                 }
             }.disposed(by: disposeBag)
+//        networkingStart
+//            .filter {$0}
+            
             
         NotificationCenter.default.rx.notification(.likePost) //챌린지 참여할 경우 리로딩
             .asDriver(onErrorRecover: {_ in .never()})

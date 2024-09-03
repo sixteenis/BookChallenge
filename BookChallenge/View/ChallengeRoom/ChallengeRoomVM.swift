@@ -113,8 +113,6 @@ class ChallengeRoomVM: BaseViewModel {
                     
                 case .failure(let err):
                     print(err)
-                    
-                    
                 }
                 isLoading.onNext(false)
                 

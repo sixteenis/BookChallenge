@@ -17,13 +17,20 @@ final class ChallengeingVC: BaseViewController {
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: sameTableViewLayout())
     private let disposeBag = DisposeBag()
     private let vm = ChallengeingVM()
+    var itemSelect: ((BookRoomModel) -> ())?
+    let viewWillAppearRx = PublishRelay<Void>()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewWillAppearRx.accept(())
     }
     override func bindData() {
         let startNetworking = PublishSubject<Void>()
         
-        let input = ChallengeingVM.Input(bottomSheetNetwork: startNetworking)
+        let input = ChallengeingVM.Input(bottomSheetNetwork: startNetworking, viewWillAppear: viewWillAppearRx)
         let output = vm.transform(input: input)
         output.challnegeingData
             .bind(to: collectionView.rx.items(cellIdentifier: ChallengeingCollectionCell.id, cellType: ChallengeingCollectionCell.self)) { (row, element, cell) in
@@ -41,6 +48,15 @@ final class ChallengeingVC: BaseViewController {
                         
                     }.disposed(by: cell.disposeBag)
                 
+            }.disposed(by: disposeBag)
+//        collectionView.rx.itemSelected
+//            .bind(with: self) { owner, i in
+//                print(i)
+//                print("123123213")
+//            }.disposed(by: disposeBag)
+        collectionView.rx.modelSelected(BookRoomModel.self)
+            .bind(with: self) { owner, data in
+                owner.itemSelect?(data)
             }.disposed(by: disposeBag)
     }
     override func setUpHierarchy() {
