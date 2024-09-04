@@ -28,6 +28,7 @@
 		064244D12C848C5B00C9134D /* ValidationBuyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064244D02C848C5B00C9134D /* ValidationBuyDTO.swift */; };
 		0642452C2C85A5B000C9134D /* DetailChallengeingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0642452B2C85A5B000C9134D /* DetailChallengeingVC.swift */; };
 		064245452C889FFB00C9134D /* NetworkManagaer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064245442C889FFB00C9134D /* NetworkManagaer.swift */; };
+		064245472C88AE7D00C9134D /* NetworkConnectedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064245462C88AE7D00C9134D /* NetworkConnectedVC.swift */; };
 		065180342C7C60C200255228 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 065180332C7C60C200255228 /* NVActivityIndicatorView */; };
 		065180362C7C60C200255228 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 065180352C7C60C200255228 /* NVActivityIndicatorViewExtended */; };
 		0651803A2C7C8FC800255228 /* ChallengeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065180392C7C8FC800255228 /* ChallengeDetailVC.swift */; };
@@ -150,6 +151,7 @@
 		064244D02C848C5B00C9134D /* ValidationBuyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationBuyDTO.swift; sourceTree = "<group>"; };
 		0642452B2C85A5B000C9134D /* DetailChallengeingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailChallengeingVC.swift; sourceTree = "<group>"; };
 		064245442C889FFB00C9134D /* NetworkManagaer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagaer.swift; sourceTree = "<group>"; };
+		064245462C88AE7D00C9134D /* NetworkConnectedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnectedVC.swift; sourceTree = "<group>"; };
 		065180392C7C8FC800255228 /* ChallengeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailVC.swift; sourceTree = "<group>"; };
 		0651803B2C7CAA8C00255228 /* ChallengeDetailInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailInputModel.swift; sourceTree = "<group>"; };
 		0651803D2C7CAABB00255228 /* ChallengeDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailVM.swift; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 				0651807D2C83178800255228 /* LogoView.swift */,
 				0633AA9A2C836240006D62CF /* CreateView.swift */,
 				0633AA9C2C836E71006D62CF /* BuyButtonView.swift */,
+				064245462C88AE7D00C9134D /* NetworkConnectedVC.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -811,6 +814,7 @@
 				065953862C6F4B2C0048821E /* SearchBarView.swift in Sources */,
 				065953562C6E34DC0048821E /* LoginVM.swift in Sources */,
 				061A34C72C76616B00491DB1 /* RefreshTokenDTO.swift in Sources */,
+				064245472C88AE7D00C9134D /* NetworkConnectedVC.swift in Sources */,
 				0652C83C2C708AF800BDC64E /* BookDTO.swift in Sources */,
 				0652C8232C6FAEE300BDC64E /* AladinParam.swift in Sources */,
 			);

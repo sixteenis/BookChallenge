@@ -4,9 +4,9 @@
 //
 //  Created by 박성민 on 9/4/24.
 //
-
-import Foundation
+import UIKit
 import Network
+
 
 final class NetworkMonitor{
     static let shared = NetworkMonitor()
@@ -15,7 +15,7 @@ final class NetworkMonitor{
     private let monitor: NWPathMonitor
     public private(set) var isConnected:Bool = false
     public private(set) var connectionType:ConnectionType = .unknown
-    
+    private var networkDisconnectedVC: NetworkConnectedVC?
     /// 연결타입
     enum ConnectionType {
         case wifi
@@ -37,12 +37,15 @@ final class NetworkMonitor{
 
             self?.isConnected = path.status == .satisfied
             self?.getConenctionType(path)
-            
-            if self?.isConnected == true{
-                print("연결이된 상태임!")
-            }else{
-                print("연결 안된 상태임!")
-
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                if self.isConnected == true{
+                    print("연결 상태임!")
+                    self.removeNetworkDisconnectedVC()
+                }else{
+                    print("연결 안된 상태임!")
+                    self.showNetworkDisconnectedVC()
+                }
             }
         }
     }
@@ -72,4 +75,22 @@ final class NetworkMonitor{
             print("unknown ..")
         }
     }
+    private func showNetworkDisconnectedVC() {
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                  let window = windowScene.windows.first(where: { $0.isKeyWindow }) else { return }
+            
+            if networkDisconnectedVC == nil {
+                let networkVC = NetworkConnectedVC()
+                networkDisconnectedVC = networkVC
+                networkVC.modalPresentationStyle = .overFullScreen
+                networkVC.modalTransitionStyle = .crossDissolve
+                window.rootViewController?.present(networkVC, animated: true, completion: nil)
+            }
+        }
+        
+        private func removeNetworkDisconnectedVC() {
+            networkDisconnectedVC?.dismiss(animated: true, completion: {
+                self.networkDisconnectedVC = nil
+            })
+        }
 }

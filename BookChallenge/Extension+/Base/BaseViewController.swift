@@ -106,26 +106,7 @@ extension BaseViewController {
         self.activityIndicator.stopAnimating()
         self.loadingView.removeFromSuperview()
         self.activityIndicator.isUserInteractionEnabled = true
-        
-        
-        
-        
-        
     }
-    //    func setUpIndicator() {
-    //        view.addSubview(loadingView)
-    //        loadingView.backgroundColor = .darkGray
-    //        loadingView.layer.masksToBounds = true
-    //        loadingView.layer.cornerRadius = 15
-    //        loadingView.snp.makeConstraints { make in
-    //            make.center.equalTo(view.safeAreaLayoutGuide)
-    //            make.size.equalTo(70)
-    //        }
-    //        loadingView.addSubview(activityIndicator)
-    //        activityIndicator.snp.makeConstraints { make in
-    //            make.center.equalTo(view.safeAreaLayoutGuide)
-    //        }
-    //    }
     func setUpIndicator() {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let window = windowScene.windows.first(where: { $0.isKeyWindow }) else {
@@ -137,20 +118,18 @@ extension BaseViewController {
             window.addSubview(loadingView)
         }
         
-        loadingView.backgroundColor = .darkGray.withAlphaComponent(0.8) // 배경색에 약간의 투명도를 추가
+        loadingView.backgroundColor = .darkGray.withAlphaComponent(0.8) 
         loadingView.layer.masksToBounds = true
         loadingView.layer.cornerRadius = 15
         
         loadingView.snp.makeConstraints { make in
             make.edges.equalTo(window)
-            //                make.center.equalTo(window)
-            //                make.size.equalTo(70)
         }
         
         loadingView.addSubview(activityIndicator)
         
         activityIndicator.snp.makeConstraints { make in
-            make.center.equalToSuperview() // loadingView의 중앙에 위치하도록 수정
+            make.center.equalToSuperview()
         }
         
         // 로딩뷰를 최상단으로 가져오기

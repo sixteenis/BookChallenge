@@ -51,7 +51,6 @@ final class LSLPNetworkManager{
     func requestToken( completion: @escaping (Result<Void,Error>) -> ()) {
         provider = MoyaProvider<LSLPRouter>(session: Session(interceptor: Interceptor.shared))
         self.provider.request(LSLPRouter.refresh) { result in
-            print("---------------리프래시 토큰--------------")
             switch result {
             case .success(let response):
                 guard let data = try? response.map(RefreshTokenDTO.self) else {
@@ -63,9 +62,6 @@ final class LSLPNetworkManager{
             case .failure(let err):
 
                 if err.response?.statusCode == 418 {
-                    print("재로그인 로직 필요!")
-                    print(UserManager.shared.email)
-                    print(UserManager.shared.password)
                     self.requestLogin { response in
                         switch response {
                         case .success(let result):
@@ -90,7 +86,6 @@ final class LSLPNetworkManager{
                     completion(.failure(NetworkError.invalidData))
                     return
                 }
-                print("로그인 로직 실행!!!!")
                 UserManager.shared.token = data.token
                 UserManager.shared.refreshToken = data.refresh
             case .failure(let err):
