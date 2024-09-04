@@ -58,6 +58,7 @@ final class LoginVM: BaseViewModel {
                     print("---")
                     UserManager.shared.refreshToken = login.refresh
                     UserManager.shared.email = login.email
+                    UserManager.shared.password = password.value
                     print("로그인 성공")
                 case .failure(let err):
                     print(err)

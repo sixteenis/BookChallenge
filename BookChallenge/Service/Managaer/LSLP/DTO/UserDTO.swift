@@ -11,5 +11,5 @@ struct UserDTO: Decodable {
     let user_id: String
     let nick: String
     let profileImage: String?
-    //프로필은 나중에 하자!
+    
 }

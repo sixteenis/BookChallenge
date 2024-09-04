@@ -9,7 +9,7 @@ import Foundation
 
 struct FetchPostsQuery: Encodable {
     let next: String
-    let limit: String = "5"
+    let limit: String = "10"
     let product_id = PostProductID.makeRoom
 }
 
@@ -103,7 +103,7 @@ struct RoomPostDTO: Decodable {
             if compare == 0 {
                 return "오늘 종료"
             }
-            return  "D+\(compare) 남음"
+            return  "D+\(compare)"
         } else {
             let formatter = DateFormatter()
             formatter.locale = Locale(identifier: "ko_KR")

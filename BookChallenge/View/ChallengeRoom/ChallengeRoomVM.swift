@@ -143,7 +143,7 @@ class ChallengeRoomVM: BaseViewModel {
         input.pagination //페이지네이션 판별하기
             .map {
                 for index in $0 {
-                    if index.item == roomLists.value.count - 1 && nextCursor.value != "0" { return true }
+                    if index.item == roomLists.value.count - 2 && nextCursor.value != "0" { return true }
                 }
                 return false
             }
@@ -177,11 +177,12 @@ class ChallengeRoomVM: BaseViewModel {
                 
                 
             }.disposed(by: disposeBag)
+        
         NotificationCenter.default.rx.notification(.likePost)
             .asDriver(onErrorRecover: {_ in .never()})
             .drive(with: self) { owner, postId in
                 guard let postId = postId.object as? String else { return }
-                let result = owner.checkPostId(modles: roomLists.value, id: postId)
+                //let result = owner.checkPostId(modles: roomLists.value, id: postId)
                 let list = roomLists.value
                 if self.checkPostId(modles: roomLists.value, id: postId) {
                     if let index = list.firstIndex(where: {$0.postId == postId}) {
@@ -189,6 +190,7 @@ class ChallengeRoomVM: BaseViewModel {
                     }
                 }
             }.disposed(by: disposeBag)
+        
         //안쓸거같음. 방을 리로딩 안해도될듯
         refreshOnlyOneRoom
             .flatMap { LSLPNetworkManager.shared.request(target: .searchPost(id: $0.1), dto: RoomPostDTO.self)}

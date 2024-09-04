@@ -7,6 +7,7 @@
 import Foundation
 import Alamofire
 import RxSwift
+import Moya
 
 final class Interceptor: RequestInterceptor {
     let retryDelay: TimeInterval = 5
@@ -51,6 +52,34 @@ final class Interceptor: RequestInterceptor {
                 completion(.retryWithDelay(self.retryDelay))
             case .failure(let error):
                 completion(.doNotRetryWithError(error))
+//                print("실패후 진입!!! \(response.statusCode)")
+//                let a = error as? MoyaError
+//                print(a?.response?.statusCode)
+//                guard let moyaErr =  error as? MoyaError, let moyaResponse = moyaErr.response, moyaResponse.statusCode == 418 else {
+//                    print("가드문 들감 ㅅㅂ")
+//                    //print(moyaResponse.statusCode)
+//                    completion(.doNotRetryWithError(error))
+//                    return
+//                }
+//                
+//                print("진입 후!!!!!!!")
+//                print(moyaResponse.statusCode)
+//                    LSLPNetworkManager.shared.requestLogin { loginResult in
+//                        print("이까지는 들오난????")
+//                        switch loginResult {
+//                        case .success(let success):
+//                            completion(.retryWithDelay(self.retryDelay))
+//                        case .failure(let failure):
+//                            completion(.doNotRetryWithError(error))
+//                        }
+//                    }
+                
+//                if let afError = error.asAFError, let statusCode = afError.responseCode {
+//                    print(statusCode)
+//                    print("--------")
+//                } else {
+//                    completion(.doNotRetryWithError(error))
+//                }
             }
         }
 
