@@ -9,20 +9,20 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SnapKit
-class SimVC: BaseViewController {
-    let bookName = UILabel()
-    let pageTextHeader = UILabel()
+final class SimVC: BaseViewController {
+    private let bookName = UILabel()
+    private let pageTextHeader = UILabel()
     
-    let pageView = UIView()
-    let pageTextFiled = UITextField()
-    let pageTextLabel = UILabel()
-    let maxPage = UILabel()
+    private let pageView = UIView()
+    private let pageTextFiled = UITextField()
+    private let pageTextLabel = UILabel()
+    private let maxPage = UILabel()
     
-    let contentHeader = UILabel()
-    let contentView = UIView()
-    let contentLabel = UILabel()
-    let contentTextFiled = UITextView()
-    let button = PointButton(title: "기록하기")
+    private let contentHeader = UILabel()
+    private let contentView = UIView()
+    private let contentLabel = UILabel()
+    private let contentTextFiled = UITextView()
+    private let button = PointButton(title: "기록하기")
     var completion: (() -> ())?
     private var disposeBag = DisposeBag()
     private var postId = ""
@@ -30,13 +30,7 @@ class SimVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        disposeBag = DisposeBag()
-//        pageTextFiled.text = nil
-//        contentTextFiled.text = nil
-//        bind()
-//    }
+
     
     
     override func setUpHierarchy() {

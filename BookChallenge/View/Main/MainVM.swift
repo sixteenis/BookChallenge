@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class MainVM: BaseViewModel {
+final class MainVM: BaseViewModel {
     private let disposeBag = DisposeBag()
     private let books = AladinManager.shared.getBestseller()
     private let network = LSLPNetworkManager.shared

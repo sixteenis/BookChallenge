@@ -10,10 +10,10 @@ import SnapKit
 import Kingfisher
 import RxSwift
 
-class ShowTopBookCollectionCell: BaseCollectioViewCell {
+final class ShowTopBookCollectionCell: BaseCollectioViewCell {
     
-    let bookImage = UIImageView()
-    let bookmark = UIImageView()
+    private let bookImage = UIImageView()
+    private let bookmark = UIImageView()
     private var disposeBag = DisposeBag()
     override func setUpHierarchy() {
         self.addSubview(bookImage)

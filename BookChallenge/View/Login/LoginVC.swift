@@ -13,7 +13,7 @@ import SnapKit
 
 
 final class LoginVC: BaseViewController, ChangeView {
-    let loginLabel: UILabel = {
+    private let loginLabel: UILabel = {
         let view = UILabel()
         view.font = .boldSystemFont(ofSize: 20)
         view.textColor = .font
@@ -21,16 +21,16 @@ final class LoginVC: BaseViewController, ChangeView {
         view.textAlignment = .center
         return view
     }()
-    let appLogo: UIImageView = {
+    private let appLogo: UIImageView = {
         let view = UIImageView()
         view.image = UIImage.logo
         return view
     }()
     
-    let emailTextFiled = LoginTextField(type: .email)
-    let passwordTextFiled = LoginTextField(type: .password)
-    let loginButton = PointButton(title: "로그인하기")
-    let joinButton: UIButton =  {
+    private let emailTextFiled = LoginTextField(type: .email)
+    private let passwordTextFiled = LoginTextField(type: .password)
+    private let loginButton = PointButton(title: "로그인하기")
+    private let joinButton: UIButton =  {
         let view = UIButton()
         view.setTitle("회원가입하기", for: .normal)
         view.setTitleColor(.font, for: .normal)
@@ -38,8 +38,8 @@ final class LoginVC: BaseViewController, ChangeView {
         return view
     }()
     
-    let disposeBag = DisposeBag()
-    let vm = LoginVM()
+    private let disposeBag = DisposeBag()
+    private let vm = LoginVM()
     
     override func bindData() {
         let input = LoginVM.Input(emailText: emailTextFiled.getText(), passwordText: passwordTextFiled.getText(), loginTap: loginButton.rx.tap, joinTap: joinButton.rx.tap)

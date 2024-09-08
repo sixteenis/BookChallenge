@@ -11,7 +11,7 @@ import RxCocoa
 
 import SnapKit
 
-class BookStorageVC: BaseViewController, NavLogoProtocol {
+final class BookStorageVC: BaseViewController, NavLogoProtocol {
     private let segmentedControl: UISegmentedControl = {
         let segmentedControl = UnderlineSegmentedControl(items: ["챌린지 중", "혼자 챌린지 중", "종료된 챌린지"])
         return segmentedControl

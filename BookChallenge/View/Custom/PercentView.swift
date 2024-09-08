@@ -9,10 +9,10 @@ import UIKit
 import SnapKit
 
 final class PercentView: BaseView {
-    let bar = UIView()
-    let chargeBar = UIView()
-    let leftText = UILabel()
-    let rightText = UILabel()
+    private let bar = UIView()
+    private let chargeBar = UIView()
+    private let leftText = UILabel()
+    private let rightText = UILabel()
     override init(frame: CGRect) {
         super.init(frame: frame)
     }

@@ -11,17 +11,17 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-class SignUpVC: BaseViewController {
-    let xButton = UIButton()
-    let signuptitle = UILabel()
-    let email = LoginTextField(type: .email)
-    let nickName = LoginTextField(type: .nickName)
-    let password = LoginTextField(type: .password)
-    let repassword = LoginTextField(type: .repassword)
-    let signUpButton = PointButton(title: "회원가입")
+final class SignUpVC: BaseViewController {
+    private let xButton = UIButton()
+    private let signuptitle = UILabel()
+    private let email = LoginTextField(type: .email)
+    private let nickName = LoginTextField(type: .nickName)
+    private let password = LoginTextField(type: .password)
+    private let repassword = LoginTextField(type: .repassword)
+    private let signUpButton = PointButton(title: "회원가입")
     
     private let disposeBag = DisposeBag()
-    let vm = SignUpVM()
+    private let vm = SignUpVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()

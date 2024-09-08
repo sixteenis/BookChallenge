@@ -18,7 +18,7 @@ final class ChallengeingVC: BaseViewController {
     private let disposeBag = DisposeBag()
     private let vm = ChallengeingVM()
     var itemSelect: ((BookRoomModel) -> ())?
-    let viewWillAppearRx = PublishRelay<Void>()
+    private let viewWillAppearRx = PublishRelay<Void>()
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -10,16 +10,16 @@ import RxSwift
 import SnapKit
 
 final class ChallengeingCollectionCell: BaseCollectioViewCell {
-    let bookImage = UIImageView()
-    let bookTitle = UILabel()
+    private let bookImage = UIImageView()
+    private let bookTitle = UILabel()
     
-    let pagePercentView = PercentView()
+    private let pagePercentView = PercentView()
     
-    let datePercentView = PercentView()
+    private let datePercentView = PercentView()
     
     let recodeButton = PointButton(title: "기록하기")
-    let person = UILabel()
-    let date = UILabel()
+    private let person = UILabel()
+    private let date = UILabel()
     
     var disposeBag = DisposeBag()
     

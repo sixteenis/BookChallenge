@@ -7,13 +7,13 @@
 
 import UIKit
 
-class CarouselLayout: UICollectionViewFlowLayout {
+final class CarouselLayout: UICollectionViewFlowLayout {
     
-    public var sideItemScale: CGFloat = 0.5
-    public var sideItemAlpha: CGFloat = 0.5
-    public var spacing: CGFloat = 10
+    private  var sideItemScale: CGFloat = 0.5
+    private  var sideItemAlpha: CGFloat = 0.5
+    private  var spacing: CGFloat = 10
 
-    public var isPagingEnabled: Bool = false
+    private  var isPagingEnabled: Bool = false
     
     private var isSetup: Bool = false
     
@@ -43,11 +43,11 @@ class CarouselLayout: UICollectionViewFlowLayout {
         self.scrollDirection = .horizontal
     }
     
-    public override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
     
-    public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         guard let superAttributes = super.layoutAttributesForElements(in: rect),
             let attributes = NSArray(array: superAttributes, copyItems: true) as? [UICollectionViewLayoutAttributes]
             else { return nil }

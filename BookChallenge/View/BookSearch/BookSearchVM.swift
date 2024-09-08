@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class BookSearchVM: BaseViewModel {
+final class BookSearchVM: BaseViewModel {
     private let disposeBag = DisposeBag()
     var compltionBook: ((BookModel) -> ())?
     struct Input {

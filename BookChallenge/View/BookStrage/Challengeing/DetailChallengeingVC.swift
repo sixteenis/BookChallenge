@@ -12,6 +12,8 @@ final class DetailChallengeingVC: BaseViewController, FetchImageProtocol {
     private let bookImage = UIImageView()
     private let bookTitle = UILabel()
     private let datePer = PercentView()
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: sameUserRecodeTableViewLayout())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -19,6 +21,7 @@ final class DetailChallengeingVC: BaseViewController, FetchImageProtocol {
         view.addSubview(bookImage)
         view.addSubview(bookTitle)
         view.addSubview(datePer)
+        view.addSubview(collectionView)
     }
     override func setUpLayout() {
         bookImage.snp.makeConstraints { make in
@@ -46,4 +49,16 @@ final class DetailChallengeingVC: BaseViewController, FetchImageProtocol {
         datePer.setUpDate(total: 100, now: 50, left: "냠", right: "냥냥이")
     }
     
+}
+
+private extension DetailChallengeingVC {
+    func sameUserRecodeTableViewLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+        let width = UIScreen.main.bounds.width
+        let height = UIScreen.main.bounds.height / 6
+        layout.itemSize = CGSize(width: width, height: height)
+        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        return layout
+    }
 }

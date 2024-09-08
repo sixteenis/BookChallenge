@@ -9,12 +9,12 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class BookListCollectionCell: BaseCollectioViewCell {
-    let bookImage = UIImageView()
-    let title = UILabel()
-    let subTitle = UILabel()
-    let publisherTitle = UILabel()
-    let date = UILabel()
+final class BookListCollectionCell: BaseCollectioViewCell {
+    private let bookImage = UIImageView()
+    private let title = UILabel()
+    private let subTitle = UILabel()
+    private let publisherTitle = UILabel()
+    private let date = UILabel()
     
     override func setUpHierarchy() {
         self.addSubview(bookImage)

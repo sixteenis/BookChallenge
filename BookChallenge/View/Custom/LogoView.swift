@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 final class LogoView: BaseView {
-    let logo = UIImageView()
+    private let logo = UIImageView()
     
     override func setUpView() {
         self.addSubview(logo)

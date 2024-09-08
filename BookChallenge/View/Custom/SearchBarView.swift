@@ -7,7 +7,7 @@
 
 import UIKit
 import SnapKit
-class SearchBarView: BaseView {
+final class SearchBarView: BaseView {
     private let backView = UIView()
     private let searchImage = UIImageView()
     private let searchlable = UILabel()

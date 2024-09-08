@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 
-class JustPlustView: BaseView {
+final class JustPlustView: BaseView {
     let plusView = UIImageView()
     let plusTitle = UILabel()
     override func setUpHierarchy() {

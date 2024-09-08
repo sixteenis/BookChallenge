@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class RoomCreateVM: BaseViewModel {
+final class RoomCreateVM: BaseViewModel {
     private let disposeBag = DisposeBag()
     var bookModel = BookModel.init()
     struct Input {

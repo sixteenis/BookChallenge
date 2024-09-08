@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 final class CreateView: BaseView {
-    let createImage = UIImageView()
+    private let createImage = UIImageView()
     override func setUpView() {
         self.addSubview(createImage)
         createImage.snp.makeConstraints { make in

@@ -10,9 +10,9 @@ import RxSwift
 import SnapKit
 
 final class UserChallengeCollectionCell: BaseCollectioViewCell {
-    let bookImage = UIImageView()
-    let bookTitle = UILabel()
-    let bookLable = UILabel()
+    private let bookImage = UIImageView()
+    private let bookTitle = UILabel()
+    private let bookLable = UILabel()
     private var disposeBag = DisposeBag()
     override func setUpHierarchy() {
         contentView.addSubview(bookImage)

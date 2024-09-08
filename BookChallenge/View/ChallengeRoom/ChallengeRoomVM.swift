@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 
-class ChallengeRoomVM: BaseViewModel {
+final class ChallengeRoomVM: BaseViewModel {
     @frozen
     enum RequestType {
         case all

@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class SignUpVM: BaseViewModel {
+final class SignUpVM: BaseViewModel {
     private let disposeBag = DisposeBag()
     struct Input {
         let xMarkTap: ControlEvent<Void>
