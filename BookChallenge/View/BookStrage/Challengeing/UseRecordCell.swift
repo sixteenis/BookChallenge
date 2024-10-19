@@ -25,14 +25,39 @@ final class UseRecordCell: BaseCollectioViewCell {
     }
     override func setUpLayout() {
         userProfile.snp.makeConstraints { make in
-            make.top.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(10)
+            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(10)
             make.leading.equalTo(contentView.safeAreaLayoutGuide).inset(15)
-            make.width.equalTo(userProfile.snp.height)
+            make.size.equalTo(60)
+            //make.width.equalTo(userProfile.snp.height)
         }
-        //userNick.
+        userNick.snp.makeConstraints { make in
+            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(10)
+            make.leading.equalTo(userProfile.snp.trailing).offset(10)
+        }
+        userContentHeader.snp.makeConstraints { make in
+            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(10)
+            make.leading.equalTo(userNick.snp.trailing).offset(10)
+        }
+        userContent.snp.makeConstraints { make in
+            make.top.equalTo(userContentHeader.snp.bottom).offset(10)
+            make.leading.equalTo(userProfile.snp.trailing).offset(10)
+            make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(10)
+        }
+        bookPercent.snp.makeConstraints { make in
+            make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(10)
+            make.leading.equalTo(userProfile.snp.trailing).offset(10)
+            make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(10)
+        }
+        
     }
     override func setUpView() {
-        
+        userProfile.image = .profile1
+        userNick.text = "테스트용1"
+        userContentHeader.text = "2024.07.03"
+        userContent.text = "재밌는 책을 읽고 후기를 작성합니디ㅏ~~~ 재밌는 책을 읽고 후기를 작성합니디ㅏ~~~재밌는 책을 읽고 후기를 작성합니디ㅏ~~~재밌는 책을 읽고 후기를 작성합니디ㅏ~~~재밌는 책을 읽고 후기를 작성합니디ㅏ~~~"
+        userContent.textAlignment = .left
+        userContent.numberOfLines = 0
+        bookPercent.setUpDate(total: 300, now: 60, left: "30.0", right: "60/300")
     }
 }
 

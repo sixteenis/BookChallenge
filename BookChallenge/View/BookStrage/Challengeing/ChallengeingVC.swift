@@ -56,18 +56,17 @@ final class ChallengeingVC: BaseViewController {
 //            }.disposed(by: disposeBag)
         collectionView.rx.modelSelected(BookRoomModel.self)
             .bind(with: self) { owner, data in
+                print("???")
                 owner.itemSelect?(data)
+                
             }.disposed(by: disposeBag)
     }
     override func setUpHierarchy() {
         view.addSubview(collectionView)
-        
         collectionView.register(ChallengeingCollectionCell.self, forCellWithReuseIdentifier: ChallengeingCollectionCell.id)
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
-        
-        
 
     }
     override func setUpLayout() {

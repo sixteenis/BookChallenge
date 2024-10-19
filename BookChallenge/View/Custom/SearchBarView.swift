@@ -39,6 +39,5 @@ final class SearchBarView: BaseView {
         searchImage.tintColor = .gray
         searchlable.text = "책 검색하기"
         searchlable.textColor = .gray
-        
     }
 }

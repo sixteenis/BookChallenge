@@ -65,8 +65,9 @@ final class BookStorageVC: BaseViewController, NavLogoProtocol {
     }
     override func bindData() {
         vc1.itemSelect = {
-            print($0)
-            self.pushViewController(view: DetailChallengeingVC())
+            let vc = DetailChallengeingVC()
+            vc.vm.roomData = $0
+            self.pushViewController(view: vc)
         }
         self.segmentedControl.rx.selectedSegmentIndex
             .bind(with: self) { owner, index in
