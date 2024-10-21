@@ -22,6 +22,7 @@ struct BookDTO: Decodable {
         let removeSubtitle = self.title.split(separator: "-").map(String.init)
         let removeSubtitle2 = removeSubtitle[0].split(separator: "(").map(String.init)
         let removeSubtitle3 = removeSubtitle2[0].split(separator: ":").map(String.init)
+
         
         let model = BookModel(
             title: removeSubtitle3[0],

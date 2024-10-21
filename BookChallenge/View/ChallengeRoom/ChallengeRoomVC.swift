@@ -34,10 +34,18 @@ final class ChallengeRoomVC: BaseViewController, NavLogoProtocol {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         createRoomView.layer.cornerRadius = createRoomView.frame.width / 2
+//        self.createRoomView.snp.updateConstraints { make in
+//            make.bottom.trailing.equalTo(view.safeAreaLayoutGuide).inset(15)
+//            make.size.equalTo(60)
+//        }
+//        self.createRoomButton.snp.updateConstraints { make in
+//            make.edges.equalTo(createRoomView)
+//        }
     }
     override func setUpHierarchy() {
         view.addSubview(collectionView)
@@ -102,7 +110,8 @@ final class ChallengeRoomVC: BaseViewController, NavLogoProtocol {
     }
     override func setUpLayout() {
         createRoomView.snp.makeConstraints { make in
-            make.bottom.trailing.equalTo(view.safeAreaLayoutGuide).inset(15)
+            make.bottom.equalTo(view).inset(100)
+            make.trailing.equalTo(view.safeAreaLayoutGuide).inset(30)
             make.size.equalTo(60)
         }
         createRoomButton.snp.makeConstraints { make in

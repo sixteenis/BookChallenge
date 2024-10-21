@@ -200,7 +200,7 @@ private extension ChallengeDetailVC {
         fetchImage(imageView: bookImage, imageURL: model.bookURL)
         bookTitle.text = model.title
         bookDescription.text = """
-        책 설명\n\(model.description)\n\n 작가: \(model.author) \n\n 출판사: \(model.publisher) \n\n 출판일: \(model.pubDate) \n\n 가격: \(model.price) \n\n 페이지 수: \(model.page)
+        \n\(model.description)\n\n 작가: \(model.author) \n\n 출판사: \(model.publisher) \n\n 출판일: \(model.pubDate) \n\n 가격: \(model.price) \n\n 페이지 수: \(model.page)
     """
     }
     func setUpPost(model: ChallengePostModel) {

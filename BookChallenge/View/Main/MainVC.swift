@@ -108,7 +108,7 @@ final class MainVC: BaseViewController, NavLogoProtocol {
             make.leading.equalTo(contentView).inset(25)
         }
         showTopBookCollection.snp.makeConstraints { make in
-            make.horizontalEdges.equalToSuperview().inset(20)
+            make.horizontalEdges.equalToSuperview()//.inset(20)
             make.top.equalTo(showTopBookHeader.snp.bottom).offset(15)
             make.height.equalTo(view.frame.height / 3)
             
@@ -119,7 +119,7 @@ final class MainVC: BaseViewController, NavLogoProtocol {
         }
         userChallengeCollection.snp.makeConstraints { make in
             make.top.equalTo(userChallengeHeader.snp.bottom).offset(15)
-            make.horizontalEdges.equalToSuperview().inset(20)
+            make.horizontalEdges.equalToSuperview()//.inset(20)
             make.height.equalTo(view.frame.height / 3)
         }
         userChallnegeDetailsButton.snp.makeConstraints { make in
@@ -150,9 +150,9 @@ final class MainVC: BaseViewController, NavLogoProtocol {
         showTopBookCollection.backgroundColor = .collectionBackground
         showTopBookCollection.showsHorizontalScrollIndicator = false
         showTopBookCollection.isPagingEnabled = false
-        showTopBookCollection.layer.cornerRadius = 15
-        showTopBookCollection.layer.borderWidth = 1
-        showTopBookCollection.layer.borderColor = UIColor.boarder.cgColor
+//        showTopBookCollection.layer.cornerRadius = 15
+//        showTopBookCollection.layer.borderWidth = 1
+//        showTopBookCollection.layer.borderColor = UIColor.boarder.cgColor
         showTopBookCollection.delegate = self
         
         
@@ -163,9 +163,9 @@ final class MainVC: BaseViewController, NavLogoProtocol {
         userChallengeCollection.showsHorizontalScrollIndicator = false
         userChallengeCollection.decelerationRate = .fast
         userChallengeCollection.delegate = self
-        userChallengeCollection.layer.cornerRadius = 15
-        userChallengeCollection.layer.borderWidth = 1
-        userChallengeCollection.layer.borderColor = UIColor.boarder.cgColor
+//        userChallengeCollection.layer.cornerRadius = 15
+//        userChallengeCollection.layer.borderWidth = 1
+//        userChallengeCollection.layer.borderColor = UIColor.boarder.cgColor
         
         userChallnegeDetailsButton.setTitle("더보기 >", for: .normal)
         userChallnegeDetailsButton.titleLabel?.font = .font14
@@ -245,8 +245,8 @@ private extension MainVC {
     
     func userChallengeLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        let width = UIScreen.main.bounds.width / 3 // - 50 // 20 + 30
-        let height = UIScreen.main.bounds.height / 3.5
+        let width = UIScreen.main.bounds.width / 2.7 // - 50 // 20 + 30
+        let height = UIScreen.main.bounds.height / 3.2
         layout.itemSize = CGSize(width: width, height: height) //셀
         layout.scrollDirection = .horizontal // 가로, 세로 스크롤 설정
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)

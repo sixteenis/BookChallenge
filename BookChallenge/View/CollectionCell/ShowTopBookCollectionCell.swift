@@ -36,18 +36,20 @@ final class ShowTopBookCollectionCell: BaseCollectioViewCell {
     override func setUpView() {
         bookmark.image = .bookmark
         bookImage.image = .logo
+        bookImage.layer.borderWidth = 1
+        bookImage.layer.borderColor = UIColor.boarder.cgColor
     }
     func updateUI(data: BookDTO, index: Int) {
         fetchImage(imageView: self.bookImage, imageURL: data.cover)
         switch index {
         case 0:
-            bookmark.tintColor = UIColor(red: 255/255, green: 215/255, blue: 0/255, alpha: 1.0)
+            bookmark.tintColor = UIColor.init(hex: "D5A11E")
             bookmark.isHidden = false
         case 1:
-            bookmark.tintColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1.0)
+            bookmark.tintColor = UIColor.init(hex: "A3A3A3")
             bookmark.isHidden = false
         case 2:
-            bookmark.tintColor = UIColor(red: 205/255, green: 127/255, blue: 50/255, alpha: 1.0)
+            bookmark.tintColor = UIColor.init(hex: "CD7F32")
             bookmark.isHidden = false
         default:
             bookmark.isHidden = true

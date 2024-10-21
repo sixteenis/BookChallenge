@@ -26,16 +26,18 @@ final class UserChallengeCollectionCell: BaseCollectioViewCell {
     override func setUpLayout() {
         bookImage.snp.makeConstraints { make in
             make.top.equalTo(contentView)
-            make.horizontalEdges.equalTo(contentView)
-            make.height.equalTo(150)
+            make.bottom.equalTo(contentView).inset(30)
+            make.horizontalEdges.equalTo(contentView).inset(10)
+            
         }
         bookTitle.snp.makeConstraints { make in
-            make.top.equalTo(bookImage.snp.bottom).offset(15)
-            make.horizontalEdges.equalTo(contentView)
+            make.bottom.equalTo(bookImage.snp.bottom).inset(10)
+            //make.top.equalTo(bookImage.snp.bottom).offset(15)
+            make.horizontalEdges.equalTo(contentView).inset(15)
         }
         bookLable.snp.makeConstraints { make in
-            make.bottom.equalTo(contentView).inset(5)
-            make.horizontalEdges.equalTo(contentView)
+            make.bottom.equalTo(contentView).inset(10)
+            make.horizontalEdges.equalTo(contentView).inset(10)
         }
     }
     override func setUpView() {
@@ -43,8 +45,8 @@ final class UserChallengeCollectionCell: BaseCollectioViewCell {
         bookImage.layer.borderColor = UIColor.boarder.cgColor
         bookImage.layer.borderWidth = 1
         
-        bookTitle.textColor = .font
-        bookTitle.numberOfLines = 2
+        bookTitle.textColor = .white
+        bookTitle.numberOfLines = 1
         bookTitle.textAlignment = .left
         bookTitle.font = .boldFont15
         
@@ -77,5 +79,27 @@ final class UserChallengeCollectionCell: BaseCollectioViewCell {
         completeText.append(percentString)
         completeText.append(NSAttributedString(string: text))
         bookLable.attributedText = completeText
+        
+        DispatchQueue.main.async {
+            self.addGradientToBigPostView()
+        }
+    }
+}
+private extension UserChallengeCollectionCell {
+    func addGradientToBigPostView() {
+        // 그라데이션 추가
+        bookImage.layer.sublayers?
+                    .filter { $0 is CAGradientLayer }
+                    .forEach { $0.removeFromSuperlayer() }
+        let gradient = CAGradientLayer()
+        gradient.frame = bookImage.bounds
+        gradient.colors = [
+                    UIColor.clear.cgColor,
+                    UIColor.black.withAlphaComponent(0.5).cgColor
+                ]
+        gradient.startPoint = CGPoint(x: 0.5, y: 0.8)
+        gradient.endPoint = CGPoint(x: 0.5, y: 1.0)
+        
+        bookImage.layer.insertSublayer(gradient, at: 0)
     }
 }
