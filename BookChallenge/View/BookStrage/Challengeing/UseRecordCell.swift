@@ -51,13 +51,22 @@ final class UseRecordCell: BaseCollectioViewCell {
         
     }
     override func setUpView() {
-        userProfile.image = .profile1
-        userNick.text = "테스트용1"
-        userContentHeader.text = "2024.07.03"
-        userContent.text = "재밌는 책을 읽고 후기를 작성합니디ㅏ~~~ 재밌는 책을 읽고 후기를 작성합니디ㅏ~~~재밌는 책을 읽고 후기를 작성합니디ㅏ~~~재밌는 책을 읽고 후기를 작성합니디ㅏ~~~재밌는 책을 읽고 후기를 작성합니디ㅏ~~~"
         userContent.textAlignment = .left
         userContent.numberOfLines = 0
-        bookPercent.setUpDate(total: 300, now: 60, left: "30.0", right: "60/300")
+    }
+    func setData(_ data: UserData) {
+        userProfile.image = UIImage(named: data.profileImage)
+        userNick.text = data.name
+        userContentHeader.text = data.date
+        let pagePer = Double(data.nowPage)/Double(data.totalPage)
+        let pageStr = String(format: "%.1f", pagePer*100)
+        bookPercent.setUpDate(total: data.totalPage, now: data.nowPage, left: "\(pageStr)%", right: "\(data.nowPage) /\(data.totalPage)p")
+        userContent.text = data.content
     }
 }
 
+//let pagePer = Double(model.bookNowPage)/Double(model.booktotalPage)
+//let pageStr = String(format: "%.1f", pagePer*100)
+//fetchLSLPImage(imageView: bookImage, imageURL: model.bookurl)
+//self.bookTitle.text = model.bookTitle
+//self.pagePercentView.setUpDate(total: model.booktotalPage, now: model.bookNowPage, left: "\(pageStr)%", right: "\(model.bookNowPage)/\(model.booktotalPage)p")

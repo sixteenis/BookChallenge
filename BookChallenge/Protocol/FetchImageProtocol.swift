@@ -24,7 +24,6 @@ extension FetchImageProtocol {
         )
     }
     func fetchLSLPImage(imageView: UIImageView, imageURL: String) {
-        
         let modifier = AnyModifier { request in
             var req = request
             req.addValue(UserManager.shared.token, forHTTPHeaderField: BaseHeader.authorization.rawValue)

@@ -49,6 +49,42 @@ struct RoomPostDTO: Decodable {
         case comments
         case createdAt
     }
+    func transformDeatilRoomModel() -> DetailRoomModel {
+        let title = self.title.split(separator: "]").map(String.init)
+        let totalDate = Date.comparisonDate(to: Date.asTranformDate(str: self.createdAt), form: Date.asTranformDate(str: self.deadLine)) + 1
+        let nowDate = Date.comparisonDate(to: Date.asTranformDate(str: self.createdAt), form: Date()) + 1
+        var user = [UserData]()
+        
+        for item in self.likes {
+            // MARK: - 아직 기록하지 않은 사용자는 표시하지 않기??? 고민해보자 현재는 기록안한 유저는 데이터 반환안함!
+            //var isEmpty = true
+            for content in self.comments {
+                if item == content.creator.user_id {
+                    var pageContent = content.content.split(separator: content.creator.user_id).map(String.init)
+
+                    pageContent.append("")
+                    let tmp = UserData(name: content.creator.nick, profileImage: ProfileImage.randomImage, nowPage: Int(pageContent[0]) ?? 0, totalPage: Int(self.page) ?? 0, date: Date.asTransformCustomStr(str: content.createdAt), content: pageContent[1])
+                    user.append(tmp)
+                    //isEmpty = false
+                    break
+                }
+            }
+        }
+        
+        let result = DetailRoomModel(
+            postId: self.post_id,
+            bookurl: self.files[0],
+            bookTitle: title[0],
+            booktotalPage: Int(self.page) ?? 0,
+            startDate: Date.asTransformCustomStr(str: self.createdAt),
+            endDate: Date.asTransformCustomStr(str: self.deadLine),
+            totalDate: totalDate,
+            nowDate: nowDate,
+            userData: user
+        )
+        
+        return result
+    }
     func transformBookRoomModel() -> BookRoomModel {
         let title = self.title.split(separator: "]").map(String.init)
         let nowPage = self.comments.filter {$0.creator.user_id == UserManager.shared.userId}.first?.content.split(separator: UserManager.shared.userId).map(String.init)[0]

@@ -19,13 +19,18 @@ final class DetailChallengeingVC: BaseViewController, FetchImageProtocol {
     let test = Observable.just([1,2,3,4,5,6])
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("값가져옴----")
-        print(vm.roomData)
     }
     override func bindData() {
-        test
+        let input = DetailChallengeingVM.Input(viewWillAppear: Observable.just(()))
+        let output = vm.transform(input: input)
+        output.postInfo
+            .map { $0.userData }
             .bind(to: collectionView.rx.items(cellIdentifier: UseRecordCell.id, cellType: UseRecordCell.self)) { (row, element, cell) in
-                
+                cell.setData(element)
+            }.disposed(by: disposeBag)
+        output.postInfo
+            .bind(with: self) { owner, data in
+                owner.setUpData(data)
             }.disposed(by: disposeBag)
     }
     override func setUpHierarchy() {
@@ -58,15 +63,17 @@ final class DetailChallengeingVC: BaseViewController, FetchImageProtocol {
     }
     
     override func setUpView() {
-        fetchLSLPImage(imageView: bookImage, imageURL: "")
-        bookTitle.text = "냠냠이의 하루"
-        datePer.setUpDate(total: 100, now: 50, left: "냠", right: "냥냥이")
         collectionView.register(UseRecordCell.self, forCellWithReuseIdentifier: UseRecordCell.id)
     }
     
 }
 
 private extension DetailChallengeingVC {
+    func setUpData(_ data: DetailRoomModel) {
+        fetchLSLPImage(imageView: bookImage, imageURL: data.bookurl)
+        bookTitle.text = data.bookTitle
+        datePer.setUpDate(total: data.nowDate, now: data.nowDate, left: data.startDate, right: data.endDate)
+    }
     func sameUserRecodeTableViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.width
