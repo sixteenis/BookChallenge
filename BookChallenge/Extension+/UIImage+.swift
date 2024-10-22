@@ -23,5 +23,6 @@ extension UIImage {
     static let noBookImage = UIImage(named: "noBook")
     static let limitPerson = UIImage(systemName: "person")
     static let deadLine = UIImage(named: "alert")
+    static let chevron = UIImage(systemName: "chevron.right")
     
 }

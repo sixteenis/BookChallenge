@@ -108,9 +108,9 @@ final class MainVC: BaseViewController, NavLogoProtocol {
             make.leading.equalTo(contentView).inset(25)
         }
         showTopBookCollection.snp.makeConstraints { make in
-            make.horizontalEdges.equalToSuperview()//.inset(20)
+            make.horizontalEdges.equalToSuperview().inset(20)
             make.top.equalTo(showTopBookHeader.snp.bottom).offset(15)
-            make.height.equalTo(view.frame.height / 3)
+            make.height.equalTo(view.frame.height / 2.8)
             
         }
         userChallengeHeader.snp.makeConstraints { make in
@@ -150,9 +150,9 @@ final class MainVC: BaseViewController, NavLogoProtocol {
         showTopBookCollection.backgroundColor = .collectionBackground
         showTopBookCollection.showsHorizontalScrollIndicator = false
         showTopBookCollection.isPagingEnabled = false
-//        showTopBookCollection.layer.cornerRadius = 15
-//        showTopBookCollection.layer.borderWidth = 1
-//        showTopBookCollection.layer.borderColor = UIColor.boarder.cgColor
+        showTopBookCollection.layer.cornerRadius = 15
+        showTopBookCollection.layer.borderWidth = 1
+        showTopBookCollection.layer.borderColor = UIColor.boarder.cgColor
         showTopBookCollection.delegate = self
         
         
@@ -182,7 +182,13 @@ final class MainVC: BaseViewController, NavLogoProtocol {
         challengeRoomCollection.layer.borderWidth = 1
         challengeRoomCollection.layer.borderColor = UIColor.boarder.cgColor
         
-        challengeRoomDetailsButton.setTitle("더보기 >", for: .normal)
+        challengeRoomDetailsButton.setTitle("더보기", for: .normal)
+        challengeRoomDetailsButton.setImage(.chevron, for: .normal)
+        challengeRoomDetailsButton.configuration = .plain()
+        challengeRoomDetailsButton.configuration?.imagePlacement = .trailing
+        challengeRoomDetailsButton.configuration?.imagePadding = 4
+        challengeRoomDetailsButton.configuration?.preferredSymbolConfigurationForImage = .init(pointSize: 12)
+        challengeRoomDetailsButton.tintColor = .clightGray
         challengeRoomDetailsButton.titleLabel?.font = .font16
         challengeRoomDetailsButton.setTitleColor(.clightGray, for: .normal)
         
