@@ -34,11 +34,11 @@ final class ChallengeingVC: BaseViewController {
         let output = vm.transform(input: input)
         output.challnegeingData
             .bind(to: collectionView.rx.items(cellIdentifier: ChallengeingCollectionCell.id, cellType: ChallengeingCollectionCell.self)) { (row, element, cell) in
+                print(element)
                 cell.setUpDate(model: element)
                 cell.recodeButton.rx.tap
                     .bind(with: self) { owner, _ in
                         let vc = SimVC()
-                        print(element.bookTitle)
                         vc.setUpView(bookTitle: element.bookTitle, page: element.bookNowPage, totalPage: element.booktotalPage, postId: element.postId)
                         let bottomSheet = BottomSheetVC(contentViewController: vc, defaultHeight: 400,cornerRadius: 15, isPannedable: true)
                         vc.completion = {

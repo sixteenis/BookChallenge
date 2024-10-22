@@ -111,6 +111,9 @@
 		0661246C2C7C09FE002A1B87 /* ChallengeingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661246B2C7C09FE002A1B87 /* ChallengeingVC.swift */; };
 		0661246E2C7C146D002A1B87 /* BottomSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661246D2C7C146D002A1B87 /* BottomSheetVC.swift */; };
 		066124702C7C1529002A1B87 /* SimVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0661246F2C7C1529002A1B87 /* SimVC.swift */; };
+		06CEA1152CC7C264003249BF /* CompletionChallengVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEA1142CC7C264003249BF /* CompletionChallengVC.swift */; };
+		06CEA11C2CC7C2EE003249BF /* CompletionChallengCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEA11B2CC7C2EE003249BF /* CompletionChallengCell.swift */; };
+		06CEA11E2CC7C526003249BF /* CompletionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEA11D2CC7C526003249BF /* CompletionModel.swift */; };
 		06CF472A2C7736D400EC0645 /* RoomState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47292C7736D400EC0645 /* RoomState.swift */; };
 		06CF472C2C773B0400EC0645 /* SearchPostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF472B2C773B0400EC0645 /* SearchPostDTO.swift */; };
 		06CF47302C77580D00EC0645 /* CommentsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF472F2C77580D00EC0645 /* CommentsDTO.swift */; };
@@ -228,6 +231,9 @@
 		0661246B2C7C09FE002A1B87 /* ChallengeingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeingVC.swift; sourceTree = "<group>"; };
 		0661246D2C7C146D002A1B87 /* BottomSheetVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetVC.swift; sourceTree = "<group>"; };
 		0661246F2C7C1529002A1B87 /* SimVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimVC.swift; sourceTree = "<group>"; };
+		06CEA1142CC7C264003249BF /* CompletionChallengVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionChallengVC.swift; sourceTree = "<group>"; };
+		06CEA11B2CC7C2EE003249BF /* CompletionChallengCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionChallengCell.swift; sourceTree = "<group>"; };
+		06CEA11D2CC7C526003249BF /* CompletionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionModel.swift; sourceTree = "<group>"; };
 		06CF47292C7736D400EC0645 /* RoomState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomState.swift; sourceTree = "<group>"; };
 		06CF472B2C773B0400EC0645 /* SearchPostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPostDTO.swift; sourceTree = "<group>"; };
 		06CF472F2C77580D00EC0645 /* CommentsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsDTO.swift; sourceTree = "<group>"; };
@@ -300,9 +306,10 @@
 			isa = PBXGroup;
 			children = (
 				065671392CC6321A00CF58CB /* Model */,
-				0661246B2C7C09FE002A1B87 /* ChallengeingVC.swift */,
-				065180732C809D6200255228 /* ChallengeingVM.swift */,
+				06CEA11A2CC7C2A5003249BF /* CompletionChallenge */,
+				06CEA1192CC7C29B003249BF /* Challengeing */,
 				0642452B2C85A5B000C9134D /* DetailChallengeingVC.swift */,
+				06CEA11D2CC7C526003249BF /* CompletionModel.swift */,
 				065671142CC3A4DF00CF58CB /* DetailChallengeingVM.swift */,
 				064245482C89A5A300C9134D /* UseRecordCell.swift */,
 			);
@@ -364,6 +371,7 @@
 		065671392CC6321A00CF58CB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				065180752C82207C00255228 /* CommentsPostInputModel.swift */,
 				0656713A2CC6322400CF58CB /* DetailRoomModel.swift */,
 			);
 			path = Model;
@@ -570,11 +578,9 @@
 			children = (
 				065180722C809D5400255228 /* Challengeing */,
 				0659537D2C6F3B420048821E /* BookStorageVC.swift */,
-				065180522C7DF65B00255228 /* ChallengeingCollectionCell.swift */,
 				06CF475B2C7A23E600EC0645 /* UnderlineSegmentedControl.swift */,
 				0661246D2C7C146D002A1B87 /* BottomSheetVC.swift */,
 				0661246F2C7C1529002A1B87 /* SimVC.swift */,
-				065180752C82207C00255228 /* CommentsPostInputModel.swift */,
 			);
 			path = BookStrage;
 			sourceTree = "<group>";
@@ -609,6 +615,25 @@
 				06CF474F2C7963BA00EC0645 /* ChallengeCollectionCell.swift */,
 			);
 			path = CollectionCell;
+			sourceTree = "<group>";
+		};
+		06CEA1192CC7C29B003249BF /* Challengeing */ = {
+			isa = PBXGroup;
+			children = (
+				0661246B2C7C09FE002A1B87 /* ChallengeingVC.swift */,
+				065180522C7DF65B00255228 /* ChallengeingCollectionCell.swift */,
+				065180732C809D6200255228 /* ChallengeingVM.swift */,
+			);
+			path = Challengeing;
+			sourceTree = "<group>";
+		};
+		06CEA11A2CC7C2A5003249BF /* CompletionChallenge */ = {
+			isa = PBXGroup;
+			children = (
+				06CEA1142CC7C264003249BF /* CompletionChallengVC.swift */,
+				06CEA11B2CC7C2EE003249BF /* CompletionChallengCell.swift */,
+			);
+			path = CompletionChallenge;
 			sourceTree = "<group>";
 		};
 		06CF47612C7B972200EC0645 /* ChallengeDetail */ = {
@@ -748,6 +773,7 @@
 				061A34B72C76132800491DB1 /* ImagePostDTO.swift in Sources */,
 				06CF472C2C773B0400EC0645 /* SearchPostDTO.swift in Sources */,
 				065953272C6E31E80048821E /* LoginTextField.swift in Sources */,
+				06CEA11E2CC7C526003249BF /* CompletionModel.swift in Sources */,
 				0659538B2C6F58BE0048821E /* BookSearchVC.swift in Sources */,
 				06CF475C2C7A23E600EC0645 /* UnderlineSegmentedControl.swift in Sources */,
 				065953342C6E31FA0048821E /* ReuseIdentifier+.swift in Sources */,
@@ -756,6 +782,7 @@
 				061A34B32C76081C00491DB1 /* LoginDTO.swift in Sources */,
 				0659537E2C6F3B420048821E /* BookStorageVC.swift in Sources */,
 				065953922C6F6BF20048821E /* ShowTopBookCollectionCell.swift in Sources */,
+				06CEA1152CC7C264003249BF /* CompletionChallengVC.swift in Sources */,
 				0642452C2C85A5B000C9134D /* DetailChallengeingVC.swift in Sources */,
 				065953392C6E32060048821E /* APIKey.swift in Sources */,
 				061A34B12C76073000491DB1 /* validationEamilDTO.swift in Sources */,
@@ -829,6 +856,7 @@
 				064245472C88AE7D00C9134D /* NetworkConnectedVC.swift in Sources */,
 				0652C83C2C708AF800BDC64E /* BookDTO.swift in Sources */,
 				0652C8232C6FAEE300BDC64E /* AladinParam.swift in Sources */,
+				06CEA11C2CC7C2EE003249BF /* CompletionChallengCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

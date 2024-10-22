@@ -21,8 +21,8 @@ final class BookStorageVC: BaseViewController, NavLogoProtocol {
         vc.view.backgroundColor = .white
         return vc
     }()
-    private let vc2: UIViewController = {
-        let vc = UIViewController()
+    private let vc2: CompletionChallengVC = {
+        let vc = CompletionChallengVC()
         vc.view.backgroundColor = .red
         return vc
     }()
