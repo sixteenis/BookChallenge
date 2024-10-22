@@ -15,6 +15,9 @@ final class UserManager {
         case password
         case nick
         case userId
+        case widgetImageData
+        case widgetPagePercent
+        case widgetDay
     }
     static let shared = UserManager()
     private init() {}
@@ -36,4 +39,13 @@ final class UserManager {
     
     @UserDefault(key: UserDefaultsKey.userId.rawValue, defaultValue: "", storage: .standard)
     var userId: String
+    
+    @UserDefault(key: "widgetImage", defaultValue: Data.empty, storage: .groupShared)
+    var widgetImage: Data
+    
+    @UserDefault(key: "widgetPagePercent", defaultValue: 0.0, storage: .groupShared)
+    var widgetPagePercent: Double
+    
+    @UserDefault(key: "widgetDay", defaultValue: "", storage: .groupShared)
+    var widgetDay: String
 }

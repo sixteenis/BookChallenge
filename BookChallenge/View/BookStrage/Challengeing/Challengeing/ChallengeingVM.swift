@@ -41,18 +41,6 @@ final class ChallengeingVM: BaseViewModel {
                     print(err)
                 }
             }.disposed(by: disposeBag)
-            
-        NotificationCenter.default.rx.notification(.likePost) //챌린지 참여할 경우 리로딩
-            .asDriver(onErrorRecover: {_ in .never()})
-            .drive(with: self) { owner, _ in
-                networkingStart.accept(true)
-            }.disposed(by: disposeBag)
-        
-        NotificationCenter.default.rx.notification(.makePost) //챌린지 방만들경우 리로딩
-            .asDriver(onErrorRecover: {_ in .never()})
-            .drive(with: self) { owner, _ in
-                networkingStart.accept(true)
-            }.disposed(by: disposeBag)
         input.bottomSheetNetwork
             .flatMap { _ in
                 LSLPNetworkManager.shared.request(target: .getLikePosts(query: .init()), dto: LikePostsDTO.self)
@@ -68,7 +56,17 @@ final class ChallengeingVM: BaseViewModel {
                     print(err)
                 }
             }.disposed(by: disposeBag)
+        NotificationCenter.default.rx.notification(.likePost) //챌린지 참여할 경우 리로딩
+            .asDriver(onErrorRecover: {_ in .never()})
+            .drive(with: self) { owner, _ in
+                networkingStart.accept(true)
+            }.disposed(by: disposeBag)
         
+        NotificationCenter.default.rx.notification(.makePost) //챌린지 방만들경우 리로딩
+            .asDriver(onErrorRecover: {_ in .never()})
+            .drive(with: self) { owner, _ in
+                networkingStart.accept(true)
+            }.disposed(by: disposeBag)
         
         return Output(challnegeingData: roomData.asObservable())
     }

@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SnapKit
+import WidgetKit
 
 final class ChallengeingVC: BaseViewController {
     //let button = UIButton()
@@ -42,6 +43,15 @@ final class ChallengeingVC: BaseViewController {
                         vc.setUpView(bookTitle: element.bookTitle, page: element.bookNowPage, totalPage: element.booktotalPage, postId: element.postId)
                         let bottomSheet = BottomSheetVC(contentViewController: vc, defaultHeight: 400,cornerRadius: 15, isPannedable: true)
                         vc.completion = {
+                            // MARK: - 위젯에 필요한 데이터 여기서 주지만 나중에 vm으로 빼자..
+                            UserManager.shared.widgetImage = cell.getImageData()
+                            UserManager.shared.widgetDay = String(element.totalDate - element.nowDate)
+                            UserManager.shared.widgetPagePercent = Double(element.bookNowPage)/Double(element.booktotalPage)
+                            print(UserManager.shared.widgetPagePercent)
+                            print(UserManager.shared.widgetDay)
+                            print("-----")
+                            WidgetCenter.shared.reloadAllTimelines()
+                            
                             startNetworking.onNext(())
                         }
                         owner.present(bottomSheet, animated: false)

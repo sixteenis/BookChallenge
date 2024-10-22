@@ -120,6 +120,7 @@
 		06CEA12D2CC7D139003249BF /* BookChallengeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEA12C2CC7D139003249BF /* BookChallengeWidget.swift */; };
 		06CEA12F2CC7D13B003249BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06CEA12E2CC7D13B003249BF /* Assets.xcassets */; };
 		06CEA1332CC7D13B003249BF /* BookChallengeWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 06CEA1232CC7D139003249BF /* BookChallengeWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		06CEA13A2CC7DE99003249BF /* WidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEA1392CC7DE99003249BF /* WidgetData.swift */; };
 		06CF472A2C7736D400EC0645 /* RoomState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47292C7736D400EC0645 /* RoomState.swift */; };
 		06CF472C2C773B0400EC0645 /* SearchPostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF472B2C773B0400EC0645 /* SearchPostDTO.swift */; };
 		06CF47302C77580D00EC0645 /* CommentsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF472F2C77580D00EC0645 /* CommentsDTO.swift */; };
@@ -272,6 +273,8 @@
 		06CEA12E2CC7D13B003249BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06CEA1302CC7D13B003249BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06CEA1382CC7D175003249BF /* BookChallenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BookChallenge.entitlements; sourceTree = "<group>"; };
+		06CEA1392CC7DE99003249BF /* WidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetData.swift; sourceTree = "<group>"; };
+		06CEA13F2CC7FA74003249BF /* BookChallengeWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BookChallengeWidgetExtension.entitlements; sourceTree = "<group>"; };
 		06CF47292C7736D400EC0645 /* RoomState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomState.swift; sourceTree = "<group>"; };
 		06CF472B2C773B0400EC0645 /* SearchPostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPostDTO.swift; sourceTree = "<group>"; };
 		06CF472F2C77580D00EC0645 /* CommentsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsDTO.swift; sourceTree = "<group>"; };
@@ -355,9 +358,6 @@
 				065671392CC6321A00CF58CB /* Model */,
 				06CEA11A2CC7C2A5003249BF /* CompletionChallenge */,
 				06CEA1192CC7C29B003249BF /* Challengeing */,
-				0642452B2C85A5B000C9134D /* DetailChallengeingVC.swift */,
-				06CEA11D2CC7C526003249BF /* CompletionModel.swift */,
-				065671142CC3A4DF00CF58CB /* DetailChallengeingVM.swift */,
 				064245482C89A5A300C9134D /* UseRecordCell.swift */,
 			);
 			path = Challengeing;
@@ -427,6 +427,7 @@
 		065952F52C6E2F8C0048821E = {
 			isa = PBXGroup;
 			children = (
+				06CEA13F2CC7FA74003249BF /* BookChallengeWidgetExtension.entitlements */,
 				065953152C6E2FC20048821E /* .gitignore */,
 				065953002C6E2F8C0048821E /* BookChallenge */,
 				06CEA1292CC7D139003249BF /* BookChallengeWidget */,
@@ -598,6 +599,7 @@
 			isa = PBXGroup;
 			children = (
 				065953642C6E64280048821E /* UserDefault.swift */,
+				06CEA1392CC7DE99003249BF /* WidgetData.swift */,
 				065953672C6E644A0048821E /* UserManager.swift */,
 			);
 			path = User;
@@ -672,8 +674,10 @@
 			isa = PBXGroup;
 			children = (
 				0661246B2C7C09FE002A1B87 /* ChallengeingVC.swift */,
-				065180522C7DF65B00255228 /* ChallengeingCollectionCell.swift */,
 				065180732C809D6200255228 /* ChallengeingVM.swift */,
+				065180522C7DF65B00255228 /* ChallengeingCollectionCell.swift */,
+				0642452B2C85A5B000C9134D /* DetailChallengeingVC.swift */,
+				065671142CC3A4DF00CF58CB /* DetailChallengeingVM.swift */,
 			);
 			path = Challengeing;
 			sourceTree = "<group>";
@@ -681,6 +685,7 @@
 		06CEA11A2CC7C2A5003249BF /* CompletionChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				06CEA11D2CC7C526003249BF /* CompletionModel.swift */,
 				06CEA1142CC7C264003249BF /* CompletionChallengVC.swift */,
 				06CEA11B2CC7C2EE003249BF /* CompletionChallengCell.swift */,
 			);
@@ -892,6 +897,7 @@
 				06CF47542C796B4600EC0645 /* CapsuleLabel.swift in Sources */,
 				0652C8472C70A23200BDC64E /* BookListCollectionCell.swift in Sources */,
 				0659537C2C6F388D0048821E /* ChangeView.swift in Sources */,
+				06CEA13A2CC7DE99003249BF /* WidgetData.swift in Sources */,
 				0652C83A2C708A5300BDC64E /* SearchBookWithIDDTO.swift in Sources */,
 				06CF47502C7963BA00EC0645 /* ChallengeCollectionCell.swift in Sources */,
 				06CF47362C7761DA00EC0645 /* FetchPostsDTO.swift in Sources */,
@@ -1189,6 +1195,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BookChallengeWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G9LS4YQCM2;
@@ -1221,6 +1228,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BookChallengeWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G9LS4YQCM2;

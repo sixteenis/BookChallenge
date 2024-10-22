@@ -87,7 +87,9 @@ final class ChallengeingCollectionCell: BaseCollectioViewCell {
         
         
     }
-    
+    func getImageData() -> Data {
+        return self.bookImage.image?.jpegData(compressionQuality: 1.0) ?? Data.empty
+    }
     func setUpDate(model: BookRoomModel) {
         let pagePer = Double(model.bookNowPage)/Double(model.booktotalPage)
         let pageStr = String(format: "%.1f", pagePer*100)

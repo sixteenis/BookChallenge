@@ -12,15 +12,15 @@ struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), emoji: "😀")
     }
-
+    
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
         let entry = SimpleEntry(date: Date(), emoji: "😀")
         completion(entry)
     }
-
+    
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
-
+        
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
@@ -28,7 +28,7 @@ struct Provider: TimelineProvider {
             let entry = SimpleEntry(date: entryDate, emoji: "😀")
             entries.append(entry)
         }
-
+        
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
     }
@@ -41,36 +41,48 @@ struct SimpleEntry: TimelineEntry {
 
 struct BookChallengeWidgetEntryView : View {
     var entry: Provider.Entry
-    let percent = 1.0
+    let image = UserDefaults(suiteName: "group.com.Sixteenis.BookChallenge.min")?.data(forKey: "widgetImage")
+    let percent = UserDefaults(suiteName: "group.com.Sixteenis.BookChallenge.min")?.double(forKey: "widgetPagePercent") ?? 0.0
+    let day = UserDefaults(suiteName: "group.com.Sixteenis.BookChallenge.min")?.string(forKey: "widgetDay") ?? ""
     var body: some View {
+        let _ = print(percent)
+        let _ = print(day)
         HStack(spacing: 0) {
-            Image("noBook")
-                .resizable()
-                .frame(width: 65, height: 115)
-                .cornerRadius(10)
+            if let imageData = image,
+               let uiImage = UIImage(data: imageData) {
+                Image(uiImage: uiImage)  // UIImage를 SwiftUI Image로 변환
+                    .resizable()
+                    .frame(width: 65, height: 115)
+                    .cornerRadius(10)
+            } else {
+                Image("noBook")  // 기본 이미지
+                    .resizable()
+                    .frame(width: 65, height: 115)
+                    .cornerRadius(10)
+            }
             Spacer()
             VStack {
                 Spacer()
                     .frame(height: 2)
-                Text("D-633")
+                Text("D-\(day)")
                     .font(.headline)
                     .lineLimit(1)
                 BatteryView(percent: percent)
-                            .overlay {
-                                Text("\(Int(percent*100))%")
-                            }
+                    .overlay {
+                        Text("\(Int(percent*100))%")
+                    }
                 Spacer()
                 
                 
             }
-
+            
         }
     }
 }
 
 struct BookChallengeWidget: Widget {
     let kind: String = "BookChallengeWidget"
-
+    
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             if #available(iOS 17.0, *) {
@@ -131,16 +143,16 @@ extension Color {
     static func BatteryLevel(_ percent: Double) -> Color {
         switch percent {
             // returns red color for range %0 to %20
-            case 0...0.2:
-                return Color.red
+        case 0...0.2:
+            return Color.red
             // returns yellow color for range %20 to %50
-            case 0.2...0.5:
-                return Color.yellow
+        case 0.2...0.5:
+            return Color.yellow
             // returns green color for range %50 to %100
-            case 0.5...1.0:
-                return Color.green
-            default:
-                return Color.clear
+        case 0.5...1.0:
+            return Color.green
+        default:
+            return Color.clear
         }
     }
 }

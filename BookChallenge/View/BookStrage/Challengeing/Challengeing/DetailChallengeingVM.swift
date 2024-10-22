@@ -42,6 +42,7 @@ final class DetailChallengeingVM: BaseViewModel {
                 switch response {
                 case .success(_):
                     NotificationCenter.default.post(name: .likePost, object: ())
+
                     successRemove.onNext(true)
                 case .failure(_):
                     successRemove.onNext(false)
