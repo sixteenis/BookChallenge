@@ -43,7 +43,7 @@ final class PercentView: BaseView {
         }
     }
     override func setUpView() {
-        bar.backgroundColor = .lightGray
+        bar.backgroundColor = .boarder
         chargeBar.backgroundColor = .mainColor
         bar.layer.cornerRadius = 5
         chargeBar.layer.cornerRadius = 5

@@ -43,19 +43,19 @@ final class CapsuleLabel: BaseView {
         }
     }
     override func setUpView() {
-//        self.layer.borderWidth = 1
-//        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.grayBackground.cgColor
         //self.backgroundColor = .red
         //self.customTitle.text = title
         self.customTitle.font = .boldFont14
     }
     
-    func setUpData(backColor: UIColor = .systemGray5, title: String, image: UIImage?, font: UIFont = .font12) {
+    func setUpData(backColor: UIColor = .viewBackground, title: String, image: UIImage?, font: UIFont = .font12) {
         self.backgroundColor = backColor
         self.customTitle.text = title
         self.customTitle.font = font
         //image?.withTintColor(.mainColor)
-        let ri = image?.withTintColor(.mainColor, renderingMode: .alwaysOriginal)
+        let ri = image?.withTintColor(.font.withAlphaComponent(0.7), renderingMode: .alwaysOriginal)
         self.customImage.image = ri
         
         

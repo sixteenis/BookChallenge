@@ -41,7 +41,7 @@ final class ChallengeingCollectionCell: BaseCollectioViewCell {
     }
     override func setUpLayout() {
         bookImage.snp.makeConstraints { make in
-            make.top.equalTo(contentView).inset(5)
+            make.top.equalTo(contentView).inset(10)
             make.horizontalEdges.equalTo(contentView).inset(25)
             make.height.equalTo(UIScreen.main.bounds.height / 5)
         }
@@ -60,21 +60,21 @@ final class ChallengeingCollectionCell: BaseCollectioViewCell {
             make.height.equalTo(20)
         }
         recodeButton.snp.makeConstraints { make in
-            make.top.equalTo(datePercentView.snp.bottom).offset(30)
+            make.top.equalTo(datePercentView.snp.bottom).offset(25)
             make.horizontalEdges.equalTo(contentView).inset(25)
             make.height.equalTo(33)
         }
         
     }
     override func setUpView() {
-        contentView.backgroundColor = .systemGray6
+        contentView.backgroundColor = .viewBackground
         contentView.layer.borderColor = UIColor.boarder.cgColor
         contentView.layer.borderWidth = 1
+        contentView.layer.cornerRadius = 10
         bookImage.image = UIImage.noBookImage
-        bookTitle.text = "고구마 감자국"
         
-        pagePercentView.backgroundColor = .systemGray6
-        datePercentView.backgroundColor = .systemGray6
+        pagePercentView.backgroundColor = .viewBackground
+        datePercentView.backgroundColor = .viewBackground
         
         //고정값들
         bookImage.layer.borderColor = UIColor.boarder.cgColor

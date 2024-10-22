@@ -56,9 +56,7 @@ final class ChallengeingVC: BaseViewController {
 //            }.disposed(by: disposeBag)
         collectionView.rx.modelSelected(BookRoomModel.self)
             .bind(with: self) { owner, data in
-                print("???")
                 owner.itemSelect?(data)
-                
             }.disposed(by: disposeBag)
     }
     override func setUpHierarchy() {
@@ -80,12 +78,12 @@ final class ChallengeingVC: BaseViewController {
 extension ChallengeingVC {
     func sameTableViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        let width = UIScreen.main.bounds.width / 2 - 5
+        let width = UIScreen.main.bounds.width / 2 - 15
         let height = UIScreen.main.bounds.height / 2.5
         layout.itemSize = CGSize(width: width, height: height)
         layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 5
-        layout.sectionInset = UIEdgeInsets(top: 15, left: 5, bottom: 10, right: 0)
+        layout.minimumInteritemSpacing = 10
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         return layout
     }
 }
