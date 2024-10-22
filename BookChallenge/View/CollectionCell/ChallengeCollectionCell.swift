@@ -37,9 +37,9 @@ final class ChallengeCollectionCell: BaseCollectioViewCell {
     override func setUpLayout() {
         bookImage.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.trailing.equalTo(contentView).inset(20)
-            make.height.equalTo(100)
-            make.width.equalTo(70)
+            make.trailing.equalTo(contentView).inset(30)
+            make.verticalEdges.equalTo(contentView).inset(15)
+            make.width.equalTo(100)
         }
         limitPerson.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(10)

@@ -84,8 +84,8 @@ final class MainVC: BaseViewController, NavLogoProtocol {
     private func setUpContentViewHierarchy() {
         contentView.addSubview(showTopBookHeader)
         contentView.addSubview(showTopBookCollection)
-        contentView.addSubview(userChallengeHeader)
         contentView.addSubview(userChallengeCollection)
+        contentView.addSubview(userChallengeHeader)
         contentView.addSubview(userChallnegeDetailsButton)
         contentView.addSubview(challengeRoomHeader)
         contentView.addSubview(challengeRoomCollection)
@@ -118,13 +118,13 @@ final class MainVC: BaseViewController, NavLogoProtocol {
             make.leading.equalTo(contentView).inset(25)
         }
         userChallengeCollection.snp.makeConstraints { make in
-            make.top.equalTo(userChallengeHeader.snp.bottom).offset(15)
+            make.top.equalTo(userChallengeHeader.snp.bottom).inset(10)//.offset(5)
             make.horizontalEdges.equalToSuperview()//.inset(20)
             make.height.equalTo(view.frame.height / 3)
         }
         userChallnegeDetailsButton.snp.makeConstraints { make in
             make.trailing.equalTo(contentView).inset(25)
-            make.bottom.equalTo(userChallengeCollection.snp.top).offset(-5)
+            make.bottom.equalTo(userChallengeHeader.snp.bottom).offset(5)//(userChallengeCollection.snp.top).offset(-5)
         }
         challengeRoomHeader.snp.makeConstraints { make in
             make.top.equalTo(userChallengeCollection.snp.bottom).offset(50)
@@ -168,7 +168,7 @@ final class MainVC: BaseViewController, NavLogoProtocol {
 //        userChallengeCollection.layer.borderColor = UIColor.boarder.cgColor
         
         userChallnegeDetailsButton.setTitle("더보기 >", for: .normal)
-        userChallnegeDetailsButton.titleLabel?.font = .font14
+        userChallnegeDetailsButton.titleLabel?.font = .font16
         userChallnegeDetailsButton.setTitleColor(.clightGray, for: .normal)
         
         challengeRoomHeader.text = "새로 올라온 챌린지 방"
@@ -183,7 +183,7 @@ final class MainVC: BaseViewController, NavLogoProtocol {
         challengeRoomCollection.layer.borderColor = UIColor.boarder.cgColor
         
         challengeRoomDetailsButton.setTitle("더보기 >", for: .normal)
-        challengeRoomDetailsButton.titleLabel?.font = .font14
+        challengeRoomDetailsButton.titleLabel?.font = .font16
         challengeRoomDetailsButton.setTitleColor(.clightGray, for: .normal)
         
     }
@@ -246,7 +246,7 @@ private extension MainVC {
     func userChallengeLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.width / 2.7 // - 50 // 20 + 30
-        let height = UIScreen.main.bounds.height / 3.2
+        let height = width * 1.5 //UIScreen.main.bounds.height / 3.2
         layout.itemSize = CGSize(width: width, height: height) //셀
         layout.scrollDirection = .horizontal // 가로, 세로 스크롤 설정
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)

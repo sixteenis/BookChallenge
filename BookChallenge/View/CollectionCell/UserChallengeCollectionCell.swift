@@ -54,6 +54,7 @@ final class UserChallengeCollectionCell: BaseCollectioViewCell {
         bookLable.numberOfLines = 1
         bookLable.textAlignment = .left
         bookLable.textColor = .clightGray
+        
     }
     func setUpData(model: BookRoomModel) {
         self.fetchLSLPImage(imageView: bookImage, imageURL: model.bookurl)
