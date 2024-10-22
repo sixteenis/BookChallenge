@@ -114,6 +114,12 @@
 		06CEA1152CC7C264003249BF /* CompletionChallengVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEA1142CC7C264003249BF /* CompletionChallengVC.swift */; };
 		06CEA11C2CC7C2EE003249BF /* CompletionChallengCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEA11B2CC7C2EE003249BF /* CompletionChallengCell.swift */; };
 		06CEA11E2CC7C526003249BF /* CompletionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEA11D2CC7C526003249BF /* CompletionModel.swift */; };
+		06CEA1262CC7D139003249BF /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CEA1252CC7D139003249BF /* WidgetKit.framework */; };
+		06CEA1282CC7D139003249BF /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CEA1272CC7D139003249BF /* SwiftUI.framework */; };
+		06CEA12B2CC7D139003249BF /* BookChallengeWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEA12A2CC7D139003249BF /* BookChallengeWidgetBundle.swift */; };
+		06CEA12D2CC7D139003249BF /* BookChallengeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEA12C2CC7D139003249BF /* BookChallengeWidget.swift */; };
+		06CEA12F2CC7D13B003249BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06CEA12E2CC7D13B003249BF /* Assets.xcassets */; };
+		06CEA1332CC7D13B003249BF /* BookChallengeWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 06CEA1232CC7D139003249BF /* BookChallengeWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		06CF472A2C7736D400EC0645 /* RoomState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47292C7736D400EC0645 /* RoomState.swift */; };
 		06CF472C2C773B0400EC0645 /* SearchPostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF472B2C773B0400EC0645 /* SearchPostDTO.swift */; };
 		06CF47302C77580D00EC0645 /* CommentsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF472F2C77580D00EC0645 /* CommentsDTO.swift */; };
@@ -135,6 +141,30 @@
 		06F93F5B2C737689002F5513 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5A2C737689002F5513 /* Font+.swift */; };
 		06F93F5D2C7398EB002F5513 /* LSLPNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F93F5C2C7398EB002F5513 /* LSLPNetworkManager.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		06CEA1312CC7D13B003249BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 065952F62C6E2F8C0048821E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 06CEA1222CC7D139003249BF;
+			remoteInfo = BookChallengeWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		06CEA1372CC7D13B003249BF /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				06CEA1332CC7D13B003249BF /* BookChallengeWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		060301DD2C7734080058A113 /* JoinDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinDTO.swift; sourceTree = "<group>"; };
@@ -234,6 +264,14 @@
 		06CEA1142CC7C264003249BF /* CompletionChallengVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionChallengVC.swift; sourceTree = "<group>"; };
 		06CEA11B2CC7C2EE003249BF /* CompletionChallengCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionChallengCell.swift; sourceTree = "<group>"; };
 		06CEA11D2CC7C526003249BF /* CompletionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionModel.swift; sourceTree = "<group>"; };
+		06CEA1232CC7D139003249BF /* BookChallengeWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BookChallengeWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		06CEA1252CC7D139003249BF /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		06CEA1272CC7D139003249BF /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		06CEA12A2CC7D139003249BF /* BookChallengeWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookChallengeWidgetBundle.swift; sourceTree = "<group>"; };
+		06CEA12C2CC7D139003249BF /* BookChallengeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookChallengeWidget.swift; sourceTree = "<group>"; };
+		06CEA12E2CC7D13B003249BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		06CEA1302CC7D13B003249BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06CEA1382CC7D175003249BF /* BookChallenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BookChallenge.entitlements; sourceTree = "<group>"; };
 		06CF47292C7736D400EC0645 /* RoomState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomState.swift; sourceTree = "<group>"; };
 		06CF472B2C773B0400EC0645 /* SearchPostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPostDTO.swift; sourceTree = "<group>"; };
 		06CF472F2C77580D00EC0645 /* CommentsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsDTO.swift; sourceTree = "<group>"; };
@@ -273,6 +311,15 @@
 				06CF474C2C792CFC00EC0645 /* RxDataSources in Frameworks */,
 				065180342C7C60C200255228 /* NVActivityIndicatorView in Frameworks */,
 				0659533C2C6E32480048821E /* Alamofire in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06CEA1202CC7D139003249BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06CEA1282CC7D139003249BF /* SwiftUI.framework in Frameworks */,
+				06CEA1262CC7D139003249BF /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +429,8 @@
 			children = (
 				065953152C6E2FC20048821E /* .gitignore */,
 				065953002C6E2F8C0048821E /* BookChallenge */,
+				06CEA1292CC7D139003249BF /* BookChallengeWidget */,
+				06CEA1242CC7D139003249BF /* Frameworks */,
 				065952FF2C6E2F8C0048821E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -390,6 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				065952FE2C6E2F8C0048821E /* BookChallenge.app */,
+				06CEA1232CC7D139003249BF /* BookChallengeWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -397,6 +447,7 @@
 		065953002C6E2F8C0048821E /* BookChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				06CEA1382CC7D175003249BF /* BookChallenge.entitlements */,
 				065953012C6E2F8C0048821E /* AppDelegate.swift */,
 				065953032C6E2F8C0048821E /* SceneDelegate.swift */,
 				0659535E2C6E56490048821E /* Protocol */,
@@ -636,6 +687,26 @@
 			path = CompletionChallenge;
 			sourceTree = "<group>";
 		};
+		06CEA1242CC7D139003249BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				06CEA1252CC7D139003249BF /* WidgetKit.framework */,
+				06CEA1272CC7D139003249BF /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		06CEA1292CC7D139003249BF /* BookChallengeWidget */ = {
+			isa = PBXGroup;
+			children = (
+				06CEA12A2CC7D139003249BF /* BookChallengeWidgetBundle.swift */,
+				06CEA12C2CC7D139003249BF /* BookChallengeWidget.swift */,
+				06CEA12E2CC7D13B003249BF /* Assets.xcassets */,
+				06CEA1302CC7D13B003249BF /* Info.plist */,
+			);
+			path = BookChallengeWidget;
+			sourceTree = "<group>";
+		};
 		06CF47612C7B972200EC0645 /* ChallengeDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -658,10 +729,12 @@
 				065952FA2C6E2F8C0048821E /* Sources */,
 				065952FB2C6E2F8C0048821E /* Frameworks */,
 				065952FC2C6E2F8C0048821E /* Resources */,
+				06CEA1372CC7D13B003249BF /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				06CEA1322CC7D13B003249BF /* PBXTargetDependency */,
 			);
 			name = BookChallenge;
 			packageProductDependencies = (
@@ -684,6 +757,23 @@
 			productReference = 065952FE2C6E2F8C0048821E /* BookChallenge.app */;
 			productType = "com.apple.product-type.application";
 		};
+		06CEA1222CC7D139003249BF /* BookChallengeWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06CEA1342CC7D13B003249BF /* Build configuration list for PBXNativeTarget "BookChallengeWidgetExtension" */;
+			buildPhases = (
+				06CEA11F2CC7D139003249BF /* Sources */,
+				06CEA1202CC7D139003249BF /* Frameworks */,
+				06CEA1212CC7D139003249BF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BookChallengeWidgetExtension;
+			productName = BookChallengeWidgetExtension;
+			productReference = 06CEA1232CC7D139003249BF /* BookChallengeWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -695,6 +785,9 @@
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					065952FD2C6E2F8C0048821E = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					06CEA1222CC7D139003249BF = {
 						CreatedOnToolsVersion = 15.4;
 					};
 				};
@@ -725,6 +818,7 @@
 			projectRoot = "";
 			targets = (
 				065952FD2C6E2F8C0048821E /* BookChallenge */,
+				06CEA1222CC7D139003249BF /* BookChallengeWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -737,6 +831,14 @@
 				0659530B2C6E2F8D0048821E /* Assets.xcassets in Resources */,
 				065953162C6E2FC20048821E /* .gitignore in Resources */,
 				0659530E2C6E2F8D0048821E /* Base in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06CEA1212CC7D139003249BF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06CEA12F2CC7D13B003249BF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,7 +962,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		06CEA11F2CC7D139003249BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06CEA12D2CC7D139003249BF /* BookChallengeWidget.swift in Sources */,
+				06CEA12B2CC7D139003249BF /* BookChallengeWidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		06CEA1322CC7D13B003249BF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 06CEA1222CC7D139003249BF /* BookChallengeWidgetExtension */;
+			targetProxy = 06CEA1312CC7D13B003249BF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0659530C2C6E2F8D0048821E /* LaunchScreen.storyboard */ = {
@@ -996,8 +1115,10 @@
 		065953132C6E2F8D0048821E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BookChallenge/BookChallenge.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G9LS4YQCM2;
@@ -1030,8 +1151,10 @@
 		065953142C6E2F8D0048821E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BookChallenge/BookChallenge.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G9LS4YQCM2;
@@ -1061,6 +1184,70 @@
 			};
 			name = Release;
 		};
+		06CEA1352CC7D13B003249BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G9LS4YQCM2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BookChallengeWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BookChallengeWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Sixteenis.BookChallenge.BookChallengeWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		06CEA1362CC7D13B003249BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G9LS4YQCM2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BookChallengeWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BookChallengeWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Sixteenis.BookChallenge.BookChallengeWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1078,6 +1265,15 @@
 			buildConfigurations = (
 				065953132C6E2F8D0048821E /* Debug */,
 				065953142C6E2F8D0048821E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06CEA1342CC7D13B003249BF /* Build configuration list for PBXNativeTarget "BookChallengeWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06CEA1352CC7D13B003249BF /* Debug */,
+				06CEA1362CC7D13B003249BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
