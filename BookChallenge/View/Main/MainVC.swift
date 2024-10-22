@@ -123,11 +123,11 @@ final class MainVC: BaseViewController, NavLogoProtocol {
             make.height.equalTo(view.frame.height / 3)
         }
         userChallnegeDetailsButton.snp.makeConstraints { make in
-            make.trailing.equalTo(contentView).inset(25)
+            make.trailing.equalTo(contentView).inset(15)
             make.bottom.equalTo(userChallengeHeader.snp.bottom).offset(5)//(userChallengeCollection.snp.top).offset(-5)
         }
         challengeRoomHeader.snp.makeConstraints { make in
-            make.top.equalTo(userChallengeCollection.snp.bottom).offset(50)
+            make.top.equalTo(userChallengeCollection.snp.bottom).offset(15)
             make.leading.equalTo(contentView).inset(25)
         }
         challengeRoomDetailsButton.snp.makeConstraints { make in
@@ -167,7 +167,7 @@ final class MainVC: BaseViewController, NavLogoProtocol {
 //        userChallengeCollection.layer.borderWidth = 1
 //        userChallengeCollection.layer.borderColor = UIColor.boarder.cgColor
         
-        userChallnegeDetailsButton.setTitle("더보기 >", for: .normal)
+        //userChallnegeDetailsButton.setTitle("더보기 >", for: .normal)
         userChallnegeDetailsButton.titleLabel?.font = .font16
         userChallnegeDetailsButton.setTitleColor(.clightGray, for: .normal)
         

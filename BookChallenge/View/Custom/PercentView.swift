@@ -48,17 +48,17 @@ final class PercentView: BaseView {
         bar.layer.cornerRadius = 5
         chargeBar.layer.cornerRadius = 5
         
-        leftText.font = .font10
+        
         leftText.textColor = .font
         leftText.textAlignment = .left
         leftText.numberOfLines = 1
         
-        rightText.font = .font10
+        
         rightText.textColor = .font
         rightText.textAlignment = .right
         rightText.numberOfLines = 1
     }
-    func setUpDate(total: Int, now: Int, left: String, right: String) {
+    func setUpDate(total: Int, now: Int, left: String, right: String, font: UIFont = .font10) {
         DispatchQueue.main.async {
             let totalCG = CGFloat(integerLiteral: total)
             let nowCG = CGFloat(integerLiteral: now)
@@ -69,6 +69,8 @@ final class PercentView: BaseView {
                 make.width.equalTo(newWidth)
             }
         }
+        leftText.font = font
+        rightText.font = font
         leftText.text = left
         rightText.text = right
         self.layoutIfNeeded()

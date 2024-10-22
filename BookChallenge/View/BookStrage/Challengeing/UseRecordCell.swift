@@ -15,7 +15,6 @@ final class UseRecordCell: BaseCollectioViewCell {
     private let userContentHeader = UILabel()
     private let userContent = UILabel()
     
-    
     override func setUpHierarchy() {
         contentView.addSubview(userProfile)
         contentView.addSubview(userNick)
@@ -31,28 +30,39 @@ final class UseRecordCell: BaseCollectioViewCell {
             //make.width.equalTo(userProfile.snp.height)
         }
         userNick.snp.makeConstraints { make in
-            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(10)
-            make.leading.equalTo(userProfile.snp.trailing).offset(10)
+            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(15)
+            make.leading.equalTo(userProfile.snp.trailing).offset(15)
         }
         userContentHeader.snp.makeConstraints { make in
-            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(10)
+            make.bottom.equalTo(userNick.snp.bottom)
             make.leading.equalTo(userNick.snp.trailing).offset(10)
         }
         userContent.snp.makeConstraints { make in
             make.top.equalTo(userContentHeader.snp.bottom).offset(10)
-            make.leading.equalTo(userProfile.snp.trailing).offset(10)
+            make.leading.equalTo(userProfile.snp.trailing).offset(15)
             make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(10)
         }
         bookPercent.snp.makeConstraints { make in
-            make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(10)
-            make.leading.equalTo(userProfile.snp.trailing).offset(10)
-            make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(10)
+            make.top.equalTo(userContent.snp.bottom).offset(15)
+            make.leading.equalTo(userProfile.snp.trailing).offset(15)
+            make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(15)
         }
         
     }
     override func setUpView() {
+        userProfile.layer.cornerRadius = 15
+        userProfile.layer.masksToBounds = true
+        userProfile.layer.borderWidth = 1
+        userProfile.layer.borderColor = UIColor.boarder.cgColor
+        
+        userNick.font = .boldFont16
+        
+        userContentHeader.font = .font13
+        userContentHeader.textColor = .placeholder
+        
         userContent.textAlignment = .left
-        userContent.numberOfLines = 0
+        userContent.numberOfLines = 3
+        userContent.font = .font13
     }
     func setData(_ data: UserData) {
         userProfile.image = UIImage(named: data.profileImage)

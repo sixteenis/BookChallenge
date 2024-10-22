@@ -156,7 +156,7 @@ extension ChallengeRoomVC {
     func sameTableViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.width
-        let height = UIScreen.main.bounds.height / 6
+        let height = UIScreen.main.bounds.height / 5
         layout.itemSize = CGSize(width: width, height: height)
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)

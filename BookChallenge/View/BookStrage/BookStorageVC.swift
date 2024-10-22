@@ -13,7 +13,7 @@ import SnapKit
 
 final class BookStorageVC: BaseViewController, NavLogoProtocol {
     private let segmentedControl: UISegmentedControl = {
-        let segmentedControl = UnderlineSegmentedControl(items: ["챌린지 중", "혼자 챌린지 중", "종료된 챌린지"])
+        let segmentedControl = UnderlineSegmentedControl(items: ["챌린지 중", "종료된 챌린지"])
         return segmentedControl
     }()
     private let vc1: ChallengeingVC = {
@@ -26,11 +26,6 @@ final class BookStorageVC: BaseViewController, NavLogoProtocol {
         vc.view.backgroundColor = .red
         return vc
     }()
-    private let vc3: UIViewController = {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .blue
-        return vc
-    }()
     
     private lazy var pageViewController: UIPageViewController = {
         let vc = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
@@ -40,7 +35,7 @@ final class BookStorageVC: BaseViewController, NavLogoProtocol {
         return vc
       }()
     var dataViewControllers: [UIViewController] {
-        [self.vc1, self.vc2, self.vc3]
+        [self.vc1, self.vc2]
       }
     lazy var currentPage: Int = 0 {
        didSet {

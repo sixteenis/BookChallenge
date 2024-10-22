@@ -17,8 +17,8 @@ extension NavLogoProtocol {
         image.snp.makeConstraints { make in
             make.size.equalTo(35)
         }
-        let profile = UIBarButtonItem(customView: image)
+        //let profile = UIBarButtonItem(customView: image)
         let alert = UIBarButtonItem(image: UIImage(systemName: "bell"), style: .plain, target: nil, action: nil)
-        navigationItem.rightBarButtonItems = [alert, profile]
+        navigationItem.rightBarButtonItems = [alert] //, profile
     }
 }

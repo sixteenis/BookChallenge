@@ -40,7 +40,7 @@ final class Interceptor: RequestInterceptor {
         dueTo error: Error,
         completion: @escaping (RetryResult) -> Void
     ) {
-       // print("retry 진입: \(error)")
+        print("retry 진입: \(error)")
         guard let response = request.task?.response as? HTTPURLResponse, response.statusCode == 419
         else {
             completion(.doNotRetryWithError(error))
