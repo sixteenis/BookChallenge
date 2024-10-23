@@ -38,7 +38,7 @@ struct SimpleEntry: TimelineEntry {
     let date: Date
     let emoji: String
 }
-
+// MARK: - 현재 기록한 경우에 그 남은 Day를 계산해서 가져옴. 그럴경우 시간이 지나도 그 디데이에서 머무는 문제 발생, Date를 통해 끝나는 날을 가져와서 현재와 비교해서 값을 넣어주도록!
 struct BookChallengeWidgetEntryView : View {
     var entry: Provider.Entry
     let image = UserDefaults(suiteName: "group.com.Sixteenis.BookChallenge.min")?.data(forKey: "widgetImage")

@@ -46,7 +46,7 @@ final class ChallengeingVM: BaseViewModel {
                 LSLPNetworkManager.shared.request(target: .getLikePosts(query: .init()), dto: LikePostsDTO.self)
             }
             .bind(with: self) { owner, response in
-                print("통신함!!!!!")
+                print("통신함!!!!!기록한 경우!!!")
                 networkingStart.accept(false)
                 switch response {
                 case .success(let data):

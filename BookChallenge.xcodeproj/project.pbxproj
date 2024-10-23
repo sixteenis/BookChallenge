@@ -114,13 +114,15 @@
 		06CEA1152CC7C264003249BF /* CompletionChallengVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEA1142CC7C264003249BF /* CompletionChallengVC.swift */; };
 		06CEA11C2CC7C2EE003249BF /* CompletionChallengCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEA11B2CC7C2EE003249BF /* CompletionChallengCell.swift */; };
 		06CEA11E2CC7C526003249BF /* CompletionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEA11D2CC7C526003249BF /* CompletionModel.swift */; };
-		06CEA1262CC7D139003249BF /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CEA1252CC7D139003249BF /* WidgetKit.framework */; };
-		06CEA1282CC7D139003249BF /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CEA1272CC7D139003249BF /* SwiftUI.framework */; };
 		06CEA12B2CC7D139003249BF /* BookChallengeWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEA12A2CC7D139003249BF /* BookChallengeWidgetBundle.swift */; };
 		06CEA12D2CC7D139003249BF /* BookChallengeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEA12C2CC7D139003249BF /* BookChallengeWidget.swift */; };
 		06CEA12F2CC7D13B003249BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06CEA12E2CC7D13B003249BF /* Assets.xcassets */; };
 		06CEA1332CC7D13B003249BF /* BookChallengeWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 06CEA1232CC7D139003249BF /* BookChallengeWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		06CEA13A2CC7DE99003249BF /* WidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEA1392CC7DE99003249BF /* WidgetData.swift */; };
+		06CEA1402CC7FD49003249BF /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CEA1272CC7D139003249BF /* SwiftUI.framework */; };
+		06CEA1412CC7FD49003249BF /* SwiftUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06CEA1272CC7D139003249BF /* SwiftUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		06CEA1432CC7FD4A003249BF /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CEA1252CC7D139003249BF /* WidgetKit.framework */; };
+		06CEA1442CC7FD4A003249BF /* WidgetKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06CEA1252CC7D139003249BF /* WidgetKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		06CF472A2C7736D400EC0645 /* RoomState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF47292C7736D400EC0645 /* RoomState.swift */; };
 		06CF472C2C773B0400EC0645 /* SearchPostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF472B2C773B0400EC0645 /* SearchPostDTO.swift */; };
 		06CF47302C77580D00EC0645 /* CommentsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CF472F2C77580D00EC0645 /* CommentsDTO.swift */; };
@@ -163,6 +165,18 @@
 				06CEA1332CC7D13B003249BF /* BookChallengeWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06CEA1422CC7FD49003249BF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				06CEA1412CC7FD49003249BF /* SwiftUI.framework in Embed Frameworks */,
+				06CEA1442CC7FD4A003249BF /* WidgetKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -321,8 +335,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06CEA1282CC7D139003249BF /* SwiftUI.framework in Frameworks */,
-				06CEA1262CC7D139003249BF /* WidgetKit.framework in Frameworks */,
+				06CEA1402CC7FD49003249BF /* SwiftUI.framework in Frameworks */,
+				06CEA1432CC7FD4A003249BF /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -769,6 +783,7 @@
 				06CEA11F2CC7D139003249BF /* Sources */,
 				06CEA1202CC7D139003249BF /* Frameworks */,
 				06CEA1212CC7D139003249BF /* Resources */,
+				06CEA1422CC7FD49003249BF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

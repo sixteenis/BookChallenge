@@ -276,11 +276,13 @@ private extension ChallengeDetailVC {
         }
         roomTitle.snp.makeConstraints { make in
             make.top.equalTo(createProfile.snp.bottom).offset(15)
-            make.horizontalEdges.equalTo(contentView).inset(15)
+            make.trailing.equalTo(contentView).inset(20)
+            make.leading.equalTo(createProfile.snp.leading)
         }
         roomContent.snp.makeConstraints { make in
             make.top.equalTo(roomTitle.snp.bottom).offset(15)
-            make.horizontalEdges.equalTo(contentView).inset(15)
+            make.trailing.equalTo(contentView).inset(15)
+            make.leading.equalTo(createProfile.snp.leading)
             make.bottom.equalTo(contentView).inset(90) //맨 밑에 이거 넣주삼
         }
     }

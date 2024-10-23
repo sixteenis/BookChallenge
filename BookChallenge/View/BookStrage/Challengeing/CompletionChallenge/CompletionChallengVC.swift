@@ -49,7 +49,7 @@ final class CompletionChallengVC: BaseViewController {
         let height = UIScreen.main.bounds.height / 5
         layout.itemSize = CGSize(width: width, height: height)
         layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 5
+        layout.minimumInteritemSpacing = 0
         //layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 10)
         return layout
     }

@@ -14,6 +14,7 @@ final class CompletionChallengCell: BaseCollectioViewCell {
     private let title = UILabel()
     private let state = UILabel()
     private let page = PercentView()
+    private let defaultView = UIView()
     
     
     
@@ -23,6 +24,7 @@ final class CompletionChallengCell: BaseCollectioViewCell {
         disposeBag = DisposeBag()
     }
     override func setUpHierarchy() {
+        contentView.addSubview(defaultView)
         contentView.addSubview(bookImage)
         contentView.addSubview(title)
         contentView.addSubview(state)
@@ -31,6 +33,10 @@ final class CompletionChallengCell: BaseCollectioViewCell {
         
     }
     override func setUpLayout() {
+        defaultView.snp.makeConstraints { make in
+            make.verticalEdges.equalToSuperview()
+            make.horizontalEdges.equalToSuperview().inset(10)
+        }
         bookImage.snp.makeConstraints { make in
             make.leading.equalTo(contentView).inset(30)
             make.verticalEdges.equalTo(contentView).inset(20)
@@ -55,6 +61,12 @@ final class CompletionChallengCell: BaseCollectioViewCell {
         
     }
     override func setUpView() {
+        defaultView.layer.masksToBounds = true
+        defaultView.layer.cornerRadius = 5
+        defaultView.layer.borderColor = UIColor.boarder.cgColor
+        defaultView.layer.borderWidth = 1
+        
+        
         self.backgroundColor = .viewBackground
         self.layer.cornerRadius = 15
         self.layer.masksToBounds = true

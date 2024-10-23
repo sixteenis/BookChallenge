@@ -44,6 +44,7 @@ final class ChallengeingVC: BaseViewController {
                         let bottomSheet = BottomSheetVC(contentViewController: vc, defaultHeight: 400,cornerRadius: 15, isPannedable: true)
                         vc.completion = {
                             // MARK: - 위젯에 필요한 데이터 여기서 주지만 나중에 vm으로 빼자..
+                            // MARK: - 지금은 기록하는 책의 이전 페이지값을 가져옴... 리팩토링해서 기록한 그 값의 페이지를 가져오게 구현하자
                             UserManager.shared.widgetImage = cell.getImageData()
                             UserManager.shared.widgetDay = String(element.totalDate - element.nowDate)
                             UserManager.shared.widgetPagePercent = Double(element.bookNowPage)/Double(element.booktotalPage)
