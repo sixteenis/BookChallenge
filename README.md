@@ -6,9 +6,9 @@
 
 
 ## 📱 **주요 기능**
-| 홈 | 서재 | 챌린지방 |
-|---------------|---------------|---------------|
-
+| 홈 | 서재 | 챌린지방 | 위젯 |
+|---------------|---------------|---------------|---------------|
+| <img src="https://github.com/user-attachments/assets/a7aa2fb3-b17c-4fcc-a4d3-b6eca505617e" width="200" /> | <img src="https://github.com/user-attachments/assets/82d12107-8c6d-475e-8c1a-fadfd0afc6f8" width="200" /> | <img src="https://github.com/user-attachments/assets/fb9f99f2-2f05-46c1-88f0-a81fb951f7c3" width="200" /> | <img src="https://github.com/user-attachments/assets/6ddae17e-3c3c-42b3-bb28-02478caa33f6" width="200" /> |
 > 🔥 이달의 베스트 셀러 책 추천
     
 > 🔍 실시간/책 검색으로 챌린지 방 조회 
