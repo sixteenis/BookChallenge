@@ -77,8 +77,6 @@
 - Custom CollectionView를 통해 중앙 항목이 강조되는 확대/축소 효과 구현
 - scrollViewWillEndDragging 내에서 targetContentOffset을 사용해 셀 포커싱 구현
 
-### 스크롤 가능한 세그먼트 (공사중)
-
 ### WidgetKit
 > UserDefault(shared container) + reloadTimelines를 이용한 위젯 구현
 - UserDefault의 groupShared를 활용하여 위젯과 앱간의 shared container을 통해 데이터 공유
@@ -93,13 +91,6 @@
 - PG사를 웹뷰에 띄워 책 결제 진행
 - 사용자의 결제 관련 어뷰징과 결제 검증을 위한 로직 구현
 
-### 페이지네이션
-- 커서기반 페이지네이션을 활용한 흐음? 
 
-<br>    
 
-## 🚨 트러블 슈팅 (공사중)
-### 토큰 재발급 이슈?
-### 위젯 연결 이슈?
-### 챌린지방 네트워크 콜 수?
 
