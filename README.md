@@ -80,7 +80,7 @@
 ### WidgetKit
 > UserDefault(shared container) + reloadTimelines를 이용한 위젯 구현
 - UserDefault의 groupShared를 활용하여 위젯과 앱간의 shared container을 통해 데이터 공유
-- 앱에서 위젯을 업데이트 해야되는 시점에 reloadTimelines을 호출하여 강제 업데이트 로직 구현
+- 앱 내에서 위젯 데이터 변경이 필요할 경우 reloadTimelines 메서드를 통해 위젯 reload하여 업데이트 진행 
 
 ### JWT 토큰 관리
 > UserDefault를 통한 Access, Refresh 토큰 관리
