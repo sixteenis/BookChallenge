@@ -91,6 +91,12 @@
 - PG사를 웹뷰에 띄워 책 결제 진행
 - 사용자의 결제 관련 어뷰징과 결제 검증을 위한 로직 구현
 
+### Custom PageViewController
+- UISegmentedControl에 PageViewController를 결합하여 스크롤 가능한 세그먼트 구현
+
+### 페이지네이션
+- 커서기반 페이지네이션을 활용한 페이지네이션 구현
+
 
 
 
