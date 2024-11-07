@@ -97,6 +97,21 @@
 ### 페이지네이션
 - 커서기반 페이지네이션을 활용한 페이지네이션 구현
 
+<br>
 
+## 🚨 트러블 슈팅
+### StaticConfiguration Widget 값 전달 이슈
+- 문제점 🤔
+    - App 내에 데이터를 Widget에게 전달하지 못하는 문제 발생
+- 해결 🫢
+    -  AppGroup에서 App과 Widget은 서로 각각의 Container를 가지므로 접근 불가
+    -  UserDefaults를 통해 shared container을 구현하여 App과 Widget이 접근 가능한 container 구현
+<br>
+
+- 문제점 🤔
+    -  특정 이벤트를 통해 Widget 업데이트 시 즉시 업데이트되지 않는 문제 발생
+- 해결 🫢
+    -  Widget의 업데이트는 미리 지정된 시간에 맞춰서 업데이트 되므로 즉시 갱신이 안된다는 점을 파악
+    -  앱 내에서 Widget 데이터 업데이트 시 WidgetCenter의 reloadTimeline를 통해 특정 시점에 Widget reload를 통해 데이터 갱신 구현
 
 
