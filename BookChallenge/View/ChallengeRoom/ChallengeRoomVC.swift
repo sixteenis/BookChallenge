@@ -27,6 +27,7 @@ final class ChallengeRoomVC: BaseViewController, NavLogoProtocol {
         super.viewDidLoad()
         setNav()
     }
+    // MARK: - 뷰가 뜰때 뷰를 업데이트해야되는 시점?
     override func viewIsAppearing(_ animated: Bool) {
         super.viewIsAppearing(animated)
         self.tabBarController?.tabBar.isHidden = false
